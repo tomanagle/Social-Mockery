@@ -40,7 +40,7 @@ docker:
 	docker build -f dev/Dockerfile -t social-mockery .
 
 .PHONY: generate generate-check spec-validate
-SPEC_FILES := $(sort $(wildcard specs/*/*/*/openapi.yaml))
+SPEC_FILES := $(sort $(wildcard specs/*/*/*/openapi.yaml specs/*/*/*/*.openapi.yaml))
 GENERATOR_CONFIGS := $(sort $(wildcard configs/openapi/*.yaml))
 spec-validate:
 	cd tools && go run -mod=readonly ./cmd/specvalidate $(addprefix ../,$(SPEC_FILES))
@@ -50,6 +50,7 @@ generate: spec-validate
 		version=$$(basename "$$config" .yaml | sed 's/^instagram-//'); \
 		go run -mod=readonly -modfile=tools/go.mod github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config "$$config" "specs/meta/instagram/$$version/openapi.yaml" || exit 1; \
 	done
+	@sh scripts/generate-contracts.sh write
 
 generate-check: spec-validate
 	@set -eu; tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
@@ -60,3 +61,5 @@ generate-check: spec-validate
 		go run -mod=readonly -modfile=tools/go.mod github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config "$$tmp/config.yaml" "specs/meta/instagram/$$version/openapi.yaml"; \
 		cmp "internal/providers/meta/generated/$$package/api.gen.go" "$$tmp/$$package.go"; \
 	done
+
+	@sh scripts/generate-contracts.sh check

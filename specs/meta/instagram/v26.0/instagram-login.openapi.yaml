@@ -1,0 +1,2205 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Instagram Instagram Login research contract",
+    "version": "v26.0",
+    "description": "Contract-only, documentation-based inventory. No live verification. SDK version evidence and version-neutral collection evidence are distinguished per operation. This document does not imply simulator implementation or complete upstream compatibility."
+  },
+  "servers": [
+    {
+      "url": "https://graph.instagram.com"
+    }
+  ],
+  "x-contract-only": true,
+  "x-contract-kind": "graph",
+  "x-version-evidence": {
+    "sdk-revision": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+    "collection-release-specific": false,
+    "latest-release-verified": false
+  },
+  "security": [
+    {
+      "BearerToken": []
+    },
+    {
+      "QueryToken": []
+    }
+  ],
+  "paths": {
+    "/v26.0/{objectID}/messages": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "sendInstagramMessage",
+        "summary": "send Instagram Message",
+        "description": "Text, media, templates, quick replies, private comment replies, reactions, and HUMAN_AGENT sends share this route. Reaction example uses sender_action=react and reaction=love. The source does not establish exhaustive sender_action values.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstagramMessageSent"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendInstagramMessage"
+              }
+            }
+          }
+        },
+        "x-source-caveats": [
+          "Discarded unrelated welcome-flow response saved under Text Message and unrelated flow_id response saved under Sticker.",
+          "No blanket HUMAN_AGENT requirement for private replies."
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/message_attachments": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "uploadInstagramMessageAttachment",
+        "summary": "upload Instagram Message Attachment",
+        "description": "URL-based reusable attachment upload. Official collection provides no successful response body; response schema intentionally unconstrained.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "object",
+                    "properties": {
+                      "attachment": {
+                        "$ref": "#/components/schemas/MessagingAttachment"
+                      }
+                    },
+                    "required": [
+                      "attachment"
+                    ]
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/conversations": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "listInstagramConversations",
+        "summary": "list Instagram Conversations",
+        "description": "user_id filters by Instagram-scoped person ID. The collection also documents /me/conversations.",
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "instagram"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessagingConversationList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "readInstagramMessagingObject",
+        "summary": "read Instagram Messaging Object",
+        "description": "Graph node route: conversation ID with fields=messages or messages{from,to}; message ID with fields=id,created_time,from,to,message; Instagram-scoped person ID with profile fields. Unified path avoids structurally identical OpenAPI paths. Message details limited to 20 most recent messages per conversation according to source.",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MessagingConversation"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ConversationMessage"
+                    },
+                    {
+                      "$ref": "#/components/schemas/MessagingUserProfile"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/messenger_profile": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getInstagramMessengerProfile",
+        "summary": "get Instagram Messenger Profile",
+        "description": "",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "persistent_menu": {
+                            "$ref": "#/components/schemas/PersistentMenu"
+                          },
+                          "ice_breakers": {
+                            "$ref": "#/components/schemas/IceBreakers"
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "call_to_actions": {
+                            "$ref": "#/components/schemas/IceBreakers"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "post": {
+        "operationId": "setInstagramMessengerProfile",
+        "summary": "set Instagram Messenger Profile",
+        "description": "persistent_menu and ice_breakers are JSON-serialized arrays in documented multipart form fields; decoded shapes are available as component schemas.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessengerProfileResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "platform": {
+                    "type": "string"
+                  },
+                  "persistent_menu": {
+                    "type": "string"
+                  },
+                  "ice_breakers": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "delete": {
+        "operationId": "deleteInstagramMessengerProfile",
+        "summary": "delete Instagram Messenger Profile",
+        "description": "fields is a serialized array, e.g. [\"persistent_menu\"] or [\"ice_breakers\"].",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessengerProfileResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/welcome_message_flows": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getInstagramWelcomeFlows",
+        "summary": "get Instagram Welcome Flows",
+        "description": "",
+        "parameters": [
+          {
+            "name": "flow_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/WelcomeMessageFlow"
+                      }
+                    },
+                    "paging": {
+                      "$ref": "#/components/schemas/MessagingPaging"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "post": {
+        "operationId": "writeInstagramWelcomeFlow",
+        "summary": "write Instagram Welcome Flow",
+        "description": "Omit flow_id to create, set flow_id to update. Creation returns flow_id; update returns success. Write welcome_message_flow as array, read representation is serialized JSON string.",
+        "parameters": [
+          {
+            "name": "flow_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "flow_id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/MessagingSuccess"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WelcomeMessageFlowWrite"
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "delete": {
+        "operationId": "deleteInstagramWelcomeFlow",
+        "summary": "delete Instagram Welcome Flow",
+        "description": "",
+        "parameters": [
+          {
+            "name": "flow_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessagingSuccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/subscribed_apps": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getInstagramWebhookSubscriptions",
+        "summary": "get Instagram Webhook Subscriptions",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/InstagramWebhookSubscription"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "post": {
+        "operationId": "subscribeInstagramWebhooks",
+        "summary": "subscribe Instagram Webhooks",
+        "description": "Official collection shows JSON array body and alternative comma-separated query encoding. Supply one encoding.",
+        "parameters": [
+          {
+            "name": "subscribed_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Alternative comma-separated query encoding shown in official curl."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessagingSuccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscribed_fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "description": "Official collection examples; not asserted as an exhaustive enum."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      },
+      "delete": {
+        "operationId": "deleteInstagramWebhookSubscription",
+        "summary": "delete Instagram Webhook Subscription",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessagingSuccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/me/conversations": {
+      "get": {
+        "operationId": "listAuthenticatedInstagramConversations",
+        "summary": "list Instagram Conversations",
+        "description": "user_id filters by Instagram-scoped person ID. The collection also documents /me/conversations.",
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "instagram"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessagingConversationList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "kind": "official-meta-postman-collection"
+          }
+        ],
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/media": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "postMedia",
+        "summary": "Create an image container",
+        "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation. Node/edge variants share this method and path; consult x-variants and field selection. Node/edge variants share this method and path; consult x-variants and field selection.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response from official collection, conditional fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image_url": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "video_url": {
+                            "type": "string"
+                          },
+                          "media_type": {
+                            "type": "string"
+                          },
+                          "upload_type": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "caption": {
+                        "type": "string"
+                      },
+                      "media_type": {
+                        "type": "string"
+                      },
+                      "children": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false,
+        "x-variants": [
+          {
+            "operation": "postMedia",
+            "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+            "source": [
+              "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            ]
+          },
+          {
+            "operation": "postMedia",
+            "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+            "source": [
+              "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            ]
+          }
+        ]
+      }
+    },
+    "/v26.0/{objectID}/media_publish": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "postMediaPublish",
+        "summary": "Publish the container",
+        "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation. Node/edge variants share this method and path; consult x-variants and field selection.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response from official collection, conditional fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "creation_id": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false,
+        "x-variants": [
+          {
+            "operation": "postMediaPublish",
+            "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+            "source": [
+              "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            ]
+          }
+        ]
+      }
+    },
+    "/v26.0/{objectID}/insights": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getInsights",
+        "summary": "Instagram Account Insights",
+        "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation. Node/edge variants share this method and path; consult x-variants and field selection.",
+        "parameters": [
+          {
+            "name": "metric",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response from official collection, conditional fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "period": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "values": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "value": {},
+                                "end_time": {
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false,
+        "x-variants": [
+          {
+            "operation": "getInsights",
+            "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+            "source": [
+              "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            ]
+          }
+        ]
+      }
+    },
+    "/v26.0/{objectID}/comments": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getComments",
+        "summary": "Get Comments",
+        "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response from official collection, conditional fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "from": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "paging": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    },
+    "/v26.0/{objectID}/replies": {
+      "parameters": [
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "postReplies",
+        "summary": "Reply to a comment",
+        "description": "Official collection example, version-neutral. Requiredness and additional accepted fields are not established; this is a permissive contract, not exhaustive validation.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Response from official collection, conditional fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "MessagingActor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "MessagingPaging": {
+        "type": "object",
+        "properties": {
+          "cursors": {
+            "type": "object",
+            "properties": {
+              "before": {
+                "type": "string"
+              },
+              "after": {
+                "type": "string"
+              }
+            }
+          },
+          "next": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          }
+        }
+      },
+      "ConversationMessage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_time": {
+            "type": "string"
+          },
+          "is_unsupported": {
+            "type": "boolean"
+          },
+          "from": {
+            "$ref": "#/components/schemas/MessagingActor"
+          },
+          "to": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MessagingActor"
+                }
+              }
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "reply_to": {
+            "type": "object",
+            "properties": {
+              "mid": {
+                "type": "string"
+              },
+              "is_self_reply": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "ConversationMessageList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConversationMessage"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/MessagingPaging"
+          }
+        }
+      },
+      "MessagingConversation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "updated_time": {
+            "type": "string"
+          },
+          "messages": {
+            "$ref": "#/components/schemas/ConversationMessageList"
+          },
+          "is_owner": {
+            "type": "boolean"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "MessagingConversationList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessagingConversation"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/MessagingPaging"
+          }
+        }
+      },
+      "MessagingUserProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "profile_pic": {
+            "anyOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "follower_count": {
+            "type": "integer"
+          },
+          "is_verified_user": {
+            "type": "boolean"
+          },
+          "is_business_follow_user": {
+            "type": "boolean"
+          },
+          "is_user_follow_business": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MessagingButton": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "web_url"
+                ],
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "title",
+              "url"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "postback"
+                ],
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "payload": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "title",
+              "payload"
+            ]
+          }
+        ]
+      },
+      "MessagingQuickReply": {
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "enum": [
+              "text"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "content_type",
+          "title",
+          "payload"
+        ]
+      },
+      "MessagingAttachment": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "image",
+              "audio",
+              "video",
+              "like_heart",
+              "MEDIA_SHARE",
+              "template"
+            ]
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "attachment_id": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "is_reusable": {
+                "type": "boolean"
+              },
+              "template_type": {
+                "type": "string",
+                "enum": [
+                  "generic",
+                  "button"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "buttons": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MessagingButton"
+                }
+              },
+              "elements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    },
+                    "default_action": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "enum": [
+                            "web_url"
+                          ],
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "buttons": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MessagingButton"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "OutboundMessage": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "attachment": {
+            "$ref": "#/components/schemas/MessagingAttachment"
+          },
+          "quick_replies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessagingQuickReply"
+            }
+          }
+        }
+      },
+      "SendInstagramMessage": {
+        "type": "object",
+        "properties": {
+          "recipient": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "comment_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "comment_id"
+                ]
+              }
+            ]
+          },
+          "message": {
+            "$ref": "#/components/schemas/OutboundMessage"
+          },
+          "sender_action": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "message_id": {
+                "type": "string"
+              },
+              "reaction": {
+                "type": "string"
+              }
+            }
+          },
+          "messaging_type": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "recipient"
+        ],
+        "anyOf": [
+          {
+            "required": [
+              "message"
+            ]
+          },
+          {
+            "required": [
+              "sender_action",
+              "payload"
+            ]
+          }
+        ]
+      },
+      "MessagingSuccess": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "InstagramMessageSent": {
+        "type": "object",
+        "properties": {
+          "recipient_id": {
+            "type": "string"
+          },
+          "message_id": {
+            "type": "string"
+          }
+        }
+      },
+      "MessengerProfileResult": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        }
+      },
+      "PersistentMenu": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "locale": {
+              "type": "string"
+            },
+            "call_to_actions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MessagingButton"
+              }
+            }
+          }
+        }
+      },
+      "IceBreakers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            },
+            "payload": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question",
+            "payload"
+          ]
+        }
+      },
+      "MessengerProfileSettings": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "enum": [
+              "instagram"
+            ],
+            "type": "string"
+          },
+          "persistent_menu": {
+            "$ref": "#/components/schemas/PersistentMenu"
+          },
+          "ice_breakers": {
+            "$ref": "#/components/schemas/IceBreakers"
+          }
+        }
+      },
+      "WelcomeMessageFlow": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "welcome_message_flow": {
+            "type": "string"
+          },
+          "eligible_platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "last_update_time": {
+            "type": "string"
+          },
+          "is_used_in_ad": {
+            "type": "boolean"
+          }
+        }
+      },
+      "WelcomeMessageFlowWrite": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "welcome_message_flow": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "$ref": "#/components/schemas/OutboundMessage"
+                }
+              }
+            }
+          },
+          "eligible_platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "InstagramWebhookSubscription": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscribed_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Official collection examples; not asserted as an exhaustive enum."
+            }
+          }
+        }
+      }
+    }
+  }
+}

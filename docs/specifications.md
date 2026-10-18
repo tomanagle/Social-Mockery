@@ -55,3 +55,17 @@ These labels apply to individual claims, not just a whole file. A synthetic toke
 Public documentation research does not authorize live API requests. Obtain explicit approval for the account and specific live test operations, including any publishing, deletion, media upload, permission change, or charge. Sanitize permitted captures before using them as fixtures. Never commit real credentials, raw tokens, private account identifiers, or personal content. Prefer synthetic fixtures.
 
 Use the skill's [review checklist](../.agents/skills/provider-spec-research/references/review-checklist.md) before declaring a slice ready. Report the implemented operations, remaining unknowns, synthetic deviations, and the actual validation/generation/test results. The current simulator is a focused Instagram subset; broader provider coverage and generated client SDKs are future work. This workflow adds no runtime crawling or AI dependency.
+
+## Broad Instagram research contracts
+
+See [the complete inventory and explicit gaps](../specs/meta/instagram/README.md).
+The versioned `facebook-login.openapi.yaml`, `instagram-login.openapi.yaml` and
+`webhooks.openapi.yaml` documents describe a much broader, **contract-only** surface.
+They are intentionally separate from `openapi.yaml`, which describes the implemented
+simulator subset. `internal/contracts/instagram/` contains their generated types and
+server interfaces and is never registered in the runtime router.
+
+The broader surface is not yet a complete verified Instagram specification. OAuth,
+upload transport, release-specific permissions and other listed gaps require accessible
+primary documentation or separately authorized live captures. v26.0 is a pinned-SDK
+research candidate, not an assertion of latest-version or runtime support.

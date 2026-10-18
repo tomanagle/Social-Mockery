@@ -1,0 +1,2993 @@
+{
+  "v24.0": {
+    "revision": "f1722382526f18b5ab33de007641c4b89f5d86fc",
+    "classes": {
+      "IGUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/iguser.py",
+        "class": "IGUser",
+        "fields": {
+          "biography": "string",
+          "business_discovery": "IGUser",
+          "followers_count": "int",
+          "follows_count": "int",
+          "has_profile_pic": "bool",
+          "id": "string",
+          "ig_id": "int",
+          "is_published": "bool",
+          "legacy_instagram_user_id": "string",
+          "media_count": "int",
+          "mentioned_comment": "IGComment",
+          "mentioned_media": "IGMedia",
+          "name": "string",
+          "owner_business": "Business",
+          "profile_picture_url": "string",
+          "shopping_product_tag_eligibility": "bool",
+          "shopping_review_status": "string",
+          "username": "string",
+          "website": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 50,
+            "parameters": {
+              "adgroup_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGUser",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_agencies",
+            "line": 81,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/agencies",
+            "target_class": "Business",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_authorized_ad_accounts",
+            "line": 112,
+            "parameters": {
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "AdAccount",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_authorized_ad_account",
+            "line": 144,
+            "parameters": {
+              "account_id": "string",
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "IGUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_available_catalogs",
+            "line": 176,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/available_catalogs",
+            "target_class": "UserAvailableCatalogs",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_ad_permissions",
+            "line": 207,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_ad_permission",
+            "line": 238,
+            "parameters": {
+              "creator_instagram_account": "string",
+              "creator_instagram_username": "string",
+              "revoke": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_advertisable_medias",
+            "line": 272,
+            "parameters": {
+              "ad_code": "string",
+              "creator_username": "string",
+              "media_relationship": "list<media_relationship_enum>",
+              "only_fetch_allowlisted": "bool",
+              "only_fetch_recommended_content": "bool",
+              "permalinks": "list<string>"
+            },
+            "enum_bindings": {
+              "media_relationship_enum": "BrandedContentShadowIGMediaID.MediaRelationship.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/branded_content_advertisable_medias",
+            "target_class": "BrandedContentShadowIGMediaID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_branded_content_tag_approval",
+            "line": 310,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_tag_approval",
+            "line": 341,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_tag_approval",
+            "line": 373,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_catalog_product_search",
+            "line": 405,
+            "parameters": {
+              "catalog_id": "string",
+              "q": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/catalog_product_search",
+            "target_class": "ShadowIGUserCatalogProductSearch",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaboration_invites",
+            "line": 438,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_collaboration_invite",
+            "line": 469,
+            "parameters": {
+              "accept": "bool",
+              "media_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_connected_threads_user",
+            "line": 502,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/connected_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_content_publishing_limit",
+            "line": 533,
+            "parameters": {
+              "since": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/content_publishing_limit",
+            "target_class": "ContentPublishingLimitResponse",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_creator_market_place_creators",
+            "line": 565,
+            "parameters": {
+              "creator_age_bucket": "list<Object>",
+              "creator_countries": "list<creator_countries_enum>",
+              "creator_gender": "list<creator_gender_enum>",
+              "creator_interests": "list<Object>",
+              "creator_max_engaged_accounts": "unsigned int",
+              "creator_max_followers": "unsigned int",
+              "creator_min_engaged_accounts": "unsigned int",
+              "creator_min_followers": "unsigned int",
+              "has_public_contact_email": "bool",
+              "major_audience_age_bucket": "list<Object>",
+              "major_audience_countries": "list<major_audience_countries_enum>",
+              "major_audience_gender": "list<major_audience_gender_enum>",
+              "query": "string",
+              "reels_interaction_rate": "Object",
+              "show_onboarded_creators_only": "bool",
+              "similar_to_creators": "list<string>",
+              "username": "string"
+            },
+            "enum_bindings": {
+              "creator_countries_enum": "IGUserExportForCAM.CreatorCountries.__dict__.values()",
+              "creator_gender_enum": "IGUserExportForCAM.CreatorGender.__dict__.values()",
+              "major_audience_countries_enum": "IGUserExportForCAM.MajorAudienceCountries.__dict__.values()",
+              "major_audience_gender_enum": "IGUserExportForCAM.MajorAudienceGender.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/creator_marketplace_creators",
+            "target_class": "IGUserExportForCAM",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_dataset",
+            "line": 617,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_dataset",
+            "line": 648,
+            "parameters": {
+              "dataset_name": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 680,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "metric_type": "metric_type_enum",
+              "period": "list<period_enum>",
+              "since": "datetime",
+              "timeframe": "timeframe_enum",
+              "until": "datetime"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "metric_type_enum": "InstagramInsightsResult.MetricType.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()",
+              "timeframe_enum": "InstagramInsightsResult.Timeframe.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_instagram_backed_threads_user",
+            "line": 726,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_instagram_backed_threads_user",
+            "line": 757,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_live_media",
+            "line": 788,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/live_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_media",
+            "line": 821,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media",
+            "line": 854,
+            "parameters": {
+              "alt_text": "string",
+              "audio_name": "string",
+              "caption": "string",
+              "children": "list<string>",
+              "collaborators": "list<string>",
+              "cover_url": "string",
+              "image_url": "string",
+              "is_carousel_item": "bool",
+              "location_id": "string",
+              "media_type": "string",
+              "product_tags": "list<map>",
+              "share_to_feed": "bool",
+              "thumb_offset": "string",
+              "trial_params": "map",
+              "upload_type": "string",
+              "user_tags": "list<map>",
+              "video_url": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media_publish",
+            "line": 902,
+            "parameters": {
+              "creation_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media_publish",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_mention",
+            "line": 934,
+            "parameters": {
+              "comment_id": "string",
+              "media_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/mentions",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_notification_message_tokens",
+            "line": 967,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/notification_message_tokens",
+            "target_class": "UserPageOneTimeOptInTokenSettings",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_appeal",
+            "line": 998,
+            "parameters": {
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_appeal",
+            "line": 1030,
+            "parameters": {
+              "appeal_reason": "string",
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_recently_searched_hashtags",
+            "line": 1063,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recently_searched_hashtags",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_scheduled_media",
+            "line": 1094,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/scheduled_media",
+            "target_class": "ShadowIGScheduledMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_stories",
+            "line": 1125,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/stories",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_tags",
+            "line": 1156,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/tags",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_upcoming_events",
+            "line": 1187,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/upcoming_events",
+            "target_class": "IGUpcomingEvent",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_upcoming_event",
+            "line": 1218,
+            "parameters": {
+              "end_time": "datetime",
+              "notification_subtypes": "list<notification_subtypes_enum>",
+              "start_time": "datetime",
+              "title": "string"
+            },
+            "enum_bindings": {
+              "notification_subtypes_enum": "['AFTER_EVENT_1DAY', 'AFTER_EVENT_2DAY', 'AFTER_EVENT_3DAY', 'AFTER_EVENT_4DAY', 'AFTER_EVENT_5DAY', 'AFTER_EVENT_6DAY', 'AFTER_EVENT_7DAY', 'BEFORE_EVENT_15MIN', 'BEFORE_EVENT_1DAY', 'BEFORE_EVENT_1HOUR', 'BEFORE_EVENT_2DAY', 'EVENT_START', 'RESCHEDULED']"
+            },
+            "method": "POST",
+            "endpoint": "/upcoming_events",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_welcome_message_flows",
+            "line": 1267,
+            "parameters": {
+              "app_id": "string",
+              "flow_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/welcome_message_flows",
+            "target_class": "ShadowIGUserCTXPartnerAppWelcomeMessageFlow",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGMedia": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/igmedia.py",
+        "class": "IGMedia",
+        "fields": {
+          "alt_text": "string",
+          "boost_eligibility_info": "IGMediaBoostEligibilityInfo",
+          "caption": "string",
+          "comments_count": "int",
+          "copyright_check_information": "IGVideoCopyrightCheckMatchesInformation",
+          "has_poll": "bool",
+          "has_slider": "bool",
+          "id": "string",
+          "ig_id": "string",
+          "is_comment_enabled": "bool",
+          "is_shared_to_feed": "bool",
+          "legacy_instagram_media_id": "string",
+          "like_count": "int",
+          "media_product_type": "string",
+          "media_type": "string",
+          "media_url": "string",
+          "owner": "IGUser",
+          "permalink": "string",
+          "shortcode": "string",
+          "thumbnail_url": "string",
+          "timestamp": "datetime",
+          "username": "string",
+          "video_title": "string",
+          "view_count": "int"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 55,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 85,
+            "parameters": {
+              "ad_account_id": "unsigned int",
+              "boostable_media_callsite": "boostable_media_callsite_enum",
+              "business_id": "string",
+              "primary_fb_page_id": "string",
+              "primary_ig_user_id": "string",
+              "secondary_fb_page_id": "string",
+              "secondary_ig_user_id": "string"
+            },
+            "enum_bindings": {
+              "boostable_media_callsite_enum": "['ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST', 'PA_HUB_CATALOG_INGESTION_CREATOR_ASSET']"
+            },
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 126,
+            "parameters": {
+              "comment_enabled": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_boost_ads_list",
+            "line": 157,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/boost_ads_list",
+            "target_class": "IGBoostMediaAd",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_partner_promote",
+            "line": 188,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_partner_promote",
+            "line": 219,
+            "parameters": {
+              "permission": "bool",
+              "sponsor_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_children",
+            "line": 252,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/children",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaborators",
+            "line": 282,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaborators",
+            "target_class": "ShadowIGMediaCollaborators",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_comments",
+            "line": 313,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_comment",
+            "line": 344,
+            "parameters": {
+              "ad_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 377,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "period": "list<period_enum>"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_partnership_ad_code",
+            "line": 417,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_partnership_ad_code",
+            "line": 447,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_tags",
+            "line": 477,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_tag",
+            "line": 508,
+            "parameters": {
+              "child_index": "unsigned int",
+              "updated_tags": "list<map>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGComment": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/igcomment.py",
+        "class": "IGComment",
+        "fields": {
+          "from": "IGCommentFromUser",
+          "hidden": "bool",
+          "id": "string",
+          "legacy_instagram_comment_id": "string",
+          "like_count": "int",
+          "media": "IGMedia",
+          "parent_id": "string",
+          "text": "string",
+          "timestamp": "datetime",
+          "user": "IGUser",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 42,
+            "parameters": {
+              "ad_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 73,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 103,
+            "parameters": {
+              "ad_id": "string",
+              "hide": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_replies",
+            "line": 135,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_reply",
+            "line": 165,
+            "parameters": {
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "ShadowIGHashtag": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/shadowighashtag.py",
+        "class": "ShadowIGHashtag",
+        "fields": {
+          "id": "string",
+          "name": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 33,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_recent_media",
+            "line": 63,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recent_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_top_media",
+            "line": 95,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/top_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "InstagramInsightsResult": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/instagraminsightsresult.py",
+        "class": "InstagramInsightsResult",
+        "fields": {
+          "description": "string",
+          "id": "string",
+          "name": "string",
+          "period": "string",
+          "title": "string",
+          "total_value": "Object",
+          "values": "list<InstagramInsightsValue>"
+        },
+        "enums": {
+          "Breakdown": [
+            "action_type",
+            "follow_type",
+            "story_navigation_action_type",
+            "surface_type"
+          ],
+          "Metric": [
+            "clips_replays_count",
+            "comments",
+            "follows",
+            "ig_reels_aggregated_all_plays_count",
+            "ig_reels_avg_watch_time",
+            "ig_reels_video_view_total_time",
+            "impressions",
+            "likes",
+            "navigation",
+            "plays",
+            "profile_activity",
+            "profile_visits",
+            "reach",
+            "replies",
+            "saved",
+            "shares",
+            "total_interactions",
+            "video_views",
+            "views"
+          ],
+          "Period": [
+            "day",
+            "days_28",
+            "lifetime",
+            "month",
+            "total_over_range",
+            "week"
+          ],
+          "MetricType": [
+            "default",
+            "time_series",
+            "total_value"
+          ],
+          "Timeframe": [
+            "last_14_days",
+            "last_30_days",
+            "last_90_days",
+            "prev_month",
+            "this_month",
+            "this_week"
+          ]
+        },
+        "operations": []
+      },
+      "ContentPublishingLimitResponse": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/contentpublishinglimitresponse.py",
+        "class": "ContentPublishingLimitResponse",
+        "fields": {
+          "config": "Object",
+          "quota_usage": "int"
+        },
+        "enums": {},
+        "operations": []
+      },
+      "IGCommentFromUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/igcommentfromuser.py",
+        "class": "IGCommentFromUser",
+        "fields": {
+          "id": "string",
+          "self_ig_scoped_id": "string",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": []
+      }
+    }
+  },
+  "v25.0": {
+    "revision": "542e10e31c40f7925f9ac03c000922a2fd0a2365",
+    "classes": {
+      "IGUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/iguser.py",
+        "class": "IGUser",
+        "fields": {
+          "biography": "string",
+          "business_discovery": "IGUser",
+          "collaborative_media_search": "ShadowIGUserCollaborativeMedia",
+          "followers_count": "int",
+          "follows_count": "int",
+          "has_profile_pic": "bool",
+          "id": "string",
+          "ig_id": "int",
+          "is_published": "bool",
+          "legacy_instagram_user_id": "string",
+          "media_count": "int",
+          "mentioned_comment": "IGComment",
+          "mentioned_media": "IGMedia",
+          "mini_shop_storefront": "Shop",
+          "name": "string",
+          "owner_business": "Business",
+          "profile_picture_url": "string",
+          "shopping_product_tag_eligibility": "bool",
+          "shopping_review_status": "string",
+          "username": "string",
+          "website": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 52,
+            "parameters": {
+              "adgroup_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGUser",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_agencies",
+            "line": 83,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/agencies",
+            "target_class": "Business",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_authorized_ad_accounts",
+            "line": 114,
+            "parameters": {
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "AdAccount",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_authorized_ad_account",
+            "line": 146,
+            "parameters": {
+              "account_id": "string",
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "IGUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_available_catalogs",
+            "line": 178,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/available_catalogs",
+            "target_class": "UserAvailableCatalogs",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_ad_permissions",
+            "line": 209,
+            "parameters": {
+              "creator_username": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_ad_permission",
+            "line": 241,
+            "parameters": {
+              "creator_instagram_account": "string",
+              "creator_instagram_username": "string",
+              "revoke": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_advertisable_medias",
+            "line": 275,
+            "parameters": {
+              "ad_code": "string",
+              "creator_username": "string",
+              "media_relationship": "list<media_relationship_enum>",
+              "only_fetch_allowlisted": "bool",
+              "only_fetch_recommended_content": "bool",
+              "permalinks": "list<string>"
+            },
+            "enum_bindings": {
+              "media_relationship_enum": "BrandedContentShadowIGMediaID.MediaRelationship.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/branded_content_advertisable_medias",
+            "target_class": "BrandedContentShadowIGMediaID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_branded_content_tag_approval",
+            "line": 313,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_tag_approval",
+            "line": 344,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_tag_approval",
+            "line": 376,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_business_messaging_feature_status",
+            "line": 408,
+            "parameters": {
+              "features": "list<map>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/business_messaging_feature_status",
+            "target_class": "IGUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_catalog_product_search",
+            "line": 439,
+            "parameters": {
+              "catalog_id": "string",
+              "q": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/catalog_product_search",
+            "target_class": "ShadowIGUserCatalogProductSearch",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaboration_invites",
+            "line": 472,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_collaboration_invite",
+            "line": 503,
+            "parameters": {
+              "accept": "bool",
+              "media_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaborative_media",
+            "line": 536,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaborative_media",
+            "target_class": "ShadowIGUserCollaborativeMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_connected_threads_user",
+            "line": 567,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/connected_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_content_publishing_limit",
+            "line": 598,
+            "parameters": {
+              "since": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/content_publishing_limit",
+            "target_class": "ContentPublishingLimitResponse",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_creator_market_place_creators",
+            "line": 630,
+            "parameters": {
+              "creator_age_bucket": "list<Object>",
+              "creator_countries": "list<creator_countries_enum>",
+              "creator_follower_growth": "Object",
+              "creator_gender": "list<creator_gender_enum>",
+              "creator_interests": "list<Object>",
+              "creator_latest_post_activity": "Object",
+              "creator_max_engaged_accounts": "unsigned int",
+              "creator_max_followers": "unsigned int",
+              "creator_min_engaged_accounts": "unsigned int",
+              "creator_min_followers": "unsigned int",
+              "creator_states": "list<string>",
+              "custom_audience_id": "string",
+              "has_public_contact_email": "bool",
+              "is_paid_partnership_messages_enabled": "bool",
+              "major_audience_age_bucket": "list<Object>",
+              "major_audience_countries": "list<major_audience_countries_enum>",
+              "major_audience_device_type": "list<Object>",
+              "major_audience_gender": "list<major_audience_gender_enum>",
+              "major_audience_states": "list<string>",
+              "platform": "list<platform_enum>",
+              "query": "string",
+              "recommendation_type": "recommendation_type_enum",
+              "reels_interaction_rate": "Object",
+              "show_onboarded_creators_only": "bool",
+              "similar_to_creators": "list<string>",
+              "username": "string",
+              "usernames": "list<string>"
+            },
+            "enum_bindings": {
+              "creator_countries_enum": "IGUserExportForCAM.CreatorCountries.__dict__.values()",
+              "creator_gender_enum": "IGUserExportForCAM.CreatorGender.__dict__.values()",
+              "major_audience_countries_enum": "IGUserExportForCAM.MajorAudienceCountries.__dict__.values()",
+              "major_audience_gender_enum": "IGUserExportForCAM.MajorAudienceGender.__dict__.values()",
+              "platform_enum": "IGUserExportForCAM.Platform.__dict__.values()",
+              "recommendation_type_enum": "IGUserExportForCAM.RecommendationType.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/creator_marketplace_creators",
+            "target_class": "IGUserExportForCAM",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_dataset",
+            "line": 694,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_dataset",
+            "line": 725,
+            "parameters": {
+              "dataset_name": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 757,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "metric_type": "metric_type_enum",
+              "period": "list<period_enum>",
+              "since": "datetime",
+              "timeframe": "timeframe_enum",
+              "until": "datetime"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "metric_type_enum": "InstagramInsightsResult.MetricType.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()",
+              "timeframe_enum": "InstagramInsightsResult.Timeframe.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_instagram_backed_threads_user",
+            "line": 803,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_instagram_backed_threads_user",
+            "line": 834,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_live_media",
+            "line": 865,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/live_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_media",
+            "line": 898,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media",
+            "line": 931,
+            "parameters": {
+              "alt_text": "string",
+              "audio_configuration": "string",
+              "audio_name": "string",
+              "branded_content_sponsor_ids": "list<unsigned int>",
+              "caption": "string",
+              "children": "list<string>",
+              "collaborators": "list<string>",
+              "cover_url": "string",
+              "image_url": "string",
+              "is_ai_generated": "bool",
+              "is_carousel_item": "bool",
+              "is_paid_partnership": "bool",
+              "location_id": "string",
+              "media_type": "string",
+              "product_tags": "list<map>",
+              "share_to_feed": "bool",
+              "thumb_offset": "string",
+              "trial_params": "map",
+              "upload_type": "string",
+              "user_tags": "list<map>",
+              "video_url": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media_publish",
+            "line": 983,
+            "parameters": {
+              "creation_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media_publish",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_mention",
+            "line": 1015,
+            "parameters": {
+              "comment_id": "string",
+              "media_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/mentions",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_moderate_conversation",
+            "line": 1048,
+            "parameters": {
+              "actions": "list<actions_enum>",
+              "user_ids": "list<map>"
+            },
+            "enum_bindings": {
+              "actions_enum": "['BLOCK_USER', 'MOVE_TO_SPAM', 'UNBLOCK_USER']"
+            },
+            "method": "POST",
+            "endpoint": "/moderate_conversations",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_notification_message_tokens",
+            "line": 1085,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/notification_message_tokens",
+            "target_class": "UserPageOneTimeOptInTokenSettings",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_appeal",
+            "line": 1116,
+            "parameters": {
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_appeal",
+            "line": 1148,
+            "parameters": {
+              "appeal_reason": "string",
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_recently_searched_hashtags",
+            "line": 1181,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recently_searched_hashtags",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_scheduled_media",
+            "line": 1212,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/scheduled_media",
+            "target_class": "ShadowIGScheduledMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_stories",
+            "line": 1243,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/stories",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_tags",
+            "line": 1274,
+            "parameters": {
+              "media_type": "string",
+              "posted_after": "string",
+              "posted_before": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/tags",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_upcoming_events",
+            "line": 1308,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/upcoming_events",
+            "target_class": "IGUpcomingEvent",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_upcoming_event",
+            "line": 1339,
+            "parameters": {
+              "end_time": "datetime",
+              "notification_subtypes": "list<notification_subtypes_enum>",
+              "start_time": "datetime",
+              "title": "string"
+            },
+            "enum_bindings": {
+              "notification_subtypes_enum": "['AFTER_EVENT_1DAY', 'AFTER_EVENT_2DAY', 'AFTER_EVENT_3DAY', 'AFTER_EVENT_4DAY', 'AFTER_EVENT_5DAY', 'AFTER_EVENT_6DAY', 'AFTER_EVENT_7DAY', 'BEFORE_EVENT_15MIN', 'BEFORE_EVENT_1DAY', 'BEFORE_EVENT_1HOUR', 'BEFORE_EVENT_2DAY', 'EVENT_START', 'RESCHEDULED']"
+            },
+            "method": "POST",
+            "endpoint": "/upcoming_events",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_welcome_message_flows",
+            "line": 1388,
+            "parameters": {
+              "app_id": "string",
+              "flow_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/welcome_message_flows",
+            "target_class": "ShadowIGUserCTXPartnerAppWelcomeMessageFlow",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGMedia": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/igmedia.py",
+        "class": "IGMedia",
+        "fields": {
+          "alt_text": "string",
+          "audio_id": "string",
+          "boost_eligibility_info": "IGMediaBoostEligibilityInfo",
+          "caption": "string",
+          "comments_count": "int",
+          "copyright_check_information": "IGVideoCopyrightCheckMatchesInformation",
+          "current_live_viewer_count": "int",
+          "has_poll": "bool",
+          "has_slider": "bool",
+          "id": "string",
+          "ig_id": "string",
+          "is_ai_generated": "bool",
+          "is_comment_enabled": "bool",
+          "is_shared_to_feed": "bool",
+          "legacy_instagram_media_id": "string",
+          "like_count": "int",
+          "media_audio_type": "string",
+          "media_product_type": "string",
+          "media_type": "string",
+          "media_url": "string",
+          "owner": "IGUser",
+          "permalink": "string",
+          "reposts_count": "int",
+          "saved_count": "int",
+          "shares_count": "int",
+          "shortcode": "string",
+          "thumbnail_url": "string",
+          "timestamp": "datetime",
+          "total_comments_count": "int",
+          "total_like_count": "int",
+          "total_views_count": "int",
+          "username": "string",
+          "video_title": "string",
+          "view_count": "int"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 65,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 95,
+            "parameters": {
+              "ad_account_id": "unsigned int",
+              "boostable_media_callsite": "boostable_media_callsite_enum",
+              "business_id": "string",
+              "primary_fb_page_id": "string",
+              "primary_ig_user_id": "string",
+              "secondary_fb_page_id": "string",
+              "secondary_ig_user_id": "string"
+            },
+            "enum_bindings": {
+              "boostable_media_callsite_enum": "['ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST', 'PA_HUB_CATALOG_INGESTION_CREATOR_ASSET']"
+            },
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 136,
+            "parameters": {
+              "comment_enabled": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_boost_ads_list",
+            "line": 167,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/boost_ads_list",
+            "target_class": "IGBoostMediaAd",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_partner_promote",
+            "line": 198,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_partner_promote",
+            "line": 229,
+            "parameters": {
+              "permission": "bool",
+              "sponsor_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_children",
+            "line": 262,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/children",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaborators",
+            "line": 292,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaborators",
+            "target_class": "ShadowIGMediaCollaborators",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_comments",
+            "line": 323,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_comment",
+            "line": 354,
+            "parameters": {
+              "ad_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 387,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "period": "list<period_enum>"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_partnership_ad_code",
+            "line": 427,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_partnership_ad_code",
+            "line": 457,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_tags",
+            "line": 487,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_tag",
+            "line": 518,
+            "parameters": {
+              "child_index": "unsigned int",
+              "updated_tags": "list<map>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGComment": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/igcomment.py",
+        "class": "IGComment",
+        "fields": {
+          "from": "IGCommentFromUser",
+          "hidden": "bool",
+          "id": "string",
+          "legacy_instagram_comment_id": "string",
+          "like_count": "int",
+          "media": "IGMedia",
+          "parent_id": "string",
+          "text": "string",
+          "timestamp": "datetime",
+          "user": "IGUser",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 42,
+            "parameters": {
+              "ad_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 73,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 103,
+            "parameters": {
+              "ad_id": "string",
+              "hide": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_replies",
+            "line": 135,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_reply",
+            "line": 165,
+            "parameters": {
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "ShadowIGHashtag": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/shadowighashtag.py",
+        "class": "ShadowIGHashtag",
+        "fields": {
+          "id": "string",
+          "name": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 33,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_recent_media",
+            "line": 63,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recent_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_top_media",
+            "line": 95,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/top_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "InstagramInsightsResult": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/instagraminsightsresult.py",
+        "class": "InstagramInsightsResult",
+        "fields": {
+          "description": "string",
+          "id": "string",
+          "name": "string",
+          "period": "string",
+          "title": "string",
+          "total_value": "Object",
+          "values": "list<InstagramInsightsValue>"
+        },
+        "enums": {
+          "Breakdown": [
+            "action_type",
+            "follow_type",
+            "story_navigation_action_type",
+            "surface_type"
+          ],
+          "Metric": [
+            "comments",
+            "crossposted_views",
+            "facebook_views",
+            "follows",
+            "ig_reels_avg_watch_time",
+            "ig_reels_video_view_total_time",
+            "impressions",
+            "likes",
+            "link_clicks",
+            "navigation",
+            "profile_activity",
+            "profile_visits",
+            "reach",
+            "reels_skip_rate",
+            "replies",
+            "reposts",
+            "saved",
+            "shares",
+            "total_comments",
+            "total_interactions",
+            "total_likes",
+            "total_views",
+            "views"
+          ],
+          "Period": [
+            "day",
+            "days_28",
+            "lifetime",
+            "month",
+            "total_over_range",
+            "week"
+          ],
+          "MetricType": [
+            "default",
+            "time_series",
+            "total_value"
+          ],
+          "Timeframe": [
+            "last_14_days",
+            "last_30_days",
+            "last_90_days",
+            "prev_month",
+            "this_month",
+            "this_week"
+          ]
+        },
+        "operations": []
+      },
+      "ContentPublishingLimitResponse": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/contentpublishinglimitresponse.py",
+        "class": "ContentPublishingLimitResponse",
+        "fields": {
+          "config": "Object",
+          "quota_usage": "int"
+        },
+        "enums": {},
+        "operations": []
+      },
+      "IGCommentFromUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/igcommentfromuser.py",
+        "class": "IGCommentFromUser",
+        "fields": {
+          "id": "string",
+          "self_ig_scoped_id": "string",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": []
+      }
+    }
+  },
+  "v26.0": {
+    "revision": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+    "classes": {
+      "IGUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/iguser.py",
+        "class": "IGUser",
+        "fields": {
+          "biography": "string",
+          "business_discovery": "IGUser",
+          "collaborative_media_search": "ShadowIGUserCollaborativeMedia",
+          "followers_count": "int",
+          "follows_count": "int",
+          "has_profile_pic": "bool",
+          "id": "string",
+          "ig_id": "int",
+          "is_published": "bool",
+          "legacy_instagram_user_id": "string",
+          "media_count": "int",
+          "mentioned_comment": "IGComment",
+          "mentioned_media": "IGMedia",
+          "mini_shop_storefront": "Shop",
+          "name": "string",
+          "owner_business": "Business",
+          "profile_picture_url": "string",
+          "shopping_product_tag_eligibility": "bool",
+          "shopping_review_status": "string",
+          "username": "string",
+          "website": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 52,
+            "parameters": {
+              "adgroup_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGUser",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_agencies",
+            "line": 83,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/agencies",
+            "target_class": "Business",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_authorized_ad_accounts",
+            "line": 114,
+            "parameters": {
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "AdAccount",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_authorized_ad_account",
+            "line": 146,
+            "parameters": {
+              "account_id": "string",
+              "business": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/authorized_adaccounts",
+            "target_class": "IGUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_available_catalogs",
+            "line": 178,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/available_catalogs",
+            "target_class": "UserAvailableCatalogs",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_ad_permissions",
+            "line": 209,
+            "parameters": {
+              "creator_username": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_ad_permission",
+            "line": 241,
+            "parameters": {
+              "creator_instagram_account": "string",
+              "creator_instagram_username": "string",
+              "revoke": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_ad_permissions",
+            "target_class": "IGBCAdsPermission",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_advertisable_medias",
+            "line": 275,
+            "parameters": {
+              "ad_code": "string",
+              "creator_username": "string",
+              "media_relationship": "list<media_relationship_enum>",
+              "only_fetch_allowlisted": "bool",
+              "only_fetch_recommended_content": "bool",
+              "permalinks": "list<string>"
+            },
+            "enum_bindings": {
+              "media_relationship_enum": "BrandedContentShadowIGMediaID.MediaRelationship.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/branded_content_advertisable_medias",
+            "target_class": "BrandedContentShadowIGMediaID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_branded_content_tag_approval",
+            "line": 313,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_tag_approval",
+            "line": 344,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_tag_approval",
+            "line": 376,
+            "parameters": {
+              "user_ids": "list<unsigned int>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_tag_approval",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_business_messaging_feature_status",
+            "line": 408,
+            "parameters": {
+              "features": "list<map>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/business_messaging_feature_status",
+            "target_class": "IGUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_catalog_product_search",
+            "line": 439,
+            "parameters": {
+              "catalog_id": "string",
+              "q": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/catalog_product_search",
+            "target_class": "ShadowIGUserCatalogProductSearch",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaboration_invites",
+            "line": 472,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_collaboration_invite",
+            "line": 503,
+            "parameters": {
+              "accept": "bool",
+              "media_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/collaboration_invites",
+            "target_class": "ShadowIGUserCollaborationInvites",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaborative_media",
+            "line": 536,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaborative_media",
+            "target_class": "ShadowIGUserCollaborativeMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_connected_threads_user",
+            "line": 567,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/connected_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_content_publishing_limit",
+            "line": 598,
+            "parameters": {
+              "since": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/content_publishing_limit",
+            "target_class": "ContentPublishingLimitResponse",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_creator_market_place_creators",
+            "line": 630,
+            "parameters": {
+              "creator_age_bucket": "list<Object>",
+              "creator_countries": "list<creator_countries_enum>",
+              "creator_follower_growth": "Object",
+              "creator_gender": "list<creator_gender_enum>",
+              "creator_interests": "list<Object>",
+              "creator_latest_post_activity": "Object",
+              "creator_max_engaged_accounts": "unsigned int",
+              "creator_max_followers": "unsigned int",
+              "creator_min_engaged_accounts": "unsigned int",
+              "creator_min_followers": "unsigned int",
+              "creator_states": "list<string>",
+              "custom_audience_id": "string",
+              "has_public_contact_email": "bool",
+              "is_paid_partnership_messages_enabled": "bool",
+              "major_audience_age_bucket": "list<Object>",
+              "major_audience_countries": "list<major_audience_countries_enum>",
+              "major_audience_device_type": "list<Object>",
+              "major_audience_gender": "list<major_audience_gender_enum>",
+              "major_audience_states": "list<string>",
+              "page_name": "string",
+              "platform": "platform_enum",
+              "query": "string",
+              "recommendation_type": "recommendation_type_enum",
+              "reels_interaction_rate": "Object",
+              "show_onboarded_creators_only": "bool",
+              "similar_to_creators": "list<string>",
+              "username": "string",
+              "usernames": "list<string>"
+            },
+            "enum_bindings": {
+              "creator_countries_enum": "IGUserExportForCAM.CreatorCountries.__dict__.values()",
+              "creator_gender_enum": "IGUserExportForCAM.CreatorGender.__dict__.values()",
+              "major_audience_countries_enum": "IGUserExportForCAM.MajorAudienceCountries.__dict__.values()",
+              "major_audience_gender_enum": "IGUserExportForCAM.MajorAudienceGender.__dict__.values()",
+              "platform_enum": "IGUserExportForCAM.Platform.__dict__.values()",
+              "recommendation_type_enum": "IGUserExportForCAM.RecommendationType.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/creator_marketplace_creators",
+            "target_class": "IGUserExportForCAM",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_dataset",
+            "line": 695,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_dataset",
+            "line": 726,
+            "parameters": {
+              "dataset_name": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/dataset",
+            "target_class": "Dataset",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 758,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "metric_type": "metric_type_enum",
+              "period": "list<period_enum>",
+              "since": "datetime",
+              "timeframe": "timeframe_enum",
+              "until": "datetime"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "metric_type_enum": "InstagramInsightsResult.MetricType.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()",
+              "timeframe_enum": "InstagramInsightsResult.Timeframe.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_instagram_backed_threads_user",
+            "line": 804,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_instagram_backed_threads_user",
+            "line": 835,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/instagram_backed_threads_user",
+            "target_class": "ThreadsUser",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_live_media",
+            "line": 866,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/live_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_media",
+            "line": 899,
+            "parameters": {
+              "since": "datetime",
+              "until": "datetime"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media",
+            "line": 932,
+            "parameters": {
+              "alt_text": "string",
+              "audio_configuration": "string",
+              "audio_name": "string",
+              "branded_content_sponsor_ids": "list<unsigned int>",
+              "caption": "string",
+              "children": "list<string>",
+              "collaborators": "list<string>",
+              "cover_url": "string",
+              "image_url": "string",
+              "is_ai_generated": "bool",
+              "is_carousel_item": "bool",
+              "is_comment_prompt_used": "bool",
+              "is_paid_partnership": "bool",
+              "is_poll_duration_extended": "bool",
+              "location_id": "string",
+              "media_type": "string",
+              "poll_attachment": "string",
+              "product_tags": "list<map>",
+              "share_to_feed": "bool",
+              "thumb_offset": "string",
+              "trial_params": "map",
+              "upload_type": "string",
+              "user_tags": "list<map>",
+              "video_url": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_media_publish",
+            "line": 987,
+            "parameters": {
+              "creation_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/media_publish",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_mention",
+            "line": 1019,
+            "parameters": {
+              "comment_id": "string",
+              "media_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/mentions",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_moderate_conversation",
+            "line": 1052,
+            "parameters": {
+              "actions": "list<actions_enum>",
+              "user_ids": "list<map>"
+            },
+            "enum_bindings": {
+              "actions_enum": "['BLOCK_USER', 'MOVE_TO_SPAM', 'UNBLOCK_USER']"
+            },
+            "method": "POST",
+            "endpoint": "/moderate_conversations",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_notification_message_tokens",
+            "line": 1089,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/notification_message_tokens",
+            "target_class": "UserPageOneTimeOptInTokenSettings",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_appeal",
+            "line": 1120,
+            "parameters": {
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_appeal",
+            "line": 1152,
+            "parameters": {
+              "appeal_reason": "string",
+              "product_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_appeal",
+            "target_class": "IGShoppingProductAppeal",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_recently_searched_hashtags",
+            "line": 1185,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recently_searched_hashtags",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_scheduled_media",
+            "line": 1216,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/scheduled_media",
+            "target_class": "ShadowIGScheduledMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_stories",
+            "line": 1247,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/stories",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_tags",
+            "line": 1278,
+            "parameters": {
+              "media_type": "string",
+              "posted_after": "string",
+              "posted_before": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/tags",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_upcoming_events",
+            "line": 1312,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/upcoming_events",
+            "target_class": "IGUpcomingEvent",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_upcoming_event",
+            "line": 1343,
+            "parameters": {
+              "end_time": "datetime",
+              "notification_subtypes": "list<notification_subtypes_enum>",
+              "start_time": "datetime",
+              "title": "string"
+            },
+            "enum_bindings": {
+              "notification_subtypes_enum": "['AFTER_EVENT_1DAY', 'AFTER_EVENT_2DAY', 'AFTER_EVENT_3DAY', 'AFTER_EVENT_4DAY', 'AFTER_EVENT_5DAY', 'AFTER_EVENT_6DAY', 'AFTER_EVENT_7DAY', 'BEFORE_EVENT_15MIN', 'BEFORE_EVENT_1DAY', 'BEFORE_EVENT_1HOUR', 'BEFORE_EVENT_2DAY', 'EVENT_START', 'RESCHEDULED']"
+            },
+            "method": "POST",
+            "endpoint": "/upcoming_events",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_welcome_message_flows",
+            "line": 1392,
+            "parameters": {
+              "app_id": "string",
+              "flow_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/welcome_message_flows",
+            "target_class": "ShadowIGUserCTXPartnerAppWelcomeMessageFlow",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGMedia": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/igmedia.py",
+        "class": "IGMedia",
+        "fields": {
+          "alt_text": "string",
+          "audio_id": "string",
+          "boost_eligibility_info": "IGMediaBoostEligibilityInfo",
+          "caption": "string",
+          "comments_count": "int",
+          "copyright_check_information": "IGVideoCopyrightCheckMatchesInformation",
+          "current_live_viewer_count": "int",
+          "has_poll": "bool",
+          "has_slider": "bool",
+          "id": "string",
+          "ig_id": "string",
+          "ingest_first_video_received_time": "int",
+          "ingest_is_ready_to_start": "bool",
+          "ingest_key": "string",
+          "ingest_last_heartbeat_time": "int",
+          "ingest_state": "string",
+          "ingest_url": "string",
+          "ingest_video_height": "int",
+          "ingest_video_width": "int",
+          "is_ai_generated": "bool",
+          "is_comment_enabled": "bool",
+          "is_shared_to_feed": "bool",
+          "legacy_instagram_media_id": "string",
+          "like_count": "int",
+          "live_status": "string",
+          "media_audio_type": "string",
+          "media_product_type": "string",
+          "media_type": "string",
+          "media_url": "string",
+          "owner": "IGUser",
+          "permalink": "string",
+          "reposts_count": "int",
+          "saved_count": "int",
+          "shares_count": "int",
+          "shortcode": "string",
+          "thumbnail_url": "string",
+          "timestamp": "datetime",
+          "total_comments_count": "int",
+          "total_like_count": "int",
+          "total_views_count": "int",
+          "username": "string",
+          "video_title": "string",
+          "view_count": "int"
+        },
+        "enums": {
+          "Status": [
+            "ENDED",
+            "STARTED"
+          ]
+        },
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 78,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 108,
+            "parameters": {
+              "ad_account_id": "unsigned int",
+              "boostable_media_callsite": "boostable_media_callsite_enum",
+              "business_id": "string",
+              "primary_fb_page_id": "string",
+              "primary_ig_user_id": "string",
+              "secondary_fb_page_id": "string",
+              "secondary_ig_user_id": "string"
+            },
+            "enum_bindings": {
+              "boostable_media_callsite_enum": "['ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST', 'PA_HUB_CATALOG_INGESTION_CREATOR_ASSET']"
+            },
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 149,
+            "parameters": {
+              "comment_enabled": "bool",
+              "status": "status_enum"
+            },
+            "enum_bindings": {
+              "status_enum": "IGMedia.Status.__dict__.values()"
+            },
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGMedia",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_boost_ads_list",
+            "line": 182,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/boost_ads_list",
+            "target_class": "IGBoostMediaAd",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_branded_content_partner_promote",
+            "line": 213,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_branded_content_partner_promote",
+            "line": 244,
+            "parameters": {
+              "permission": "bool",
+              "sponsor_id": "unsigned int"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/branded_content_partner_promote",
+            "target_class": "BrandedContentShadowIGUserID",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_children",
+            "line": 277,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/children",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_collaborators",
+            "line": 307,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/collaborators",
+            "target_class": "ShadowIGMediaCollaborators",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_comments",
+            "line": 338,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_comment",
+            "line": 369,
+            "parameters": {
+              "ad_id": "string",
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/comments",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_insights",
+            "line": 402,
+            "parameters": {
+              "breakdown": "list<breakdown_enum>",
+              "metric": "list<metric_enum>",
+              "period": "list<period_enum>"
+            },
+            "enum_bindings": {
+              "breakdown_enum": "InstagramInsightsResult.Breakdown.__dict__.values()",
+              "metric_enum": "InstagramInsightsResult.Metric.__dict__.values()",
+              "period_enum": "InstagramInsightsResult.Period.__dict__.values()"
+            },
+            "method": "GET",
+            "endpoint": "/insights",
+            "target_class": "InstagramInsightsResult",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "delete_partnership_ad_code",
+            "line": 442,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_partnership_ad_code",
+            "line": 472,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/partnership_ad_code",
+            "target_class": "AbstractCrudObject",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_product_tags",
+            "line": 502,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_product_tag",
+            "line": 533,
+            "parameters": {
+              "child_index": "unsigned int",
+              "updated_tags": "list<map>"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/product_tags",
+            "target_class": "ShadowIGMediaProductTags",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "IGComment": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/igcomment.py",
+        "class": "IGComment",
+        "fields": {
+          "from": "IGCommentFromUser",
+          "hidden": "bool",
+          "id": "string",
+          "legacy_instagram_comment_id": "string",
+          "like_count": "int",
+          "media": "IGMedia",
+          "parent_id": "string",
+          "text": "string",
+          "timestamp": "datetime",
+          "user": "IGUser",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_delete",
+            "line": 42,
+            "parameters": {
+              "ad_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "DELETE",
+            "endpoint": "/",
+            "target_class": "AbstractCrudObject",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_get",
+            "line": 73,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "api_update",
+            "line": 103,
+            "parameters": {
+              "ad_id": "string",
+              "hide": "bool"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/",
+            "target_class": "IGComment",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_replies",
+            "line": 135,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "create_reply",
+            "line": 165,
+            "parameters": {
+              "message": "string"
+            },
+            "enum_bindings": {},
+            "method": "POST",
+            "endpoint": "/replies",
+            "target_class": "IGComment",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "ShadowIGHashtag": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/shadowighashtag.py",
+        "class": "ShadowIGHashtag",
+        "fields": {
+          "id": "string",
+          "name": "string"
+        },
+        "enums": {},
+        "operations": [
+          {
+            "sdk_method": "api_get",
+            "line": 33,
+            "parameters": {},
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/",
+            "target_class": "ShadowIGHashtag",
+            "api_type": "NODE"
+          },
+          {
+            "sdk_method": "get_recent_media",
+            "line": 63,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/recent_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          },
+          {
+            "sdk_method": "get_top_media",
+            "line": 95,
+            "parameters": {
+              "user_id": "string"
+            },
+            "enum_bindings": {},
+            "method": "GET",
+            "endpoint": "/top_media",
+            "target_class": "IGMedia",
+            "api_type": "EDGE"
+          }
+        ]
+      },
+      "InstagramInsightsResult": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/instagraminsightsresult.py",
+        "class": "InstagramInsightsResult",
+        "fields": {
+          "description": "string",
+          "id": "string",
+          "name": "string",
+          "period": "string",
+          "title": "string",
+          "total_value": "Object",
+          "values": "list<InstagramInsightsValue>"
+        },
+        "enums": {
+          "Breakdown": [
+            "action_type",
+            "follow_type",
+            "story_navigation_action_type",
+            "surface_type"
+          ],
+          "Metric": [
+            "comments",
+            "crossposted_views",
+            "facebook_views",
+            "follows",
+            "ig_reels_avg_watch_time",
+            "ig_reels_video_view_total_time",
+            "impressions",
+            "likes",
+            "link_clicks",
+            "navigation",
+            "profile_activity",
+            "profile_visits",
+            "reach",
+            "reels_skip_rate",
+            "replies",
+            "reposts",
+            "saved",
+            "shares",
+            "total_comments",
+            "total_interactions",
+            "total_likes",
+            "total_views",
+            "views"
+          ],
+          "Period": [
+            "day",
+            "days_28",
+            "lifetime",
+            "month",
+            "total_over_range",
+            "week"
+          ],
+          "MetricType": [
+            "default",
+            "time_series",
+            "total_value"
+          ],
+          "Timeframe": [
+            "last_14_days",
+            "last_30_days",
+            "last_90_days",
+            "prev_month",
+            "this_month",
+            "this_week"
+          ]
+        },
+        "operations": []
+      },
+      "ContentPublishingLimitResponse": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/contentpublishinglimitresponse.py",
+        "class": "ContentPublishingLimitResponse",
+        "fields": {
+          "config": "Object",
+          "quota_usage": "int"
+        },
+        "enums": {},
+        "operations": []
+      },
+      "IGCommentFromUser": {
+        "source": "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/igcommentfromuser.py",
+        "class": "IGCommentFromUser",
+        "fields": {
+          "id": "string",
+          "self_ig_scoped_id": "string",
+          "username": "string"
+        },
+        "enums": {},
+        "operations": []
+      }
+    }
+  }
+}

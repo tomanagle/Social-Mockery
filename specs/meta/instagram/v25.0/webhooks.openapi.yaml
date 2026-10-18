@@ -1,0 +1,1065 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Instagram webhook callback template research contract",
+    "version": "v25.0",
+    "description": "Contract-only, documentation-based inventory. No live verification. SDK version evidence and version-neutral collection evidence are distinguished per operation. This document does not imply simulator implementation or complete upstream compatibility."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "x-contract-only": true,
+  "x-contract-kind": "webhook",
+  "x-version-evidence": {
+    "sdk-revision": "542e10e31c40f7925f9ac03c000922a2fd0a2365",
+    "collection-release-specific": false,
+    "latest-release-verified": false
+  },
+  "paths": {
+    "/webhooks/instagram": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SelfMessagingEchoWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SelfPostbackWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SelfCommentWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CommentWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingReactionsWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingPostbacksWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingSeenWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessageEditWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingReplyToStoryWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessagingReferralWebhook"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Event acknowledged"
+          },
+          "default": {
+            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          }
+        ],
+        "operationId": "receiveInstagramWebhook",
+        "description": "Developer-selected callback path, not a Meta Graph endpoint. Event schemas are example-based and intentionally allow additional fields. Current signature algorithm, delivery retry schedule and all event variants remain unverified.",
+        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-request-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; requiredness and release-specific semantics unresolved"
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          ],
+          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
+        },
+        "x-behavior-provenance": "documentation-based",
+        "x-sources": [
+          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+        ],
+        "x-simulator-implemented": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SelfMessagingEchoWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "message": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "is_echo": {
+                            "type": "boolean"
+                          },
+                          "is_self": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self messaging echo webhook"
+          }
+        ]
+      },
+      "SelfPostbackWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "is_self": {
+                        "type": "boolean"
+                      },
+                      "postback": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "payload": {
+                            "type": "string"
+                          },
+                          "mid": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self postback webhook"
+          }
+        ]
+      },
+      "SelfCommentWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "object",
+                        "properties": {
+                          "from": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "self_ig_scoped_id": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "media": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "media_product_type": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self comment webhook"
+          }
+        ]
+      },
+      "CommentWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "field": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "from": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "media_product_type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Comment webhook"
+          }
+        ]
+      },
+      "MessagingWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "message": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging webhook"
+          }
+        ]
+      },
+      "MessagingReactionsWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "reaction": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "reaction": {
+                            "type": "string"
+                          },
+                          "emoji": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reactions webhook"
+          }
+        ]
+      },
+      "MessagingPostbacksWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "postback": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "payload": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging postbacks webhook"
+          }
+        ]
+      },
+      "MessagingSeenWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "read": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging seen webhook"
+          }
+        ]
+      },
+      "MessageEditWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "message_edit": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "num_edit": {
+                            "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                            "anyOf": [
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Message edit webhook"
+          }
+        ]
+      },
+      "MessagingReplyToStoryWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "message": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "is_deleted": {
+                            "type": "boolean"
+                          },
+                          "is_echo": {
+                            "type": "boolean"
+                          },
+                          "is_self": {
+                            "type": "boolean"
+                          },
+                          "is_unsupported": {
+                            "type": "boolean"
+                          },
+                          "reply_to": {
+                            "type": "object",
+                            "properties": {
+                              "story": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reply to story webhook"
+          }
+        ]
+      },
+      "MessagingReferralWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "timestamp": {
+                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "referral": {
+                        "type": "object",
+                        "properties": {
+                          "ref": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging referral webhook"
+          }
+        ]
+      }
+    }
+  }
+}
