@@ -2,12 +2,12 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/getkin/kin-openapi/openapi3"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 func main() {
@@ -15,30 +15,36 @@ func main() {
 		fmt.Fprintln(os.Stderr, "usage: specvalidate files...")
 		os.Exit(2)
 	}
-	var reference []byte
 	for _, path := range os.Args[1:] {
-		loader := openapi3.NewLoader()
-		loader.IsExternalRefsAllowed = false
-		doc, err := loader.LoadFromFile(path)
-		if err == nil {
-			err = doc.Validate(context.Background())
-		}
+		err := validate(path)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, path, err)
 			os.Exit(1)
 		}
-		// This command validates the shared Instagram version family. Reject drift
-		// until a version gets a separate generated interface/implementation.
-		doc.Info.Version = ""
-		normalized, err := json.Marshal(doc)
-		if err != nil {
-			panic(err)
-		}
-		if reference != nil && !bytes.Equal(reference, normalized) {
-			fmt.Fprintln(os.Stderr, path, "differs from the shared version contract; generate a separate implementation before diverging")
-			os.Exit(1)
-		}
-		reference = normalized
 		fmt.Println("valid", path)
 	}
+}
+
+// validate checks each version independently: version differences are allowed,
+// but a contract must not accidentally register a different release's routes.
+func validate(path string) error {
+	loader := openapi3.NewLoader()
+	loader.IsExternalRefsAllowed = false
+	doc, err := loader.LoadFromFile(path)
+	if err != nil {
+		return err
+	}
+	if err = doc.Validate(context.Background()); err != nil {
+		return err
+	}
+	version := filepath.Base(filepath.Dir(path))
+	if doc.Info.Version != version {
+		return fmt.Errorf("info.version %q does not match directory %q", doc.Info.Version, version)
+	}
+	for route := range doc.Paths.Map() {
+		if !strings.HasPrefix(route, "/"+version+"/") {
+			return fmt.Errorf("route %q does not belong to version %s", route, version)
+		}
+	}
+	return nil
 }

@@ -5,9 +5,9 @@ Social Mockery evolves one evidence-backed API slice at a time. An OpenAPI file 
 ## Repository layout
 
 - `specs/meta/instagram/v25.0/openapi.yaml` and `specs/meta/instagram/v24.0/openapi.yaml`: versioned Instagram contract slices.
-- `configs/openapi/instagram.yaml`: generator configuration.
+- `configs/openapi/instagram-v24.0.yaml` and `configs/openapi/instagram-v25.0.yaml`: generator configuration.
 - `tools/go.mod`: pinned code-generation tooling, separate from runtime dependencies.
-- `internal/providers/meta/generated/api.gen.go`: generated Go models and standard-library HTTP server interface.
+- `internal/providers/meta/generated/v24/api.gen.go` and `internal/providers/meta/generated/v25/api.gen.go`: generated Go models and standard-library HTTP server interface.
 - `internal/providers/meta/`: handwritten provider implementation and HTTP adaptation.
 - `.agents/skills/provider-spec-research/SKILL.md`: reusable agent workflow for researching and extending provider contracts.
 
@@ -24,11 +24,15 @@ make test
 
 `generate-check` checks reproducibility; it is not by itself proof of upstream API compatibility. A successful generation also does not replace OpenAPI validation, HTTP tests, or evidence review. `make spec-validate` uses the pinned `kin-openapi` loader and validator to validate both versioned contracts. Report any check that could not run. Changes to generated output should be reviewed together with their source contract and configuration.
 
-The v24.0 and v25.0 files share the same route/schema subset; generation uses v25.0. The validator also rejects any contract difference other than `info.version`, so a version-specific change requires a separate generated interface/implementation before diverging. Validating both files does not establish independently observed upstream behavior for both versions. The generator invocation is:
+## Version policy and isolation
 
-```sh
-go run -mod=readonly -modfile=tools/go.mod github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config configs/openapi/instagram.yaml specs/meta/instagram/v25.0/openapi.yaml
-```
+Target the latest officially verified upstream release plus up to two preceding releases, with explicit coverage per version. This is a support policy, not permission to copy a contract and label it compatible. Keep the upstream version in the directory, `info.version`, and fixed OpenAPI route paths. Generate each version into a separate Go package and implement its interface through a version-specific adapter (`internal/providers/meta/versions.go`). Dispatch on the version in the original request URL, never silently upgrade or fall back to another version.
+
+Currently v24.0 and v25.0 have separate contracts, generator configurations, Go models/interfaces and HTTP routers. Their narrow simulator behavior is shared intentionally; neither has a live verification claim. They may evolve independently: validation checks each document rather than requiring equality between releases, and `generate-check` regenerates and compares each package without modifying the working tree. A version adapter is the place for differing parsing, response shapes or semantics; common state operations can remain shared.
+
+As of the 2026-10-18 review, Meta's official version table and changelog returned HTTP 429 or were inaccessible. We therefore do **not** label v25.0 as the latest release, or claim that the latest-plus-two target is already met. A new release (including v26.0) must pass the research checklist before it is enabled. Unknown versions return an explicit unsupported-version error. See the per-version provenance files for coverage and remaining evidence gaps.
+
+Adding a version requires its spec, generator config, generated package, handwritten adapter/dispatch entry, low-cardinality telemetry allowlist entry, HTTP tests, and provenance. The Makefile discovers versioned specs and Instagram generator configurations. Adding other providers also requires extending the generation mapping; it is deliberately not a generic provider framework yet.
 
 ## Researching an endpoint slice
 

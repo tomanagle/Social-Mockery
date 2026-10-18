@@ -3,7 +3,7 @@
   "info": {
     "title": "Social Mockery Instagram supported subset",
     "version": "v25.0",
-    "description": "Versioned supported subset, not an exhaustive Meta contract. Generated interfaces are shared while request validation enforces configured versions. Authentication is required by the implementation; the empty security alternative represents tokens in POST form bodies, which OpenAPI cannot express as apiKey security."
+    "description": "Version-specific supported Instagram subset, not an exhaustive Meta contract. See provenance.md for evidence and limitations. Body tokens are represented by the empty security alternative."
   },
   "servers": [
     {
@@ -23,20 +23,8 @@
     "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
   },
   "paths": {
-    "/{version}/{objectID}": {
+    "/v25.0/{objectID}": {
       "parameters": [
-        {
-          "name": "version",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "enum": [
-              "v24.0",
-              "v25.0"
-            ]
-          }
-        },
         {
           "name": "objectID",
           "in": "path",
@@ -100,20 +88,8 @@
         ]
       }
     },
-    "/{version}/{objectID}/media": {
+    "/v25.0/{objectID}/media": {
       "parameters": [
-        {
-          "name": "version",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "enum": [
-              "v24.0",
-              "v25.0"
-            ]
-          }
-        },
         {
           "name": "objectID",
           "in": "path",
@@ -293,20 +269,8 @@
         ]
       }
     },
-    "/{version}/{objectID}/media_publish": {
+    "/v25.0/{objectID}/media_publish": {
       "parameters": [
-        {
-          "name": "version",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "enum": [
-              "v24.0",
-              "v25.0"
-            ]
-          }
-        },
         {
           "name": "objectID",
           "in": "path",

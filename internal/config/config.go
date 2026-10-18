@@ -23,3 +23,11 @@ func (c Config) Validate() error {
 	}
 	return nil
 }
+
+// Must validates required startup configuration and panics on invalid values.
+func Must(c Config) Config {
+	if err := c.Validate(); err != nil {
+		panic("config: initialization failed")
+	}
+	return c
+}

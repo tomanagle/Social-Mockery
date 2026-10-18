@@ -7,6 +7,18 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// Must opens and initializes a database, panicking if either step fails.
+// The panic deliberately omits driver errors, which may contain DSN secrets.
+// Use Open when the caller needs to handle initialization errors.
+func Must(path string) *sql.DB {
+	connection, err := Open(path)
+	if err != nil {
+		panic("db: initialization failed")
+	}
+	return connection
+}
+
+// Open opens a database, configures its connection, and applies migrations.
 func Open(path string) (*sql.DB, error) {
 	db, err := sql.Open("sqlite3", path)
 	if err != nil {

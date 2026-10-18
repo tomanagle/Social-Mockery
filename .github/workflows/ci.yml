@@ -20,9 +20,11 @@ jobs:
       - name: OpenAPI validation and generated-code drift
         run: make generate-check
       - name: Vet
-        run: go vet ./...
+        run: make vet
+      - name: Application and tooling tests
+        run: make test
       - name: Race tests
-        run: go test -race ./...
+        run: make race
       - name: Build
         run: make build
       - name: Benchmark smoke check

@@ -8,3 +8,5 @@
 - Label behavior as live-verified, documentation-based or synthetic. Do not present unsupported endpoints or stub implementations as completed features.
 - Keep telemetry optional, bounded and free of tokens, raw request bodies, URLs, account identifiers and personally identifying data.
 - Run `make fmt-check`, `make generate-check`, `go vet ./...`, `go test -race ./...`, and `make build` before publishing changes. Docker and live-platform checks are separate and must be reported accurately.
+
+- Keep explicit production panics inside `Must` constructors only. Call `Must` constructors directly from `main` for required startup dependencies, then inject them. Keep error-returning constructors for reuse; runtime failures return errors. Optional telemetry stays nonfatal. Never include secrets or raw dependency errors in a panic.

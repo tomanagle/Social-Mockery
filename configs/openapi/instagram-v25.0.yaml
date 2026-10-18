@@ -1,7 +1,7 @@
-package: generated
+package: v25
 generate:
   std-http-server: true
   models: true
 output-options:
   skip-prune: true
-output: internal/providers/meta/generated/api.gen.go
+output: internal/providers/meta/generated/v25/api.gen.go

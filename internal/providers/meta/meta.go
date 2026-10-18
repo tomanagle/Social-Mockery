@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/tomanagle/Social-Mockery/internal/providers/meta/generated"
+
 	"github.com/tomanagle/Social-Mockery/internal/simulation"
 	"github.com/tomanagle/Social-Mockery/internal/store"
 	"github.com/tomanagle/Social-Mockery/internal/telemetry"
@@ -22,7 +22,7 @@ const MaxBody = 1 << 20
 
 type Provider struct {
 	engine    *simulation.Engine
-	router    http.Handler
+	routers   map[string]http.Handler
 	telemetry *telemetry.Telemetry
 }
 
@@ -32,25 +32,8 @@ func New(e *simulation.Engine, instrumentation ...*telemetry.Telemetry) *Provide
 		t = instrumentation[0]
 	}
 	p := &Provider{engine: e, telemetry: t}
-	p.router = generated.HandlerWithOptions(p, generated.StdHTTPServerOptions{ErrorHandlerFunc: func(w http.ResponseWriter, r *http.Request, err error) {
-		failure(w, 400, 100, "Invalid endpoint parameter")
-	}})
+	p.routers = versionRouters(p)
 	return p
-}
-
-var _ generated.ServerInterface = (*Provider)(nil)
-
-func (p *Provider) GetObject(w http.ResponseWriter, r *http.Request, version, objectID string, params generated.GetObjectParams) {
-	p.operation(w, r, "object.read")
-}
-func (p *Provider) ListMedia(w http.ResponseWriter, r *http.Request, version, objectID string, params generated.ListMediaParams) {
-	p.operation(w, r, "media.list")
-}
-func (p *Provider) CreateMedia(w http.ResponseWriter, r *http.Request, version, objectID string, params generated.CreateMediaParams) {
-	p.operation(w, r, "media.create")
-}
-func (p *Provider) PublishMedia(w http.ResponseWriter, r *http.Request, version, objectID string, params generated.PublishMediaParams) {
-	p.operation(w, r, "media.publish")
 }
 
 type responseStatus struct {
@@ -106,7 +89,8 @@ func (p *Provider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	if parts[0] != "v24.0" && parts[0] != "v25.0" {
+	router, supportedVersion := p.routers[parts[0]]
+	if !supportedVersion {
 		failure(w, 404, 100, "Unsupported API version")
 		return
 	}
@@ -121,7 +105,7 @@ func (p *Provider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	clone := r.Clone(r.Context())
 	clone.URL = &url.URL{Path: u.Path, RawQuery: u.RawQuery}
-	p.router.ServeHTTP(w, clone)
+	router.ServeHTTP(w, clone)
 }
 func JSON(w http.ResponseWriter, status int, v any) {
 	w.Header().Set("Content-Type", "application/json")
@@ -130,7 +114,7 @@ func JSON(w http.ResponseWriter, status int, v any) {
 	_ = json.NewEncoder(w).Encode(v)
 }
 func failure(w http.ResponseWriter, status, code int, message string) {
-	JSON(w, status, generated.ErrorResponse{Error: generated.GraphError{Message: message, Type: "IGApiException", Code: code}})
+	JSON(w, status, errorResponse{Error: graphError{Message: message, Type: "IGApiException", Code: code}})
 }
 func failStore(w http.ResponseWriter, err error) {
 	switch {
@@ -159,7 +143,7 @@ func (p *Provider) serveGraph(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	parts := strings.Split(strings.Trim(u.Path, "/"), "/")
-	if len(parts) < 2 || len(parts) > 3 || (parts[0] != "v24.0" && parts[0] != "v25.0") {
+	if len(parts) < 2 || len(parts) > 3 || p.routers[parts[0]] == nil {
 		failure(w, 404, 100, "Unsupported API version or endpoint; see docs/compatibility.md")
 		return
 	}
@@ -237,7 +221,7 @@ func (p *Provider) serveGraph(w http.ResponseWriter, r *http.Request) {
 			failStore(w, err)
 			return
 		}
-		JSON(w, 200, generated.IDResponse{Id: post.ID})
+		JSON(w, 200, idResponse{ID: post.ID})
 		return
 	}
 	if r.Method == "GET" && edge == "media" {
@@ -378,7 +362,7 @@ func (p *Provider) create(w http.ResponseWriter, r *http.Request, id string, v u
 		return
 	}
 	p.telemetry.Processing(r.Context(), float64(c.ReadyAt-c.CreatedAt))
-	JSON(w, 200, generated.IDResponse{Id: c.ID})
+	JSON(w, 200, idResponse{ID: c.ID})
 }
 func projection(w http.ResponseWriter, fields string, all map[string]any) {
 	if fields == "" {
@@ -557,4 +541,18 @@ func (p *Provider) authorize(w http.ResponseWriter, r *http.Request, values url.
 		return store.Token{}, 0, false
 	}
 	return t, now, true
+}
+
+// These internal response values are independent of generated version models.
+// Version adapters may translate them when an upstream response shape changes.
+type idResponse struct {
+	ID string `json:"id"`
+}
+type graphError struct {
+	Message string `json:"message"`
+	Type    string `json:"type"`
+	Code    int    `json:"code"`
+}
+type errorResponse struct {
+	Error graphError `json:"error"`
 }

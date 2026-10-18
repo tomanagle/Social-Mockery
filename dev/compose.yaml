@@ -1,0 +1,18 @@
+# Development server. Run from the repository root with `make dev`.
+name: social-mockery-dev
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: dev/Dockerfile.dev
+    init: true
+    working_dir: /src
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ..:/src
+      - go-modules:/go/pkg/mod
+      - go-build:/root/.cache/go-build
+volumes:
+  go-modules:
+  go-build:

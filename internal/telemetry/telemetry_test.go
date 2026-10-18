@@ -368,3 +368,30 @@ func TestOTLPHTTPExportsAllSignalsAndResourceSettings(t *testing.T) {
 		}
 	}
 }
+
+func TestHTTPPanicPropagatesWithoutExportingPayload(t *testing.T) {
+	tel, exp, _ := testTelemetry(t)
+	handler := tel.HTTP(http.HandlerFunc(func(http.ResponseWriter, *http.Request) {
+		panic("private-panic-payload")
+	}))
+	func() {
+		defer func() {
+			if got := recover(); got != "private-panic-payload" {
+				t.Fatalf("original panic was not propagated: %v", got)
+			}
+		}()
+		handler.ServeHTTP(httptest.NewRecorder(), httptest.NewRequest("GET", "/healthz", nil))
+		t.Fatal("handler panic was swallowed")
+	}()
+	spans := exp.GetSpans()
+	if len(spans) != 2 || spans[1].Status.Code != codes.Error {
+		t.Fatalf("panic span was not completed as an error: %+v", spans)
+	}
+	serialized, err := json.Marshal(spans)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(string(serialized), "private-panic-payload") {
+		t.Fatal("telemetry leaked the panic payload")
+	}
+}

@@ -6,49 +6,100 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/tomanagle/Social-Mockery/internal/config"
-	"github.com/tomanagle/Social-Mockery/internal/handlers"
-	"github.com/tomanagle/Social-Mockery/internal/middleware"
-	"github.com/tomanagle/Social-Mockery/internal/profiles"
-	"github.com/tomanagle/Social-Mockery/internal/simulation"
-	"github.com/tomanagle/Social-Mockery/internal/store/db"
-	"github.com/tomanagle/Social-Mockery/internal/store/dbstore"
-	"github.com/tomanagle/Social-Mockery/internal/telemetry"
-	"go.opentelemetry.io/otel"
 	"io"
 	"log/slog"
 	"net/http"
 	"os"
-	"os/signal"
-	"syscall"
 	"time"
+
+	"github.com/tomanagle/Social-Mockery/internal/app"
+	"github.com/tomanagle/Social-Mockery/internal/config"
+	"github.com/tomanagle/Social-Mockery/internal/profiles"
+	"github.com/tomanagle/Social-Mockery/internal/store/db"
+	"github.com/tomanagle/Social-Mockery/internal/telemetry"
+	"go.opentelemetry.io/otel"
 )
 
 func main() {
+	exitCode := 0
+	// Run cleanup before reporting a runtime failure to the shell.
+	defer func() {
+		if exitCode != 0 {
+			os.Exit(exitCode)
+		}
+	}()
 	logger := slog.New(slog.NewJSONHandler(os.Stderr, nil))
 	otel.SetErrorHandler(telemetry.ErrorHandler(logger))
-	if err := run(os.Args[1:], logger); err != nil && !errors.Is(err, flag.ErrHelp) {
+	args := os.Args[1:]
+	if len(args) == 0 {
+		commandFailed(fmt.Errorf("missing command"), logger)
+		return
+	}
+	switch args[0] {
+	case "start":
+		cfg, err := parseStart(args[1:])
+		if err != nil {
+			commandFailed(err, logger)
+			return
+		}
+		cfg = config.Must(cfg)
+		observability, err := telemetry.New(context.Background(), telemetry.ConfigFromEnv("dev"), logger)
+		if err != nil {
+			logger.Warn("telemetry initialization failed; continuing without exporters")
+			observability = telemetry.Noop()
+		}
+		defer func() {
+			if err := observability.Shutdown(context.Background()); err != nil {
+				logger.Warn("telemetry shutdown incomplete")
+			}
+		}()
+		logger = observability.Logger(logger)
+		_, profileSpan := observability.Start(context.Background(), "profile.load")
+		profileReady := false
+		defer func() {
+			if !profileReady {
+				telemetry.Finish(profileSpan, errors.New("profile initialization failed"), false)
+			}
+		}()
+		seed := profiles.Must(cfg.SeedPath)
+		profileReady = true
+		telemetry.Finish(profileSpan, nil, false)
+
+		_, databaseSpan := observability.Start(context.Background(), "db.initialize")
+		databaseReady := false
+		defer func() {
+			if !databaseReady {
+				telemetry.Finish(databaseSpan, errors.New("database initialization failed"), false)
+			}
+		}()
+		database := db.Must(cfg.Database)
+		databaseReady = true
+		telemetry.Finish(databaseSpan, nil, false)
+		defer database.Close()
+		application := app.Must(cfg, seed, database, observability, logger)
+		defer application.Close()
+		// Runtime failures are ordinary errors. Required startup work is already done.
+		if err := application.Run(); err != nil {
+			logger.Error("server stopped", "category", "runtime")
+			exitCode = 1
+		}
+	case "reset":
+		commandFailed(reset(args[1:]), logger)
+	case "help", "--help", "-h":
+		fmt.Println("Usage: social-mockery start [--addr 127.0.0.1:3000] [--db :memory:] [--seed profile.yaml] [--admin-token token] [--max-records 10000]\n       social-mockery reset [--url http://127.0.0.1:3000] [--seed profile.yaml] [--admin-token token]")
+	default:
+		commandFailed(fmt.Errorf("unknown command"), logger)
+	}
+}
+
+func commandFailed(err error, logger *slog.Logger) {
+	if err != nil && !errors.Is(err, flag.ErrHelp) {
 		logger.Error("command failed", "category", "configuration_or_startup")
 		os.Exit(1)
 	}
 }
-func run(args []string, logger *slog.Logger) error {
-	if len(args) == 0 {
-		return fmt.Errorf("usage: social-mockery start [flags] | reset [flags]")
-	}
-	switch args[0] {
-	case "start":
-		return start(args[1:], logger)
-	case "reset":
-		return reset(args[1:])
-	case "help", "--help", "-h":
-		fmt.Println("Usage: social-mockery start [--addr 127.0.0.1:3000] [--db :memory:] [--seed profile.yaml] [--admin-token token] [--max-records 10000]\n       social-mockery reset [--url http://127.0.0.1:3000] [--seed profile.yaml] [--admin-token token]")
-		return nil
-	default:
-		return fmt.Errorf("unknown command %q", args[0])
-	}
-}
-func start(args []string, logger *slog.Logger) error {
+
+func parseStart(args []string) (config.Config, error) {
 	cfg := config.Default()
 	flags := flag.NewFlagSet("start", flag.ContinueOnError)
 	flags.StringVar(&cfg.Addr, "addr", cfg.Addr, "HTTP listening address")
@@ -57,78 +108,12 @@ func start(args []string, logger *slog.Logger) error {
 	flags.StringVar(&cfg.AdminToken, "admin-token", os.Getenv("SOCIAL_MOCKERY_ADMIN_TOKEN"), "admin bearer token (prefer SOCIAL_MOCKERY_ADMIN_TOKEN environment variable)")
 	flags.IntVar(&cfg.MaxRecords, "max-records", cfg.MaxRecords, "maximum combined containers and posts")
 	if err := flags.Parse(args); err != nil {
-		return err
+		return cfg, err
 	}
 	if flags.NArg() != 0 {
-		return fmt.Errorf("unexpected arguments")
+		return cfg, fmt.Errorf("unexpected arguments")
 	}
-	if err := cfg.Validate(); err != nil {
-		return err
-	}
-	observability, telemetryErr := telemetry.New(context.Background(), telemetry.ConfigFromEnv("dev"), logger)
-	if telemetryErr != nil {
-		logger.Warn("telemetry initialization failed; continuing without exporters")
-		observability = telemetry.Noop()
-	}
-	logger = observability.Logger(logger)
-	defer func() {
-		if err := observability.Shutdown(context.Background()); err != nil {
-			logger.Warn("telemetry shutdown incomplete")
-		}
-	}()
-	_, profileSpan := observability.Start(context.Background(), "profile.load")
-	seed := profiles.Default()
-	var err error
-	if cfg.SeedPath != "" {
-		seed, err = profiles.Load(cfg.SeedPath)
-		if err != nil {
-			telemetry.Finish(profileSpan, err, true)
-			return err
-		}
-	}
-	telemetry.Finish(profileSpan, nil, false)
-	_, databaseSpan := observability.Start(context.Background(), "db.initialize")
-	database, err := db.Open(cfg.Database)
-	telemetry.Finish(databaseSpan, err, false)
-	if err != nil {
-		return err
-	}
-	defer database.Close()
-	repo := dbstore.New(database)
-	initialized, err := repo.Initialized(context.Background())
-	if err != nil {
-		return err
-	}
-	engine := simulation.New(telemetry.ObserveStore(repo, observability), seed, cfg.MaxRecords)
-	if accounts, posts, countErr := repo.Counts(context.Background()); countErr == nil {
-		observability.State(context.Background(), accounts, posts)
-	}
-	if !initialized || cfg.SeedPath != "" {
-		if err = engine.Reset(context.Background(), seed); err != nil {
-			return err
-		}
-	}
-	server := &http.Server{Addr: cfg.Addr, Handler: observability.HTTP(middleware.Logging(logger, handlers.New(engine, cfg.AdminToken, observability))), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second, IdleTimeout: 60 * time.Second, MaxHeaderBytes: 16384}
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
-	stopped := make(chan error, 1)
-	go func() { stopped <- server.ListenAndServe() }()
-	logger.Info("Social Mockery started", "addr", cfg.Addr, "database", cfg.Database, "clock", "virtual; use /admin/clock/advance")
-	select {
-	case err = <-stopped:
-		if errors.Is(err, http.ErrServerClosed) {
-			return nil
-		}
-		return err
-	case <-ctx.Done():
-	}
-	shutdown, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err = server.Shutdown(shutdown); err != nil {
-		server.Close()
-		return err
-	}
-	return nil
+	return cfg, nil
 }
 func reset(args []string) error {
 	flags := flag.NewFlagSet("reset", flag.ContinueOnError)

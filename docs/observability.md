@@ -8,7 +8,7 @@ components receive one telemetry instance through constructors.
 ## Local collector and Jaeger
 
 ```sh
-docker compose -f compose.telemetry.yaml up -d
+docker compose -f dev/compose.telemetry.yaml up -d
 OTEL_SERVICE_NAME=social-mockery \
 OTEL_TRACES_EXPORTER=otlp \
 OTEL_METRICS_EXPORTER=otlp \
@@ -24,7 +24,7 @@ Run a publishing request from the README. Open http://localhost:16686 and select
 `social-mockery` in Jaeger. Metrics are available in Prometheus exposition format
 at http://localhost:8889/metrics (a Prometheus server is optional). Correlated
 logs remain on the simulator's stderr; with OTLP logs enabled, inspect them with
-`docker compose -f compose.telemetry.yaml logs collector`. Jaeger stores traces,
+`docker compose -f dev/compose.telemetry.yaml logs collector`. Jaeger stores traces,
 not logs or metrics. Data is ephemeral and this compose setup is for local use.
 All published ports bind to localhost. Do not expose the development collector
 or Jaeger publicly.

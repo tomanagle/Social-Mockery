@@ -101,13 +101,13 @@ func (t *Telemetry) HTTP(next http.Handler) http.Handler {
 		span.SetAttributes(attrs...)
 		ctx = context.WithValue(ctx, requestMetadataKey{}, requestMetadata{provider, version})
 		rw := &responseWriter{ResponseWriter: w}
+		completed := false
 		defer func() {
-			recovered := recover()
-			if recovered != nil {
+			if !completed {
 				span.SetStatus(codes.Error, "handler panic")
 				span.AddEvent("handler panic")
 				if rw.status == 0 {
-					rw.WriteHeader(500)
+					rw.status = 500
 				}
 			}
 			status := rw.status
@@ -123,11 +123,9 @@ func (t *Telemetry) HTTP(next http.Handler) http.Handler {
 			t.requests.Add(ctx, 1, metric.WithAttributes(attrs...))
 			t.requestDuration.Record(ctx, time.Since(started).Seconds(), metric.WithAttributes(attrs...))
 			span.End()
-			if recovered != nil {
-				panic(recovered)
-			}
 		}()
 		ctx = withOutcome(ctx)
 		next.ServeHTTP(rw, r.WithContext(ctx))
+		completed = true
 	})
 }

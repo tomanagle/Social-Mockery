@@ -101,3 +101,19 @@ func validID(s string) bool {
 func Default() store.Seed {
 	return store.Seed{Version: 1, Clock: "2026-01-01T00:00:00Z", ProcessingSeconds: 5, Accounts: []store.Account{{ID: "17841400000000001", Username: "mock_creator", Type: "BUSINESS"}}, Tokens: []store.Token{{Value: "mock-token", AccountID: "17841400000000001", Scopes: []string{"instagram_business_basic", "instagram_business_content_publish", "instagram_basic", "instagram_content_publish"}}}}
 }
+
+// Must loads the required startup seed, or the built-in default for an empty path.
+// Errors are redacted because profiles can contain tokens and account data.
+func Must(path string) store.Seed {
+	seed := Default()
+	var err error
+	if path != "" {
+		seed, err = Load(path)
+	} else {
+		err = Validate(seed)
+	}
+	if err != nil {
+		panic("profiles: initialization failed")
+	}
+	return seed
+}
