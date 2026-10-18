@@ -12,7 +12,7 @@ while IFS= read -r spec; do
  version=$(basename "$(dirname "$spec")")
  version=${version%%.*}
  product=$(basename "$spec" .openapi.yaml | tr -d '-')
- case "$product" in facebooklogin|instagramlogin|oauth|webhooks) ;; *) echo "Unknown contract product: $spec" >&2; exit 1 ;; esac
+ case "$product" in facebooklogin|instagramlogin|oauth|webhooks|upload) ;; *) echo "Unknown contract product: $spec" >&2; exit 1 ;; esac
  output="internal/contracts/instagram/$version/$product/api.gen.go"
  generated="$tmp/api.gen.go"
  cat > "$tmp/config.yaml" <<CONFIG

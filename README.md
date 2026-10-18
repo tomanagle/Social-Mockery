@@ -61,7 +61,7 @@ Licensed under the [MIT License](LICENSE).
 
 ## Spec-first development
 
-Provider contracts live in versioned [OpenAPI specifications](specs/meta/instagram/v25.0/openapi.yaml). Run `make generate` to produce Go models and the standard-library server interface; implement behavior in handwritten provider methods. `make generate-check` validates both versions and detects drift. The [provider-spec research skill](.agents/skills/provider-spec-research/SKILL.md) and [workflow guide](docs/specifications.md) cover adding providers without claiming unverified API fidelity.
+The four-operation runtime subset has its own [OpenAPI specification](specs/meta/instagram/v25.0/openapi.yaml). Separate [Instagram reference contracts](specs/meta/instagram/README.md) cover Facebook Login, Instagram Login, OAuth, native upload and webhooks for v24.0/v25.0/v26.0; generated reference packages do not register runtime routes. v26.0 is the latest officially verified Graph release, but the simulator still runs only v24.0/v25.0. Run `make generate` for official Go models/server interfaces and `make generate-check` for deterministic drift checks across all documents. The [provider-spec research skill](.agents/skills/provider-spec-research/SKILL.md) and [workflow guide](docs/specifications.md) cover adding providers without claiming unverified API fidelity.
 
 ## Observability
 

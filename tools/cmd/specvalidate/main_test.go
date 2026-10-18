@@ -144,3 +144,44 @@ func replaceFixtureRoute(d map[string]any, kind, route string) {
 	paths[route] = paths["/v26.0/me"]
 	delete(paths, "/v26.0/me")
 }
+
+func TestUploadContract(t *testing.T) {
+	for _, tc := range []struct {
+		name, route, server string
+		valid               bool
+	}{
+		{"valid", "/ig-api-upload/v26.0/{containerID}", "https://rupload.facebook.com", true},
+		{"wrong version", "/ig-api-upload/v25.0/{containerID}", "https://rupload.facebook.com", false},
+		{"unversioned", "/ig-api-upload/{containerID}", "https://rupload.facebook.com", false},
+		{"graph path", "/v26.0/{containerID}", "https://rupload.facebook.com", false},
+		{"extra suffix", "/ig-api-upload/v26.0/{containerID}/anything", "https://rupload.facebook.com", false},
+		{"graph host", "/ig-api-upload/v26.0/{containerID}", "https://graph.facebook.com", false},
+		{"lookalike host", "/ig-api-upload/v26.0/{containerID}", "https://rupload.facebook.com.evil.test", false},
+		{"http", "/ig-api-upload/v26.0/{containerID}", "http://rupload.facebook.com", false},
+		{"server path", "/ig-api-upload/v26.0/{containerID}", "https://rupload.facebook.com/other", false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			d := contractFixture()
+			op := fixtureOperation(d)
+			op["parameters"] = []any{map[string]any{"name": "containerID", "in": "path", "required": true, "schema": map[string]any{"type": "string"}}}
+			d["paths"] = map[string]any{tc.route: map[string]any{"post": op}}
+			d["x-contract-kind"] = "upload"
+			d["servers"] = []any{map[string]any{"url": tc.server}}
+			dir := filepath.Join(t.TempDir(), "v26.0")
+			if err := os.Mkdir(dir, 0700); err != nil {
+				t.Fatal(err)
+			}
+			data, err := json.Marshal(d)
+			if err != nil {
+				t.Fatal(err)
+			}
+			path := filepath.Join(dir, "upload.openapi.yaml")
+			if err = os.WriteFile(path, data, 0600); err != nil {
+				t.Fatal(err)
+			}
+			if err = validate(path); (err == nil) != tc.valid {
+				t.Fatalf("valid=%v error=%v", tc.valid, err)
+			}
+		})
+	}
+}

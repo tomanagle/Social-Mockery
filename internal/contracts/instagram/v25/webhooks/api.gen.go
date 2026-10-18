@@ -7,22 +7,285 @@ package webhooks
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 
 	"github.com/oapi-codegen/runtime"
 )
 
+// Defines values for CommentWebhookObject.
+const (
+	CommentWebhookObjectInstagram CommentWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the CommentWebhookObject enum.
+func (e CommentWebhookObject) Valid() bool {
+	switch e {
+	case CommentWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookLoginCommentWebhookEntryChangesField.
+const (
+	Comments     FacebookLoginCommentWebhookEntryChangesField = "comments"
+	LiveComments FacebookLoginCommentWebhookEntryChangesField = "live_comments"
+)
+
+// Valid indicates whether the value is a known member of the FacebookLoginCommentWebhookEntryChangesField enum.
+func (e FacebookLoginCommentWebhookEntryChangesField) Valid() bool {
+	switch e {
+	case Comments:
+		return true
+	case LiveComments:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookLoginCommentWebhookObject.
+const (
+	FacebookLoginCommentWebhookObjectInstagram FacebookLoginCommentWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the FacebookLoginCommentWebhookObject enum.
+func (e FacebookLoginCommentWebhookObject) Valid() bool {
+	switch e {
+	case FacebookLoginCommentWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookLoginMentionWebhookEntryChangesField.
+const (
+	Mentions FacebookLoginMentionWebhookEntryChangesField = "mentions"
+)
+
+// Valid indicates whether the value is a known member of the FacebookLoginMentionWebhookEntryChangesField enum.
+func (e FacebookLoginMentionWebhookEntryChangesField) Valid() bool {
+	switch e {
+	case Mentions:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookLoginMentionWebhookObject.
+const (
+	FacebookLoginMentionWebhookObjectInstagram FacebookLoginMentionWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the FacebookLoginMentionWebhookObject enum.
+func (e FacebookLoginMentionWebhookObject) Valid() bool {
+	switch e {
+	case FacebookLoginMentionWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessageEditWebhookObject.
+const (
+	MessageEditWebhookObjectInstagram MessageEditWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessageEditWebhookObject enum.
+func (e MessageEditWebhookObject) Valid() bool {
+	switch e {
+	case MessageEditWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingPostbacksWebhookObject.
+const (
+	MessagingPostbacksWebhookObjectInstagram MessagingPostbacksWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingPostbacksWebhookObject enum.
+func (e MessagingPostbacksWebhookObject) Valid() bool {
+	switch e {
+	case MessagingPostbacksWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingReactionsWebhookEntryMessagingReactionAction.
+const (
+	React   MessagingReactionsWebhookEntryMessagingReactionAction = "react"
+	Unreact MessagingReactionsWebhookEntryMessagingReactionAction = "unreact"
+)
+
+// Valid indicates whether the value is a known member of the MessagingReactionsWebhookEntryMessagingReactionAction enum.
+func (e MessagingReactionsWebhookEntryMessagingReactionAction) Valid() bool {
+	switch e {
+	case React:
+		return true
+	case Unreact:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingReactionsWebhookObject.
+const (
+	MessagingReactionsWebhookObjectInstagram MessagingReactionsWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingReactionsWebhookObject enum.
+func (e MessagingReactionsWebhookObject) Valid() bool {
+	switch e {
+	case MessagingReactionsWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingReferralWebhookObject.
+const (
+	MessagingReferralWebhookObjectInstagram MessagingReferralWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingReferralWebhookObject enum.
+func (e MessagingReferralWebhookObject) Valid() bool {
+	switch e {
+	case MessagingReferralWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingReplyToStoryWebhookObject.
+const (
+	MessagingReplyToStoryWebhookObjectInstagram MessagingReplyToStoryWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingReplyToStoryWebhookObject enum.
+func (e MessagingReplyToStoryWebhookObject) Valid() bool {
+	switch e {
+	case MessagingReplyToStoryWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingSeenWebhookObject.
+const (
+	MessagingSeenWebhookObjectInstagram MessagingSeenWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingSeenWebhookObject enum.
+func (e MessagingSeenWebhookObject) Valid() bool {
+	switch e {
+	case MessagingSeenWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingWebhookObject.
+const (
+	MessagingWebhookObjectInstagram MessagingWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the MessagingWebhookObject enum.
+func (e MessagingWebhookObject) Valid() bool {
+	switch e {
+	case MessagingWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for SelfCommentWebhookObject.
+const (
+	SelfCommentWebhookObjectInstagram SelfCommentWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the SelfCommentWebhookObject enum.
+func (e SelfCommentWebhookObject) Valid() bool {
+	switch e {
+	case SelfCommentWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for SelfMessagingEchoWebhookObject.
+const (
+	SelfMessagingEchoWebhookObjectInstagram SelfMessagingEchoWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the SelfMessagingEchoWebhookObject enum.
+func (e SelfMessagingEchoWebhookObject) Valid() bool {
+	switch e {
+	case SelfMessagingEchoWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for SelfPostbackWebhookObject.
+const (
+	SelfPostbackWebhookObjectInstagram SelfPostbackWebhookObject = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the SelfPostbackWebhookObject enum.
+func (e SelfPostbackWebhookObject) Valid() bool {
+	switch e {
+	case SelfPostbackWebhookObjectInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for VerifyInstagramWebhookParamsHubMode.
+const (
+	Subscribe VerifyInstagramWebhookParamsHubMode = "subscribe"
+)
+
+// Valid indicates whether the value is a known member of the VerifyInstagramWebhookParamsHubMode enum.
+func (e VerifyInstagramWebhookParamsHubMode) Valid() bool {
+	switch e {
+	case Subscribe:
+		return true
+	default:
+		return false
+	}
+}
+
 // CommentWebhook defines model for CommentWebhook.
 type CommentWebhook struct {
-	Entry *[]struct {
+	Entry []struct {
 		Field *string `json:"field,omitempty"`
-		Id    *string `json:"id,omitempty"`
+		Id    string  `json:"id"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time  *CommentWebhook_Entry_Time `json:"time,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time  int64 `json:"time"`
 		Value *struct {
 			From *struct {
+				Id       *string `json:"id,omitempty"`
 				Username *string `json:"username,omitempty"`
 			} `json:"from,omitempty"`
 			Id    *string `json:"id,omitempty"`
@@ -32,48 +295,146 @@ type CommentWebhook struct {
 			} `json:"media,omitempty"`
 			Text *string `json:"text,omitempty"`
 		} `json:"value,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+	} `json:"entry"`
+	Object CommentWebhookObject `json:"object"`
 }
 
-// CommentWebhookEntryTime0 defines model for CommentWebhook.Entry.Time.0.
-type CommentWebhookEntryTime0 = int
+// CommentWebhookObject defines model for CommentWebhook.Object.
+type CommentWebhookObject string
 
-// CommentWebhookEntryTime1 defines model for CommentWebhook.Entry.Time.1.
-type CommentWebhookEntryTime1 = string
-
-// CommentWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type CommentWebhook_Entry_Time struct {
-	union json.RawMessage
+// FacebookLoginCommentWebhook defines model for FacebookLoginCommentWebhook.
+type FacebookLoginCommentWebhook struct {
+	Entry []struct {
+		Changes []struct {
+			Field FacebookLoginCommentWebhookEntryChangesField `json:"field"`
+			Value struct {
+				CommentId *string `json:"comment_id,omitempty"`
+				From      *struct {
+					Id       *string `json:"id,omitempty"`
+					Username *string `json:"username,omitempty"`
+				} `json:"from,omitempty"`
+				Media *struct {
+					AdId             *string `json:"ad_id,omitempty"`
+					AdTitle          *string `json:"ad_title,omitempty"`
+					Id               *string `json:"id,omitempty"`
+					MediaProductType *string `json:"media_product_type,omitempty"`
+					OriginalMediaId  *string `json:"original_media_id,omitempty"`
+				} `json:"media,omitempty"`
+				ParentId *string `json:"parent_id,omitempty"`
+				Text     *string `json:"text,omitempty"`
+			} `json:"value"`
+		} `json:"changes"`
+		Id   string `json:"id"`
+		Time int64  `json:"time"`
+	} `json:"entry"`
+	Object FacebookLoginCommentWebhookObject `json:"object"`
 }
 
-// MessageEditWebhook defines model for MessageEditWebhook.
+// FacebookLoginCommentWebhookEntryChangesField defines model for FacebookLoginCommentWebhook.Entry.Changes.Field.
+type FacebookLoginCommentWebhookEntryChangesField string
+
+// FacebookLoginCommentWebhookObject defines model for FacebookLoginCommentWebhook.Object.
+type FacebookLoginCommentWebhookObject string
+
+// FacebookLoginMentionWebhook defines model for FacebookLoginMentionWebhook.
+type FacebookLoginMentionWebhook struct {
+	Entry []struct {
+		Changes []struct {
+			Field FacebookLoginMentionWebhookEntryChangesField `json:"field"`
+			Value struct {
+				CommentId *string `json:"comment_id,omitempty"`
+				MediaId   string  `json:"media_id"`
+			} `json:"value"`
+		} `json:"changes"`
+		Id   string `json:"id"`
+		Time int64  `json:"time"`
+	} `json:"entry"`
+	Object FacebookLoginMentionWebhookObject `json:"object"`
+}
+
+// FacebookLoginMentionWebhookEntryChangesField defines model for FacebookLoginMentionWebhook.Entry.Changes.Field.
+type FacebookLoginMentionWebhookEntryChangesField string
+
+// FacebookLoginMentionWebhookObject defines model for FacebookLoginMentionWebhook.Object.
+type FacebookLoginMentionWebhookObject string
+
+// InstagramWebhookAttachment defines model for InstagramWebhookAttachment.
+type InstagramWebhookAttachment struct {
+	Payload *struct {
+		IgPostMediaId *string `json:"ig_post_media_id,omitempty"`
+		Title         *string `json:"title,omitempty"`
+		Url           *string `json:"url,omitempty"`
+	} `json:"payload,omitempty"`
+
+	// Type Current documented values include media, audio, file, image, video, ig_post, story_mention, ig_reel, reel, story, ig_story, ephemeral. Legacy share for Instagram posts was removed February 1, 2026; retained only to decode historical events.
+	Type string `json:"type"`
+}
+
+// InstagramWebhookMessage defines model for InstagramWebhookMessage.
+type InstagramWebhookMessage struct {
+	Attachments   *[]InstagramWebhookAttachment `json:"attachments,omitempty"`
+	IsDeleted     *bool                         `json:"is_deleted,omitempty"`
+	IsEcho        *bool                         `json:"is_echo,omitempty"`
+	IsSelf        *bool                         `json:"is_self,omitempty"`
+	IsUnsupported *bool                         `json:"is_unsupported,omitempty"`
+	Mid           string                        `json:"mid"`
+	QuickReply    *struct {
+		Payload *string `json:"payload,omitempty"`
+	} `json:"quick_reply,omitempty"`
+	Referral *struct {
+		AdId           *string `json:"ad_id,omitempty"`
+		AdsContextData *struct {
+			AdTitle  *string `json:"ad_title,omitempty"`
+			PhotoUrl *string `json:"photo_url,omitempty"`
+			VideoUrl *string `json:"video_url,omitempty"`
+		} `json:"ads_context_data,omitempty"`
+		Product *struct {
+			Id *string `json:"id,omitempty"`
+		} `json:"product,omitempty"`
+		Ref    *string `json:"ref,omitempty"`
+		Source *string `json:"source,omitempty"`
+		Type   *string `json:"type,omitempty"`
+	} `json:"referral,omitempty"`
+	ReplyTo *struct {
+		Mid   *string `json:"mid,omitempty"`
+		Story *struct {
+			Id *string `json:"id,omitempty"`
+
+			// LinkStickerUrl URL of link sticker in story being replied to; added December 12 2025.
+			LinkStickerUrl *string `json:"link_sticker_url,omitempty"`
+			Url            *string `json:"url,omitempty"`
+		} `json:"story,omitempty"`
+	} `json:"reply_to,omitempty"`
+	Text *string `json:"text,omitempty"`
+}
+
+// MessageEditWebhook Instagram Platform changelog September 10 2025 explicitly supports message_edit for both Instagram Login and Facebook Login. General Messenger table conflicts; product-specific changelog governs this contract.
 type MessageEditWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
 			MessageEdit *struct {
 				Mid *string `json:"mid,omitempty"`
 
-				// NumEdit Example contains placeholder text; exact wire type not established by this sample.
+				// NumEdit Edit count. Official prose describes a number but example quotes its placeholder; accepted integer|string preserves documented ambiguity.
 				NumEdit *MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit `json:"num_edit,omitempty"`
 				Text    *string                                                 `json:"text,omitempty"`
 			} `json:"message_edit,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessageEditWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessageEditWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessageEditWebhookObject `json:"object"`
 }
 
 // MessageEditWebhookEntryMessagingMessageEditNumEdit0 defines model for MessageEditWebhook.Entry.Messaging.MessageEdit.NumEdit.0.
@@ -82,337 +443,191 @@ type MessageEditWebhookEntryMessagingMessageEditNumEdit0 = int
 // MessageEditWebhookEntryMessagingMessageEditNumEdit1 defines model for MessageEditWebhook.Entry.Messaging.MessageEdit.NumEdit.1.
 type MessageEditWebhookEntryMessagingMessageEditNumEdit1 = string
 
-// MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit Example contains placeholder text; exact wire type not established by this sample.
+// MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit Edit count. Official prose describes a number but example quotes its placeholder; accepted integer|string preserves documented ambiguity.
 type MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit struct {
 	union json.RawMessage
 }
 
-// MessageEditWebhookEntryMessagingTimestamp0 defines model for MessageEditWebhook.Entry.Messaging.Timestamp.0.
-type MessageEditWebhookEntryMessagingTimestamp0 = int
-
-// MessageEditWebhookEntryMessagingTimestamp1 defines model for MessageEditWebhook.Entry.Messaging.Timestamp.1.
-type MessageEditWebhookEntryMessagingTimestamp1 = string
-
-// MessageEditWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessageEditWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessageEditWebhookEntryTime0 defines model for MessageEditWebhook.Entry.Time.0.
-type MessageEditWebhookEntryTime0 = int
-
-// MessageEditWebhookEntryTime1 defines model for MessageEditWebhook.Entry.Time.1.
-type MessageEditWebhookEntryTime1 = string
-
-// MessageEditWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessageEditWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessageEditWebhookObject defines model for MessageEditWebhook.Object.
+type MessageEditWebhookObject string
 
 // MessagingPostbacksWebhook defines model for MessagingPostbacksWebhook.
 type MessagingPostbacksWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
 			Postback *struct {
 				Mid     *string `json:"mid,omitempty"`
 				Payload *string `json:"payload,omitempty"`
 				Title   *string `json:"title,omitempty"`
 			} `json:"postback,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingPostbacksWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingPostbacksWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingPostbacksWebhookObject `json:"object"`
 }
 
-// MessagingPostbacksWebhookEntryMessagingTimestamp0 defines model for MessagingPostbacksWebhook.Entry.Messaging.Timestamp.0.
-type MessagingPostbacksWebhookEntryMessagingTimestamp0 = int
-
-// MessagingPostbacksWebhookEntryMessagingTimestamp1 defines model for MessagingPostbacksWebhook.Entry.Messaging.Timestamp.1.
-type MessagingPostbacksWebhookEntryMessagingTimestamp1 = string
-
-// MessagingPostbacksWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingPostbacksWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingPostbacksWebhookEntryTime0 defines model for MessagingPostbacksWebhook.Entry.Time.0.
-type MessagingPostbacksWebhookEntryTime0 = int
-
-// MessagingPostbacksWebhookEntryTime1 defines model for MessagingPostbacksWebhook.Entry.Time.1.
-type MessagingPostbacksWebhookEntryTime1 = string
-
-// MessagingPostbacksWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingPostbacksWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingPostbacksWebhookObject defines model for MessagingPostbacksWebhook.Object.
+type MessagingPostbacksWebhookObject string
 
 // MessagingReactionsWebhook defines model for MessagingReactionsWebhook.
 type MessagingReactionsWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
 			Reaction *struct {
-				Action   *string `json:"action,omitempty"`
-				Emoji    *string `json:"emoji,omitempty"`
-				Mid      *string `json:"mid,omitempty"`
-				Reaction *string `json:"reaction,omitempty"`
+				Action   MessagingReactionsWebhookEntryMessagingReactionAction `json:"action"`
+				Emoji    *string                                               `json:"emoji,omitempty"`
+				Mid      string                                                `json:"mid"`
+				Reaction *string                                               `json:"reaction,omitempty"`
 			} `json:"reaction,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingReactionsWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingReactionsWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingReactionsWebhookObject `json:"object"`
 }
 
-// MessagingReactionsWebhookEntryMessagingTimestamp0 defines model for MessagingReactionsWebhook.Entry.Messaging.Timestamp.0.
-type MessagingReactionsWebhookEntryMessagingTimestamp0 = int
+// MessagingReactionsWebhookEntryMessagingReactionAction defines model for MessagingReactionsWebhook.Entry.Messaging.Reaction.Action.
+type MessagingReactionsWebhookEntryMessagingReactionAction string
 
-// MessagingReactionsWebhookEntryMessagingTimestamp1 defines model for MessagingReactionsWebhook.Entry.Messaging.Timestamp.1.
-type MessagingReactionsWebhookEntryMessagingTimestamp1 = string
-
-// MessagingReactionsWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReactionsWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingReactionsWebhookEntryTime0 defines model for MessagingReactionsWebhook.Entry.Time.0.
-type MessagingReactionsWebhookEntryTime0 = int
-
-// MessagingReactionsWebhookEntryTime1 defines model for MessagingReactionsWebhook.Entry.Time.1.
-type MessagingReactionsWebhookEntryTime1 = string
-
-// MessagingReactionsWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReactionsWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingReactionsWebhookObject defines model for MessagingReactionsWebhook.Object.
+type MessagingReactionsWebhookObject string
 
 // MessagingReferralWebhook defines model for MessagingReferralWebhook.
 type MessagingReferralWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
 			Referral *struct {
 				Ref    *string `json:"ref,omitempty"`
 				Source *string `json:"source,omitempty"`
 				Type   *string `json:"type,omitempty"`
 			} `json:"referral,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingReferralWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingReferralWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingReferralWebhookObject `json:"object"`
 }
 
-// MessagingReferralWebhookEntryMessagingTimestamp0 defines model for MessagingReferralWebhook.Entry.Messaging.Timestamp.0.
-type MessagingReferralWebhookEntryMessagingTimestamp0 = int
-
-// MessagingReferralWebhookEntryMessagingTimestamp1 defines model for MessagingReferralWebhook.Entry.Messaging.Timestamp.1.
-type MessagingReferralWebhookEntryMessagingTimestamp1 = string
-
-// MessagingReferralWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReferralWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingReferralWebhookEntryTime0 defines model for MessagingReferralWebhook.Entry.Time.0.
-type MessagingReferralWebhookEntryTime0 = int
-
-// MessagingReferralWebhookEntryTime1 defines model for MessagingReferralWebhook.Entry.Time.1.
-type MessagingReferralWebhookEntryTime1 = string
-
-// MessagingReferralWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReferralWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingReferralWebhookObject defines model for MessagingReferralWebhook.Object.
+type MessagingReferralWebhookObject string
 
 // MessagingReplyToStoryWebhook defines model for MessagingReplyToStoryWebhook.
 type MessagingReplyToStoryWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
-			Message *struct {
-				IsDeleted     *bool   `json:"is_deleted,omitempty"`
-				IsEcho        *bool   `json:"is_echo,omitempty"`
-				IsSelf        *bool   `json:"is_self,omitempty"`
-				IsUnsupported *bool   `json:"is_unsupported,omitempty"`
-				Mid           *string `json:"mid,omitempty"`
-				ReplyTo       *struct {
-					Story *struct {
-						Id  *string `json:"id,omitempty"`
-						Url *string `json:"url,omitempty"`
-					} `json:"story,omitempty"`
-				} `json:"reply_to,omitempty"`
-				Text *string `json:"text,omitempty"`
-			} `json:"message,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
+			Message   *InstagramWebhookMessage `json:"message,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingReplyToStoryWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingReplyToStoryWebhookObject `json:"object"`
 }
 
-// MessagingReplyToStoryWebhookEntryMessagingTimestamp0 defines model for MessagingReplyToStoryWebhook.Entry.Messaging.Timestamp.0.
-type MessagingReplyToStoryWebhookEntryMessagingTimestamp0 = int
-
-// MessagingReplyToStoryWebhookEntryMessagingTimestamp1 defines model for MessagingReplyToStoryWebhook.Entry.Messaging.Timestamp.1.
-type MessagingReplyToStoryWebhookEntryMessagingTimestamp1 = string
-
-// MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingReplyToStoryWebhookEntryTime0 defines model for MessagingReplyToStoryWebhook.Entry.Time.0.
-type MessagingReplyToStoryWebhookEntryTime0 = int
-
-// MessagingReplyToStoryWebhookEntryTime1 defines model for MessagingReplyToStoryWebhook.Entry.Time.1.
-type MessagingReplyToStoryWebhookEntryTime1 = string
-
-// MessagingReplyToStoryWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingReplyToStoryWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingReplyToStoryWebhookObject defines model for MessagingReplyToStoryWebhook.Object.
+type MessagingReplyToStoryWebhookObject string
 
 // MessagingSeenWebhook defines model for MessagingSeenWebhook.
 type MessagingSeenWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
 			Read *struct {
 				Mid *string `json:"mid,omitempty"`
 			} `json:"read,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingSeenWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingSeenWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingSeenWebhookObject `json:"object"`
 }
 
-// MessagingSeenWebhookEntryMessagingTimestamp0 defines model for MessagingSeenWebhook.Entry.Messaging.Timestamp.0.
-type MessagingSeenWebhookEntryMessagingTimestamp0 = int
-
-// MessagingSeenWebhookEntryMessagingTimestamp1 defines model for MessagingSeenWebhook.Entry.Messaging.Timestamp.1.
-type MessagingSeenWebhookEntryMessagingTimestamp1 = string
-
-// MessagingSeenWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingSeenWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingSeenWebhookEntryTime0 defines model for MessagingSeenWebhook.Entry.Time.0.
-type MessagingSeenWebhookEntryTime0 = int
-
-// MessagingSeenWebhookEntryTime1 defines model for MessagingSeenWebhook.Entry.Time.1.
-type MessagingSeenWebhookEntryTime1 = string
-
-// MessagingSeenWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingSeenWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingSeenWebhookObject defines model for MessagingSeenWebhook.Object.
+type MessagingSeenWebhookObject string
 
 // MessagingWebhook defines model for MessagingWebhook.
 type MessagingWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
-			Message *struct {
-				Mid  *string `json:"mid,omitempty"`
-				Text *string `json:"text,omitempty"`
-			} `json:"message,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
+			Message   *InstagramWebhookMessage `json:"message,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *MessagingWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *MessagingWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object MessagingWebhookObject `json:"object"`
 }
 
-// MessagingWebhookEntryMessagingTimestamp0 defines model for MessagingWebhook.Entry.Messaging.Timestamp.0.
-type MessagingWebhookEntryMessagingTimestamp0 = int
-
-// MessagingWebhookEntryMessagingTimestamp1 defines model for MessagingWebhook.Entry.Messaging.Timestamp.1.
-type MessagingWebhookEntryMessagingTimestamp1 = string
-
-// MessagingWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type MessagingWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// MessagingWebhookEntryTime0 defines model for MessagingWebhook.Entry.Time.0.
-type MessagingWebhookEntryTime0 = int
-
-// MessagingWebhookEntryTime1 defines model for MessagingWebhook.Entry.Time.1.
-type MessagingWebhookEntryTime1 = string
-
-// MessagingWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type MessagingWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// MessagingWebhookObject defines model for MessagingWebhook.Object.
+type MessagingWebhookObject string
 
 // SelfCommentWebhook defines model for SelfCommentWebhook.
 type SelfCommentWebhook struct {
-	Entry *[]struct {
+	Entry []struct {
 		Changes *[]struct {
 			Field *string `json:"field,omitempty"`
 			Value *struct {
@@ -429,194 +644,97 @@ type SelfCommentWebhook struct {
 				Text *string `json:"text,omitempty"`
 			} `json:"value,omitempty"`
 		} `json:"changes,omitempty"`
-		Id *string `json:"id,omitempty"`
+		Id string `json:"id"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *SelfCommentWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object SelfCommentWebhookObject `json:"object"`
 }
 
-// SelfCommentWebhookEntryTime0 defines model for SelfCommentWebhook.Entry.Time.0.
-type SelfCommentWebhookEntryTime0 = int
-
-// SelfCommentWebhookEntryTime1 defines model for SelfCommentWebhook.Entry.Time.1.
-type SelfCommentWebhookEntryTime1 = string
-
-// SelfCommentWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type SelfCommentWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// SelfCommentWebhookObject defines model for SelfCommentWebhook.Object.
+type SelfCommentWebhookObject string
 
 // SelfMessagingEchoWebhook defines model for SelfMessagingEchoWebhook.
 type SelfMessagingEchoWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
-			Message *struct {
-				IsEcho *bool   `json:"is_echo,omitempty"`
-				IsSelf *bool   `json:"is_self,omitempty"`
-				Mid    *string `json:"mid,omitempty"`
-				Text   *string `json:"text,omitempty"`
-			} `json:"message,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
+			Message   *InstagramWebhookMessage `json:"message,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *SelfMessagingEchoWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object SelfMessagingEchoWebhookObject `json:"object"`
 }
 
-// SelfMessagingEchoWebhookEntryMessagingTimestamp0 defines model for SelfMessagingEchoWebhook.Entry.Messaging.Timestamp.0.
-type SelfMessagingEchoWebhookEntryMessagingTimestamp0 = int
-
-// SelfMessagingEchoWebhookEntryMessagingTimestamp1 defines model for SelfMessagingEchoWebhook.Entry.Messaging.Timestamp.1.
-type SelfMessagingEchoWebhookEntryMessagingTimestamp1 = string
-
-// SelfMessagingEchoWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type SelfMessagingEchoWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
-}
-
-// SelfMessagingEchoWebhookEntryTime0 defines model for SelfMessagingEchoWebhook.Entry.Time.0.
-type SelfMessagingEchoWebhookEntryTime0 = int
-
-// SelfMessagingEchoWebhookEntryTime1 defines model for SelfMessagingEchoWebhook.Entry.Time.1.
-type SelfMessagingEchoWebhookEntryTime1 = string
-
-// SelfMessagingEchoWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type SelfMessagingEchoWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// SelfMessagingEchoWebhookObject defines model for SelfMessagingEchoWebhook.Object.
+type SelfMessagingEchoWebhookObject string
 
 // SelfPostbackWebhook defines model for SelfPostbackWebhook.
 type SelfPostbackWebhook struct {
-	Entry *[]struct {
-		Id        *string `json:"id,omitempty"`
-		Messaging *[]struct {
+	Entry []struct {
+		Id        string `json:"id"`
+		Messaging []struct {
 			IsSelf   *bool `json:"is_self,omitempty"`
 			Postback *struct {
 				Mid     *string `json:"mid,omitempty"`
 				Payload *string `json:"payload,omitempty"`
 				Title   *string `json:"title,omitempty"`
 			} `json:"postback,omitempty"`
-			Recipient *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"recipient,omitempty"`
-			Sender *struct {
-				Id *string `json:"id,omitempty"`
-			} `json:"sender,omitempty"`
+			Recipient struct {
+				Id string `json:"id"`
+			} `json:"recipient"`
+			Sender struct {
+				Id string `json:"id"`
+			} `json:"sender"`
 
-			// Timestamp Example contains placeholder text; exact wire type not established by this sample.
-			Timestamp *SelfPostbackWebhook_Entry_Messaging_Timestamp `json:"timestamp,omitempty"`
-		} `json:"messaging,omitempty"`
+			// Timestamp Event time in Unix milliseconds, as shown by numeric messaging examples.
+			Timestamp int64 `json:"timestamp"`
+		} `json:"messaging"`
 
-		// Time Example contains placeholder text; exact wire type not established by this sample.
-		Time *SelfPostbackWebhook_Entry_Time `json:"time,omitempty"`
-	} `json:"entry,omitempty"`
-	Object *string `json:"object,omitempty"`
+		// Time Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds.
+		Time int64 `json:"time"`
+	} `json:"entry"`
+	Object SelfPostbackWebhookObject `json:"object"`
 }
 
-// SelfPostbackWebhookEntryMessagingTimestamp0 defines model for SelfPostbackWebhook.Entry.Messaging.Timestamp.0.
-type SelfPostbackWebhookEntryMessagingTimestamp0 = int
+// SelfPostbackWebhookObject defines model for SelfPostbackWebhook.Object.
+type SelfPostbackWebhookObject string
 
-// SelfPostbackWebhookEntryMessagingTimestamp1 defines model for SelfPostbackWebhook.Entry.Messaging.Timestamp.1.
-type SelfPostbackWebhookEntryMessagingTimestamp1 = string
-
-// SelfPostbackWebhook_Entry_Messaging_Timestamp Example contains placeholder text; exact wire type not established by this sample.
-type SelfPostbackWebhook_Entry_Messaging_Timestamp struct {
-	union json.RawMessage
+// VerifyInstagramWebhookParams defines parameters for VerifyInstagramWebhook.
+type VerifyInstagramWebhookParams struct {
+	HubMode        VerifyInstagramWebhookParamsHubMode `form:"hub.mode" json:"hub.mode"`
+	HubVerifyToken string                              `form:"hub.verify_token" json:"hub.verify_token"`
+	HubChallenge   int                                 `form:"hub.challenge" json:"hub.challenge"`
 }
 
-// SelfPostbackWebhookEntryTime0 defines model for SelfPostbackWebhook.Entry.Time.0.
-type SelfPostbackWebhookEntryTime0 = int
-
-// SelfPostbackWebhookEntryTime1 defines model for SelfPostbackWebhook.Entry.Time.1.
-type SelfPostbackWebhookEntryTime1 = string
-
-// SelfPostbackWebhook_Entry_Time Example contains placeholder text; exact wire type not established by this sample.
-type SelfPostbackWebhook_Entry_Time struct {
-	union json.RawMessage
-}
+// VerifyInstagramWebhookParamsHubMode defines parameters for VerifyInstagramWebhook.
+type VerifyInstagramWebhookParamsHubMode string
 
 // ReceiveInstagramWebhookJSONBody defines parameters for ReceiveInstagramWebhook.
 type ReceiveInstagramWebhookJSONBody struct {
 	union json.RawMessage
 }
 
+// ReceiveInstagramWebhookParams defines parameters for ReceiveInstagramWebhook.
+type ReceiveInstagramWebhookParams struct {
+	// XHubSignature256 HMAC-SHA256 over the unchanged raw request bytes using the configured app secret. Do not parse/re-serialize before verification; preserve escaped Unicode. Reject missing, malformed or mismatching signatures; use constant-time comparison.
+	XHubSignature256 string `json:"X-Hub-Signature-256"`
+}
+
 // ReceiveInstagramWebhookJSONRequestBody defines body for ReceiveInstagramWebhook for application/json ContentType.
 type ReceiveInstagramWebhookJSONRequestBody ReceiveInstagramWebhookJSONBody
-
-// AsCommentWebhookEntryTime0 returns the union data inside the CommentWebhook_Entry_Time as a CommentWebhookEntryTime0
-func (t CommentWebhook_Entry_Time) AsCommentWebhookEntryTime0() (CommentWebhookEntryTime0, error) {
-	var body CommentWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCommentWebhookEntryTime0 overwrites any union data inside the CommentWebhook_Entry_Time as the provided CommentWebhookEntryTime0
-func (t *CommentWebhook_Entry_Time) FromCommentWebhookEntryTime0(v CommentWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCommentWebhookEntryTime0 performs a merge with any union data inside the CommentWebhook_Entry_Time, using the provided CommentWebhookEntryTime0
-func (t *CommentWebhook_Entry_Time) MergeCommentWebhookEntryTime0(v CommentWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCommentWebhookEntryTime1 returns the union data inside the CommentWebhook_Entry_Time as a CommentWebhookEntryTime1
-func (t CommentWebhook_Entry_Time) AsCommentWebhookEntryTime1() (CommentWebhookEntryTime1, error) {
-	var body CommentWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCommentWebhookEntryTime1 overwrites any union data inside the CommentWebhook_Entry_Time as the provided CommentWebhookEntryTime1
-func (t *CommentWebhook_Entry_Time) FromCommentWebhookEntryTime1(v CommentWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCommentWebhookEntryTime1 performs a merge with any union data inside the CommentWebhook_Entry_Time, using the provided CommentWebhookEntryTime1
-func (t *CommentWebhook_Entry_Time) MergeCommentWebhookEntryTime1(v CommentWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t CommentWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *CommentWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
 
 // AsMessageEditWebhookEntryMessagingMessageEditNumEdit0 returns the union data inside the MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit as a MessageEditWebhookEntryMessagingMessageEditNumEdit0
 func (t MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit) AsMessageEditWebhookEntryMessagingMessageEditNumEdit0() (MessageEditWebhookEntryMessagingMessageEditNumEdit0, error) {
@@ -676,1184 +794,6 @@ func (t MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit) MarshalJSON() ([
 }
 
 func (t *MessageEditWebhook_Entry_Messaging_MessageEdit_NumEdit) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessageEditWebhookEntryMessagingTimestamp0 returns the union data inside the MessageEditWebhook_Entry_Messaging_Timestamp as a MessageEditWebhookEntryMessagingTimestamp0
-func (t MessageEditWebhook_Entry_Messaging_Timestamp) AsMessageEditWebhookEntryMessagingTimestamp0() (MessageEditWebhookEntryMessagingTimestamp0, error) {
-	var body MessageEditWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessageEditWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessageEditWebhook_Entry_Messaging_Timestamp as the provided MessageEditWebhookEntryMessagingTimestamp0
-func (t *MessageEditWebhook_Entry_Messaging_Timestamp) FromMessageEditWebhookEntryMessagingTimestamp0(v MessageEditWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessageEditWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessageEditWebhook_Entry_Messaging_Timestamp, using the provided MessageEditWebhookEntryMessagingTimestamp0
-func (t *MessageEditWebhook_Entry_Messaging_Timestamp) MergeMessageEditWebhookEntryMessagingTimestamp0(v MessageEditWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessageEditWebhookEntryMessagingTimestamp1 returns the union data inside the MessageEditWebhook_Entry_Messaging_Timestamp as a MessageEditWebhookEntryMessagingTimestamp1
-func (t MessageEditWebhook_Entry_Messaging_Timestamp) AsMessageEditWebhookEntryMessagingTimestamp1() (MessageEditWebhookEntryMessagingTimestamp1, error) {
-	var body MessageEditWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessageEditWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessageEditWebhook_Entry_Messaging_Timestamp as the provided MessageEditWebhookEntryMessagingTimestamp1
-func (t *MessageEditWebhook_Entry_Messaging_Timestamp) FromMessageEditWebhookEntryMessagingTimestamp1(v MessageEditWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessageEditWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessageEditWebhook_Entry_Messaging_Timestamp, using the provided MessageEditWebhookEntryMessagingTimestamp1
-func (t *MessageEditWebhook_Entry_Messaging_Timestamp) MergeMessageEditWebhookEntryMessagingTimestamp1(v MessageEditWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessageEditWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessageEditWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessageEditWebhookEntryTime0 returns the union data inside the MessageEditWebhook_Entry_Time as a MessageEditWebhookEntryTime0
-func (t MessageEditWebhook_Entry_Time) AsMessageEditWebhookEntryTime0() (MessageEditWebhookEntryTime0, error) {
-	var body MessageEditWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessageEditWebhookEntryTime0 overwrites any union data inside the MessageEditWebhook_Entry_Time as the provided MessageEditWebhookEntryTime0
-func (t *MessageEditWebhook_Entry_Time) FromMessageEditWebhookEntryTime0(v MessageEditWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessageEditWebhookEntryTime0 performs a merge with any union data inside the MessageEditWebhook_Entry_Time, using the provided MessageEditWebhookEntryTime0
-func (t *MessageEditWebhook_Entry_Time) MergeMessageEditWebhookEntryTime0(v MessageEditWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessageEditWebhookEntryTime1 returns the union data inside the MessageEditWebhook_Entry_Time as a MessageEditWebhookEntryTime1
-func (t MessageEditWebhook_Entry_Time) AsMessageEditWebhookEntryTime1() (MessageEditWebhookEntryTime1, error) {
-	var body MessageEditWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessageEditWebhookEntryTime1 overwrites any union data inside the MessageEditWebhook_Entry_Time as the provided MessageEditWebhookEntryTime1
-func (t *MessageEditWebhook_Entry_Time) FromMessageEditWebhookEntryTime1(v MessageEditWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessageEditWebhookEntryTime1 performs a merge with any union data inside the MessageEditWebhook_Entry_Time, using the provided MessageEditWebhookEntryTime1
-func (t *MessageEditWebhook_Entry_Time) MergeMessageEditWebhookEntryTime1(v MessageEditWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessageEditWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessageEditWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingPostbacksWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp as a MessagingPostbacksWebhookEntryMessagingTimestamp0
-func (t MessagingPostbacksWebhook_Entry_Messaging_Timestamp) AsMessagingPostbacksWebhookEntryMessagingTimestamp0() (MessagingPostbacksWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingPostbacksWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingPostbacksWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp as the provided MessagingPostbacksWebhookEntryMessagingTimestamp0
-func (t *MessagingPostbacksWebhook_Entry_Messaging_Timestamp) FromMessagingPostbacksWebhookEntryMessagingTimestamp0(v MessagingPostbacksWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingPostbacksWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp, using the provided MessagingPostbacksWebhookEntryMessagingTimestamp0
-func (t *MessagingPostbacksWebhook_Entry_Messaging_Timestamp) MergeMessagingPostbacksWebhookEntryMessagingTimestamp0(v MessagingPostbacksWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingPostbacksWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp as a MessagingPostbacksWebhookEntryMessagingTimestamp1
-func (t MessagingPostbacksWebhook_Entry_Messaging_Timestamp) AsMessagingPostbacksWebhookEntryMessagingTimestamp1() (MessagingPostbacksWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingPostbacksWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingPostbacksWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp as the provided MessagingPostbacksWebhookEntryMessagingTimestamp1
-func (t *MessagingPostbacksWebhook_Entry_Messaging_Timestamp) FromMessagingPostbacksWebhookEntryMessagingTimestamp1(v MessagingPostbacksWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingPostbacksWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingPostbacksWebhook_Entry_Messaging_Timestamp, using the provided MessagingPostbacksWebhookEntryMessagingTimestamp1
-func (t *MessagingPostbacksWebhook_Entry_Messaging_Timestamp) MergeMessagingPostbacksWebhookEntryMessagingTimestamp1(v MessagingPostbacksWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingPostbacksWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingPostbacksWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingPostbacksWebhookEntryTime0 returns the union data inside the MessagingPostbacksWebhook_Entry_Time as a MessagingPostbacksWebhookEntryTime0
-func (t MessagingPostbacksWebhook_Entry_Time) AsMessagingPostbacksWebhookEntryTime0() (MessagingPostbacksWebhookEntryTime0, error) {
-	var body MessagingPostbacksWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingPostbacksWebhookEntryTime0 overwrites any union data inside the MessagingPostbacksWebhook_Entry_Time as the provided MessagingPostbacksWebhookEntryTime0
-func (t *MessagingPostbacksWebhook_Entry_Time) FromMessagingPostbacksWebhookEntryTime0(v MessagingPostbacksWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingPostbacksWebhookEntryTime0 performs a merge with any union data inside the MessagingPostbacksWebhook_Entry_Time, using the provided MessagingPostbacksWebhookEntryTime0
-func (t *MessagingPostbacksWebhook_Entry_Time) MergeMessagingPostbacksWebhookEntryTime0(v MessagingPostbacksWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingPostbacksWebhookEntryTime1 returns the union data inside the MessagingPostbacksWebhook_Entry_Time as a MessagingPostbacksWebhookEntryTime1
-func (t MessagingPostbacksWebhook_Entry_Time) AsMessagingPostbacksWebhookEntryTime1() (MessagingPostbacksWebhookEntryTime1, error) {
-	var body MessagingPostbacksWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingPostbacksWebhookEntryTime1 overwrites any union data inside the MessagingPostbacksWebhook_Entry_Time as the provided MessagingPostbacksWebhookEntryTime1
-func (t *MessagingPostbacksWebhook_Entry_Time) FromMessagingPostbacksWebhookEntryTime1(v MessagingPostbacksWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingPostbacksWebhookEntryTime1 performs a merge with any union data inside the MessagingPostbacksWebhook_Entry_Time, using the provided MessagingPostbacksWebhookEntryTime1
-func (t *MessagingPostbacksWebhook_Entry_Time) MergeMessagingPostbacksWebhookEntryTime1(v MessagingPostbacksWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingPostbacksWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingPostbacksWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReactionsWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp as a MessagingReactionsWebhookEntryMessagingTimestamp0
-func (t MessagingReactionsWebhook_Entry_Messaging_Timestamp) AsMessagingReactionsWebhookEntryMessagingTimestamp0() (MessagingReactionsWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingReactionsWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReactionsWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp as the provided MessagingReactionsWebhookEntryMessagingTimestamp0
-func (t *MessagingReactionsWebhook_Entry_Messaging_Timestamp) FromMessagingReactionsWebhookEntryMessagingTimestamp0(v MessagingReactionsWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReactionsWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp, using the provided MessagingReactionsWebhookEntryMessagingTimestamp0
-func (t *MessagingReactionsWebhook_Entry_Messaging_Timestamp) MergeMessagingReactionsWebhookEntryMessagingTimestamp0(v MessagingReactionsWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReactionsWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp as a MessagingReactionsWebhookEntryMessagingTimestamp1
-func (t MessagingReactionsWebhook_Entry_Messaging_Timestamp) AsMessagingReactionsWebhookEntryMessagingTimestamp1() (MessagingReactionsWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingReactionsWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReactionsWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp as the provided MessagingReactionsWebhookEntryMessagingTimestamp1
-func (t *MessagingReactionsWebhook_Entry_Messaging_Timestamp) FromMessagingReactionsWebhookEntryMessagingTimestamp1(v MessagingReactionsWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReactionsWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingReactionsWebhook_Entry_Messaging_Timestamp, using the provided MessagingReactionsWebhookEntryMessagingTimestamp1
-func (t *MessagingReactionsWebhook_Entry_Messaging_Timestamp) MergeMessagingReactionsWebhookEntryMessagingTimestamp1(v MessagingReactionsWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReactionsWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReactionsWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReactionsWebhookEntryTime0 returns the union data inside the MessagingReactionsWebhook_Entry_Time as a MessagingReactionsWebhookEntryTime0
-func (t MessagingReactionsWebhook_Entry_Time) AsMessagingReactionsWebhookEntryTime0() (MessagingReactionsWebhookEntryTime0, error) {
-	var body MessagingReactionsWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReactionsWebhookEntryTime0 overwrites any union data inside the MessagingReactionsWebhook_Entry_Time as the provided MessagingReactionsWebhookEntryTime0
-func (t *MessagingReactionsWebhook_Entry_Time) FromMessagingReactionsWebhookEntryTime0(v MessagingReactionsWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReactionsWebhookEntryTime0 performs a merge with any union data inside the MessagingReactionsWebhook_Entry_Time, using the provided MessagingReactionsWebhookEntryTime0
-func (t *MessagingReactionsWebhook_Entry_Time) MergeMessagingReactionsWebhookEntryTime0(v MessagingReactionsWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReactionsWebhookEntryTime1 returns the union data inside the MessagingReactionsWebhook_Entry_Time as a MessagingReactionsWebhookEntryTime1
-func (t MessagingReactionsWebhook_Entry_Time) AsMessagingReactionsWebhookEntryTime1() (MessagingReactionsWebhookEntryTime1, error) {
-	var body MessagingReactionsWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReactionsWebhookEntryTime1 overwrites any union data inside the MessagingReactionsWebhook_Entry_Time as the provided MessagingReactionsWebhookEntryTime1
-func (t *MessagingReactionsWebhook_Entry_Time) FromMessagingReactionsWebhookEntryTime1(v MessagingReactionsWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReactionsWebhookEntryTime1 performs a merge with any union data inside the MessagingReactionsWebhook_Entry_Time, using the provided MessagingReactionsWebhookEntryTime1
-func (t *MessagingReactionsWebhook_Entry_Time) MergeMessagingReactionsWebhookEntryTime1(v MessagingReactionsWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReactionsWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReactionsWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReferralWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp as a MessagingReferralWebhookEntryMessagingTimestamp0
-func (t MessagingReferralWebhook_Entry_Messaging_Timestamp) AsMessagingReferralWebhookEntryMessagingTimestamp0() (MessagingReferralWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingReferralWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReferralWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp as the provided MessagingReferralWebhookEntryMessagingTimestamp0
-func (t *MessagingReferralWebhook_Entry_Messaging_Timestamp) FromMessagingReferralWebhookEntryMessagingTimestamp0(v MessagingReferralWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReferralWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp, using the provided MessagingReferralWebhookEntryMessagingTimestamp0
-func (t *MessagingReferralWebhook_Entry_Messaging_Timestamp) MergeMessagingReferralWebhookEntryMessagingTimestamp0(v MessagingReferralWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReferralWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp as a MessagingReferralWebhookEntryMessagingTimestamp1
-func (t MessagingReferralWebhook_Entry_Messaging_Timestamp) AsMessagingReferralWebhookEntryMessagingTimestamp1() (MessagingReferralWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingReferralWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReferralWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp as the provided MessagingReferralWebhookEntryMessagingTimestamp1
-func (t *MessagingReferralWebhook_Entry_Messaging_Timestamp) FromMessagingReferralWebhookEntryMessagingTimestamp1(v MessagingReferralWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReferralWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingReferralWebhook_Entry_Messaging_Timestamp, using the provided MessagingReferralWebhookEntryMessagingTimestamp1
-func (t *MessagingReferralWebhook_Entry_Messaging_Timestamp) MergeMessagingReferralWebhookEntryMessagingTimestamp1(v MessagingReferralWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReferralWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReferralWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReferralWebhookEntryTime0 returns the union data inside the MessagingReferralWebhook_Entry_Time as a MessagingReferralWebhookEntryTime0
-func (t MessagingReferralWebhook_Entry_Time) AsMessagingReferralWebhookEntryTime0() (MessagingReferralWebhookEntryTime0, error) {
-	var body MessagingReferralWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReferralWebhookEntryTime0 overwrites any union data inside the MessagingReferralWebhook_Entry_Time as the provided MessagingReferralWebhookEntryTime0
-func (t *MessagingReferralWebhook_Entry_Time) FromMessagingReferralWebhookEntryTime0(v MessagingReferralWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReferralWebhookEntryTime0 performs a merge with any union data inside the MessagingReferralWebhook_Entry_Time, using the provided MessagingReferralWebhookEntryTime0
-func (t *MessagingReferralWebhook_Entry_Time) MergeMessagingReferralWebhookEntryTime0(v MessagingReferralWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReferralWebhookEntryTime1 returns the union data inside the MessagingReferralWebhook_Entry_Time as a MessagingReferralWebhookEntryTime1
-func (t MessagingReferralWebhook_Entry_Time) AsMessagingReferralWebhookEntryTime1() (MessagingReferralWebhookEntryTime1, error) {
-	var body MessagingReferralWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReferralWebhookEntryTime1 overwrites any union data inside the MessagingReferralWebhook_Entry_Time as the provided MessagingReferralWebhookEntryTime1
-func (t *MessagingReferralWebhook_Entry_Time) FromMessagingReferralWebhookEntryTime1(v MessagingReferralWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReferralWebhookEntryTime1 performs a merge with any union data inside the MessagingReferralWebhook_Entry_Time, using the provided MessagingReferralWebhookEntryTime1
-func (t *MessagingReferralWebhook_Entry_Time) MergeMessagingReferralWebhookEntryTime1(v MessagingReferralWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReferralWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReferralWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReplyToStoryWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp as a MessagingReplyToStoryWebhookEntryMessagingTimestamp0
-func (t MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) AsMessagingReplyToStoryWebhookEntryMessagingTimestamp0() (MessagingReplyToStoryWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingReplyToStoryWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReplyToStoryWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp as the provided MessagingReplyToStoryWebhookEntryMessagingTimestamp0
-func (t *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) FromMessagingReplyToStoryWebhookEntryMessagingTimestamp0(v MessagingReplyToStoryWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReplyToStoryWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp, using the provided MessagingReplyToStoryWebhookEntryMessagingTimestamp0
-func (t *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) MergeMessagingReplyToStoryWebhookEntryMessagingTimestamp0(v MessagingReplyToStoryWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReplyToStoryWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp as a MessagingReplyToStoryWebhookEntryMessagingTimestamp1
-func (t MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) AsMessagingReplyToStoryWebhookEntryMessagingTimestamp1() (MessagingReplyToStoryWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingReplyToStoryWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReplyToStoryWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp as the provided MessagingReplyToStoryWebhookEntryMessagingTimestamp1
-func (t *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) FromMessagingReplyToStoryWebhookEntryMessagingTimestamp1(v MessagingReplyToStoryWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReplyToStoryWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp, using the provided MessagingReplyToStoryWebhookEntryMessagingTimestamp1
-func (t *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) MergeMessagingReplyToStoryWebhookEntryMessagingTimestamp1(v MessagingReplyToStoryWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReplyToStoryWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingReplyToStoryWebhookEntryTime0 returns the union data inside the MessagingReplyToStoryWebhook_Entry_Time as a MessagingReplyToStoryWebhookEntryTime0
-func (t MessagingReplyToStoryWebhook_Entry_Time) AsMessagingReplyToStoryWebhookEntryTime0() (MessagingReplyToStoryWebhookEntryTime0, error) {
-	var body MessagingReplyToStoryWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReplyToStoryWebhookEntryTime0 overwrites any union data inside the MessagingReplyToStoryWebhook_Entry_Time as the provided MessagingReplyToStoryWebhookEntryTime0
-func (t *MessagingReplyToStoryWebhook_Entry_Time) FromMessagingReplyToStoryWebhookEntryTime0(v MessagingReplyToStoryWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReplyToStoryWebhookEntryTime0 performs a merge with any union data inside the MessagingReplyToStoryWebhook_Entry_Time, using the provided MessagingReplyToStoryWebhookEntryTime0
-func (t *MessagingReplyToStoryWebhook_Entry_Time) MergeMessagingReplyToStoryWebhookEntryTime0(v MessagingReplyToStoryWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingReplyToStoryWebhookEntryTime1 returns the union data inside the MessagingReplyToStoryWebhook_Entry_Time as a MessagingReplyToStoryWebhookEntryTime1
-func (t MessagingReplyToStoryWebhook_Entry_Time) AsMessagingReplyToStoryWebhookEntryTime1() (MessagingReplyToStoryWebhookEntryTime1, error) {
-	var body MessagingReplyToStoryWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingReplyToStoryWebhookEntryTime1 overwrites any union data inside the MessagingReplyToStoryWebhook_Entry_Time as the provided MessagingReplyToStoryWebhookEntryTime1
-func (t *MessagingReplyToStoryWebhook_Entry_Time) FromMessagingReplyToStoryWebhookEntryTime1(v MessagingReplyToStoryWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingReplyToStoryWebhookEntryTime1 performs a merge with any union data inside the MessagingReplyToStoryWebhook_Entry_Time, using the provided MessagingReplyToStoryWebhookEntryTime1
-func (t *MessagingReplyToStoryWebhook_Entry_Time) MergeMessagingReplyToStoryWebhookEntryTime1(v MessagingReplyToStoryWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingReplyToStoryWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingReplyToStoryWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingSeenWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp as a MessagingSeenWebhookEntryMessagingTimestamp0
-func (t MessagingSeenWebhook_Entry_Messaging_Timestamp) AsMessagingSeenWebhookEntryMessagingTimestamp0() (MessagingSeenWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingSeenWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingSeenWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp as the provided MessagingSeenWebhookEntryMessagingTimestamp0
-func (t *MessagingSeenWebhook_Entry_Messaging_Timestamp) FromMessagingSeenWebhookEntryMessagingTimestamp0(v MessagingSeenWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingSeenWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp, using the provided MessagingSeenWebhookEntryMessagingTimestamp0
-func (t *MessagingSeenWebhook_Entry_Messaging_Timestamp) MergeMessagingSeenWebhookEntryMessagingTimestamp0(v MessagingSeenWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingSeenWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp as a MessagingSeenWebhookEntryMessagingTimestamp1
-func (t MessagingSeenWebhook_Entry_Messaging_Timestamp) AsMessagingSeenWebhookEntryMessagingTimestamp1() (MessagingSeenWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingSeenWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingSeenWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp as the provided MessagingSeenWebhookEntryMessagingTimestamp1
-func (t *MessagingSeenWebhook_Entry_Messaging_Timestamp) FromMessagingSeenWebhookEntryMessagingTimestamp1(v MessagingSeenWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingSeenWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingSeenWebhook_Entry_Messaging_Timestamp, using the provided MessagingSeenWebhookEntryMessagingTimestamp1
-func (t *MessagingSeenWebhook_Entry_Messaging_Timestamp) MergeMessagingSeenWebhookEntryMessagingTimestamp1(v MessagingSeenWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingSeenWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingSeenWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingSeenWebhookEntryTime0 returns the union data inside the MessagingSeenWebhook_Entry_Time as a MessagingSeenWebhookEntryTime0
-func (t MessagingSeenWebhook_Entry_Time) AsMessagingSeenWebhookEntryTime0() (MessagingSeenWebhookEntryTime0, error) {
-	var body MessagingSeenWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingSeenWebhookEntryTime0 overwrites any union data inside the MessagingSeenWebhook_Entry_Time as the provided MessagingSeenWebhookEntryTime0
-func (t *MessagingSeenWebhook_Entry_Time) FromMessagingSeenWebhookEntryTime0(v MessagingSeenWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingSeenWebhookEntryTime0 performs a merge with any union data inside the MessagingSeenWebhook_Entry_Time, using the provided MessagingSeenWebhookEntryTime0
-func (t *MessagingSeenWebhook_Entry_Time) MergeMessagingSeenWebhookEntryTime0(v MessagingSeenWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingSeenWebhookEntryTime1 returns the union data inside the MessagingSeenWebhook_Entry_Time as a MessagingSeenWebhookEntryTime1
-func (t MessagingSeenWebhook_Entry_Time) AsMessagingSeenWebhookEntryTime1() (MessagingSeenWebhookEntryTime1, error) {
-	var body MessagingSeenWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingSeenWebhookEntryTime1 overwrites any union data inside the MessagingSeenWebhook_Entry_Time as the provided MessagingSeenWebhookEntryTime1
-func (t *MessagingSeenWebhook_Entry_Time) FromMessagingSeenWebhookEntryTime1(v MessagingSeenWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingSeenWebhookEntryTime1 performs a merge with any union data inside the MessagingSeenWebhook_Entry_Time, using the provided MessagingSeenWebhookEntryTime1
-func (t *MessagingSeenWebhook_Entry_Time) MergeMessagingSeenWebhookEntryTime1(v MessagingSeenWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingSeenWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingSeenWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingWebhookEntryMessagingTimestamp0 returns the union data inside the MessagingWebhook_Entry_Messaging_Timestamp as a MessagingWebhookEntryMessagingTimestamp0
-func (t MessagingWebhook_Entry_Messaging_Timestamp) AsMessagingWebhookEntryMessagingTimestamp0() (MessagingWebhookEntryMessagingTimestamp0, error) {
-	var body MessagingWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingWebhookEntryMessagingTimestamp0 overwrites any union data inside the MessagingWebhook_Entry_Messaging_Timestamp as the provided MessagingWebhookEntryMessagingTimestamp0
-func (t *MessagingWebhook_Entry_Messaging_Timestamp) FromMessagingWebhookEntryMessagingTimestamp0(v MessagingWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the MessagingWebhook_Entry_Messaging_Timestamp, using the provided MessagingWebhookEntryMessagingTimestamp0
-func (t *MessagingWebhook_Entry_Messaging_Timestamp) MergeMessagingWebhookEntryMessagingTimestamp0(v MessagingWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingWebhookEntryMessagingTimestamp1 returns the union data inside the MessagingWebhook_Entry_Messaging_Timestamp as a MessagingWebhookEntryMessagingTimestamp1
-func (t MessagingWebhook_Entry_Messaging_Timestamp) AsMessagingWebhookEntryMessagingTimestamp1() (MessagingWebhookEntryMessagingTimestamp1, error) {
-	var body MessagingWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingWebhookEntryMessagingTimestamp1 overwrites any union data inside the MessagingWebhook_Entry_Messaging_Timestamp as the provided MessagingWebhookEntryMessagingTimestamp1
-func (t *MessagingWebhook_Entry_Messaging_Timestamp) FromMessagingWebhookEntryMessagingTimestamp1(v MessagingWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the MessagingWebhook_Entry_Messaging_Timestamp, using the provided MessagingWebhookEntryMessagingTimestamp1
-func (t *MessagingWebhook_Entry_Messaging_Timestamp) MergeMessagingWebhookEntryMessagingTimestamp1(v MessagingWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingWebhookEntryTime0 returns the union data inside the MessagingWebhook_Entry_Time as a MessagingWebhookEntryTime0
-func (t MessagingWebhook_Entry_Time) AsMessagingWebhookEntryTime0() (MessagingWebhookEntryTime0, error) {
-	var body MessagingWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingWebhookEntryTime0 overwrites any union data inside the MessagingWebhook_Entry_Time as the provided MessagingWebhookEntryTime0
-func (t *MessagingWebhook_Entry_Time) FromMessagingWebhookEntryTime0(v MessagingWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingWebhookEntryTime0 performs a merge with any union data inside the MessagingWebhook_Entry_Time, using the provided MessagingWebhookEntryTime0
-func (t *MessagingWebhook_Entry_Time) MergeMessagingWebhookEntryTime0(v MessagingWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMessagingWebhookEntryTime1 returns the union data inside the MessagingWebhook_Entry_Time as a MessagingWebhookEntryTime1
-func (t MessagingWebhook_Entry_Time) AsMessagingWebhookEntryTime1() (MessagingWebhookEntryTime1, error) {
-	var body MessagingWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMessagingWebhookEntryTime1 overwrites any union data inside the MessagingWebhook_Entry_Time as the provided MessagingWebhookEntryTime1
-func (t *MessagingWebhook_Entry_Time) FromMessagingWebhookEntryTime1(v MessagingWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMessagingWebhookEntryTime1 performs a merge with any union data inside the MessagingWebhook_Entry_Time, using the provided MessagingWebhookEntryTime1
-func (t *MessagingWebhook_Entry_Time) MergeMessagingWebhookEntryTime1(v MessagingWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MessagingWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsSelfCommentWebhookEntryTime0 returns the union data inside the SelfCommentWebhook_Entry_Time as a SelfCommentWebhookEntryTime0
-func (t SelfCommentWebhook_Entry_Time) AsSelfCommentWebhookEntryTime0() (SelfCommentWebhookEntryTime0, error) {
-	var body SelfCommentWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfCommentWebhookEntryTime0 overwrites any union data inside the SelfCommentWebhook_Entry_Time as the provided SelfCommentWebhookEntryTime0
-func (t *SelfCommentWebhook_Entry_Time) FromSelfCommentWebhookEntryTime0(v SelfCommentWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfCommentWebhookEntryTime0 performs a merge with any union data inside the SelfCommentWebhook_Entry_Time, using the provided SelfCommentWebhookEntryTime0
-func (t *SelfCommentWebhook_Entry_Time) MergeSelfCommentWebhookEntryTime0(v SelfCommentWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSelfCommentWebhookEntryTime1 returns the union data inside the SelfCommentWebhook_Entry_Time as a SelfCommentWebhookEntryTime1
-func (t SelfCommentWebhook_Entry_Time) AsSelfCommentWebhookEntryTime1() (SelfCommentWebhookEntryTime1, error) {
-	var body SelfCommentWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfCommentWebhookEntryTime1 overwrites any union data inside the SelfCommentWebhook_Entry_Time as the provided SelfCommentWebhookEntryTime1
-func (t *SelfCommentWebhook_Entry_Time) FromSelfCommentWebhookEntryTime1(v SelfCommentWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfCommentWebhookEntryTime1 performs a merge with any union data inside the SelfCommentWebhook_Entry_Time, using the provided SelfCommentWebhookEntryTime1
-func (t *SelfCommentWebhook_Entry_Time) MergeSelfCommentWebhookEntryTime1(v SelfCommentWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SelfCommentWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SelfCommentWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsSelfMessagingEchoWebhookEntryMessagingTimestamp0 returns the union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp as a SelfMessagingEchoWebhookEntryMessagingTimestamp0
-func (t SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) AsSelfMessagingEchoWebhookEntryMessagingTimestamp0() (SelfMessagingEchoWebhookEntryMessagingTimestamp0, error) {
-	var body SelfMessagingEchoWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfMessagingEchoWebhookEntryMessagingTimestamp0 overwrites any union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp as the provided SelfMessagingEchoWebhookEntryMessagingTimestamp0
-func (t *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) FromSelfMessagingEchoWebhookEntryMessagingTimestamp0(v SelfMessagingEchoWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfMessagingEchoWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp, using the provided SelfMessagingEchoWebhookEntryMessagingTimestamp0
-func (t *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) MergeSelfMessagingEchoWebhookEntryMessagingTimestamp0(v SelfMessagingEchoWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSelfMessagingEchoWebhookEntryMessagingTimestamp1 returns the union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp as a SelfMessagingEchoWebhookEntryMessagingTimestamp1
-func (t SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) AsSelfMessagingEchoWebhookEntryMessagingTimestamp1() (SelfMessagingEchoWebhookEntryMessagingTimestamp1, error) {
-	var body SelfMessagingEchoWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfMessagingEchoWebhookEntryMessagingTimestamp1 overwrites any union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp as the provided SelfMessagingEchoWebhookEntryMessagingTimestamp1
-func (t *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) FromSelfMessagingEchoWebhookEntryMessagingTimestamp1(v SelfMessagingEchoWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfMessagingEchoWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the SelfMessagingEchoWebhook_Entry_Messaging_Timestamp, using the provided SelfMessagingEchoWebhookEntryMessagingTimestamp1
-func (t *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) MergeSelfMessagingEchoWebhookEntryMessagingTimestamp1(v SelfMessagingEchoWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SelfMessagingEchoWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsSelfMessagingEchoWebhookEntryTime0 returns the union data inside the SelfMessagingEchoWebhook_Entry_Time as a SelfMessagingEchoWebhookEntryTime0
-func (t SelfMessagingEchoWebhook_Entry_Time) AsSelfMessagingEchoWebhookEntryTime0() (SelfMessagingEchoWebhookEntryTime0, error) {
-	var body SelfMessagingEchoWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfMessagingEchoWebhookEntryTime0 overwrites any union data inside the SelfMessagingEchoWebhook_Entry_Time as the provided SelfMessagingEchoWebhookEntryTime0
-func (t *SelfMessagingEchoWebhook_Entry_Time) FromSelfMessagingEchoWebhookEntryTime0(v SelfMessagingEchoWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfMessagingEchoWebhookEntryTime0 performs a merge with any union data inside the SelfMessagingEchoWebhook_Entry_Time, using the provided SelfMessagingEchoWebhookEntryTime0
-func (t *SelfMessagingEchoWebhook_Entry_Time) MergeSelfMessagingEchoWebhookEntryTime0(v SelfMessagingEchoWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSelfMessagingEchoWebhookEntryTime1 returns the union data inside the SelfMessagingEchoWebhook_Entry_Time as a SelfMessagingEchoWebhookEntryTime1
-func (t SelfMessagingEchoWebhook_Entry_Time) AsSelfMessagingEchoWebhookEntryTime1() (SelfMessagingEchoWebhookEntryTime1, error) {
-	var body SelfMessagingEchoWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfMessagingEchoWebhookEntryTime1 overwrites any union data inside the SelfMessagingEchoWebhook_Entry_Time as the provided SelfMessagingEchoWebhookEntryTime1
-func (t *SelfMessagingEchoWebhook_Entry_Time) FromSelfMessagingEchoWebhookEntryTime1(v SelfMessagingEchoWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfMessagingEchoWebhookEntryTime1 performs a merge with any union data inside the SelfMessagingEchoWebhook_Entry_Time, using the provided SelfMessagingEchoWebhookEntryTime1
-func (t *SelfMessagingEchoWebhook_Entry_Time) MergeSelfMessagingEchoWebhookEntryTime1(v SelfMessagingEchoWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SelfMessagingEchoWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SelfMessagingEchoWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsSelfPostbackWebhookEntryMessagingTimestamp0 returns the union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp as a SelfPostbackWebhookEntryMessagingTimestamp0
-func (t SelfPostbackWebhook_Entry_Messaging_Timestamp) AsSelfPostbackWebhookEntryMessagingTimestamp0() (SelfPostbackWebhookEntryMessagingTimestamp0, error) {
-	var body SelfPostbackWebhookEntryMessagingTimestamp0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfPostbackWebhookEntryMessagingTimestamp0 overwrites any union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp as the provided SelfPostbackWebhookEntryMessagingTimestamp0
-func (t *SelfPostbackWebhook_Entry_Messaging_Timestamp) FromSelfPostbackWebhookEntryMessagingTimestamp0(v SelfPostbackWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfPostbackWebhookEntryMessagingTimestamp0 performs a merge with any union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp, using the provided SelfPostbackWebhookEntryMessagingTimestamp0
-func (t *SelfPostbackWebhook_Entry_Messaging_Timestamp) MergeSelfPostbackWebhookEntryMessagingTimestamp0(v SelfPostbackWebhookEntryMessagingTimestamp0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSelfPostbackWebhookEntryMessagingTimestamp1 returns the union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp as a SelfPostbackWebhookEntryMessagingTimestamp1
-func (t SelfPostbackWebhook_Entry_Messaging_Timestamp) AsSelfPostbackWebhookEntryMessagingTimestamp1() (SelfPostbackWebhookEntryMessagingTimestamp1, error) {
-	var body SelfPostbackWebhookEntryMessagingTimestamp1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfPostbackWebhookEntryMessagingTimestamp1 overwrites any union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp as the provided SelfPostbackWebhookEntryMessagingTimestamp1
-func (t *SelfPostbackWebhook_Entry_Messaging_Timestamp) FromSelfPostbackWebhookEntryMessagingTimestamp1(v SelfPostbackWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfPostbackWebhookEntryMessagingTimestamp1 performs a merge with any union data inside the SelfPostbackWebhook_Entry_Messaging_Timestamp, using the provided SelfPostbackWebhookEntryMessagingTimestamp1
-func (t *SelfPostbackWebhook_Entry_Messaging_Timestamp) MergeSelfPostbackWebhookEntryMessagingTimestamp1(v SelfPostbackWebhookEntryMessagingTimestamp1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SelfPostbackWebhook_Entry_Messaging_Timestamp) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SelfPostbackWebhook_Entry_Messaging_Timestamp) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsSelfPostbackWebhookEntryTime0 returns the union data inside the SelfPostbackWebhook_Entry_Time as a SelfPostbackWebhookEntryTime0
-func (t SelfPostbackWebhook_Entry_Time) AsSelfPostbackWebhookEntryTime0() (SelfPostbackWebhookEntryTime0, error) {
-	var body SelfPostbackWebhookEntryTime0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfPostbackWebhookEntryTime0 overwrites any union data inside the SelfPostbackWebhook_Entry_Time as the provided SelfPostbackWebhookEntryTime0
-func (t *SelfPostbackWebhook_Entry_Time) FromSelfPostbackWebhookEntryTime0(v SelfPostbackWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfPostbackWebhookEntryTime0 performs a merge with any union data inside the SelfPostbackWebhook_Entry_Time, using the provided SelfPostbackWebhookEntryTime0
-func (t *SelfPostbackWebhook_Entry_Time) MergeSelfPostbackWebhookEntryTime0(v SelfPostbackWebhookEntryTime0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSelfPostbackWebhookEntryTime1 returns the union data inside the SelfPostbackWebhook_Entry_Time as a SelfPostbackWebhookEntryTime1
-func (t SelfPostbackWebhook_Entry_Time) AsSelfPostbackWebhookEntryTime1() (SelfPostbackWebhookEntryTime1, error) {
-	var body SelfPostbackWebhookEntryTime1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSelfPostbackWebhookEntryTime1 overwrites any union data inside the SelfPostbackWebhook_Entry_Time as the provided SelfPostbackWebhookEntryTime1
-func (t *SelfPostbackWebhook_Entry_Time) FromSelfPostbackWebhookEntryTime1(v SelfPostbackWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSelfPostbackWebhookEntryTime1 performs a merge with any union data inside the SelfPostbackWebhook_Entry_Time, using the provided SelfPostbackWebhookEntryTime1
-func (t *SelfPostbackWebhook_Entry_Time) MergeSelfPostbackWebhookEntryTime1(v SelfPostbackWebhookEntryTime1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SelfPostbackWebhook_Entry_Time) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SelfPostbackWebhook_Entry_Time) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -2144,6 +1084,58 @@ func (t *ReceiveInstagramWebhookJSONBody) MergeMessagingReferralWebhook(v Messag
 	return err
 }
 
+// AsFacebookLoginCommentWebhook returns the union data inside the ReceiveInstagramWebhookJSONBody as a FacebookLoginCommentWebhook
+func (t ReceiveInstagramWebhookJSONBody) AsFacebookLoginCommentWebhook() (FacebookLoginCommentWebhook, error) {
+	var body FacebookLoginCommentWebhook
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFacebookLoginCommentWebhook overwrites any union data inside the ReceiveInstagramWebhookJSONBody as the provided FacebookLoginCommentWebhook
+func (t *ReceiveInstagramWebhookJSONBody) FromFacebookLoginCommentWebhook(v FacebookLoginCommentWebhook) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFacebookLoginCommentWebhook performs a merge with any union data inside the ReceiveInstagramWebhookJSONBody, using the provided FacebookLoginCommentWebhook
+func (t *ReceiveInstagramWebhookJSONBody) MergeFacebookLoginCommentWebhook(v FacebookLoginCommentWebhook) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsFacebookLoginMentionWebhook returns the union data inside the ReceiveInstagramWebhookJSONBody as a FacebookLoginMentionWebhook
+func (t ReceiveInstagramWebhookJSONBody) AsFacebookLoginMentionWebhook() (FacebookLoginMentionWebhook, error) {
+	var body FacebookLoginMentionWebhook
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFacebookLoginMentionWebhook overwrites any union data inside the ReceiveInstagramWebhookJSONBody as the provided FacebookLoginMentionWebhook
+func (t *ReceiveInstagramWebhookJSONBody) FromFacebookLoginMentionWebhook(v FacebookLoginMentionWebhook) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFacebookLoginMentionWebhook performs a merge with any union data inside the ReceiveInstagramWebhookJSONBody, using the provided FacebookLoginMentionWebhook
+func (t *ReceiveInstagramWebhookJSONBody) MergeFacebookLoginMentionWebhook(v FacebookLoginMentionWebhook) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 func (t ReceiveInstagramWebhookJSONBody) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
@@ -2156,9 +1148,12 @@ func (t *ReceiveInstagramWebhookJSONBody) UnmarshalJSON(b []byte) error {
 
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
+	// VerifyInstagramWebhook Verify callback URL ownership
+	// (GET /webhooks/instagram)
+	VerifyInstagramWebhook(w http.ResponseWriter, r *http.Request, params VerifyInstagramWebhookParams)
 
 	// (POST /webhooks/instagram)
-	ReceiveInstagramWebhook(w http.ResponseWriter, r *http.Request)
+	ReceiveInstagramWebhook(w http.ResponseWriter, r *http.Request, params ReceiveInstagramWebhookParams)
 }
 
 // ServerInterfaceWrapper converts contexts to parameters.
@@ -2170,11 +1165,101 @@ type ServerInterfaceWrapper struct {
 
 type MiddlewareFunc func(http.Handler) http.Handler
 
+// VerifyInstagramWebhook operation middleware
+func (siw *ServerInterfaceWrapper) VerifyInstagramWebhook(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params VerifyInstagramWebhookParams
+
+	// ------------- Required query parameter "hub.mode" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "hub.mode", r.URL.Query(), &params.HubMode, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "hub.mode"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "hub.mode", Err: err})
+		}
+		return
+	}
+
+	// ------------- Required query parameter "hub.verify_token" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "hub.verify_token", r.URL.Query(), &params.HubVerifyToken, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "hub.verify_token"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "hub.verify_token", Err: err})
+		}
+		return
+	}
+
+	// ------------- Required query parameter "hub.challenge" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "hub.challenge", r.URL.Query(), &params.HubChallenge, runtime.BindQueryParameterOptions{Type: "integer", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "hub.challenge"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "hub.challenge", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.VerifyInstagramWebhook(w, r, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
 // ReceiveInstagramWebhook operation middleware
 func (siw *ServerInterfaceWrapper) ReceiveInstagramWebhook(w http.ResponseWriter, r *http.Request) {
 
+	var err error
+	_ = err
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReceiveInstagramWebhookParams
+
+	headers := r.Header
+
+	// ------------- Required header parameter "X-Hub-Signature-256" -------------
+	if valueList, found := headers[http.CanonicalHeaderKey("X-Hub-Signature-256")]; found {
+		var XHubSignature256 string
+		n := len(valueList)
+		if n != 1 {
+			siw.ErrorHandlerFunc(w, r, &TooManyValuesForParamError{ParamName: "X-Hub-Signature-256", Count: n})
+			return
+		}
+
+		err = runtime.BindStyledParameterWithOptions("simple", "X-Hub-Signature-256", valueList[0], &XHubSignature256, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: true, Type: "string", Format: ""})
+		if err != nil {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "X-Hub-Signature-256", Err: err})
+			return
+		}
+
+		params.XHubSignature256 = XHubSignature256
+
+	} else {
+		err := fmt.Errorf("Header parameter X-Hub-Signature-256 is required, but not found")
+		siw.ErrorHandlerFunc(w, r, &RequiredHeaderError{ParamName: "X-Hub-Signature-256", Err: err})
+		return
+	}
+
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.ReceiveInstagramWebhook(w, r)
+		siw.Handler.ReceiveInstagramWebhook(w, r, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2304,6 +1389,7 @@ func HandlerWithOptions(si ServerInterface, options StdHTTPServerOptions) http.H
 		ErrorHandlerFunc:   options.ErrorHandlerFunc,
 	}
 
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/webhooks/instagram", wrapper.VerifyInstagramWebhook)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/webhooks/instagram", wrapper.ReceiveInstagramWebhook)
 
 	return m

@@ -1,0 +1,199 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Instagram resumable upload API",
+    "version": "v24.0",
+    "description": "Documentation-based native contracts from the official Instagram Platform and Instagram Messaging references. Generated interfaces are not simulator implementations. Current shared documentation is applied to the selected supported Graph release; release-specific SDK evidence and documented contradictions are recorded. No live verification claim."
+  },
+  "servers": [
+    {
+      "url": "https://rupload.facebook.com"
+    }
+  ],
+  "x-contract-only": true,
+  "x-contract-kind": "upload",
+  "x-version-evidence": {
+    "latest-release-verified": true,
+    "latest-release": "v26.0",
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "reference-scope": "Current shared documentation; historical behavior and undocumented account-dependent behavior not live verified."
+  },
+  "security": [],
+  "paths": {
+    "/ig-api-upload/v24.0/{containerID}": {
+      "post": {
+        "operationId": "UploadInstagramVideo",
+        "x-source-evidence": [
+          "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadSuccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Upload failure; guide does not specify HTTP status mapping",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadFailure"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "containerID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "file_size",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "file_url",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "description": "Use returned uri. Local source requires raw binary body, offset and file_size headers. Hosted source requires file_url header instead. Same token as initialization. Resume local upload with offset=video_status.uploading_phase.bytes_transferred. The guide does not specify a required Content-Type; octet-stream models raw bytes.",
+        "x-header-body-variants": [
+          {
+            "requiredHeaders": [
+              "offset",
+              "file_size"
+            ],
+            "body": "raw bytes"
+          },
+          {
+            "requiredHeaders": [
+              "file_url"
+            ],
+            "body": "none"
+          }
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "security": [
+          {
+            "UploadOAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      },
+      "UploadOAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Literal OAuth prefix followed by the Facebook Login access token: OAuth <token>. This is not Bearer authentication."
+      }
+    },
+    "schemas": {
+      "UploadFailure": {
+        "type": "object",
+        "properties": {
+          "debug_info": {
+            "type": "object",
+            "properties": {
+              "retriable": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string",
+                "description": "May itself contain JSON-serialized error data."
+              }
+            }
+          }
+        }
+      },
+      "UploadSuccess": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "success",
+          "message"
+        ]
+      }
+    }
+  }
+}

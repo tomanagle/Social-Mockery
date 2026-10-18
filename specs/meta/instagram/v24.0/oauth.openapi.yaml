@@ -1,0 +1,1963 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Instagram OAuth and token management API",
+    "version": "v24.0",
+    "description": "Documentation-based native contracts from the official Instagram Platform and Instagram Messaging references. Generated interfaces are not simulator implementations. Current shared documentation is applied to the selected supported Graph release; release-specific SDK evidence and documented contradictions are recorded. No live verification claim."
+  },
+  "servers": [
+    {
+      "url": "https://graph.instagram.com"
+    }
+  ],
+  "x-contract-only": true,
+  "x-contract-kind": "oauth",
+  "x-version-evidence": {
+    "latest-release-verified": true,
+    "latest-release": "v26.0",
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "reference-scope": "Current shared documentation; historical behavior and undocumented account-dependent behavior not live verified."
+  },
+  "security": [],
+  "paths": {
+    "/oauth/authorize": {
+      "get": {
+        "operationId": "authorizeInstagramBusinessLogin",
+        "summary": "Open Instagram business authorization window",
+        "description": "Browser authorization flow, not a JSON token response. Authorization code is single-use and valid one hour. Remove the #_ URI fragment before code exchange.",
+        "servers": [
+          {
+            "url": "https://www.instagram.com"
+          },
+          {
+            "url": "https://api.instagram.com"
+          }
+        ],
+        "x-login-products": [
+          "instagram-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Instagram App ID"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Must exactly match an allowed redirect URI."
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code"
+              ]
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated or URL-encoded space-separated permission names."
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enable_fb_login",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "force_reauth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorization window rendered for the user",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Redirect URI includes code and optional state, or error/error_reason/error_description when denied.",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-callback-query-schemas": [
+          {
+            "$ref": "#/components/schemas/OAuthRedirectSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/OAuthRedirectDenied"
+          }
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+          "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/oauth/access_token": {
+      "post": {
+        "operationId": "exchangeInstagramAuthorizationCode",
+        "summary": "Exchange Instagram authorization code",
+        "description": "Short-lived token valid one hour. Client ID/secret are the Instagram app credentials. Code is single-use and redirect URI must match the authorization request.",
+        "servers": [
+          {
+            "url": "https://api.instagram.com"
+          }
+        ],
+        "x-login-products": [
+          "instagram-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstagramCodeExchangeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed or already-used/unmatched code; official example code 400, error_type OAuthException.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstagramOAuthError"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "grant_type": {
+                    "type": "string",
+                    "enum": [
+                      "authorization_code"
+                    ]
+                  },
+                  "redirect_uri": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "client_id",
+                  "client_secret",
+                  "grant_type",
+                  "redirect_uri",
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/oauth/access_token": {
+      "get": {
+        "operationId": "exchangeFacebookAccessToken",
+        "summary": "Exchange Facebook code or token",
+        "description": "Code exchange requires client_id/client_secret/redirect_uri/code. Long-lived exchange requires client_id/client_secret/grant_type=fb_exchange_token/fb_exchange_token. App-token grant requires client_id/client_secret/grant_type=client_credentials. Client-code redemption requires client_id/redirect_uri/code and optionally machine_id. Server-side calls only when client_secret is present.",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "grant_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "fb_exchange_token",
+                "client_credentials"
+              ]
+            }
+          },
+          {
+            "name": "fb_exchange_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "machine_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacebookTokenResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-request-variants": [
+          {
+            "name": "authorization-code",
+            "required": [
+              "client_id",
+              "client_secret",
+              "redirect_uri",
+              "code"
+            ]
+          },
+          {
+            "name": "long-lived-user-token",
+            "required": [
+              "client_id",
+              "client_secret",
+              "grant_type",
+              "fb_exchange_token"
+            ],
+            "grant_type": "fb_exchange_token"
+          },
+          {
+            "name": "app-token",
+            "required": [
+              "client_id",
+              "client_secret",
+              "grant_type"
+            ],
+            "grant_type": "client_credentials"
+          },
+          {
+            "name": "client-code-redemption",
+            "required": [
+              "client_id",
+              "redirect_uri",
+              "code"
+            ],
+            "optional": [
+              "machine_id"
+            ]
+          }
+        ],
+        "x-error-schema-note": "Guides promise explanatory errors but do not define a full endpoint-specific error payload.",
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+          "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+          "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/access_token": {
+      "get": {
+        "operationId": "exchangeInstagramLongLivedToken",
+        "summary": "Exchange for long-lived Instagram token",
+        "description": "Server-side only; requires valid unexpired short-lived token.",
+        "servers": [
+          {
+            "url": "https://graph.instagram.com"
+          }
+        ],
+        "x-login-products": [
+          "instagram-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "grant_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ig_exchange_token"
+              ]
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstagramLongLivedToken"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-required-permissions": [
+          "instagram_business_basic"
+        ],
+        "x-error-schema-note": "The endpoint reference provides no error-body contract; do not invent an endpoint-specific error response.",
+        "x-sources": [
+          "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/refresh_access_token": {
+      "get": {
+        "operationId": "refreshInstagramLongLivedToken",
+        "summary": "Refresh long-lived Instagram token",
+        "description": "Existing long-lived token must be at least 24 hours old and unexpired; refresh yields 60-day validity. Expired tokens cannot be refreshed.",
+        "servers": [
+          {
+            "url": "https://graph.instagram.com"
+          }
+        ],
+        "x-login-products": [
+          "instagram-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "grant_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ig_refresh_token"
+              ]
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstagramLongLivedToken"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-required-permissions": [
+          "instagram_business_basic"
+        ],
+        "x-error-schema-note": "The endpoint reference provides no error-body contract; do not invent an endpoint-specific error response.",
+        "x-sources": [
+          "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/dialog/oauth": {
+      "get": {
+        "operationId": "authorizeFacebookLogin",
+        "summary": "Open Facebook authorization dialog",
+        "description": "Browser redirect flow. state must be checked on callback. auth_type=rerequest re-prompts declined permissions.",
+        "servers": [
+          {
+            "url": "https://www.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "code"
+            },
+            "description": "code, token, code token, granted_scopes or documented combinations."
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "auth_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "rerequest"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login dialog",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Redirect URI receives authorization response or cancellation parameters.",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/oauth/client_code": {
+      "get": {
+        "operationId": "createFacebookClientCode",
+        "summary": "Create client code from long-lived user token",
+        "description": "Long-lived token remains server-side; transmit returned code to client securely for redemption.",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "code"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/debug_token": {
+      "get": {
+        "operationId": "debugFacebookAccessToken",
+        "summary": "Inspect Facebook access token",
+        "description": "Metadata fields verified against the v26.0 Graph API Debug Token reference; app access token or developer user token for the associated app required.",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/reference/debug_token/",
+            "kind": "official-meta-reference-v26.0",
+            "status": "verified-html",
+            "retrieved": "2026-10-18"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "input_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "App token or access token of a developer of the app."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacebookDebugTokenResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+          "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/{objectID}/permissions": {
+      "get": {
+        "operationId": "getFacebookPermissionsById",
+        "summary": "Read granted and declined Facebook permissions",
+        "description": "",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/reference/user/permissions/",
+            "kind": "official-meta-reference-v26.0",
+            "status": "verified-html",
+            "retrieved": "2026-10-18"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "User token or app token for current app."
+          },
+          {
+            "name": "permission",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "granted",
+                "declined",
+                "expired"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacebookPermissionsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-documented-error-codes": [
+          200,
+          100,
+          190,
+          368,
+          459,
+          104
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      },
+      "delete": {
+        "operationId": "revokeFacebookAuthorizationById",
+        "summary": "Revoke Facebook app authorization",
+        "description": "Successful deauthorization invalidates user access tokens; user must log in and grant access again.",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/reference/user/permissions/",
+            "kind": "official-meta-reference-v26.0",
+            "status": "verified-html",
+            "retrieved": "2026-10-18"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "User token or app token for current app."
+          },
+          {
+            "name": "permission",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Permission to dissociate, documented by reference; omit to revoke all authorization according to guide."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-conflicting-guide-response": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "x-documented-error-codes": [
+          102,
+          190,
+          200,
+          613,
+          100,
+          240
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/me/permissions": {
+      "get": {
+        "operationId": "getFacebookPermissionsSelf",
+        "summary": "Read granted and declined Facebook permissions",
+        "description": "",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/reference/user/permissions/",
+            "kind": "official-meta-reference-v26.0",
+            "status": "verified-html",
+            "retrieved": "2026-10-18"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "User token or app token for current app."
+          },
+          {
+            "name": "permission",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "granted",
+                "declined",
+                "expired"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacebookPermissionsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-documented-error-codes": [
+          200,
+          100,
+          190,
+          368,
+          459,
+          104
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      },
+      "delete": {
+        "operationId": "revokeFacebookAuthorizationSelf",
+        "summary": "Revoke Facebook app authorization",
+        "description": "Successful deauthorization invalidates user access tokens; user must log in and grant access again.",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/reference/user/permissions/",
+            "kind": "official-meta-reference-v26.0",
+            "status": "verified-html",
+            "retrieved": "2026-10-18"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "User token or app token for current app."
+          },
+          {
+            "name": "permission",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Permission to dissociate, documented by reference; omit to revoke all authorization according to guide."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-conflicting-guide-response": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "x-documented-error-codes": [
+          102,
+          190,
+          200,
+          613,
+          100,
+          240
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    },
+    "/v24.0/{objectID}/permissions/{permission_name}": {
+      "delete": {
+        "operationId": "revokeFacebookPermission",
+        "summary": "Revoke a specific Facebook permission",
+        "description": "",
+        "servers": [
+          {
+            "url": "https://graph.facebook.com"
+          }
+        ],
+        "x-login-products": [
+          "facebook-login"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+            "kind": "official-meta-documentation",
+            "retrieved": "2026-10-18",
+            "status": "verified-public-markdown"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "permission_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Native Graph error. Application code/subcode and HTTP status are distinct; no blanket retry classification.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphAPIError"
+                }
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "FacebookDebugTokenResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "app_id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "application": {
+                "type": "string"
+              },
+              "expires_at": {
+                "type": "integer"
+              },
+              "is_valid": {
+                "type": "boolean"
+              },
+              "issued_at": {
+                "type": "integer"
+              },
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "sso": {
+                    "type": "string"
+                  },
+                  "auth_type": {
+                    "type": "string"
+                  },
+                  "auth_nonce": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "scopes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user_id": {
+                "type": "string"
+              },
+              "data_access_expires_at": {
+                "type": "integer"
+              },
+              "profile_id": {
+                "type": "string"
+              },
+              "error": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "code": {
+                    "type": "integer"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "subcode": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "granular_scopes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "scope": {
+                      "type": "string"
+                    },
+                    "target_ids": {
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data"
+        ]
+      },
+      "FacebookPermission": {
+        "type": "object",
+        "properties": {
+          "permission": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "granted",
+              "declined",
+              "expired"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "permission",
+          "status"
+        ]
+      },
+      "FacebookPermissionsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FacebookPermission"
+            }
+          },
+          "paging": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "cursors": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "before": {
+                    "type": "string"
+                  },
+                  "after": {
+                    "type": "string"
+                  }
+                }
+              },
+              "previous": {
+                "type": "string"
+              },
+              "next": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data"
+        ]
+      },
+      "FacebookTokenResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer"
+          },
+          "machine_id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "access_token"
+        ]
+      },
+      "GraphAPIError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "error_user_title": {
+                "type": "string"
+              },
+              "error_user_msg": {
+                "type": "string"
+              },
+              "fbtrace_id": {
+                "type": "string"
+              },
+              "code": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "error_subcode": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_transient": {
+                "type": "boolean"
+              },
+              "error_data": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Provider-defined structured details; SDK also decodes a JSON string. Structure depends on error type."
+              }
+            }
+          }
+        },
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/guides/error-handling"
+        ]
+      },
+      "InstagramCodeExchangeResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "string"
+                },
+                "permissions": {
+                  "type": "string",
+                  "description": "Comma-separated granted permission names; this is a string in the official example."
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "access_token",
+                "user_id",
+                "permissions"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "data"
+        ]
+      },
+      "InstagramLongLivedToken": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "Opaque token. Documentation says numeric string but its own example is alphanumeric; do not enforce digits."
+          },
+          "token_type": {
+            "type": "string",
+            "enum": [
+              "bearer"
+            ]
+          },
+          "expires_in": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "access_token",
+          "token_type",
+          "expires_in"
+        ]
+      },
+      "InstagramOAuthError": {
+        "type": "object",
+        "properties": {
+          "error_type": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "error_message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "error_type",
+          "code",
+          "error_message"
+        ]
+      },
+      "OAuthRedirectDenied": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "enum": [
+              "access_denied"
+            ]
+          },
+          "error_reason": {
+            "type": "string",
+            "enum": [
+              "user_denied"
+            ]
+          },
+          "error_description": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "error",
+          "error_reason",
+          "error_description"
+        ]
+      },
+      "OAuthRedirectSuccess": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "code"
+        ]
+      }
+    }
+  }
+}

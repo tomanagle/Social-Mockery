@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Instagram webhook callback template research contract",
+    "title": "Instagram webhook callback API",
     "version": "v25.0",
-    "description": "Contract-only, documentation-based inventory. No live verification. SDK version evidence and version-neutral collection evidence are distinguished per operation. This document does not imply simulator implementation or complete upstream compatibility."
+    "description": "Documentation-based native contracts from the official Instagram Platform and Instagram Messaging references. Generated interfaces are not simulator implementations. Current shared documentation is applied to the selected supported Graph release; release-specific SDK evidence and documented contradictions are recorded. No live verification claim."
   },
   "servers": [
     {
@@ -13,10 +13,13 @@
   "x-contract-only": true,
   "x-contract-kind": "webhook",
   "x-version-evidence": {
-    "sdk-revision": "542e10e31c40f7925f9ac03c000922a2fd0a2365",
-    "collection-release-specific": false,
-    "latest-release-verified": false
+    "latest-release-verified": true,
+    "latest-release": "v26.0",
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "reference-scope": "Current shared documentation; historical behavior and undocumented account-dependent behavior not live verified."
   },
+  "security": [],
   "paths": {
     "/webhooks/instagram": {
       "post": {
@@ -58,6 +61,12 @@
                   },
                   {
                     "$ref": "#/components/schemas/MessagingReferralWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FacebookLoginCommentWebhook"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FacebookLoginMentionWebhook"
                   }
                 ]
               }
@@ -67,54 +76,202 @@
         "responses": {
           "200": {
             "description": "Event acknowledged"
-          },
-          "default": {
-            "description": "Error response/status and retry policy are not exhaustively evidenced. Do not infer retryability from this permissive schema.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              }
-            }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
           }
         ],
+        "parameters": [
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^sha256=[0-9a-fA-F]{64}$"
+            },
+            "description": "HMAC-SHA256 over the unchanged raw request bytes using the configured app secret. Do not parse/re-serialize before verification; preserve escaped Unicode. Reject missing, malformed or mismatching signatures; use constant-time comparison."
+          }
+        ],
+        "x-signature-verification": {
+          "algorithm": "HMAC-SHA256",
+          "key": "App Secret (not hub.verify_token)",
+          "input": "raw HTTP request-body bytes",
+          "header": "X-Hub-Signature-256",
+          "prefix": "sha256=",
+          "comparison": "constant-time comparison recommended receiver hardening"
+        },
+        "x-delivery-policies": {
+          "graphChangeEvents": {
+            "ackStatus": 200,
+            "retry": "Immediate retry followed by decreasing frequency for up to 36 hours; then drop. Deduplicate.",
+            "maxBatchUpdates": 1000,
+            "batchingGuaranteed": false,
+            "source": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/"
+          },
+          "messagingEvents": {
+            "ackStatus": 200,
+            "ackDeadlineSeconds": 5,
+            "retry": "Immediate few retries; alert after 15 minutes; continued failure for 1 hour disables subscription and requires re-subscription after repair.",
+            "deduplicationRequired": true,
+            "orderedDeliveryGuaranteed": false,
+            "orderingField": "entry[].messaging[].timestamp",
+            "source": "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+          }
+        },
         "operationId": "receiveInstagramWebhook",
-        "description": "Developer-selected callback path, not a Meta Graph endpoint. Event schemas are example-based and intentionally allow additional fields. Current signature algorithm, delivery retry schedule and all event variants remain unverified.",
-        "x-version-evidence": "Version-neutral collection or source; per-release compatibility unresolved",
+        "x-sources": [
+          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+          "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+          "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+          "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
-            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+            "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
           ],
-          "completeness": "partial; requiredness and release-specific semantics unresolved"
+          "classification": "official-documentation",
+          "live-verified": false
         },
         "x-response-evidence": {
           "sources": [
-            "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+            "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
           ],
-          "completeness": "partial; SDK target types or collection examples, not exhaustive server contracts"
-        },
-        "x-behavior-provenance": "documentation-based",
-        "x-sources": [
-          "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+          "classification": "official-documentation",
+          "live-verified": false
+        }
+      },
+      "get": {
+        "operationId": "verifyInstagramWebhook",
+        "summary": "Verify callback URL ownership",
+        "parameters": [
+          {
+            "name": "hub.mode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "subscribe"
+              ]
+            }
+          },
+          {
+            "name": "hub.verify_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hub.challenge",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Echo the exact incoming challenge value in the response body."
+            }
+          }
         ],
-        "x-simulator-implemented": false
+        "responses": {
+          "200": {
+            "description": "Matching mode and verification token; return the exact hub.challenge.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Verification token or mode does not match."
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+          "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-request-evidence": {
+          "sources": [
+            "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        },
+        "x-response-evidence": {
+          "sources": [
+            "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+            "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+          ],
+          "classification": "official-documentation",
+          "live-verified": false
+        }
       }
     }
   },
   "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
     "schemas": {
-      "SelfMessagingEchoWebhook": {
+      "CommentWebhook": {
         "type": "object",
         "properties": {
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
           },
           "entry": {
             "type": "array",
@@ -125,15 +282,428 @@
                   "type": "string"
                 },
                 "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "field": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
                       "type": "string"
+                    },
+                    "from": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "media_product_type": {
+                          "type": "string"
+                        }
+                      }
                     }
-                  ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Comment webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "FacebookLoginCommentWebhook": {
+        "type": "object",
+        "required": [
+          "object",
+          "entry"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string",
+                        "enum": [
+                          "comments",
+                          "live_comments"
+                        ]
+                      },
+                      "value": {
+                        "type": "object",
+                        "properties": {
+                          "from": {
+                            "type": "object",
+                            "properties": {
+                              "username": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "media": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "media_product_type": {
+                                "type": "string"
+                              },
+                              "ad_id": {
+                                "type": "string"
+                              },
+                              "ad_title": {
+                                "type": "string"
+                              },
+                              "original_media_id": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "comment_id": {
+                            "type": "string"
+                          },
+                          "parent_id": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "field",
+                      "value"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "changes"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ]
+      },
+      "FacebookLoginMentionWebhook": {
+        "type": "object",
+        "required": [
+          "object",
+          "entry"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string",
+                        "enum": [
+                          "mentions"
+                        ]
+                      },
+                      "value": {
+                        "type": "object",
+                        "properties": {
+                          "media_id": {
+                            "type": "string"
+                          },
+                          "comment_id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "media_id"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "field",
+                      "value"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "changes"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ]
+      },
+      "InstagramWebhookAttachment": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Current documented values include media, audio, file, image, video, ig_post, story_mention, ig_reel, reel, story, ig_story, ephemeral. Legacy share for Instagram posts was removed February 1, 2026; retained only to decode historical events."
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "ig_post_media_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "x-source-evidence": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/new.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ]
+      },
+      "InstagramWebhookMessage": {
+        "type": "object",
+        "properties": {
+          "mid": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InstagramWebhookAttachment"
+            }
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "is_echo": {
+            "type": "boolean"
+          },
+          "is_self": {
+            "type": "boolean"
+          },
+          "is_unsupported": {
+            "type": "boolean"
+          },
+          "quick_reply": {
+            "type": "object",
+            "properties": {
+              "payload": {
+                "type": "string"
+              }
+            }
+          },
+          "referral": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string"
+              },
+              "ad_id": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "product": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "ads_context_data": {
+                "type": "object",
+                "properties": {
+                  "ad_title": {
+                    "type": "string"
+                  },
+                  "photo_url": {
+                    "type": "string"
+                  },
+                  "video_url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "reply_to": {
+            "type": "object",
+            "properties": {
+              "mid": {
+                "type": "string"
+              },
+              "story": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "link_sticker_url": {
+                    "type": "string",
+                    "description": "URL of link sticker in story being replied to; added December 12 2025.",
+                    "x-source-evidence": [
+                      {
+                        "url": "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "mid"
+        ],
+        "x-source-evidence": [
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/webhooks.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ]
+      },
+      "MessageEditWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
                 },
                 "messaging": {
                   "type": "array",
@@ -146,7 +716,10 @@
                           "id": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "recipient": {
                         "type": "object",
@@ -154,20 +727,17 @@
                           "id": {
                             "type": "string"
                           }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
+                        },
+                        "required": [
+                          "id"
                         ]
                       },
-                      "message": {
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "message_edit": {
                         "type": "object",
                         "properties": {
                           "mid": {
@@ -176,33 +746,64 @@
                           "text": {
                             "type": "string"
                           },
-                          "is_echo": {
-                            "type": "boolean"
-                          },
-                          "is_self": {
-                            "type": "boolean"
+                          "num_edit": {
+                            "description": "Edit count. Official prose describes a number but example quotes its placeholder; accepted integer|string preserves documented ambiguity.",
+                            "anyOf": [
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
                           }
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
             }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self messaging echo webhook"
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Message edit webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
           }
-        ]
+        ],
+        "required": [
+          "object",
+          "entry"
+        ],
+        "description": "Instagram Platform changelog September 10 2025 explicitly supports message_edit for both Instagram Login and Facebook Login. General Messenger table conflicts; product-specific changelog governs this contract."
       },
-      "SelfPostbackWebhook": {
+      "MessagingPostbacksWebhook": {
         "type": "object",
         "properties": {
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
           },
           "entry": {
             "type": "array",
@@ -213,15 +814,9 @@
                   "type": "string"
                 },
                 "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
                 },
                 "messaging": {
                   "type": "array",
@@ -234,7 +829,10 @@
                           "id": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "recipient": {
                         "type": "object",
@@ -242,55 +840,71 @@
                           "id": {
                             "type": "string"
                           }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
+                        },
+                        "required": [
+                          "id"
                         ]
                       },
-                      "is_self": {
-                        "type": "boolean"
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
                       },
                       "postback": {
                         "type": "object",
                         "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
                           "title": {
                             "type": "string"
                           },
                           "payload": {
                             "type": "string"
-                          },
-                          "mid": {
-                            "type": "string"
                           }
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
             }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self postback webhook"
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging postbacks webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
           }
+        ],
+        "required": [
+          "object",
+          "entry"
         ]
       },
-      "SelfCommentWebhook": {
+      "MessagingReactionsWebhook": {
         "type": "object",
         "properties": {
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
           },
           "entry": {
             "type": "array",
@@ -301,15 +915,497 @@
                   "type": "string"
                 },
                 "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "reaction": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string",
+                            "enum": [
+                              "react",
+                              "unreact"
+                            ]
+                          },
+                          "reaction": {
+                            "type": "string"
+                          },
+                          "emoji": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "mid",
+                          "action"
+                        ]
+                      }
                     },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reactions webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "MessagingReferralWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "referral": {
+                        "type": "object",
+                        "properties": {
+                          "ref": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging referral webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "MessagingReplyToStoryWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "message": {
+                        "$ref": "#/components/schemas/InstagramWebhookMessage"
+                      }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reply to story webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "MessagingSeenWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "read": {
+                        "type": "object",
+                        "properties": {
+                          "mid": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging seen webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "MessagingWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
+                },
+                "messaging": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sender": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "recipient": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "timestamp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "message": {
+                        "$ref": "#/components/schemas/InstagramWebhookMessage"
+                      }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
+            }
+          }
+        },
+        "x-source-evidence": [
+          {
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
+          }
+        ],
+        "required": [
+          "object",
+          "entry"
+        ]
+      },
+      "SelfCommentWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
                 },
                 "changes": {
                   "type": "array",
@@ -358,91 +1454,38 @@
                     }
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "time"
+              ]
             }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
             "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self comment webhook"
-          }
-        ]
-      },
-      "CommentWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
           },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "field": {
-                  "type": "string"
-                },
-                "value": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "from": {
-                      "type": "object",
-                      "properties": {
-                        "username": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "text": {
-                      "type": "string"
-                    },
-                    "media": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "media_product_type": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Comment webhook"
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
           }
+        ],
+        "required": [
+          "object",
+          "entry"
         ]
       },
-      "MessagingWebhook": {
+      "SelfMessagingEchoWebhook": {
         "type": "object",
         "properties": {
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
           },
           "entry": {
             "type": "array",
@@ -453,15 +1496,9 @@
                   "type": "string"
                 },
                 "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
                 },
                 "messaging": {
                   "type": "array",
@@ -474,7 +1511,10 @@
                           "id": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "recipient": {
                         "type": "object",
@@ -482,49 +1522,60 @@
                           "id": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ]
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
                       },
                       "message": {
-                        "type": "object",
-                        "properties": {
-                          "mid": {
-                            "type": "string"
-                          },
-                          "text": {
-                            "type": "string"
-                          }
-                        }
+                        "$ref": "#/components/schemas/InstagramWebhookMessage"
                       }
-                    }
+                    },
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
             }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging webhook"
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self messaging echo webhook"
+          },
+          {
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
           }
+        ],
+        "required": [
+          "object",
+          "entry"
         ]
       },
-      "MessagingReactionsWebhook": {
+      "SelfPostbackWebhook": {
         "type": "object",
         "properties": {
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "instagram"
+            ]
           },
           "entry": {
             "type": "array",
@@ -535,15 +1586,9 @@
                   "type": "string"
                 },
                 "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Notification send time. Messaging examples use Unix milliseconds; Graph change examples may use Unix seconds."
                 },
                 "messaging": {
                   "type": "array",
@@ -556,7 +1601,10 @@
                           "id": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "required": [
+                          "id"
+                        ]
                       },
                       "recipient": {
                         "type": "object",
@@ -564,502 +1612,72 @@
                           "id": {
                             "type": "string"
                           }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
+                        },
+                        "required": [
+                          "id"
                         ]
                       },
-                      "reaction": {
-                        "type": "object",
-                        "properties": {
-                          "mid": {
-                            "type": "string"
-                          },
-                          "action": {
-                            "type": "string"
-                          },
-                          "reaction": {
-                            "type": "string"
-                          },
-                          "emoji": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
-          {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reactions webhook"
-          }
-        ]
-      },
-      "MessagingPostbacksWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
-          },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "messaging": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sender": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "recipient": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
                       "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ]
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Event time in Unix milliseconds, as shown by numeric messaging examples."
+                      },
+                      "is_self": {
+                        "type": "boolean"
                       },
                       "postback": {
                         "type": "object",
                         "properties": {
-                          "mid": {
-                            "type": "string"
-                          },
                           "title": {
                             "type": "string"
                           },
                           "payload": {
                             "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
-          {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging postbacks webhook"
-          }
-        ]
-      },
-      "MessagingSeenWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
-          },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "messaging": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sender": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "recipient": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
                           },
-                          {
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "read": {
-                        "type": "object",
-                        "properties": {
                           "mid": {
                             "type": "string"
                           }
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
-          {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging seen webhook"
-          }
-        ]
-      },
-      "MessageEditWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
-          },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
                     },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "messaging": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sender": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "recipient": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "message_edit": {
-                        "type": "object",
-                        "properties": {
-                          "mid": {
-                            "type": "string"
-                          },
-                          "text": {
-                            "type": "string"
-                          },
-                          "num_edit": {
-                            "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                            "anyOf": [
-                              {
-                                "type": "integer"
-                              },
-                              {
-                                "type": "string"
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
+                    "required": [
+                      "sender",
+                      "recipient",
+                      "timestamp"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "time",
+                "messaging"
+              ]
             }
           }
         },
         "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Message edit webhook"
-          }
-        ]
-      },
-      "MessagingReplyToStoryWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
+            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Self webhook/Self postback webhook"
           },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "messaging": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sender": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "recipient": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "message": {
-                        "type": "object",
-                        "properties": {
-                          "mid": {
-                            "type": "string"
-                          },
-                          "is_deleted": {
-                            "type": "boolean"
-                          },
-                          "is_echo": {
-                            "type": "boolean"
-                          },
-                          "is_self": {
-                            "type": "boolean"
-                          },
-                          "is_unsupported": {
-                            "type": "boolean"
-                          },
-                          "reply_to": {
-                            "type": "object",
-                            "properties": {
-                              "story": {
-                                "type": "object",
-                                "properties": {
-                                  "url": {
-                                    "type": "string"
-                                  },
-                                  "id": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "text": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
           {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging reply to story webhook"
+            "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+            "retrievedAt": "2026-10-18",
+            "method": "official documentation rendered in cloud browser"
           }
-        ]
-      },
-      "MessagingReferralWebhook": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string"
-          },
-          "entry": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "time": {
-                  "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                  "anyOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
-                },
-                "messaging": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "sender": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "recipient": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "timestamp": {
-                        "description": "Example contains placeholder text; exact wire type not established by this sample.",
-                        "anyOf": [
-                          {
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "referral": {
-                        "type": "object",
-                        "properties": {
-                          "ref": {
-                            "type": "string"
-                          },
-                          "source": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-source-evidence": [
-          {
-            "url": "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json",
-            "section": "/Instagram API with Instagram Login/Webhooks/Webhook payload reference/Messaging referral webhook"
-          }
+        ],
+        "required": [
+          "object",
+          "entry"
         ]
       }
     }
-  }
+  },
+  "x-source-caveats": [
+    "Instagram Platform examples include some outer arrays and malformed illustrative JSON; envelopes use the canonical object form from valid messaging examples.",
+    "story_insights example duplicates postback payload; no genuine story-insights shape inferred.",
+    "Facebook Login versus Instagram Login fields and event availability vary; preserve named variants.",
+    "Current ig_post payload supersedes legacy share for Instagram posts February 1, 2026."
+  ]
 }

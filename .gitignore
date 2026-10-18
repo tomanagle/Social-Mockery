@@ -8,3 +8,6 @@ coverage*
 .env
 .env.*
 .DS_Store
+
+# Versioned API source inventory, not a test coverage artifact.
+!specs/meta/instagram/coverage.json

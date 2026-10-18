@@ -22,7 +22,7 @@ make generate-check
 make test
 ```
 
-`generate-check` checks reproducibility; it is not by itself proof of upstream API compatibility. A successful generation also does not replace OpenAPI validation, HTTP tests, or evidence review. `make spec-validate` uses the pinned `kin-openapi` loader and validator to validate both versioned contracts. Report any check that could not run. Changes to generated output should be reviewed together with their source contract and configuration.
+`generate-check` checks reproducibility; it is not by itself proof of upstream API compatibility. A successful generation also does not replace OpenAPI validation, HTTP tests, or evidence review. `make spec-validate` uses the pinned `kin-openapi` loader and validator to validate the runtime subset and all contract-only product documents. Report any check that could not run. Changes to generated output should be reviewed together with their source contract and configuration.
 
 ## Version policy and isolation
 
@@ -30,7 +30,7 @@ Target the latest officially verified upstream release plus up to two preceding 
 
 Currently v24.0 and v25.0 have separate contracts, generator configurations, Go models/interfaces and HTTP routers. Their narrow simulator behavior is shared intentionally; neither has a live verification claim. They may evolve independently: validation checks each document rather than requiring equality between releases, and `generate-check` regenerates and compares each package without modifying the working tree. A version adapter is the place for differing parsing, response shapes or semantics; common state operations can remain shared.
 
-As of the 2026-10-18 review, Meta's official version table and changelog returned HTTP 429 or were inaccessible. We therefore do **not** label v25.0 as the latest release, or claim that the latest-plus-two target is already met. A new release (including v26.0) must pass the research checklist before it is enabled. Unknown versions return an explicit unsupported-version error. See the per-version provenance files for coverage and remaining evidence gaps.
+As of the 2026-10-18 review, the official [Graph API version table](https://developers.facebook.com/docs/graph-api/changelog/versions/) confirms v26.0 as the latest release (2026-07-29). Reference contracts cover v26.0 plus v25.0/v24.0, which remain supported in the Graph lifecycle table. This does not enable v26.0 in the simulator or prove every historical behavior from current documentation. Unknown runtime versions return an explicit unsupported-version error.
 
 Adding a version requires its spec, generator config, generated package, handwritten adapter/dispatch entry, low-cardinality telemetry allowlist entry, HTTP tests, and provenance. The Makefile discovers versioned specs and Instagram generator configurations. Adding other providers also requires extending the generation mapping; it is deliberately not a generic provider framework yet.
 
@@ -54,18 +54,24 @@ These labels apply to individual claims, not just a whole file. A synthetic toke
 
 Public documentation research does not authorize live API requests. Obtain explicit approval for the account and specific live test operations, including any publishing, deletion, media upload, permission change, or charge. Sanitize permitted captures before using them as fixtures. Never commit real credentials, raw tokens, private account identifiers, or personal content. Prefer synthetic fixtures.
 
-Use the skill's [review checklist](../.agents/skills/provider-spec-research/references/review-checklist.md) before declaring a slice ready. Report the implemented operations, remaining unknowns, synthetic deviations, and the actual validation/generation/test results. The current simulator is a focused Instagram subset; broader provider coverage and generated client SDKs are future work. This workflow adds no runtime crawling or AI dependency.
+Use the skill's [review checklist](../.agents/skills/provider-spec-research/references/review-checklist.md) before declaring a slice ready. Report the implemented operations, remaining unknowns, synthetic deviations, and the actual validation/generation/test results. The current simulator is a focused Instagram subset; broader runtime behavior and generated client SDKs remain future work. This workflow adds no runtime crawling or AI dependency.
 
-## Broad Instagram research contracts
+## Comprehensive Instagram reference contracts
 
-See [the complete inventory and explicit gaps](../specs/meta/instagram/README.md).
-The versioned `facebook-login.openapi.yaml`, `instagram-login.openapi.yaml` and
-`webhooks.openapi.yaml` documents describe a much broader, **contract-only** surface.
-They are intentionally separate from `openapi.yaml`, which describes the implemented
-simulator subset. `internal/contracts/instagram/` contains their generated types and
-server interfaces and is never registered in the runtime router.
+See [the category audit, exact inventory and explicit boundaries](../specs/meta/instagram/README.md) and [machine-readable coverage](../specs/meta/instagram/coverage.json).
 
-The broader surface is not yet a complete verified Instagram specification. OAuth,
-upload transport, release-specific permissions and other listed gaps require accessible
-primary documentation or separately authorized live captures. v26.0 is a pinned-SDK
-research candidate, not an assertion of latest-version or runtime support.
+Each of v24.0, v25.0 and v26.0 has five contract-only documents:
+
+- `facebook-login.openapi.yaml`: Graph Instagram and Page-backed messaging, public indexed commerce/creator/Threads-adjacent operations.
+- `instagram-login.openapi.yaml`: Instagram Login reads, publishing, moderation and messaging.
+- `oauth.openapi.yaml`: source-specific authorization, token and Facebook permission/debug flows.
+- `upload.openapi.yaml`: the separate native `rupload.facebook.com` transport.
+- `webhooks.openapi.yaml`: application callback verification and event delivery.
+
+`openapi.yaml` remains the four-operation runtime subset in v24.0/v25.0. Full contracts carry `x-contract-only: true`, operation source links, documentation-based provenance, and `x-simulator-implemented: false`. `internal/contracts/instagram/{v24,v25,v26}/` contains isolated generated models/interfaces; these packages are never registered by runtime providers or handlers. Creating a spec does not create a success stub.
+
+`make spec-validate` discovers both file conventions, validates local references, unique operation IDs, release paths, evidence markers, and approved source/server hosts. OAuth/webhook exceptions are explicit and narrow. Upload paths must embed their directory release and use the dedicated upload host. `scripts/generate-contracts.sh` drives the pinned official `oapi-codegen` models/std-http-server generator; `make generate-check` regenerates into temporary files and compares output without modifying the working tree.
+
+Current primary documentation is now accessible through official product indexes and Markdown references. OAuth, resumable upload and webhook signature semantics are source-backed. Remaining limits include unavailable public marketing-message/opt-in documentation, the nonpublic host in an opt-in sample, an invalid story-insights example, source contradictions, and unverified historical/account-dependent behavior. See the audit rather than treating any version-neutral guide as independent verification of three releases.
+
+`additionalProperties: false` used in evidence-only fixture schemas expresses the reviewed local fixture shape; it is not a provider guarantee that responses will never add fields. Generated interfaces, validation and local tests establish internal consistency, not live compatibility. No live API tests or automatic upstream calls are part of this workflow.

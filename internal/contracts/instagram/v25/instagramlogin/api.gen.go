@@ -14,6 +14,432 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
+// Defines values for ContainerStatusCopyrightCheckStatusStatus.
+const (
+	ContainerStatusCopyrightCheckStatusStatusCompleted  ContainerStatusCopyrightCheckStatusStatus = "completed"
+	ContainerStatusCopyrightCheckStatusStatusError      ContainerStatusCopyrightCheckStatusStatus = "error"
+	ContainerStatusCopyrightCheckStatusStatusInProgress ContainerStatusCopyrightCheckStatusStatus = "in_progress"
+	ContainerStatusCopyrightCheckStatusStatusNotStarted ContainerStatusCopyrightCheckStatusStatus = "not_started"
+)
+
+// Valid indicates whether the value is a known member of the ContainerStatusCopyrightCheckStatusStatus enum.
+func (e ContainerStatusCopyrightCheckStatusStatus) Valid() bool {
+	switch e {
+	case ContainerStatusCopyrightCheckStatusStatusCompleted:
+		return true
+	case ContainerStatusCopyrightCheckStatusStatusError:
+		return true
+	case ContainerStatusCopyrightCheckStatusStatusInProgress:
+		return true
+	case ContainerStatusCopyrightCheckStatusStatusNotStarted:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for ContainerStatusStatusCode.
+const (
+	ERROR      ContainerStatusStatusCode = "ERROR"
+	EXPIRED    ContainerStatusStatusCode = "EXPIRED"
+	FINISHED   ContainerStatusStatusCode = "FINISHED"
+	INPROGRESS ContainerStatusStatusCode = "IN_PROGRESS"
+	PUBLISHED  ContainerStatusStatusCode = "PUBLISHED"
+)
+
+// Valid indicates whether the value is a known member of the ContainerStatusStatusCode enum.
+func (e ContainerStatusStatusCode) Valid() bool {
+	switch e {
+	case ERROR:
+		return true
+	case EXPIRED:
+		return true
+	case FINISHED:
+		return true
+	case INPROGRESS:
+		return true
+	case PUBLISHED:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCopyrightActionAction.
+const (
+	BLOCK InstagramCopyrightActionAction = "BLOCK"
+	MUTE  InstagramCopyrightActionAction = "MUTE"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCopyrightActionAction enum.
+func (e InstagramCopyrightActionAction) Valid() bool {
+	switch e {
+	case BLOCK:
+		return true
+	case MUTE:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCopyrightSegmentSegmentType.
+const (
+	InstagramCopyrightSegmentSegmentTypeAUDIO InstagramCopyrightSegmentSegmentType = "AUDIO"
+	InstagramCopyrightSegmentSegmentTypeVIDEO InstagramCopyrightSegmentSegmentType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCopyrightSegmentSegmentType enum.
+func (e InstagramCopyrightSegmentSegmentType) Valid() bool {
+	switch e {
+	case InstagramCopyrightSegmentSegmentTypeAUDIO:
+		return true
+	case InstagramCopyrightSegmentSegmentTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCopyrightStatusStatus.
+const (
+	InstagramCopyrightStatusStatusCompleted  InstagramCopyrightStatusStatus = "completed"
+	InstagramCopyrightStatusStatusError      InstagramCopyrightStatusStatus = "error"
+	InstagramCopyrightStatusStatusInProgress InstagramCopyrightStatusStatus = "in_progress"
+	InstagramCopyrightStatusStatusNotStarted InstagramCopyrightStatusStatus = "not_started"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCopyrightStatusStatus enum.
+func (e InstagramCopyrightStatusStatus) Valid() bool {
+	switch e {
+	case InstagramCopyrightStatusStatusCompleted:
+		return true
+	case InstagramCopyrightStatusStatusError:
+		return true
+	case InstagramCopyrightStatusStatusInProgress:
+		return true
+	case InstagramCopyrightStatusStatusNotStarted:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerMediaType.
+const (
+	InstagramCreateContainerMediaTypeCAROUSEL InstagramCreateContainerMediaType = "CAROUSEL"
+	InstagramCreateContainerMediaTypeREELS    InstagramCreateContainerMediaType = "REELS"
+	InstagramCreateContainerMediaTypeSTORIES  InstagramCreateContainerMediaType = "STORIES"
+	InstagramCreateContainerMediaTypeVIDEO    InstagramCreateContainerMediaType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerMediaType enum.
+func (e InstagramCreateContainerMediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerMediaTypeCAROUSEL:
+		return true
+	case InstagramCreateContainerMediaTypeREELS:
+		return true
+	case InstagramCreateContainerMediaTypeSTORIES:
+		return true
+	case InstagramCreateContainerMediaTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer3MediaType.
+const (
+	InstagramCreateContainer3MediaTypeREELS InstagramCreateContainer3MediaType = "REELS"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer3MediaType enum.
+func (e InstagramCreateContainer3MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainer3MediaTypeREELS:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer11IsCarouselItem.
+const (
+	InstagramCreateContainer11IsCarouselItemTrue InstagramCreateContainer11IsCarouselItem = true
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer11IsCarouselItem enum.
+func (e InstagramCreateContainer11IsCarouselItem) Valid() bool {
+	switch e {
+	case InstagramCreateContainer11IsCarouselItemTrue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer17MediaType.
+const (
+	InstagramCreateContainer17MediaTypeREELS InstagramCreateContainer17MediaType = "REELS"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer17MediaType enum.
+func (e InstagramCreateContainer17MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainer17MediaTypeREELS:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer18MediaType.
+const (
+	InstagramCreateContainer18MediaTypeSTORIES InstagramCreateContainer18MediaType = "STORIES"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer18MediaType enum.
+func (e InstagramCreateContainer18MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainer18MediaTypeSTORIES:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer19MediaType.
+const (
+	InstagramCreateContainer19MediaTypeCAROUSEL InstagramCreateContainer19MediaType = "CAROUSEL"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer19MediaType enum.
+func (e InstagramCreateContainer19MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainer19MediaTypeCAROUSEL:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer20IsCarouselItem.
+const (
+	InstagramCreateContainer20IsCarouselItemTrue InstagramCreateContainer20IsCarouselItem = true
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer20IsCarouselItem enum.
+func (e InstagramCreateContainer20IsCarouselItem) Valid() bool {
+	switch e {
+	case InstagramCreateContainer20IsCarouselItemTrue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainer20MediaType.
+const (
+	InstagramCreateContainer20MediaTypeVIDEO InstagramCreateContainer20MediaType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainer20MediaType enum.
+func (e InstagramCreateContainer20MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainer20MediaTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerFormMediaType.
+const (
+	InstagramCreateContainerFormMediaTypeCAROUSEL InstagramCreateContainerFormMediaType = "CAROUSEL"
+	InstagramCreateContainerFormMediaTypeREELS    InstagramCreateContainerFormMediaType = "REELS"
+	InstagramCreateContainerFormMediaTypeSTORIES  InstagramCreateContainerFormMediaType = "STORIES"
+	InstagramCreateContainerFormMediaTypeVIDEO    InstagramCreateContainerFormMediaType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerFormMediaType enum.
+func (e InstagramCreateContainerFormMediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerFormMediaTypeCAROUSEL:
+		return true
+	case InstagramCreateContainerFormMediaTypeREELS:
+		return true
+	case InstagramCreateContainerFormMediaTypeSTORIES:
+		return true
+	case InstagramCreateContainerFormMediaTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm3MediaType.
+const (
+	InstagramCreateContainerForm3MediaTypeREELS InstagramCreateContainerForm3MediaType = "REELS"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm3MediaType enum.
+func (e InstagramCreateContainerForm3MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm3MediaTypeREELS:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm11IsCarouselItem.
+const (
+	InstagramCreateContainerForm11IsCarouselItemTrue InstagramCreateContainerForm11IsCarouselItem = true
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm11IsCarouselItem enum.
+func (e InstagramCreateContainerForm11IsCarouselItem) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm11IsCarouselItemTrue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm17MediaType.
+const (
+	InstagramCreateContainerForm17MediaTypeREELS InstagramCreateContainerForm17MediaType = "REELS"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm17MediaType enum.
+func (e InstagramCreateContainerForm17MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm17MediaTypeREELS:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm18MediaType.
+const (
+	InstagramCreateContainerForm18MediaTypeSTORIES InstagramCreateContainerForm18MediaType = "STORIES"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm18MediaType enum.
+func (e InstagramCreateContainerForm18MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm18MediaTypeSTORIES:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm19MediaType.
+const (
+	InstagramCreateContainerForm19MediaTypeCAROUSEL InstagramCreateContainerForm19MediaType = "CAROUSEL"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm19MediaType enum.
+func (e InstagramCreateContainerForm19MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm19MediaTypeCAROUSEL:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm20IsCarouselItem.
+const (
+	InstagramCreateContainerForm20IsCarouselItemTrue InstagramCreateContainerForm20IsCarouselItem = true
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm20IsCarouselItem enum.
+func (e InstagramCreateContainerForm20IsCarouselItem) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm20IsCarouselItemTrue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramCreateContainerForm20MediaType.
+const (
+	InstagramCreateContainerForm20MediaTypeVIDEO InstagramCreateContainerForm20MediaType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramCreateContainerForm20MediaType enum.
+func (e InstagramCreateContainerForm20MediaType) Valid() bool {
+	switch e {
+	case InstagramCreateContainerForm20MediaTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramMediaMediaAudioType.
+const (
+	MUSIC         InstagramMediaMediaAudioType = "MUSIC"
+	ORIGINALSOUND InstagramMediaMediaAudioType = "ORIGINAL_SOUND"
+)
+
+// Valid indicates whether the value is a known member of the InstagramMediaMediaAudioType enum.
+func (e InstagramMediaMediaAudioType) Valid() bool {
+	switch e {
+	case MUSIC:
+		return true
+	case ORIGINALSOUND:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramMediaMediaType.
+const (
+	InstagramMediaMediaTypeCAROUSELALBUM InstagramMediaMediaType = "CAROUSEL_ALBUM"
+	InstagramMediaMediaTypeIMAGE         InstagramMediaMediaType = "IMAGE"
+	InstagramMediaMediaTypeVIDEO         InstagramMediaMediaType = "VIDEO"
+)
+
+// Valid indicates whether the value is a known member of the InstagramMediaMediaType enum.
+func (e InstagramMediaMediaType) Valid() bool {
+	switch e {
+	case InstagramMediaMediaTypeCAROUSELALBUM:
+		return true
+	case InstagramMediaMediaTypeIMAGE:
+		return true
+	case InstagramMediaMediaTypeVIDEO:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for InstagramSelfUserAccountType.
+const (
+	Business     InstagramSelfUserAccountType = "Business"
+	MediaCreator InstagramSelfUserAccountType = "Media_Creator"
+)
+
+// Valid indicates whether the value is a known member of the InstagramSelfUserAccountType enum.
+func (e InstagramSelfUserAccountType) Valid() bool {
+	switch e {
+	case Business:
+		return true
+	case MediaCreator:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for MessagingAttachmentPayloadElementsDefaultActionType.
 const (
 	MessagingAttachmentPayloadElementsDefaultActionTypeWebUrl MessagingAttachmentPayloadElementsDefaultActionType = "web_url"
@@ -23,6 +449,24 @@ const (
 func (e MessagingAttachmentPayloadElementsDefaultActionType) Valid() bool {
 	switch e {
 	case MessagingAttachmentPayloadElementsDefaultActionTypeWebUrl:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingAttachmentPayloadIsReusable1.
+const (
+	MessagingAttachmentPayloadIsReusable1False MessagingAttachmentPayloadIsReusable1 = "false"
+	MessagingAttachmentPayloadIsReusable1True  MessagingAttachmentPayloadIsReusable1 = "true"
+)
+
+// Valid indicates whether the value is a known member of the MessagingAttachmentPayloadIsReusable1 enum.
+func (e MessagingAttachmentPayloadIsReusable1) Valid() bool {
+	switch e {
+	case MessagingAttachmentPayloadIsReusable1False:
+		return true
+	case MessagingAttachmentPayloadIsReusable1True:
 		return true
 	default:
 		return false
@@ -50,6 +494,7 @@ func (e MessagingAttachmentPayloadTemplateType) Valid() bool {
 // Defines values for MessagingAttachmentType.
 const (
 	Audio      MessagingAttachmentType = "audio"
+	File       MessagingAttachmentType = "file"
 	Image      MessagingAttachmentType = "image"
 	LikeHeart  MessagingAttachmentType = "like_heart"
 	MEDIASHARE MessagingAttachmentType = "MEDIA_SHARE"
@@ -61,6 +506,8 @@ const (
 func (e MessagingAttachmentType) Valid() bool {
 	switch e {
 	case Audio:
+		return true
+	case File:
 		return true
 	case Image:
 		return true
@@ -107,15 +554,33 @@ func (e MessagingButton1Type) Valid() bool {
 	}
 }
 
-// Defines values for MessagingQuickReplyContentType.
+// Defines values for MessagingQuickReply0ContentType.
 const (
-	Text MessagingQuickReplyContentType = "text"
+	Text MessagingQuickReply0ContentType = "text"
 )
 
-// Valid indicates whether the value is a known member of the MessagingQuickReplyContentType enum.
-func (e MessagingQuickReplyContentType) Valid() bool {
+// Valid indicates whether the value is a known member of the MessagingQuickReply0ContentType enum.
+func (e MessagingQuickReply0ContentType) Valid() bool {
 	switch e {
 	case Text:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for MessagingQuickReply1ContentType.
+const (
+	UserEmail       MessagingQuickReply1ContentType = "user_email"
+	UserPhoneNumber MessagingQuickReply1ContentType = "user_phone_number"
+)
+
+// Valid indicates whether the value is a known member of the MessagingQuickReply1ContentType enum.
+func (e MessagingQuickReply1ContentType) Valid() bool {
+	switch e {
+	case UserEmail:
+		return true
+	case UserPhoneNumber:
 		return true
 	default:
 		return false
@@ -131,6 +596,39 @@ const (
 func (e MessengerProfileSettingsPlatform) Valid() bool {
 	switch e {
 	case MessengerProfileSettingsPlatformInstagram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for TrialParamsGraduationStrategy.
+const (
+	MANUAL        TrialParamsGraduationStrategy = "MANUAL"
+	SSPERFORMANCE TrialParamsGraduationStrategy = "SS_PERFORMANCE"
+)
+
+// Valid indicates whether the value is a known member of the TrialParamsGraduationStrategy enum.
+func (e TrialParamsGraduationStrategy) Valid() bool {
+	switch e {
+	case MANUAL:
+		return true
+	case SSPERFORMANCE:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for WelcomeMessageFlowWriteEligiblePlatforms.
+const (
+	WelcomeMessageFlowWriteEligiblePlatformsInstagram WelcomeMessageFlowWriteEligiblePlatforms = "instagram"
+)
+
+// Valid indicates whether the value is a known member of the WelcomeMessageFlowWriteEligiblePlatforms enum.
+func (e WelcomeMessageFlowWriteEligiblePlatforms) Valid() bool {
+	switch e {
+	case WelcomeMessageFlowWriteEligiblePlatformsInstagram:
 		return true
 	default:
 		return false
@@ -167,6 +665,87 @@ func (e ListInstagramConversationsParamsPlatform) Valid() bool {
 	}
 }
 
+// Defines values for ReadInstagramInsightsParamsMetricType.
+const (
+	TimeSeries ReadInstagramInsightsParamsMetricType = "time_series"
+	TotalValue ReadInstagramInsightsParamsMetricType = "total_value"
+)
+
+// Valid indicates whether the value is a known member of the ReadInstagramInsightsParamsMetricType enum.
+func (e ReadInstagramInsightsParamsMetricType) Valid() bool {
+	switch e {
+	case TimeSeries:
+		return true
+	case TotalValue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteInstagramMessengerProfileJSONBodyFields.
+const (
+	DeleteInstagramMessengerProfileJSONBodyFieldsIceBreakers    DeleteInstagramMessengerProfileJSONBodyFields = "ice_breakers"
+	DeleteInstagramMessengerProfileJSONBodyFieldsPersistentMenu DeleteInstagramMessengerProfileJSONBodyFields = "persistent_menu"
+)
+
+// Valid indicates whether the value is a known member of the DeleteInstagramMessengerProfileJSONBodyFields enum.
+func (e DeleteInstagramMessengerProfileJSONBodyFields) Valid() bool {
+	switch e {
+	case DeleteInstagramMessengerProfileJSONBodyFieldsIceBreakers:
+		return true
+	case DeleteInstagramMessengerProfileJSONBodyFieldsPersistentMenu:
+		return true
+	default:
+		return false
+	}
+}
+
+// AttachmentUploaded defines model for AttachmentUploaded.
+type AttachmentUploaded struct {
+	AttachmentId string `json:"attachment_id"`
+}
+
+// ContainerCreated uri is returned for resumable initialization; use this returned URL for uploads.
+type ContainerCreated struct {
+	Id  string  `json:"id"`
+	Uri *string `json:"uri,omitempty"`
+}
+
+// ContainerStatus defines model for ContainerStatus.
+type ContainerStatus struct {
+	CopyrightCheckStatus *struct {
+		MatchesFound *bool                                      `json:"matches_found,omitempty"`
+		Status       *ContainerStatusCopyrightCheckStatusStatus `json:"status,omitempty"`
+	} `json:"copyright_check_status,omitempty"`
+	Id *string `json:"id,omitempty"`
+
+	// Status Status message or error subcode; textual example and numeric-subcode description differ.
+	Status      *ContainerStatus_Status    `json:"status,omitempty"`
+	StatusCode  *ContainerStatusStatusCode `json:"status_code,omitempty"`
+	VideoStatus *struct {
+		ProcessingPhase *UploadPhase `json:"processing_phase,omitempty"`
+		UploadingPhase  *UploadPhase `json:"uploading_phase,omitempty"`
+	} `json:"video_status,omitempty"`
+}
+
+// ContainerStatusCopyrightCheckStatusStatus defines model for ContainerStatus.CopyrightCheckStatus.Status.
+type ContainerStatusCopyrightCheckStatusStatus string
+
+// ContainerStatusStatus0 defines model for ContainerStatus.Status.0.
+type ContainerStatusStatus0 = string
+
+// ContainerStatusStatus1 defines model for ContainerStatus.Status.1.
+type ContainerStatusStatus1 = int
+
+// ContainerStatus_Status Status message or error subcode; textual example and numeric-subcode description differ.
+type ContainerStatus_Status struct {
+	union json.RawMessage
+}
+
+// ContainerStatusStatusCode defines model for ContainerStatus.StatusCode.
+type ContainerStatusStatusCode string
+
 // ConversationMessage defines model for ConversationMessage.
 type ConversationMessage struct {
 	CreatedTime   *string         `json:"created_time,omitempty"`
@@ -189,22 +768,657 @@ type ConversationMessageList struct {
 	Paging *MessagingPaging       `json:"paging,omitempty"`
 }
 
-// IceBreakers defines model for IceBreakers.
-type IceBreakers = []struct {
+// GraphAPIError defines model for GraphAPIError.
+type GraphAPIError struct {
+	Error *struct {
+		Code *int64 `json:"code,omitempty"`
+
+		// ErrorData Provider-defined structured details; SDK also decodes a JSON string. Structure depends on error type.
+		ErrorData      *GraphAPIError_Error_ErrorData `json:"error_data,omitempty"`
+		ErrorSubcode   *int64                         `json:"error_subcode,omitempty"`
+		ErrorUserMsg   *string                        `json:"error_user_msg,omitempty"`
+		ErrorUserTitle *string                        `json:"error_user_title,omitempty"`
+		FbtraceId      *string                        `json:"fbtrace_id,omitempty"`
+		IsTransient    *bool                          `json:"is_transient,omitempty"`
+		Message        *string                        `json:"message,omitempty"`
+		Type           *string                        `json:"type,omitempty"`
+	} `json:"error,omitempty"`
+}
+
+// GraphAPIErrorErrorErrorData0 defines model for GraphAPIError.Error.ErrorData.0.
+type GraphAPIErrorErrorErrorData0 map[string]interface{}
+
+// GraphAPIErrorErrorErrorData1 defines model for GraphAPIError.Error.ErrorData.1.
+type GraphAPIErrorErrorErrorData1 = string
+
+// GraphAPIError_Error_ErrorData Provider-defined structured details; SDK also decodes a JSON string. Structure depends on error type.
+type GraphAPIError_Error_ErrorData struct {
+	union json.RawMessage
+}
+
+// IceBreakers Official collection shows flat legacy questions; current guide shows localized call_to_actions groups (maximum four per locale).
+type IceBreakers struct {
+	union json.RawMessage
+}
+
+// IceBreakers0 defines model for IceBreakers.0.
+type IceBreakers0 = []struct {
 	Payload  string `json:"payload"`
 	Question string `json:"question"`
 }
 
+// IceBreakers1 defines model for IceBreakers.1.
+type IceBreakers1 = []struct {
+	CallToActions []struct {
+		Payload  string `json:"payload"`
+		Question string `json:"question"`
+	} `json:"call_to_actions"`
+	Locale *string `json:"locale,omitempty"`
+}
+
+// InstagramAccount defines model for InstagramAccount.
+type InstagramAccount struct {
+	// AccountType Get-started names Business or Media_Creator; case-sensitive enum is not enforced across sources.
+	AccountType           *string                `json:"account_type,omitempty"`
+	Biography             *string                `json:"biography,omitempty"`
+	FollowersCount        *int64                 `json:"followers_count,omitempty"`
+	FollowsCount          *int64                 `json:"follows_count,omitempty"`
+	HasProfilePic         *bool                  `json:"has_profile_pic,omitempty"`
+	Id                    *string                `json:"id,omitempty"`
+	IsPublished           *bool                  `json:"is_published,omitempty"`
+	LegacyInstagramUserId *string                `json:"legacy_instagram_user_id,omitempty"`
+	Media                 *InstagramMediaList    `json:"media,omitempty"`
+	MediaCount            *int64                 `json:"media_count,omitempty"`
+	Name                  *string                `json:"name,omitempty"`
+	ProfilePictureUrl     *string                `json:"profile_picture_url,omitempty"`
+	UserId                *string                `json:"user_id,omitempty"`
+	Username              *string                `json:"username,omitempty"`
+	Website               *string                `json:"website,omitempty"`
+	AdditionalProperties  map[string]interface{} `json:"-"`
+}
+
+// InstagramComment defines model for InstagramComment.
+type InstagramComment struct {
+	From                     *InstagramCommentAuthor `json:"from,omitempty"`
+	Hidden                   *bool                   `json:"hidden,omitempty"`
+	Id                       *string                 `json:"id,omitempty"`
+	LegacyInstagramCommentId *string                 `json:"legacy_instagram_comment_id,omitempty"`
+	LikeCount                *int64                  `json:"like_count,omitempty"`
+	Media                    *InstagramCommentMedia  `json:"media,omitempty"`
+	ParentId                 *string                 `json:"parent_id,omitempty"`
+	Replies                  *InstagramCommentList   `json:"replies,omitempty"`
+	Text                     *string                 `json:"text,omitempty"`
+	Timestamp                *string                 `json:"timestamp,omitempty"`
+
+	// User Reference describes user as ID; SDK exposes IGUser expansion. Preserve both representations.
+	User                 *InstagramComment_User `json:"user,omitempty"`
+	Username             *string                `json:"username,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramCommentUser0 defines model for InstagramComment.User.0.
+type InstagramCommentUser0 = string
+
+// InstagramComment_User Reference describes user as ID; SDK exposes IGUser expansion. Preserve both representations.
+type InstagramComment_User struct {
+	union json.RawMessage
+}
+
+// InstagramCommentAuthor defines model for InstagramCommentAuthor.
+type InstagramCommentAuthor struct {
+	Id                   *string                `json:"id,omitempty"`
+	Username             *string                `json:"username,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramCommentList defines model for InstagramCommentList.
+type InstagramCommentList struct {
+	Data                 *[]InstagramComment    `json:"data,omitempty"`
+	Paging               *InstagramCursorPaging `json:"paging,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramCommentMedia defines model for InstagramCommentMedia.
+type InstagramCommentMedia struct {
+	Id                   *string                `json:"id,omitempty"`
+	MediaProductType     *string                `json:"media_product_type,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramCopyrightAction defines model for InstagramCopyrightAction.
+type InstagramCopyrightAction struct {
+	Action               *InstagramCopyrightActionAction `json:"action,omitempty"`
+	Geos                 *[]string                       `json:"geos,omitempty"`
+	AdditionalProperties map[string]interface{}          `json:"-"`
+}
+
+// InstagramCopyrightActionAction defines model for InstagramCopyrightAction.Action.
+type InstagramCopyrightActionAction string
+
+// InstagramCopyrightInformation defines model for InstagramCopyrightInformation.
+type InstagramCopyrightInformation struct {
+	CopyrightMatches     *[]InstagramCopyrightMatch `json:"copyright_matches,omitempty"`
+	Status               *InstagramCopyrightStatus  `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}     `json:"-"`
+}
+
+// InstagramCopyrightMatch defines model for InstagramCopyrightMatch.
+type InstagramCopyrightMatch struct {
+	Author               *string                      `json:"author,omitempty"`
+	ContentTitle         *string                      `json:"content_title,omitempty"`
+	MatchedSegments      *[]InstagramCopyrightSegment `json:"matched_segments,omitempty"`
+	OwnerCopyrightPolicy *InstagramCopyrightPolicy    `json:"owner_copyright_policy,omitempty"`
+	AdditionalProperties map[string]interface{}       `json:"-"`
+}
+
+// InstagramCopyrightPolicy defines model for InstagramCopyrightPolicy.
+type InstagramCopyrightPolicy struct {
+	Actions              *[]InstagramCopyrightAction `json:"actions,omitempty"`
+	Name                 *string                     `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}      `json:"-"`
+}
+
+// InstagramCopyrightSegment defines model for InstagramCopyrightSegment.
+type InstagramCopyrightSegment struct {
+	DurationInSeconds    *float32                              `json:"duration_in_seconds,omitempty"`
+	SegmentType          *InstagramCopyrightSegmentSegmentType `json:"segment_type,omitempty"`
+	StartTimeInSeconds   *float32                              `json:"start_time_in_seconds,omitempty"`
+	AdditionalProperties map[string]interface{}                `json:"-"`
+}
+
+// InstagramCopyrightSegmentSegmentType defines model for InstagramCopyrightSegment.SegmentType.
+type InstagramCopyrightSegmentSegmentType string
+
+// InstagramCopyrightStatus defines model for InstagramCopyrightStatus.
+type InstagramCopyrightStatus struct {
+	MatchesFound         *bool                           `json:"matches_found,omitempty"`
+	Status               *InstagramCopyrightStatusStatus `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}          `json:"-"`
+}
+
+// InstagramCopyrightStatusStatus defines model for InstagramCopyrightStatus.Status.
+type InstagramCopyrightStatusStatus string
+
+// InstagramCreateContainer Public URL sources must be accessible to Meta. Structured values use JSON objects/arrays in JSON bodies and JSON-encoded values in form/query transport. See applicability constraints and gaps. VIDEO is carousel child only.
+type InstagramCreateContainer struct {
+	// AltText Only single images and image carousel children.
+	AltText *string `json:"alt_text,omitempty"`
+
+	// AudioName Reels only; can rename audio only once.
+	AudioName *string `json:"audio_name,omitempty"`
+
+	// Caption Maximum 30 hashtags and 20 mentions. Not supported on carousel children.
+	Caption        *string                            `json:"caption,omitempty"`
+	Children       *[]string                          `json:"children,omitempty"`
+	Collaborators  *[]string                          `json:"collaborators,omitempty"`
+	CoverUrl       *string                            `json:"cover_url,omitempty"`
+	ImageUrl       *string                            `json:"image_url,omitempty"`
+	IsAiGenerated  *bool                              `json:"is_ai_generated,omitempty"`
+	IsCarouselItem *bool                              `json:"is_carousel_item,omitempty"`
+	LocationId     *string                            `json:"location_id,omitempty"`
+	MediaType      *InstagramCreateContainerMediaType `json:"media_type,omitempty"`
+	ShareToFeed    *bool                              `json:"share_to_feed,omitempty"`
+
+	// ThumbOffset Milliseconds, less than video duration. cover_url overrides for reels.
+	ThumbOffset *int         `json:"thumb_offset,omitempty"`
+	TrialParams *TrialParams `json:"trial_params,omitempty"`
+	UserTags    *[]UserTag   `json:"user_tags,omitempty"`
+	VideoUrl    *string      `json:"video_url,omitempty"`
+	union       json.RawMessage
+}
+
+// InstagramCreateContainerMediaType defines model for InstagramCreateContainer.MediaType.
+type InstagramCreateContainerMediaType string
+
+// InstagramCreateContainer0 defines model for InstagramCreateContainer.0.
+type InstagramCreateContainer0 = interface{}
+
+// InstagramCreateContainer1 defines model for InstagramCreateContainer.1.
+type InstagramCreateContainer1 = interface{}
+
+// InstagramCreateContainer2 defines model for InstagramCreateContainer.2.
+type InstagramCreateContainer2 = interface{}
+
+// InstagramCreateContainer3 defines model for InstagramCreateContainer.3.
+type InstagramCreateContainer3 struct {
+	MediaType InstagramCreateContainer3MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainer3MediaType defines model for InstagramCreateContainer.3.MediaType.
+type InstagramCreateContainer3MediaType string
+
+// InstagramCreateContainer4 defines model for InstagramCreateContainer.4.
+type InstagramCreateContainer4 = interface{}
+
+// InstagramCreateContainer5 defines model for InstagramCreateContainer.5.
+type InstagramCreateContainer5 = interface{}
+
+// InstagramCreateContainer6 defines model for InstagramCreateContainer.6.
+type InstagramCreateContainer6 = interface{}
+
+// InstagramCreateContainer7 defines model for InstagramCreateContainer.7.
+type InstagramCreateContainer7 struct {
+	union json.RawMessage
+}
+
+// InstagramCreateContainer70 defines model for InstagramCreateContainer.7.0.
+type InstagramCreateContainer70 = interface{}
+
+// InstagramCreateContainer71 defines model for InstagramCreateContainer.7.1.
+type InstagramCreateContainer71 = interface{}
+
+// InstagramCreateContainer72 defines model for InstagramCreateContainer.7.2.
+type InstagramCreateContainer72 = interface{}
+
+// InstagramCreateContainer8 defines model for InstagramCreateContainer.8.
+type InstagramCreateContainer8 = interface{}
+
+// InstagramCreateContainer9 defines model for InstagramCreateContainer.9.
+type InstagramCreateContainer9 = interface{}
+
+// InstagramCreateContainer10 defines model for InstagramCreateContainer.10.
+type InstagramCreateContainer10 = interface{}
+
+// InstagramCreateContainer11 defines model for InstagramCreateContainer.11.
+type InstagramCreateContainer11 struct {
+	IsCarouselItem InstagramCreateContainer11IsCarouselItem `json:"is_carousel_item"`
+}
+
+// InstagramCreateContainer11IsCarouselItem defines model for InstagramCreateContainer.11.IsCarouselItem.
+type InstagramCreateContainer11IsCarouselItem bool
+
+// InstagramCreateContainer12 defines model for InstagramCreateContainer.12.
+type InstagramCreateContainer12 = interface{}
+
+// InstagramCreateContainer13 defines model for InstagramCreateContainer.13.
+type InstagramCreateContainer13 = interface{}
+
+// InstagramCreateContainer14 defines model for InstagramCreateContainer.14.
+type InstagramCreateContainer14 = interface{}
+
+// InstagramCreateContainer15 defines model for InstagramCreateContainer.15.
+type InstagramCreateContainer15 struct {
+	UserTags interface{} `json:"user_tags,omitempty"`
+}
+
+// InstagramCreateContainer16 defines model for InstagramCreateContainer.16.
+type InstagramCreateContainer16 struct {
+	ImageUrl string `json:"image_url"`
+}
+
+// InstagramCreateContainer17 defines model for InstagramCreateContainer.17.
+type InstagramCreateContainer17 struct {
+	MediaType InstagramCreateContainer17MediaType `json:"media_type"`
+	VideoUrl  string                              `json:"video_url"`
+}
+
+// InstagramCreateContainer17MediaType defines model for InstagramCreateContainer.17.MediaType.
+type InstagramCreateContainer17MediaType string
+
+// InstagramCreateContainer18 defines model for InstagramCreateContainer.18.
+type InstagramCreateContainer18 struct {
+	MediaType InstagramCreateContainer18MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainer18MediaType defines model for InstagramCreateContainer.18.MediaType.
+type InstagramCreateContainer18MediaType string
+
+// InstagramCreateContainer19 defines model for InstagramCreateContainer.19.
+type InstagramCreateContainer19 struct {
+	MediaType InstagramCreateContainer19MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainer19MediaType defines model for InstagramCreateContainer.19.MediaType.
+type InstagramCreateContainer19MediaType string
+
+// InstagramCreateContainer20 defines model for InstagramCreateContainer.20.
+type InstagramCreateContainer20 struct {
+	IsCarouselItem InstagramCreateContainer20IsCarouselItem `json:"is_carousel_item"`
+	MediaType      InstagramCreateContainer20MediaType      `json:"media_type"`
+}
+
+// InstagramCreateContainer20IsCarouselItem defines model for InstagramCreateContainer.20.IsCarouselItem.
+type InstagramCreateContainer20IsCarouselItem bool
+
+// InstagramCreateContainer20MediaType defines model for InstagramCreateContainer.20.MediaType.
+type InstagramCreateContainer20MediaType string
+
+// InstagramCreateContainerForm Wire schema for application/x-www-form-urlencoded. Arrays/objects are serialized strings, not repeated form keys. Scalars follow Graph form string coercion.
+type InstagramCreateContainerForm struct {
+	// AltText Only single images and image carousel children.
+	AltText *string `json:"alt_text,omitempty"`
+
+	// AudioName Reels only; can rename audio only once.
+	AudioName *string `json:"audio_name,omitempty"`
+
+	// Caption Maximum 30 hashtags and 20 mentions. Not supported on carousel children.
+	Caption *string `json:"caption,omitempty"`
+
+	// Children Comma-separated container IDs or JSON array-encoded IDs;2..10 children.
+	Children *string `json:"children,omitempty"`
+
+	// Collaborators Comma-separated usernames (up to3), per resumable guide; JSON array form also shown in media examples.
+	Collaborators  *string                                `json:"collaborators,omitempty"`
+	CoverUrl       *string                                `json:"cover_url,omitempty"`
+	ImageUrl       *string                                `json:"image_url,omitempty"`
+	IsAiGenerated  *bool                                  `json:"is_ai_generated,omitempty"`
+	IsCarouselItem *bool                                  `json:"is_carousel_item,omitempty"`
+	LocationId     *string                                `json:"location_id,omitempty"`
+	MediaType      *InstagramCreateContainerFormMediaType `json:"media_type,omitempty"`
+	ShareToFeed    *bool                                  `json:"share_to_feed,omitempty"`
+
+	// ThumbOffset Milliseconds, less than video duration. cover_url overrides for reels.
+	ThumbOffset *int `json:"thumb_offset,omitempty"`
+
+	// TrialParams JSON-serialized structured value, URL/form encoded. See JSON request schema for inner structure.
+	TrialParams *string `json:"trial_params,omitempty"`
+
+	// UserTags JSON-serialized structured value, URL/form encoded. See JSON request schema for inner structure.
+	UserTags *string `json:"user_tags,omitempty"`
+	VideoUrl *string `json:"video_url,omitempty"`
+	union    json.RawMessage
+}
+
+// InstagramCreateContainerFormMediaType defines model for InstagramCreateContainerForm.MediaType.
+type InstagramCreateContainerFormMediaType string
+
+// InstagramCreateContainerForm0 defines model for InstagramCreateContainerForm.0.
+type InstagramCreateContainerForm0 = interface{}
+
+// InstagramCreateContainerForm1 defines model for InstagramCreateContainerForm.1.
+type InstagramCreateContainerForm1 = interface{}
+
+// InstagramCreateContainerForm2 defines model for InstagramCreateContainerForm.2.
+type InstagramCreateContainerForm2 = interface{}
+
+// InstagramCreateContainerForm3 defines model for InstagramCreateContainerForm.3.
+type InstagramCreateContainerForm3 struct {
+	MediaType InstagramCreateContainerForm3MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainerForm3MediaType defines model for InstagramCreateContainerForm.3.MediaType.
+type InstagramCreateContainerForm3MediaType string
+
+// InstagramCreateContainerForm4 defines model for InstagramCreateContainerForm.4.
+type InstagramCreateContainerForm4 = interface{}
+
+// InstagramCreateContainerForm5 defines model for InstagramCreateContainerForm.5.
+type InstagramCreateContainerForm5 = interface{}
+
+// InstagramCreateContainerForm6 defines model for InstagramCreateContainerForm.6.
+type InstagramCreateContainerForm6 = interface{}
+
+// InstagramCreateContainerForm7 defines model for InstagramCreateContainerForm.7.
+type InstagramCreateContainerForm7 struct {
+	union json.RawMessage
+}
+
+// InstagramCreateContainerForm70 defines model for InstagramCreateContainerForm.7.0.
+type InstagramCreateContainerForm70 = interface{}
+
+// InstagramCreateContainerForm71 defines model for InstagramCreateContainerForm.7.1.
+type InstagramCreateContainerForm71 = interface{}
+
+// InstagramCreateContainerForm72 defines model for InstagramCreateContainerForm.7.2.
+type InstagramCreateContainerForm72 = interface{}
+
+// InstagramCreateContainerForm8 defines model for InstagramCreateContainerForm.8.
+type InstagramCreateContainerForm8 = interface{}
+
+// InstagramCreateContainerForm9 defines model for InstagramCreateContainerForm.9.
+type InstagramCreateContainerForm9 = interface{}
+
+// InstagramCreateContainerForm10 defines model for InstagramCreateContainerForm.10.
+type InstagramCreateContainerForm10 = interface{}
+
+// InstagramCreateContainerForm11 defines model for InstagramCreateContainerForm.11.
+type InstagramCreateContainerForm11 struct {
+	IsCarouselItem InstagramCreateContainerForm11IsCarouselItem `json:"is_carousel_item"`
+}
+
+// InstagramCreateContainerForm11IsCarouselItem defines model for InstagramCreateContainerForm.11.IsCarouselItem.
+type InstagramCreateContainerForm11IsCarouselItem bool
+
+// InstagramCreateContainerForm12 defines model for InstagramCreateContainerForm.12.
+type InstagramCreateContainerForm12 = interface{}
+
+// InstagramCreateContainerForm13 defines model for InstagramCreateContainerForm.13.
+type InstagramCreateContainerForm13 = interface{}
+
+// InstagramCreateContainerForm14 defines model for InstagramCreateContainerForm.14.
+type InstagramCreateContainerForm14 = interface{}
+
+// InstagramCreateContainerForm15 defines model for InstagramCreateContainerForm.15.
+type InstagramCreateContainerForm15 struct {
+	// UserTags JSON-serialized structured value, URL/form encoded. See JSON request schema for inner structure.
+	UserTags *string `json:"user_tags,omitempty"`
+}
+
+// InstagramCreateContainerForm16 defines model for InstagramCreateContainerForm.16.
+type InstagramCreateContainerForm16 struct {
+	ImageUrl string `json:"image_url"`
+}
+
+// InstagramCreateContainerForm17 defines model for InstagramCreateContainerForm.17.
+type InstagramCreateContainerForm17 struct {
+	MediaType InstagramCreateContainerForm17MediaType `json:"media_type"`
+	VideoUrl  string                                  `json:"video_url"`
+}
+
+// InstagramCreateContainerForm17MediaType defines model for InstagramCreateContainerForm.17.MediaType.
+type InstagramCreateContainerForm17MediaType string
+
+// InstagramCreateContainerForm18 defines model for InstagramCreateContainerForm.18.
+type InstagramCreateContainerForm18 struct {
+	MediaType InstagramCreateContainerForm18MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainerForm18MediaType defines model for InstagramCreateContainerForm.18.MediaType.
+type InstagramCreateContainerForm18MediaType string
+
+// InstagramCreateContainerForm19 defines model for InstagramCreateContainerForm.19.
+type InstagramCreateContainerForm19 struct {
+	MediaType InstagramCreateContainerForm19MediaType `json:"media_type"`
+}
+
+// InstagramCreateContainerForm19MediaType defines model for InstagramCreateContainerForm.19.MediaType.
+type InstagramCreateContainerForm19MediaType string
+
+// InstagramCreateContainerForm20 defines model for InstagramCreateContainerForm.20.
+type InstagramCreateContainerForm20 struct {
+	IsCarouselItem InstagramCreateContainerForm20IsCarouselItem `json:"is_carousel_item"`
+	MediaType      InstagramCreateContainerForm20MediaType      `json:"media_type"`
+}
+
+// InstagramCreateContainerForm20IsCarouselItem defines model for InstagramCreateContainerForm.20.IsCarouselItem.
+type InstagramCreateContainerForm20IsCarouselItem bool
+
+// InstagramCreateContainerForm20MediaType defines model for InstagramCreateContainerForm.20.MediaType.
+type InstagramCreateContainerForm20MediaType string
+
+// InstagramCursorOnlyPaging defines model for InstagramCursorOnlyPaging.
+type InstagramCursorOnlyPaging struct {
+	Cursors              *InstagramCursorOnlyPaging_Cursors `json:"cursors,omitempty"`
+	AdditionalProperties map[string]interface{}             `json:"-"`
+}
+
+// InstagramCursorOnlyPaging_Cursors defines model for InstagramCursorOnlyPaging.Cursors.
+type InstagramCursorOnlyPaging_Cursors struct {
+	After                *string                `json:"after,omitempty"`
+	Before               *string                `json:"before,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramCursorPaging defines model for InstagramCursorPaging.
+type InstagramCursorPaging struct {
+	Cursors              *InstagramCursorPaging_Cursors `json:"cursors,omitempty"`
+	Next                 *string                        `json:"next,omitempty"`
+	Previous             *string                        `json:"previous,omitempty"`
+	AdditionalProperties map[string]interface{}         `json:"-"`
+}
+
+// InstagramCursorPaging_Cursors defines model for InstagramCursorPaging.Cursors.
+type InstagramCursorPaging_Cursors struct {
+	After                *string                `json:"after,omitempty"`
+	Before               *string                `json:"before,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramID defines model for InstagramID.
+type InstagramID struct {
+	Id                   *string                `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramInsight defines model for InstagramInsight.
+type InstagramInsight struct {
+	Description          *string                     `json:"description,omitempty"`
+	Id                   *string                     `json:"id,omitempty"`
+	Name                 *string                     `json:"name,omitempty"`
+	Period               *string                     `json:"period,omitempty"`
+	Title                *string                     `json:"title,omitempty"`
+	TotalValue           *InstagramInsightTotalValue `json:"total_value,omitempty"`
+	Values               *[]InstagramInsightValue    `json:"values,omitempty"`
+	AdditionalProperties map[string]interface{}      `json:"-"`
+}
+
+// InstagramInsightBreakdown defines model for InstagramInsightBreakdown.
+type InstagramInsightBreakdown struct {
+	DimensionKeys        *[]string                          `json:"dimension_keys,omitempty"`
+	Results              *[]InstagramInsightBreakdownResult `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}             `json:"-"`
+}
+
+// InstagramInsightBreakdownResult defines model for InstagramInsightBreakdownResult.
+type InstagramInsightBreakdownResult struct {
+	DimensionValues      *[]string              `json:"dimension_values,omitempty"`
+	EndTime              *string                `json:"end_time,omitempty"`
+	Value                *float32               `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramInsightTotalValue defines model for InstagramInsightTotalValue.
+type InstagramInsightTotalValue struct {
+	Breakdowns           *[]InstagramInsightBreakdown `json:"breakdowns,omitempty"`
+	Value                *float32                     `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}       `json:"-"`
+}
+
+// InstagramInsightValue defines model for InstagramInsightValue.
+type InstagramInsightValue struct {
+	EndTime              *string                      `json:"end_time,omitempty"`
+	Value                *InstagramInsightValue_Value `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}       `json:"-"`
+}
+
+// InstagramInsightValueValue0 defines model for InstagramInsightValue.Value.0.
+type InstagramInsightValueValue0 = float32
+
+// InstagramInsightValueValue1 defines model for InstagramInsightValue.Value.1.
+type InstagramInsightValueValue1 map[string]float32
+
+// InstagramInsightValue_Value defines model for InstagramInsightValue.Value.
+type InstagramInsightValue_Value struct {
+	union json.RawMessage
+}
+
+// InstagramInsights defines model for InstagramInsights.
+type InstagramInsights struct {
+	Data                 *[]InstagramInsight    `json:"data,omitempty"`
+	Paging               *InstagramCursorPaging `json:"paging,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramMedia defines model for InstagramMedia.
+type InstagramMedia struct {
+	AltText                   *string                        `json:"alt_text,omitempty"`
+	Children                  *InstagramMediaList            `json:"children,omitempty"`
+	Comments                  *InstagramCommentList          `json:"comments,omitempty"`
+	CommentsCount             *int64                         `json:"comments_count,omitempty"`
+	CopyrightCheckInformation *InstagramCopyrightInformation `json:"copyright_check_information,omitempty"`
+	Id                        *string                        `json:"id,omitempty"`
+	IsAiGenerated             *bool                          `json:"is_ai_generated,omitempty"`
+	IsCommentEnabled          *bool                          `json:"is_comment_enabled,omitempty"`
+	IsSharedToFeed            *bool                          `json:"is_shared_to_feed,omitempty"`
+	LegacyInstagramMediaId    *string                        `json:"legacy_instagram_media_id,omitempty"`
+	LikeCount                 *int64                         `json:"like_count,omitempty"`
+	MediaAudioType            *InstagramMediaMediaAudioType  `json:"media_audio_type,omitempty"`
+	MediaType                 *InstagramMediaMediaType       `json:"media_type,omitempty"`
+	MediaUrl                  *string                        `json:"media_url,omitempty"`
+	Owner                     *InstagramID                   `json:"owner,omitempty"`
+	Permalink                 *string                        `json:"permalink,omitempty"`
+	Shortcode                 *string                        `json:"shortcode,omitempty"`
+	ThumbnailUrl              *string                        `json:"thumbnail_url,omitempty"`
+	Timestamp                 *string                        `json:"timestamp,omitempty"`
+	Username                  *string                        `json:"username,omitempty"`
+	AdditionalProperties      map[string]interface{}         `json:"-"`
+}
+
+// InstagramMediaMediaAudioType defines model for InstagramMedia.MediaAudioType.
+type InstagramMediaMediaAudioType string
+
+// InstagramMediaMediaType defines model for InstagramMedia.MediaType.
+type InstagramMediaMediaType string
+
+// InstagramMediaList defines model for InstagramMediaList.
+type InstagramMediaList struct {
+	Data                 *[]InstagramMedia      `json:"data,omitempty"`
+	Paging               *InstagramCursorPaging `json:"paging,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
 // InstagramMessageSent defines model for InstagramMessageSent.
 type InstagramMessageSent struct {
-	MessageId   *string `json:"message_id,omitempty"`
-	RecipientId *string `json:"recipient_id,omitempty"`
+	// AttachmentId Present when upload-and-send returns reusable attachment ID.
+	AttachmentId *string `json:"attachment_id,omitempty"`
+	MessageId    *string `json:"message_id,omitempty"`
+	RecipientId  *string `json:"recipient_id,omitempty"`
+}
+
+// InstagramSelfUser defines model for InstagramSelfUser.
+type InstagramSelfUser struct {
+	AccountType                   *InstagramSelfUserAccountType `json:"account_type,omitempty"`
+	Biography                     *string                       `json:"biography,omitempty"`
+	FollowersCount                *int                          `json:"followers_count,omitempty"`
+	FollowsCount                  *int                          `json:"follows_count,omitempty"`
+	HasProfilePic                 *bool                         `json:"has_profile_pic,omitempty"`
+	Id                            *string                       `json:"id,omitempty"`
+	IsPublished                   *bool                         `json:"is_published,omitempty"`
+	LegacyInstagramUserId         *string                       `json:"legacy_instagram_user_id,omitempty"`
+	MediaCount                    *int                          `json:"media_count,omitempty"`
+	Name                          *string                       `json:"name,omitempty"`
+	ProfilePictureUrl             *string                       `json:"profile_picture_url,omitempty"`
+	ShoppingProductTagEligibility *bool                         `json:"shopping_product_tag_eligibility,omitempty"`
+	UserId                        *string                       `json:"user_id,omitempty"`
+	Username                      *string                       `json:"username,omitempty"`
+	Website                       *string                       `json:"website,omitempty"`
+}
+
+// InstagramSelfUserAccountType defines model for InstagramSelfUser.AccountType.
+type InstagramSelfUserAccountType string
+
+// InstagramSuccess defines model for InstagramSuccess.
+type InstagramSuccess struct {
+	Success              *bool                  `json:"success,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// InstagramTaggedMediaList defines model for InstagramTaggedMediaList.
+type InstagramTaggedMediaList struct {
+	Data                 *[]InstagramMedia          `json:"data,omitempty"`
+	Paging               *InstagramCursorOnlyPaging `json:"paging,omitempty"`
+	AdditionalProperties map[string]interface{}     `json:"-"`
 }
 
 // InstagramWebhookSubscription defines model for InstagramWebhookSubscription.
 type InstagramWebhookSubscription struct {
 	Id               *string   `json:"id,omitempty"`
 	SubscribedFields *[]string `json:"subscribed_fields,omitempty"`
+}
+
+// MediaPublished defines model for MediaPublished.
+type MediaPublished struct {
+	Id string `json:"id"`
 }
 
 // MessagingActor defines model for MessagingActor.
@@ -228,8 +1442,10 @@ type MessagingAttachment struct {
 			Subtitle *string `json:"subtitle,omitempty"`
 			Title    *string `json:"title,omitempty"`
 		} `json:"elements,omitempty"`
-		Id           *string                                 `json:"id,omitempty"`
-		IsReusable   *bool                                   `json:"is_reusable,omitempty"`
+		Id *string `json:"id,omitempty"`
+
+		// IsReusable Collection examples use boolean; Facebook attachment guide serializes string true.
+		IsReusable   *MessagingAttachment_Payload_IsReusable `json:"is_reusable,omitempty"`
 		TemplateType *MessagingAttachmentPayloadTemplateType `json:"template_type,omitempty"`
 		Text         *string                                 `json:"text,omitempty"`
 		Url          *string                                 `json:"url,omitempty"`
@@ -239,6 +1455,17 @@ type MessagingAttachment struct {
 
 // MessagingAttachmentPayloadElementsDefaultActionType defines model for MessagingAttachment.Payload.Elements.DefaultAction.Type.
 type MessagingAttachmentPayloadElementsDefaultActionType string
+
+// MessagingAttachmentPayloadIsReusable0 defines model for MessagingAttachment.Payload.IsReusable.0.
+type MessagingAttachmentPayloadIsReusable0 = bool
+
+// MessagingAttachmentPayloadIsReusable1 defines model for MessagingAttachment.Payload.IsReusable.1.
+type MessagingAttachmentPayloadIsReusable1 string
+
+// MessagingAttachment_Payload_IsReusable Collection examples use boolean; Facebook attachment guide serializes string true.
+type MessagingAttachment_Payload_IsReusable struct {
+	union json.RawMessage
+}
 
 // MessagingAttachmentPayloadTemplateType defines model for MessagingAttachment.Payload.TemplateType.
 type MessagingAttachmentPayloadTemplateType string
@@ -298,13 +1525,26 @@ type MessagingPaging struct {
 
 // MessagingQuickReply defines model for MessagingQuickReply.
 type MessagingQuickReply struct {
-	ContentType MessagingQuickReplyContentType `json:"content_type"`
-	Payload     string                         `json:"payload"`
-	Title       string                         `json:"title"`
+	union json.RawMessage
 }
 
-// MessagingQuickReplyContentType defines model for MessagingQuickReply.ContentType.
-type MessagingQuickReplyContentType string
+// MessagingQuickReply0 defines model for MessagingQuickReply.0.
+type MessagingQuickReply0 struct {
+	ContentType MessagingQuickReply0ContentType `json:"content_type"`
+	Payload     string                          `json:"payload"`
+	Title       string                          `json:"title"`
+}
+
+// MessagingQuickReply0ContentType defines model for MessagingQuickReply.0.ContentType.
+type MessagingQuickReply0ContentType string
+
+// MessagingQuickReply1 defines model for MessagingQuickReply.1.
+type MessagingQuickReply1 struct {
+	ContentType MessagingQuickReply1ContentType `json:"content_type"`
+}
+
+// MessagingQuickReply1ContentType defines model for MessagingQuickReply.1.ContentType.
+type MessagingQuickReply1ContentType string
 
 // MessagingSuccess defines model for MessagingSuccess.
 type MessagingSuccess struct {
@@ -313,30 +1553,14 @@ type MessagingSuccess struct {
 
 // MessagingUserProfile defines model for MessagingUserProfile.
 type MessagingUserProfile struct {
-	FollowerCount        *int                             `json:"follower_count,omitempty"`
-	Id                   *string                          `json:"id,omitempty"`
-	IsBusinessFollowUser *bool                            `json:"is_business_follow_user,omitempty"`
-	IsUserFollowBusiness *bool                            `json:"is_user_follow_business,omitempty"`
-	IsVerifiedUser       *bool                            `json:"is_verified_user,omitempty"`
-	Name                 *MessagingUserProfile_Name       `json:"name,omitempty"`
-	ProfilePic           *MessagingUserProfile_ProfilePic `json:"profile_pic,omitempty"`
-	Username             *string                          `json:"username,omitempty"`
-}
-
-// MessagingUserProfileName0 defines model for MessagingUserProfile.Name.0.
-type MessagingUserProfileName0 = string
-
-// MessagingUserProfile_Name defines model for MessagingUserProfile.Name.
-type MessagingUserProfile_Name struct {
-	union json.RawMessage
-}
-
-// MessagingUserProfileProfilePic0 defines model for MessagingUserProfile.ProfilePic.0.
-type MessagingUserProfileProfilePic0 = string
-
-// MessagingUserProfile_ProfilePic defines model for MessagingUserProfile.ProfilePic.
-type MessagingUserProfile_ProfilePic struct {
-	union json.RawMessage
+	FollowerCount        *int    `json:"follower_count,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	IsBusinessFollowUser *bool   `json:"is_business_follow_user,omitempty"`
+	IsUserFollowBusiness *bool   `json:"is_user_follow_business,omitempty"`
+	IsVerifiedUser       *bool   `json:"is_verified_user,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	ProfilePic           *string `json:"profile_pic,omitempty"`
+	Username             *string `json:"username,omitempty"`
 }
 
 // MessengerProfileResult defines model for MessengerProfileResult.
@@ -346,6 +1570,7 @@ type MessengerProfileResult struct {
 
 // MessengerProfileSettings defines model for MessengerProfileSettings.
 type MessengerProfileSettings struct {
+	// IceBreakers Official collection shows flat legacy questions; current guide shows localized call_to_actions groups (maximum four per locale).
 	IceBreakers    *IceBreakers                      `json:"ice_breakers,omitempty"`
 	PersistentMenu *PersistentMenu                   `json:"persistent_menu,omitempty"`
 	Platform       *MessengerProfileSettingsPlatform `json:"platform,omitempty"`
@@ -356,15 +1581,47 @@ type MessengerProfileSettingsPlatform string
 
 // OutboundMessage defines model for OutboundMessage.
 type OutboundMessage struct {
-	Attachment   *MessagingAttachment   `json:"attachment,omitempty"`
+	Attachment *MessagingAttachment `json:"attachment,omitempty"`
+
+	// Attachments Multiple-image message; entries use image attachments with URL or attachment ID.
+	Attachments  *[]MessagingAttachment `json:"attachments,omitempty"`
 	QuickReplies *[]MessagingQuickReply `json:"quick_replies,omitempty"`
-	Text         *string                `json:"text,omitempty"`
+	ReplyTo      *struct {
+		Mid string `json:"mid"`
+	} `json:"reply_to,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // PersistentMenu defines model for PersistentMenu.
 type PersistentMenu = []struct {
-	CallToActions *[]MessagingButton `json:"call_to_actions,omitempty"`
-	Locale        *string            `json:"locale,omitempty"`
+	CallToActions         *[]MessagingButton `json:"call_to_actions,omitempty"`
+	ComposerInputDisabled *bool              `json:"composer_input_disabled,omitempty"`
+	Locale                *string            `json:"locale,omitempty"`
+}
+
+// PublishingError defines model for PublishingError.
+type PublishingError struct {
+	Error *struct {
+		Code           *int    `json:"code,omitempty"`
+		ErrorSubcode   *int    `json:"error_subcode,omitempty"`
+		ErrorUserMsg   *string `json:"error_user_msg,omitempty"`
+		ErrorUserTitle *string `json:"error_user_title,omitempty"`
+		FbtraceId      *string `json:"fbtrace_id,omitempty"`
+		IsTransient    *bool   `json:"is_transient,omitempty"`
+		Message        *string `json:"message,omitempty"`
+		Type           *string `json:"type,omitempty"`
+	} `json:"error,omitempty"`
+}
+
+// PublishingLimit defines model for PublishingLimit.
+type PublishingLimit struct {
+	Data *[]struct {
+		Config *struct {
+			QuotaDuration *int `json:"quota_duration,omitempty"`
+			QuotaTotal    *int `json:"quota_total,omitempty"`
+		} `json:"config,omitempty"`
+		QuotaUsage *int `json:"quota_usage,omitempty"`
+	} `json:"data,omitempty"`
 }
 
 // SendInstagramMessage defines model for SendInstagramMessage.
@@ -375,9 +1632,11 @@ type SendInstagramMessage struct {
 		MessageId *string `json:"message_id,omitempty"`
 		Reaction  *string `json:"reaction,omitempty"`
 	} `json:"payload,omitempty"`
-	Recipient    SendInstagramMessage_Recipient `json:"recipient"`
-	SenderAction *string                        `json:"sender_action,omitempty"`
-	Tag          *string                        `json:"tag,omitempty"`
+	Recipient SendInstagramMessage_Recipient `json:"recipient"`
+
+	// SenderAction react/unreact use payload.message_id (and reaction for react). typing_on/typing_off/mark_seen requests contain only recipient and sender_action. Reaction can be an emoji for Instagram Login; Facebook guide documents love.
+	SenderAction *string `json:"sender_action,omitempty"`
+	Tag          *string `json:"tag,omitempty"`
 	union        json.RawMessage
 }
 
@@ -402,6 +1661,33 @@ type SendInstagramMessage0 = interface{}
 // SendInstagramMessage1 defines model for SendInstagramMessage.1.
 type SendInstagramMessage1 = interface{}
 
+// TrialParams defines model for TrialParams.
+type TrialParams struct {
+	GraduationStrategy TrialParamsGraduationStrategy `json:"graduation_strategy"`
+}
+
+// TrialParamsGraduationStrategy defines model for TrialParams.GraduationStrategy.
+type TrialParamsGraduationStrategy string
+
+// UploadPhase defines model for UploadPhase.
+type UploadPhase struct {
+	BytesTransferred *int `json:"bytes_transferred,omitempty"`
+	Errors           *[]struct {
+		Code    *int    `json:"code,omitempty"`
+		Message *string `json:"message,omitempty"`
+	} `json:"errors,omitempty"`
+
+	// Status Documented examples: complete, in_progress, not_started; sample also checks error. Not an exhaustive enum.
+	Status *string `json:"status,omitempty"`
+}
+
+// UserTag defines model for UserTag.
+type UserTag struct {
+	Username string   `json:"username"`
+	X        *float32 `json:"x,omitempty"`
+	Y        *float32 `json:"y,omitempty"`
+}
+
 // WelcomeMessageFlow defines model for WelcomeMessageFlow.
 type WelcomeMessageFlow struct {
 	EligiblePlatforms  *[]string `json:"eligible_platforms,omitempty"`
@@ -414,11 +1700,29 @@ type WelcomeMessageFlow struct {
 
 // WelcomeMessageFlowWrite defines model for WelcomeMessageFlowWrite.
 type WelcomeMessageFlowWrite struct {
-	EligiblePlatforms  *[]string `json:"eligible_platforms,omitempty"`
-	Name               *string   `json:"name,omitempty"`
-	WelcomeMessageFlow *[]struct {
-		Message *OutboundMessage `json:"message,omitempty"`
-	} `json:"welcome_message_flow,omitempty"`
+	// EligiblePlatforms Required when creating a flow; optional when updating an existing flow selected by flow_id query parameter.
+	EligiblePlatforms  *[]WelcomeMessageFlowWriteEligiblePlatforms `json:"eligible_platforms,omitempty"`
+	Name               string                                      `json:"name"`
+	WelcomeMessageFlow []struct {
+		Message struct {
+			QuickReplies []MessagingQuickReply `json:"quick_replies"`
+			Text         string                `json:"text"`
+		} `json:"message"`
+	} `json:"welcome_message_flow"`
+}
+
+// WelcomeMessageFlowWriteEligiblePlatforms defines model for WelcomeMessageFlowWrite.EligiblePlatforms.
+type WelcomeMessageFlowWriteEligiblePlatforms string
+
+// ReadAuthenticatedInstagramAccountParams defines parameters for ReadAuthenticatedInstagramAccount.
+type ReadAuthenticatedInstagramAccountParams struct {
+	Fields      *string `form:"fields,omitempty" json:"fields,omitempty"`
+	AccessToken *string `form:"access_token,omitempty" json:"access_token,omitempty"`
+}
+
+// ReadAuthenticatedInstagramAccount200JSONResponseBody defines parameters for ReadAuthenticatedInstagramAccount.
+type ReadAuthenticatedInstagramAccount200JSONResponseBody struct {
+	union json.RawMessage
 }
 
 // ListAuthenticatedInstagramConversationsParams defines parameters for ListAuthenticatedInstagramConversations.
@@ -430,37 +1734,78 @@ type ListAuthenticatedInstagramConversationsParams struct {
 // ListAuthenticatedInstagramConversationsParamsPlatform defines parameters for ListAuthenticatedInstagramConversations.
 type ListAuthenticatedInstagramConversationsParamsPlatform string
 
-// ReadInstagramMessagingObjectParams defines parameters for ReadInstagramMessagingObject.
-type ReadInstagramMessagingObjectParams struct {
+// ReadInstagramNodeParams defines parameters for ReadInstagramNode.
+type ReadInstagramNodeParams struct {
+	// Fields Comma-separated field selection; supports documented field expansion.
 	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
 }
 
-// ReadInstagramMessagingObject200JSONResponseBody defines parameters for ReadInstagramMessagingObject.
-type ReadInstagramMessagingObject200JSONResponseBody struct {
+// ReadInstagramNode200JSONResponseBody0 defines parameters for ReadInstagramNode.
+type ReadInstagramNode200JSONResponseBody0 struct {
 	union json.RawMessage
 }
 
-// GetCommentsParams defines parameters for GetComments.
-type GetCommentsParams struct {
+// ReadInstagramNode200JSONResponseBody00 defines parameters for ReadInstagramNode.
+type ReadInstagramNode200JSONResponseBody00 struct {
+	union json.RawMessage
+}
+
+// ReadInstagramNode200JSONResponseBody1 defines parameters for ReadInstagramNode.
+type ReadInstagramNode200JSONResponseBody1 struct {
+	union json.RawMessage
+}
+
+// ReadInstagramNode200JSONResponseBody defines parameters for ReadInstagramNode.
+type ReadInstagramNode200JSONResponseBody struct {
+	union json.RawMessage
+}
+
+// ReadInstagramNodedefaultJSONResponseBody0 defines parameters for ReadInstagramNode.
+type ReadInstagramNodedefaultJSONResponseBody0 struct {
+	union json.RawMessage
+}
+
+// ReadInstagramNodedefaultJSONResponseBody defines parameters for ReadInstagramNode.
+type ReadInstagramNodedefaultJSONResponseBody struct {
+	union json.RawMessage
+}
+
+// ModerateInstagramNodeParams defines parameters for ModerateInstagramNode.
+type ModerateInstagramNodeParams struct {
+	// Hide Required when hiding/unhiding a comment.
+	Hide *bool `form:"hide,omitempty" json:"hide,omitempty"`
+
+	// CommentEnabled Required when enabling/disabling comments on media.
+	CommentEnabled *bool `form:"comment_enabled,omitempty" json:"comment_enabled,omitempty"`
+}
+
+// ReadInstagramMediaChildrenParams defines parameters for ReadInstagramMediaChildren.
+type ReadInstagramMediaChildrenParams struct {
+	// Fields Comma-separated field selection; supports documented field expansion.
 	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Before *string `form:"before,omitempty" json:"before,omitempty"`
+	After  *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit  *int64  `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
-// GetComments200JSONResponseBody_Data_Item defines parameters for GetComments.
-type GetComments200JSONResponseBody_Data_Item struct {
-	From *struct {
-		Id       *string `json:"id,omitempty"`
-		Username *string `json:"username,omitempty"`
-	} `json:"from,omitempty"`
-	Id                   *string                `json:"id,omitempty"`
-	Text                 *string                `json:"text,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
+// ReadInstagramCommentsParams defines parameters for ReadInstagramComments.
+type ReadInstagramCommentsParams struct {
+	// Fields Comma-separated field selection; supports documented field expansion.
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Before *string `form:"before,omitempty" json:"before,omitempty"`
+	After  *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit  *int64  `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
-// GetComments200JSONResponseBody defines parameters for GetComments.
-type GetComments200JSONResponseBody struct {
-	Data                 *[]GetComments200JSONResponseBody_Data_Item `json:"data,omitempty"`
-	Paging               *map[string]interface{}                     `json:"paging,omitempty"`
-	AdditionalProperties map[string]interface{}                      `json:"-"`
+// CreateInstagramCommentParams defines parameters for CreateInstagramComment.
+type CreateInstagramCommentParams struct {
+	Message string `form:"message" json:"message"`
+}
+
+// InstagramReadPublishingLimitParams defines parameters for InstagramReadPublishingLimit.
+type InstagramReadPublishingLimitParams struct {
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Since  *int    `form:"since,omitempty" json:"since,omitempty"`
 }
 
 // ListInstagramConversationsParams defines parameters for ListInstagramConversations.
@@ -472,84 +1817,63 @@ type ListInstagramConversationsParams struct {
 // ListInstagramConversationsParamsPlatform defines parameters for ListInstagramConversations.
 type ListInstagramConversationsParamsPlatform string
 
-// GetInsightsParams defines parameters for GetInsights.
-type GetInsightsParams struct {
-	Metric *string `form:"metric,omitempty" json:"metric,omitempty"`
-	Period *string `form:"period,omitempty" json:"period,omitempty"`
+// ReadInstagramInsightsParams defines parameters for ReadInstagramInsights.
+type ReadInstagramInsightsParams struct {
+	// Metric Comma-separated metrics. Account/media compatibility differs; never JSON-array serialization.
+	Metric string `form:"metric" json:"metric"`
+
+	// Period Required on account insights. Media reference conflicts: query table accepts periods, response section says always lifetime; preserve without enforcing narrow enum.
+	Period     *string                                `form:"period,omitempty" json:"period,omitempty"`
+	MetricType *ReadInstagramInsightsParamsMetricType `form:"metric_type,omitempty" json:"metric_type,omitempty"`
+
+	// Breakdown Breakdowns must match chosen metric.
+	Breakdown *string `form:"breakdown,omitempty" json:"breakdown,omitempty"`
+
+	// Timeframe Required for demographic account metrics; supersedes since/until.
+	Timeframe *string `form:"timeframe,omitempty" json:"timeframe,omitempty"`
+
+	// Since UNIX timestamp for account insights.
+	Since *int64 `form:"since,omitempty" json:"since,omitempty"`
+
+	// Until UNIX timestamp for account insights.
+	Until *int64 `form:"until,omitempty" json:"until,omitempty"`
 }
 
-// GetInsights200JSONResponseBody_Data_Values_Item defines parameters for GetInsights.
-type GetInsights200JSONResponseBody_Data_Values_Item struct {
-	EndTime              *string                `json:"end_time,omitempty"`
-	Value                interface{}            `json:"value,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
+// ReadInstagramInsightsParamsMetricType defines parameters for ReadInstagramInsights.
+type ReadInstagramInsightsParamsMetricType string
+
+// ReadInstagramAccountMediaParams defines parameters for ReadInstagramAccountMedia.
+type ReadInstagramAccountMediaParams struct {
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Before *string `form:"before,omitempty" json:"before,omitempty"`
+	After  *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit  *int64  `form:"limit,omitempty" json:"limit,omitempty"`
+	Since  *string `form:"since,omitempty" json:"since,omitempty"`
+	Until  *string `form:"until,omitempty" json:"until,omitempty"`
 }
 
-// GetInsights200JSONResponseBody_Data_Item defines parameters for GetInsights.
-type GetInsights200JSONResponseBody_Data_Item struct {
-	Description          *string                                            `json:"description,omitempty"`
-	Id                   *string                                            `json:"id,omitempty"`
-	Name                 *string                                            `json:"name,omitempty"`
-	Period               *string                                            `json:"period,omitempty"`
-	Title                *string                                            `json:"title,omitempty"`
-	Values               *[]GetInsights200JSONResponseBody_Data_Values_Item `json:"values,omitempty"`
-	AdditionalProperties map[string]interface{}                             `json:"-"`
+// InstagramPublishContainerJSONBody defines parameters for InstagramPublishContainer.
+type InstagramPublishContainerJSONBody struct {
+	CreationId string `json:"creation_id"`
 }
 
-// GetInsights200JSONResponseBody defines parameters for GetInsights.
-type GetInsights200JSONResponseBody struct {
-	Data                 *[]GetInsights200JSONResponseBody_Data_Item `json:"data,omitempty"`
-	AdditionalProperties map[string]interface{}                      `json:"-"`
+// InstagramPublishContainerFormdataBody defines parameters for InstagramPublishContainer.
+type InstagramPublishContainerFormdataBody struct {
+	CreationId string `form:"creation_id" json:"creation_id"`
 }
 
-// PostMediaMultipartBody defines parameters for PostMedia.
-type PostMediaMultipartBody struct {
-	union json.RawMessage
+// InstagramPublishContainerMultipartBody defines parameters for InstagramPublishContainer.
+type InstagramPublishContainerMultipartBody struct {
+	CreationId string `json:"creation_id"`
 }
 
-// PostMediaMultipartBody0 defines parameters for PostMedia.
-type PostMediaMultipartBody0 struct {
-	union json.RawMessage
-}
+// ReplyToInstagramMentionParams defines parameters for ReplyToInstagramMention.
+type ReplyToInstagramMentionParams struct {
+	MediaId string `form:"media_id" json:"media_id"`
 
-// PostMediaMultipartBody00 defines parameters for PostMedia.
-type PostMediaMultipartBody00 struct {
-	ImageUrl             *string                `json:"image_url,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// PostMediaMultipartBody01 defines parameters for PostMedia.
-type PostMediaMultipartBody01 struct {
-	MediaType            *string                `json:"media_type,omitempty"`
-	UploadType           *string                `json:"upload_type,omitempty"`
-	VideoUrl             *string                `json:"video_url,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// PostMediaMultipartBody1 defines parameters for PostMedia.
-type PostMediaMultipartBody1 struct {
-	Caption              *string                `json:"caption,omitempty"`
-	Children             *string                `json:"children,omitempty"`
-	MediaType            *string                `json:"media_type,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// PostMedia200JSONResponseBody defines parameters for PostMedia.
-type PostMedia200JSONResponseBody struct {
-	Id                   *string                `json:"id,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// PostMediaPublishMultipartBody defines parameters for PostMediaPublish.
-type PostMediaPublishMultipartBody struct {
-	CreationId           *string                `json:"creation_id,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
-}
-
-// PostMediaPublish200JSONResponseBody defines parameters for PostMediaPublish.
-type PostMediaPublish200JSONResponseBody struct {
-	Id                   *string                `json:"id,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
+	// CommentId Required for comment mention; omit for caption mention.
+	CommentId *string `form:"comment_id,omitempty" json:"comment_id,omitempty"`
+	Message   string  `form:"message" json:"message"`
 }
 
 // UploadInstagramMessageAttachmentJSONBody defines parameters for UploadInstagramMessageAttachment.
@@ -559,9 +1883,22 @@ type UploadInstagramMessageAttachmentJSONBody struct {
 	} `json:"message"`
 }
 
+// DeleteInstagramMessengerProfileJSONBody defines parameters for DeleteInstagramMessengerProfile.
+type DeleteInstagramMessengerProfileJSONBody struct {
+	Fields []DeleteInstagramMessengerProfileJSONBodyFields `json:"fields"`
+}
+
 // DeleteInstagramMessengerProfileParams defines parameters for DeleteInstagramMessengerProfile.
 type DeleteInstagramMessengerProfileParams struct {
-	Fields string `form:"fields" json:"fields"`
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+}
+
+// DeleteInstagramMessengerProfileJSONBodyFields defines parameters for DeleteInstagramMessengerProfile.
+type DeleteInstagramMessengerProfileJSONBodyFields string
+
+// DeleteInstagramMessengerProfile200JSONResponseBody defines parameters for DeleteInstagramMessengerProfile.
+type DeleteInstagramMessengerProfile200JSONResponseBody struct {
+	union json.RawMessage
 }
 
 // GetInstagramMessengerProfileParams defines parameters for GetInstagramMessengerProfile.
@@ -576,16 +1913,33 @@ type SetInstagramMessengerProfileMultipartBody struct {
 	Platform       *string `json:"platform,omitempty"`
 }
 
-// PostRepliesJSONBody defines parameters for PostReplies.
-type PostRepliesJSONBody struct {
-	Message              *string                `json:"message,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
+// SetInstagramMessengerProfile200JSONResponseBody defines parameters for SetInstagramMessengerProfile.
+type SetInstagramMessengerProfile200JSONResponseBody struct {
+	union json.RawMessage
 }
 
-// PostReplies200JSONResponseBody defines parameters for PostReplies.
-type PostReplies200JSONResponseBody struct {
-	Id                   *string                `json:"id,omitempty"`
-	AdditionalProperties map[string]interface{} `json:"-"`
+// ReadInstagramCommentRepliesParams defines parameters for ReadInstagramCommentReplies.
+type ReadInstagramCommentRepliesParams struct {
+	// Fields Comma-separated field selection; supports documented field expansion.
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Before *string `form:"before,omitempty" json:"before,omitempty"`
+	After  *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit  *int64  `form:"limit,omitempty" json:"limit,omitempty"`
+}
+
+// ReplyToInstagramCommentJSONBody defines parameters for ReplyToInstagramComment.
+type ReplyToInstagramCommentJSONBody struct {
+	Message string `json:"message"`
+}
+
+// ReplyToInstagramCommentFormdataBody defines parameters for ReplyToInstagramComment.
+type ReplyToInstagramCommentFormdataBody struct {
+	Message string `form:"message" json:"message"`
+}
+
+// ReplyToInstagramCommentParams defines parameters for ReplyToInstagramComment.
+type ReplyToInstagramCommentParams struct {
+	Message *string `form:"message,omitempty" json:"message,omitempty"`
 }
 
 // SubscribeInstagramWebhooksJSONBody defines parameters for SubscribeInstagramWebhooks.
@@ -596,6 +1950,15 @@ type SubscribeInstagramWebhooksJSONBody struct {
 // SubscribeInstagramWebhooksParams defines parameters for SubscribeInstagramWebhooks.
 type SubscribeInstagramWebhooksParams struct {
 	SubscribedFields *string `form:"subscribed_fields,omitempty" json:"subscribed_fields,omitempty"`
+}
+
+// ReadInstagramTaggedMediaParams defines parameters for ReadInstagramTaggedMedia.
+type ReadInstagramTaggedMediaParams struct {
+	// Fields Comma-separated field selection; supports documented field expansion.
+	Fields *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Before *string `form:"before,omitempty" json:"before,omitempty"`
+	After  *string `form:"after,omitempty" json:"after,omitempty"`
+	Limit  *int64  `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
 // DeleteInstagramWelcomeFlowParams defines parameters for DeleteInstagramWelcomeFlow.
@@ -623,11 +1986,23 @@ type WriteInstagramWelcomeFlow200JSONResponseBody struct {
 	union json.RawMessage
 }
 
-// PostMediaMultipartRequestBody defines body for PostMedia for multipart/form-data ContentType.
-type PostMediaMultipartRequestBody PostMediaMultipartBody
+// InstagramCreatePublishingContainerJSONRequestBody defines body for InstagramCreatePublishingContainer for application/json ContentType.
+type InstagramCreatePublishingContainerJSONRequestBody = InstagramCreateContainer
 
-// PostMediaPublishMultipartRequestBody defines body for PostMediaPublish for multipart/form-data ContentType.
-type PostMediaPublishMultipartRequestBody PostMediaPublishMultipartBody
+// InstagramCreatePublishingContainerFormdataRequestBody defines body for InstagramCreatePublishingContainer for application/x-www-form-urlencoded ContentType.
+type InstagramCreatePublishingContainerFormdataRequestBody = InstagramCreateContainerForm
+
+// InstagramCreatePublishingContainerMultipartRequestBody defines body for InstagramCreatePublishingContainer for multipart/form-data ContentType.
+type InstagramCreatePublishingContainerMultipartRequestBody = InstagramCreateContainerForm
+
+// InstagramPublishContainerJSONRequestBody defines body for InstagramPublishContainer for application/json ContentType.
+type InstagramPublishContainerJSONRequestBody InstagramPublishContainerJSONBody
+
+// InstagramPublishContainerFormdataRequestBody defines body for InstagramPublishContainer for application/x-www-form-urlencoded ContentType.
+type InstagramPublishContainerFormdataRequestBody InstagramPublishContainerFormdataBody
+
+// InstagramPublishContainerMultipartRequestBody defines body for InstagramPublishContainer for multipart/form-data ContentType.
+type InstagramPublishContainerMultipartRequestBody InstagramPublishContainerMultipartBody
 
 // UploadInstagramMessageAttachmentJSONRequestBody defines body for UploadInstagramMessageAttachment for application/json ContentType.
 type UploadInstagramMessageAttachmentJSONRequestBody UploadInstagramMessageAttachmentJSONBody
@@ -635,11 +2010,20 @@ type UploadInstagramMessageAttachmentJSONRequestBody UploadInstagramMessageAttac
 // SendInstagramMessageJSONRequestBody defines body for SendInstagramMessage for application/json ContentType.
 type SendInstagramMessageJSONRequestBody = SendInstagramMessage
 
+// DeleteInstagramMessengerProfileJSONRequestBody defines body for DeleteInstagramMessengerProfile for application/json ContentType.
+type DeleteInstagramMessengerProfileJSONRequestBody DeleteInstagramMessengerProfileJSONBody
+
+// SetInstagramMessengerProfileJSONRequestBody defines body for SetInstagramMessengerProfile for application/json ContentType.
+type SetInstagramMessengerProfileJSONRequestBody = MessengerProfileSettings
+
 // SetInstagramMessengerProfileMultipartRequestBody defines body for SetInstagramMessengerProfile for multipart/form-data ContentType.
 type SetInstagramMessengerProfileMultipartRequestBody SetInstagramMessengerProfileMultipartBody
 
-// PostRepliesJSONRequestBody defines body for PostReplies for application/json ContentType.
-type PostRepliesJSONRequestBody PostRepliesJSONBody
+// ReplyToInstagramCommentJSONRequestBody defines body for ReplyToInstagramComment for application/json ContentType.
+type ReplyToInstagramCommentJSONRequestBody ReplyToInstagramCommentJSONBody
+
+// ReplyToInstagramCommentFormdataRequestBody defines body for ReplyToInstagramComment for application/x-www-form-urlencoded ContentType.
+type ReplyToInstagramCommentFormdataRequestBody ReplyToInstagramCommentFormdataBody
 
 // SubscribeInstagramWebhooksJSONRequestBody defines body for SubscribeInstagramWebhooks for application/json ContentType.
 type SubscribeInstagramWebhooksJSONRequestBody SubscribeInstagramWebhooksJSONBody
@@ -647,37 +2031,69 @@ type SubscribeInstagramWebhooksJSONRequestBody SubscribeInstagramWebhooksJSONBod
 // WriteInstagramWelcomeFlowJSONRequestBody defines body for WriteInstagramWelcomeFlow for application/json ContentType.
 type WriteInstagramWelcomeFlowJSONRequestBody = WelcomeMessageFlowWrite
 
-// Getter for additional properties for GetComments200JSONResponseBody_Data_Item. Returns the specified
+// Getter for additional properties for InstagramAccount. Returns the specified
 // element and whether it was found
-func (a GetComments200JSONResponseBody_Data_Item) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramAccount) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for GetComments200JSONResponseBody_Data_Item
-func (a *GetComments200JSONResponseBody_Data_Item) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramAccount
+func (a *InstagramAccount) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for GetComments200JSONResponseBody_Data_Item to handle AdditionalProperties
-func (a *GetComments200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramAccount to handle AdditionalProperties
+func (a *InstagramAccount) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["from"]; found {
-		err = json.Unmarshal(raw, &a.From)
+	if raw, found := object["account_type"]; found {
+		err = json.Unmarshal(raw, &a.AccountType)
 		if err != nil {
-			return fmt.Errorf("error reading 'from': %w", err)
+			return fmt.Errorf("error reading 'account_type': %w", err)
 		}
-		delete(object, "from")
+		delete(object, "account_type")
+	}
+
+	if raw, found := object["biography"]; found {
+		err = json.Unmarshal(raw, &a.Biography)
+		if err != nil {
+			return fmt.Errorf("error reading 'biography': %w", err)
+		}
+		delete(object, "biography")
+	}
+
+	if raw, found := object["followers_count"]; found {
+		err = json.Unmarshal(raw, &a.FollowersCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'followers_count': %w", err)
+		}
+		delete(object, "followers_count")
+	}
+
+	if raw, found := object["follows_count"]; found {
+		err = json.Unmarshal(raw, &a.FollowsCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'follows_count': %w", err)
+		}
+		delete(object, "follows_count")
+	}
+
+	if raw, found := object["has_profile_pic"]; found {
+		err = json.Unmarshal(raw, &a.HasProfilePic)
+		if err != nil {
+			return fmt.Errorf("error reading 'has_profile_pic': %w", err)
+		}
+		delete(object, "has_profile_pic")
 	}
 
 	if raw, found := object["id"]; found {
@@ -688,12 +2104,76 @@ func (a *GetComments200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error
 		delete(object, "id")
 	}
 
-	if raw, found := object["text"]; found {
-		err = json.Unmarshal(raw, &a.Text)
+	if raw, found := object["is_published"]; found {
+		err = json.Unmarshal(raw, &a.IsPublished)
 		if err != nil {
-			return fmt.Errorf("error reading 'text': %w", err)
+			return fmt.Errorf("error reading 'is_published': %w", err)
 		}
-		delete(object, "text")
+		delete(object, "is_published")
+	}
+
+	if raw, found := object["legacy_instagram_user_id"]; found {
+		err = json.Unmarshal(raw, &a.LegacyInstagramUserId)
+		if err != nil {
+			return fmt.Errorf("error reading 'legacy_instagram_user_id': %w", err)
+		}
+		delete(object, "legacy_instagram_user_id")
+	}
+
+	if raw, found := object["media"]; found {
+		err = json.Unmarshal(raw, &a.Media)
+		if err != nil {
+			return fmt.Errorf("error reading 'media': %w", err)
+		}
+		delete(object, "media")
+	}
+
+	if raw, found := object["media_count"]; found {
+		err = json.Unmarshal(raw, &a.MediaCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_count': %w", err)
+		}
+		delete(object, "media_count")
+	}
+
+	if raw, found := object["name"]; found {
+		err = json.Unmarshal(raw, &a.Name)
+		if err != nil {
+			return fmt.Errorf("error reading 'name': %w", err)
+		}
+		delete(object, "name")
+	}
+
+	if raw, found := object["profile_picture_url"]; found {
+		err = json.Unmarshal(raw, &a.ProfilePictureUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'profile_picture_url': %w", err)
+		}
+		delete(object, "profile_picture_url")
+	}
+
+	if raw, found := object["user_id"]; found {
+		err = json.Unmarshal(raw, &a.UserId)
+		if err != nil {
+			return fmt.Errorf("error reading 'user_id': %w", err)
+		}
+		delete(object, "user_id")
+	}
+
+	if raw, found := object["username"]; found {
+		err = json.Unmarshal(raw, &a.Username)
+		if err != nil {
+			return fmt.Errorf("error reading 'username': %w", err)
+		}
+		delete(object, "username")
+	}
+
+	if raw, found := object["website"]; found {
+		err = json.Unmarshal(raw, &a.Website)
+		if err != nil {
+			return fmt.Errorf("error reading 'website': %w", err)
+		}
+		delete(object, "website")
 	}
 
 	if len(object) != 0 {
@@ -710,15 +2190,43 @@ func (a *GetComments200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error
 	return nil
 }
 
-// Override default JSON handling for GetComments200JSONResponseBody_Data_Item to handle AdditionalProperties
-func (a GetComments200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramAccount to handle AdditionalProperties
+func (a InstagramAccount) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.From != nil {
-		object["from"], err = json.Marshal(a.From)
+	if a.AccountType != nil {
+		object["account_type"], err = json.Marshal(a.AccountType)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'from': %w", err)
+			return nil, fmt.Errorf("error marshaling 'account_type': %w", err)
+		}
+	}
+
+	if a.Biography != nil {
+		object["biography"], err = json.Marshal(a.Biography)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'biography': %w", err)
+		}
+	}
+
+	if a.FollowersCount != nil {
+		object["followers_count"], err = json.Marshal(a.FollowersCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'followers_count': %w", err)
+		}
+	}
+
+	if a.FollowsCount != nil {
+		object["follows_count"], err = json.Marshal(a.FollowsCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'follows_count': %w", err)
+		}
+	}
+
+	if a.HasProfilePic != nil {
+		object["has_profile_pic"], err = json.Marshal(a.HasProfilePic)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'has_profile_pic': %w", err)
 		}
 	}
 
@@ -729,10 +2237,66 @@ func (a GetComments200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) 
 		}
 	}
 
-	if a.Text != nil {
-		object["text"], err = json.Marshal(a.Text)
+	if a.IsPublished != nil {
+		object["is_published"], err = json.Marshal(a.IsPublished)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'text': %w", err)
+			return nil, fmt.Errorf("error marshaling 'is_published': %w", err)
+		}
+	}
+
+	if a.LegacyInstagramUserId != nil {
+		object["legacy_instagram_user_id"], err = json.Marshal(a.LegacyInstagramUserId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'legacy_instagram_user_id': %w", err)
+		}
+	}
+
+	if a.Media != nil {
+		object["media"], err = json.Marshal(a.Media)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media': %w", err)
+		}
+	}
+
+	if a.MediaCount != nil {
+		object["media_count"], err = json.Marshal(a.MediaCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_count': %w", err)
+		}
+	}
+
+	if a.Name != nil {
+		object["name"], err = json.Marshal(a.Name)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'name': %w", err)
+		}
+	}
+
+	if a.ProfilePictureUrl != nil {
+		object["profile_picture_url"], err = json.Marshal(a.ProfilePictureUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'profile_picture_url': %w", err)
+		}
+	}
+
+	if a.UserId != nil {
+		object["user_id"], err = json.Marshal(a.UserId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'user_id': %w", err)
+		}
+	}
+
+	if a.Username != nil {
+		object["username"], err = json.Marshal(a.Username)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'username': %w", err)
+		}
+	}
+
+	if a.Website != nil {
+		object["website"], err = json.Marshal(a.Website)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'website': %w", err)
 		}
 	}
 
@@ -745,25 +2309,341 @@ func (a GetComments200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) 
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for GetComments200JSONResponseBody. Returns the specified
+// Getter for additional properties for InstagramComment. Returns the specified
 // element and whether it was found
-func (a GetComments200JSONResponseBody) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramComment) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for GetComments200JSONResponseBody
-func (a *GetComments200JSONResponseBody) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramComment
+func (a *InstagramComment) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for GetComments200JSONResponseBody to handle AdditionalProperties
-func (a *GetComments200JSONResponseBody) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramComment to handle AdditionalProperties
+func (a *InstagramComment) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["from"]; found {
+		err = json.Unmarshal(raw, &a.From)
+		if err != nil {
+			return fmt.Errorf("error reading 'from': %w", err)
+		}
+		delete(object, "from")
+	}
+
+	if raw, found := object["hidden"]; found {
+		err = json.Unmarshal(raw, &a.Hidden)
+		if err != nil {
+			return fmt.Errorf("error reading 'hidden': %w", err)
+		}
+		delete(object, "hidden")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["legacy_instagram_comment_id"]; found {
+		err = json.Unmarshal(raw, &a.LegacyInstagramCommentId)
+		if err != nil {
+			return fmt.Errorf("error reading 'legacy_instagram_comment_id': %w", err)
+		}
+		delete(object, "legacy_instagram_comment_id")
+	}
+
+	if raw, found := object["like_count"]; found {
+		err = json.Unmarshal(raw, &a.LikeCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'like_count': %w", err)
+		}
+		delete(object, "like_count")
+	}
+
+	if raw, found := object["media"]; found {
+		err = json.Unmarshal(raw, &a.Media)
+		if err != nil {
+			return fmt.Errorf("error reading 'media': %w", err)
+		}
+		delete(object, "media")
+	}
+
+	if raw, found := object["parent_id"]; found {
+		err = json.Unmarshal(raw, &a.ParentId)
+		if err != nil {
+			return fmt.Errorf("error reading 'parent_id': %w", err)
+		}
+		delete(object, "parent_id")
+	}
+
+	if raw, found := object["replies"]; found {
+		err = json.Unmarshal(raw, &a.Replies)
+		if err != nil {
+			return fmt.Errorf("error reading 'replies': %w", err)
+		}
+		delete(object, "replies")
+	}
+
+	if raw, found := object["text"]; found {
+		err = json.Unmarshal(raw, &a.Text)
+		if err != nil {
+			return fmt.Errorf("error reading 'text': %w", err)
+		}
+		delete(object, "text")
+	}
+
+	if raw, found := object["timestamp"]; found {
+		err = json.Unmarshal(raw, &a.Timestamp)
+		if err != nil {
+			return fmt.Errorf("error reading 'timestamp': %w", err)
+		}
+		delete(object, "timestamp")
+	}
+
+	if raw, found := object["user"]; found {
+		err = json.Unmarshal(raw, &a.User)
+		if err != nil {
+			return fmt.Errorf("error reading 'user': %w", err)
+		}
+		delete(object, "user")
+	}
+
+	if raw, found := object["username"]; found {
+		err = json.Unmarshal(raw, &a.Username)
+		if err != nil {
+			return fmt.Errorf("error reading 'username': %w", err)
+		}
+		delete(object, "username")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramComment to handle AdditionalProperties
+func (a InstagramComment) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.From != nil {
+		object["from"], err = json.Marshal(a.From)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'from': %w", err)
+		}
+	}
+
+	if a.Hidden != nil {
+		object["hidden"], err = json.Marshal(a.Hidden)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'hidden': %w", err)
+		}
+	}
+
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	if a.LegacyInstagramCommentId != nil {
+		object["legacy_instagram_comment_id"], err = json.Marshal(a.LegacyInstagramCommentId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'legacy_instagram_comment_id': %w", err)
+		}
+	}
+
+	if a.LikeCount != nil {
+		object["like_count"], err = json.Marshal(a.LikeCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'like_count': %w", err)
+		}
+	}
+
+	if a.Media != nil {
+		object["media"], err = json.Marshal(a.Media)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media': %w", err)
+		}
+	}
+
+	if a.ParentId != nil {
+		object["parent_id"], err = json.Marshal(a.ParentId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'parent_id': %w", err)
+		}
+	}
+
+	if a.Replies != nil {
+		object["replies"], err = json.Marshal(a.Replies)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'replies': %w", err)
+		}
+	}
+
+	if a.Text != nil {
+		object["text"], err = json.Marshal(a.Text)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'text': %w", err)
+		}
+	}
+
+	if a.Timestamp != nil {
+		object["timestamp"], err = json.Marshal(a.Timestamp)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'timestamp': %w", err)
+		}
+	}
+
+	if a.User != nil {
+		object["user"], err = json.Marshal(a.User)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'user': %w", err)
+		}
+	}
+
+	if a.Username != nil {
+		object["username"], err = json.Marshal(a.Username)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'username': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCommentAuthor. Returns the specified
+// element and whether it was found
+func (a InstagramCommentAuthor) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCommentAuthor
+func (a *InstagramCommentAuthor) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCommentAuthor to handle AdditionalProperties
+func (a *InstagramCommentAuthor) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["username"]; found {
+		err = json.Unmarshal(raw, &a.Username)
+		if err != nil {
+			return fmt.Errorf("error reading 'username': %w", err)
+		}
+		delete(object, "username")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCommentAuthor to handle AdditionalProperties
+func (a InstagramCommentAuthor) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	if a.Username != nil {
+		object["username"], err = json.Marshal(a.Username)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'username': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCommentList. Returns the specified
+// element and whether it was found
+func (a InstagramCommentList) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCommentList
+func (a *InstagramCommentList) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCommentList to handle AdditionalProperties
+func (a *InstagramCommentList) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
@@ -800,8 +2680,8 @@ func (a *GetComments200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for GetComments200JSONResponseBody to handle AdditionalProperties
-func (a GetComments200JSONResponseBody) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramCommentList to handle AdditionalProperties
+func (a InstagramCommentList) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
@@ -828,45 +2708,45 @@ func (a GetComments200JSONResponseBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for GetInsights200JSONResponseBody_Data_Values_Item. Returns the specified
+// Getter for additional properties for InstagramCommentMedia. Returns the specified
 // element and whether it was found
-func (a GetInsights200JSONResponseBody_Data_Values_Item) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramCommentMedia) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for GetInsights200JSONResponseBody_Data_Values_Item
-func (a *GetInsights200JSONResponseBody_Data_Values_Item) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramCommentMedia
+func (a *InstagramCommentMedia) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody_Data_Values_Item to handle AdditionalProperties
-func (a *GetInsights200JSONResponseBody_Data_Values_Item) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramCommentMedia to handle AdditionalProperties
+func (a *InstagramCommentMedia) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["end_time"]; found {
-		err = json.Unmarshal(raw, &a.EndTime)
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
 		if err != nil {
-			return fmt.Errorf("error reading 'end_time': %w", err)
+			return fmt.Errorf("error reading 'id': %w", err)
 		}
-		delete(object, "end_time")
+		delete(object, "id")
 	}
 
-	if raw, found := object["value"]; found {
-		err = json.Unmarshal(raw, &a.Value)
+	if raw, found := object["media_product_type"]; found {
+		err = json.Unmarshal(raw, &a.MediaProductType)
 		if err != nil {
-			return fmt.Errorf("error reading 'value': %w", err)
+			return fmt.Errorf("error reading 'media_product_type': %w", err)
 		}
-		delete(object, "value")
+		delete(object, "media_product_type")
 	}
 
 	if len(object) != 0 {
@@ -883,21 +2763,23 @@ func (a *GetInsights200JSONResponseBody_Data_Values_Item) UnmarshalJSON(b []byte
 	return nil
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody_Data_Values_Item to handle AdditionalProperties
-func (a GetInsights200JSONResponseBody_Data_Values_Item) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramCommentMedia to handle AdditionalProperties
+func (a InstagramCommentMedia) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.EndTime != nil {
-		object["end_time"], err = json.Marshal(a.EndTime)
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'end_time': %w", err)
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
 		}
 	}
 
-	object["value"], err = json.Marshal(a.Value)
-	if err != nil {
-		return nil, fmt.Errorf("error marshaling 'value': %w", err)
+	if a.MediaProductType != nil {
+		object["media_product_type"], err = json.Marshal(a.MediaProductType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_product_type': %w", err)
+		}
 	}
 
 	for fieldName, field := range a.AdditionalProperties {
@@ -909,25 +2791,968 @@ func (a GetInsights200JSONResponseBody_Data_Values_Item) MarshalJSON() ([]byte, 
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for GetInsights200JSONResponseBody_Data_Item. Returns the specified
+// Getter for additional properties for InstagramCopyrightAction. Returns the specified
 // element and whether it was found
-func (a GetInsights200JSONResponseBody_Data_Item) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramCopyrightAction) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for GetInsights200JSONResponseBody_Data_Item
-func (a *GetInsights200JSONResponseBody_Data_Item) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramCopyrightAction
+func (a *InstagramCopyrightAction) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody_Data_Item to handle AdditionalProperties
-func (a *GetInsights200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramCopyrightAction to handle AdditionalProperties
+func (a *InstagramCopyrightAction) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["action"]; found {
+		err = json.Unmarshal(raw, &a.Action)
+		if err != nil {
+			return fmt.Errorf("error reading 'action': %w", err)
+		}
+		delete(object, "action")
+	}
+
+	if raw, found := object["geos"]; found {
+		err = json.Unmarshal(raw, &a.Geos)
+		if err != nil {
+			return fmt.Errorf("error reading 'geos': %w", err)
+		}
+		delete(object, "geos")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightAction to handle AdditionalProperties
+func (a InstagramCopyrightAction) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Action != nil {
+		object["action"], err = json.Marshal(a.Action)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'action': %w", err)
+		}
+	}
+
+	if a.Geos != nil {
+		object["geos"], err = json.Marshal(a.Geos)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'geos': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCopyrightInformation. Returns the specified
+// element and whether it was found
+func (a InstagramCopyrightInformation) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCopyrightInformation
+func (a *InstagramCopyrightInformation) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCopyrightInformation to handle AdditionalProperties
+func (a *InstagramCopyrightInformation) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["copyright_matches"]; found {
+		err = json.Unmarshal(raw, &a.CopyrightMatches)
+		if err != nil {
+			return fmt.Errorf("error reading 'copyright_matches': %w", err)
+		}
+		delete(object, "copyright_matches")
+	}
+
+	if raw, found := object["status"]; found {
+		err = json.Unmarshal(raw, &a.Status)
+		if err != nil {
+			return fmt.Errorf("error reading 'status': %w", err)
+		}
+		delete(object, "status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightInformation to handle AdditionalProperties
+func (a InstagramCopyrightInformation) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.CopyrightMatches != nil {
+		object["copyright_matches"], err = json.Marshal(a.CopyrightMatches)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'copyright_matches': %w", err)
+		}
+	}
+
+	if a.Status != nil {
+		object["status"], err = json.Marshal(a.Status)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCopyrightMatch. Returns the specified
+// element and whether it was found
+func (a InstagramCopyrightMatch) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCopyrightMatch
+func (a *InstagramCopyrightMatch) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCopyrightMatch to handle AdditionalProperties
+func (a *InstagramCopyrightMatch) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["author"]; found {
+		err = json.Unmarshal(raw, &a.Author)
+		if err != nil {
+			return fmt.Errorf("error reading 'author': %w", err)
+		}
+		delete(object, "author")
+	}
+
+	if raw, found := object["content_title"]; found {
+		err = json.Unmarshal(raw, &a.ContentTitle)
+		if err != nil {
+			return fmt.Errorf("error reading 'content_title': %w", err)
+		}
+		delete(object, "content_title")
+	}
+
+	if raw, found := object["matched_segments"]; found {
+		err = json.Unmarshal(raw, &a.MatchedSegments)
+		if err != nil {
+			return fmt.Errorf("error reading 'matched_segments': %w", err)
+		}
+		delete(object, "matched_segments")
+	}
+
+	if raw, found := object["owner_copyright_policy"]; found {
+		err = json.Unmarshal(raw, &a.OwnerCopyrightPolicy)
+		if err != nil {
+			return fmt.Errorf("error reading 'owner_copyright_policy': %w", err)
+		}
+		delete(object, "owner_copyright_policy")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightMatch to handle AdditionalProperties
+func (a InstagramCopyrightMatch) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Author != nil {
+		object["author"], err = json.Marshal(a.Author)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'author': %w", err)
+		}
+	}
+
+	if a.ContentTitle != nil {
+		object["content_title"], err = json.Marshal(a.ContentTitle)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'content_title': %w", err)
+		}
+	}
+
+	if a.MatchedSegments != nil {
+		object["matched_segments"], err = json.Marshal(a.MatchedSegments)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'matched_segments': %w", err)
+		}
+	}
+
+	if a.OwnerCopyrightPolicy != nil {
+		object["owner_copyright_policy"], err = json.Marshal(a.OwnerCopyrightPolicy)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'owner_copyright_policy': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCopyrightPolicy. Returns the specified
+// element and whether it was found
+func (a InstagramCopyrightPolicy) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCopyrightPolicy
+func (a *InstagramCopyrightPolicy) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCopyrightPolicy to handle AdditionalProperties
+func (a *InstagramCopyrightPolicy) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["actions"]; found {
+		err = json.Unmarshal(raw, &a.Actions)
+		if err != nil {
+			return fmt.Errorf("error reading 'actions': %w", err)
+		}
+		delete(object, "actions")
+	}
+
+	if raw, found := object["name"]; found {
+		err = json.Unmarshal(raw, &a.Name)
+		if err != nil {
+			return fmt.Errorf("error reading 'name': %w", err)
+		}
+		delete(object, "name")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightPolicy to handle AdditionalProperties
+func (a InstagramCopyrightPolicy) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Actions != nil {
+		object["actions"], err = json.Marshal(a.Actions)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'actions': %w", err)
+		}
+	}
+
+	if a.Name != nil {
+		object["name"], err = json.Marshal(a.Name)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'name': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCopyrightSegment. Returns the specified
+// element and whether it was found
+func (a InstagramCopyrightSegment) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCopyrightSegment
+func (a *InstagramCopyrightSegment) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCopyrightSegment to handle AdditionalProperties
+func (a *InstagramCopyrightSegment) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["duration_in_seconds"]; found {
+		err = json.Unmarshal(raw, &a.DurationInSeconds)
+		if err != nil {
+			return fmt.Errorf("error reading 'duration_in_seconds': %w", err)
+		}
+		delete(object, "duration_in_seconds")
+	}
+
+	if raw, found := object["segment_type"]; found {
+		err = json.Unmarshal(raw, &a.SegmentType)
+		if err != nil {
+			return fmt.Errorf("error reading 'segment_type': %w", err)
+		}
+		delete(object, "segment_type")
+	}
+
+	if raw, found := object["start_time_in_seconds"]; found {
+		err = json.Unmarshal(raw, &a.StartTimeInSeconds)
+		if err != nil {
+			return fmt.Errorf("error reading 'start_time_in_seconds': %w", err)
+		}
+		delete(object, "start_time_in_seconds")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightSegment to handle AdditionalProperties
+func (a InstagramCopyrightSegment) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.DurationInSeconds != nil {
+		object["duration_in_seconds"], err = json.Marshal(a.DurationInSeconds)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'duration_in_seconds': %w", err)
+		}
+	}
+
+	if a.SegmentType != nil {
+		object["segment_type"], err = json.Marshal(a.SegmentType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'segment_type': %w", err)
+		}
+	}
+
+	if a.StartTimeInSeconds != nil {
+		object["start_time_in_seconds"], err = json.Marshal(a.StartTimeInSeconds)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'start_time_in_seconds': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCopyrightStatus. Returns the specified
+// element and whether it was found
+func (a InstagramCopyrightStatus) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCopyrightStatus
+func (a *InstagramCopyrightStatus) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCopyrightStatus to handle AdditionalProperties
+func (a *InstagramCopyrightStatus) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["matches_found"]; found {
+		err = json.Unmarshal(raw, &a.MatchesFound)
+		if err != nil {
+			return fmt.Errorf("error reading 'matches_found': %w", err)
+		}
+		delete(object, "matches_found")
+	}
+
+	if raw, found := object["status"]; found {
+		err = json.Unmarshal(raw, &a.Status)
+		if err != nil {
+			return fmt.Errorf("error reading 'status': %w", err)
+		}
+		delete(object, "status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCopyrightStatus to handle AdditionalProperties
+func (a InstagramCopyrightStatus) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.MatchesFound != nil {
+		object["matches_found"], err = json.Marshal(a.MatchesFound)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'matches_found': %w", err)
+		}
+	}
+
+	if a.Status != nil {
+		object["status"], err = json.Marshal(a.Status)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCursorOnlyPaging. Returns the specified
+// element and whether it was found
+func (a InstagramCursorOnlyPaging) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCursorOnlyPaging
+func (a *InstagramCursorOnlyPaging) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCursorOnlyPaging to handle AdditionalProperties
+func (a *InstagramCursorOnlyPaging) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["cursors"]; found {
+		err = json.Unmarshal(raw, &a.Cursors)
+		if err != nil {
+			return fmt.Errorf("error reading 'cursors': %w", err)
+		}
+		delete(object, "cursors")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCursorOnlyPaging to handle AdditionalProperties
+func (a InstagramCursorOnlyPaging) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Cursors != nil {
+		object["cursors"], err = json.Marshal(a.Cursors)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'cursors': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCursorOnlyPaging_Cursors. Returns the specified
+// element and whether it was found
+func (a InstagramCursorOnlyPaging_Cursors) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCursorOnlyPaging_Cursors
+func (a *InstagramCursorOnlyPaging_Cursors) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCursorOnlyPaging_Cursors to handle AdditionalProperties
+func (a *InstagramCursorOnlyPaging_Cursors) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["after"]; found {
+		err = json.Unmarshal(raw, &a.After)
+		if err != nil {
+			return fmt.Errorf("error reading 'after': %w", err)
+		}
+		delete(object, "after")
+	}
+
+	if raw, found := object["before"]; found {
+		err = json.Unmarshal(raw, &a.Before)
+		if err != nil {
+			return fmt.Errorf("error reading 'before': %w", err)
+		}
+		delete(object, "before")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCursorOnlyPaging_Cursors to handle AdditionalProperties
+func (a InstagramCursorOnlyPaging_Cursors) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.After != nil {
+		object["after"], err = json.Marshal(a.After)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'after': %w", err)
+		}
+	}
+
+	if a.Before != nil {
+		object["before"], err = json.Marshal(a.Before)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'before': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCursorPaging. Returns the specified
+// element and whether it was found
+func (a InstagramCursorPaging) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCursorPaging
+func (a *InstagramCursorPaging) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCursorPaging to handle AdditionalProperties
+func (a *InstagramCursorPaging) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["cursors"]; found {
+		err = json.Unmarshal(raw, &a.Cursors)
+		if err != nil {
+			return fmt.Errorf("error reading 'cursors': %w", err)
+		}
+		delete(object, "cursors")
+	}
+
+	if raw, found := object["next"]; found {
+		err = json.Unmarshal(raw, &a.Next)
+		if err != nil {
+			return fmt.Errorf("error reading 'next': %w", err)
+		}
+		delete(object, "next")
+	}
+
+	if raw, found := object["previous"]; found {
+		err = json.Unmarshal(raw, &a.Previous)
+		if err != nil {
+			return fmt.Errorf("error reading 'previous': %w", err)
+		}
+		delete(object, "previous")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCursorPaging to handle AdditionalProperties
+func (a InstagramCursorPaging) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Cursors != nil {
+		object["cursors"], err = json.Marshal(a.Cursors)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'cursors': %w", err)
+		}
+	}
+
+	if a.Next != nil {
+		object["next"], err = json.Marshal(a.Next)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'next': %w", err)
+		}
+	}
+
+	if a.Previous != nil {
+		object["previous"], err = json.Marshal(a.Previous)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'previous': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramCursorPaging_Cursors. Returns the specified
+// element and whether it was found
+func (a InstagramCursorPaging_Cursors) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramCursorPaging_Cursors
+func (a *InstagramCursorPaging_Cursors) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramCursorPaging_Cursors to handle AdditionalProperties
+func (a *InstagramCursorPaging_Cursors) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["after"]; found {
+		err = json.Unmarshal(raw, &a.After)
+		if err != nil {
+			return fmt.Errorf("error reading 'after': %w", err)
+		}
+		delete(object, "after")
+	}
+
+	if raw, found := object["before"]; found {
+		err = json.Unmarshal(raw, &a.Before)
+		if err != nil {
+			return fmt.Errorf("error reading 'before': %w", err)
+		}
+		delete(object, "before")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramCursorPaging_Cursors to handle AdditionalProperties
+func (a InstagramCursorPaging_Cursors) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.After != nil {
+		object["after"], err = json.Marshal(a.After)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'after': %w", err)
+		}
+	}
+
+	if a.Before != nil {
+		object["before"], err = json.Marshal(a.Before)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'before': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramID. Returns the specified
+// element and whether it was found
+func (a InstagramID) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramID
+func (a *InstagramID) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramID to handle AdditionalProperties
+func (a *InstagramID) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramID to handle AdditionalProperties
+func (a InstagramID) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramInsight. Returns the specified
+// element and whether it was found
+func (a InstagramInsight) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramInsight
+func (a *InstagramInsight) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramInsight to handle AdditionalProperties
+func (a *InstagramInsight) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
@@ -974,6 +3799,14 @@ func (a *GetInsights200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error
 		delete(object, "title")
 	}
 
+	if raw, found := object["total_value"]; found {
+		err = json.Unmarshal(raw, &a.TotalValue)
+		if err != nil {
+			return fmt.Errorf("error reading 'total_value': %w", err)
+		}
+		delete(object, "total_value")
+	}
+
 	if raw, found := object["values"]; found {
 		err = json.Unmarshal(raw, &a.Values)
 		if err != nil {
@@ -996,8 +3829,8 @@ func (a *GetInsights200JSONResponseBody_Data_Item) UnmarshalJSON(b []byte) error
 	return nil
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody_Data_Item to handle AdditionalProperties
-func (a GetInsights200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramInsight to handle AdditionalProperties
+func (a InstagramInsight) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
@@ -1036,6 +3869,13 @@ func (a GetInsights200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) 
 		}
 	}
 
+	if a.TotalValue != nil {
+		object["total_value"], err = json.Marshal(a.TotalValue)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'total_value': %w", err)
+		}
+	}
+
 	if a.Values != nil {
 		object["values"], err = json.Marshal(a.Values)
 		if err != nil {
@@ -1052,25 +3892,372 @@ func (a GetInsights200JSONResponseBody_Data_Item) MarshalJSON() ([]byte, error) 
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for GetInsights200JSONResponseBody. Returns the specified
+// Getter for additional properties for InstagramInsightBreakdown. Returns the specified
 // element and whether it was found
-func (a GetInsights200JSONResponseBody) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramInsightBreakdown) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for GetInsights200JSONResponseBody
-func (a *GetInsights200JSONResponseBody) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramInsightBreakdown
+func (a *InstagramInsightBreakdown) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody to handle AdditionalProperties
-func (a *GetInsights200JSONResponseBody) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramInsightBreakdown to handle AdditionalProperties
+func (a *InstagramInsightBreakdown) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["dimension_keys"]; found {
+		err = json.Unmarshal(raw, &a.DimensionKeys)
+		if err != nil {
+			return fmt.Errorf("error reading 'dimension_keys': %w", err)
+		}
+		delete(object, "dimension_keys")
+	}
+
+	if raw, found := object["results"]; found {
+		err = json.Unmarshal(raw, &a.Results)
+		if err != nil {
+			return fmt.Errorf("error reading 'results': %w", err)
+		}
+		delete(object, "results")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramInsightBreakdown to handle AdditionalProperties
+func (a InstagramInsightBreakdown) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.DimensionKeys != nil {
+		object["dimension_keys"], err = json.Marshal(a.DimensionKeys)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'dimension_keys': %w", err)
+		}
+	}
+
+	if a.Results != nil {
+		object["results"], err = json.Marshal(a.Results)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'results': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramInsightBreakdownResult. Returns the specified
+// element and whether it was found
+func (a InstagramInsightBreakdownResult) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramInsightBreakdownResult
+func (a *InstagramInsightBreakdownResult) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramInsightBreakdownResult to handle AdditionalProperties
+func (a *InstagramInsightBreakdownResult) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["dimension_values"]; found {
+		err = json.Unmarshal(raw, &a.DimensionValues)
+		if err != nil {
+			return fmt.Errorf("error reading 'dimension_values': %w", err)
+		}
+		delete(object, "dimension_values")
+	}
+
+	if raw, found := object["end_time"]; found {
+		err = json.Unmarshal(raw, &a.EndTime)
+		if err != nil {
+			return fmt.Errorf("error reading 'end_time': %w", err)
+		}
+		delete(object, "end_time")
+	}
+
+	if raw, found := object["value"]; found {
+		err = json.Unmarshal(raw, &a.Value)
+		if err != nil {
+			return fmt.Errorf("error reading 'value': %w", err)
+		}
+		delete(object, "value")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramInsightBreakdownResult to handle AdditionalProperties
+func (a InstagramInsightBreakdownResult) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.DimensionValues != nil {
+		object["dimension_values"], err = json.Marshal(a.DimensionValues)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'dimension_values': %w", err)
+		}
+	}
+
+	if a.EndTime != nil {
+		object["end_time"], err = json.Marshal(a.EndTime)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'end_time': %w", err)
+		}
+	}
+
+	if a.Value != nil {
+		object["value"], err = json.Marshal(a.Value)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'value': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramInsightTotalValue. Returns the specified
+// element and whether it was found
+func (a InstagramInsightTotalValue) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramInsightTotalValue
+func (a *InstagramInsightTotalValue) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramInsightTotalValue to handle AdditionalProperties
+func (a *InstagramInsightTotalValue) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["breakdowns"]; found {
+		err = json.Unmarshal(raw, &a.Breakdowns)
+		if err != nil {
+			return fmt.Errorf("error reading 'breakdowns': %w", err)
+		}
+		delete(object, "breakdowns")
+	}
+
+	if raw, found := object["value"]; found {
+		err = json.Unmarshal(raw, &a.Value)
+		if err != nil {
+			return fmt.Errorf("error reading 'value': %w", err)
+		}
+		delete(object, "value")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramInsightTotalValue to handle AdditionalProperties
+func (a InstagramInsightTotalValue) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Breakdowns != nil {
+		object["breakdowns"], err = json.Marshal(a.Breakdowns)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'breakdowns': %w", err)
+		}
+	}
+
+	if a.Value != nil {
+		object["value"], err = json.Marshal(a.Value)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'value': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramInsightValue. Returns the specified
+// element and whether it was found
+func (a InstagramInsightValue) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramInsightValue
+func (a *InstagramInsightValue) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramInsightValue to handle AdditionalProperties
+func (a *InstagramInsightValue) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["end_time"]; found {
+		err = json.Unmarshal(raw, &a.EndTime)
+		if err != nil {
+			return fmt.Errorf("error reading 'end_time': %w", err)
+		}
+		delete(object, "end_time")
+	}
+
+	if raw, found := object["value"]; found {
+		err = json.Unmarshal(raw, &a.Value)
+		if err != nil {
+			return fmt.Errorf("error reading 'value': %w", err)
+		}
+		delete(object, "value")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for InstagramInsightValue to handle AdditionalProperties
+func (a InstagramInsightValue) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.EndTime != nil {
+		object["end_time"], err = json.Marshal(a.EndTime)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'end_time': %w", err)
+		}
+	}
+
+	if a.Value != nil {
+		object["value"], err = json.Marshal(a.Value)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'value': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for InstagramInsights. Returns the specified
+// element and whether it was found
+func (a InstagramInsights) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for InstagramInsights
+func (a *InstagramInsights) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for InstagramInsights to handle AdditionalProperties
+func (a *InstagramInsights) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
@@ -1085,6 +4272,14 @@ func (a *GetInsights200JSONResponseBody) UnmarshalJSON(b []byte) error {
 		delete(object, "data")
 	}
 
+	if raw, found := object["paging"]; found {
+		err = json.Unmarshal(raw, &a.Paging)
+		if err != nil {
+			return fmt.Errorf("error reading 'paging': %w", err)
+		}
+		delete(object, "paging")
+	}
+
 	if len(object) != 0 {
 		a.AdditionalProperties = make(map[string]interface{})
 		for fieldName, fieldBuf := range object {
@@ -1099,8 +4294,8 @@ func (a *GetInsights200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for GetInsights200JSONResponseBody to handle AdditionalProperties
-func (a GetInsights200JSONResponseBody) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramInsights to handle AdditionalProperties
+func (a InstagramInsights) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
@@ -1111,71 +4306,10 @@ func (a GetInsights200JSONResponseBody) MarshalJSON() ([]byte, error) {
 		}
 	}
 
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
+	if a.Paging != nil {
+		object["paging"], err = json.Marshal(a.Paging)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
-
-// Getter for additional properties for PostMediaMultipartBody00. Returns the specified
-// element and whether it was found
-func (a PostMediaMultipartBody00) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for PostMediaMultipartBody00
-func (a *PostMediaMultipartBody00) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for PostMediaMultipartBody00 to handle AdditionalProperties
-func (a *PostMediaMultipartBody00) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if raw, found := object["image_url"]; found {
-		err = json.Unmarshal(raw, &a.ImageUrl)
-		if err != nil {
-			return fmt.Errorf("error reading 'image_url': %w", err)
-		}
-		delete(object, "image_url")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for PostMediaMultipartBody00 to handle AdditionalProperties
-func (a PostMediaMultipartBody00) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	if a.ImageUrl != nil {
-		object["image_url"], err = json.Marshal(a.ImageUrl)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'image_url': %w", err)
+			return nil, fmt.Errorf("error marshaling 'paging': %w", err)
 		}
 	}
 
@@ -1188,135 +4322,37 @@ func (a PostMediaMultipartBody00) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for PostMediaMultipartBody01. Returns the specified
+// Getter for additional properties for InstagramMedia. Returns the specified
 // element and whether it was found
-func (a PostMediaMultipartBody01) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramMedia) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for PostMediaMultipartBody01
-func (a *PostMediaMultipartBody01) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramMedia
+func (a *InstagramMedia) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for PostMediaMultipartBody01 to handle AdditionalProperties
-func (a *PostMediaMultipartBody01) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramMedia to handle AdditionalProperties
+func (a *InstagramMedia) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["media_type"]; found {
-		err = json.Unmarshal(raw, &a.MediaType)
+	if raw, found := object["alt_text"]; found {
+		err = json.Unmarshal(raw, &a.AltText)
 		if err != nil {
-			return fmt.Errorf("error reading 'media_type': %w", err)
+			return fmt.Errorf("error reading 'alt_text': %w", err)
 		}
-		delete(object, "media_type")
-	}
-
-	if raw, found := object["upload_type"]; found {
-		err = json.Unmarshal(raw, &a.UploadType)
-		if err != nil {
-			return fmt.Errorf("error reading 'upload_type': %w", err)
-		}
-		delete(object, "upload_type")
-	}
-
-	if raw, found := object["video_url"]; found {
-		err = json.Unmarshal(raw, &a.VideoUrl)
-		if err != nil {
-			return fmt.Errorf("error reading 'video_url': %w", err)
-		}
-		delete(object, "video_url")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
-}
-
-// Override default JSON handling for PostMediaMultipartBody01 to handle AdditionalProperties
-func (a PostMediaMultipartBody01) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	if a.MediaType != nil {
-		object["media_type"], err = json.Marshal(a.MediaType)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'media_type': %w", err)
-		}
-	}
-
-	if a.UploadType != nil {
-		object["upload_type"], err = json.Marshal(a.UploadType)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'upload_type': %w", err)
-		}
-	}
-
-	if a.VideoUrl != nil {
-		object["video_url"], err = json.Marshal(a.VideoUrl)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'video_url': %w", err)
-		}
-	}
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
-}
-
-// Getter for additional properties for PostMediaMultipartBody1. Returns the specified
-// element and whether it was found
-func (a PostMediaMultipartBody1) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for PostMediaMultipartBody1
-func (a *PostMediaMultipartBody1) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for PostMediaMultipartBody1 to handle AdditionalProperties
-func (a *PostMediaMultipartBody1) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
-	if err != nil {
-		return err
-	}
-
-	if raw, found := object["caption"]; found {
-		err = json.Unmarshal(raw, &a.Caption)
-		if err != nil {
-			return fmt.Errorf("error reading 'caption': %w", err)
-		}
-		delete(object, "caption")
+		delete(object, "alt_text")
 	}
 
 	if raw, found := object["children"]; found {
@@ -1327,12 +4363,148 @@ func (a *PostMediaMultipartBody1) UnmarshalJSON(b []byte) error {
 		delete(object, "children")
 	}
 
+	if raw, found := object["comments"]; found {
+		err = json.Unmarshal(raw, &a.Comments)
+		if err != nil {
+			return fmt.Errorf("error reading 'comments': %w", err)
+		}
+		delete(object, "comments")
+	}
+
+	if raw, found := object["comments_count"]; found {
+		err = json.Unmarshal(raw, &a.CommentsCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'comments_count': %w", err)
+		}
+		delete(object, "comments_count")
+	}
+
+	if raw, found := object["copyright_check_information"]; found {
+		err = json.Unmarshal(raw, &a.CopyrightCheckInformation)
+		if err != nil {
+			return fmt.Errorf("error reading 'copyright_check_information': %w", err)
+		}
+		delete(object, "copyright_check_information")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["is_ai_generated"]; found {
+		err = json.Unmarshal(raw, &a.IsAiGenerated)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_ai_generated': %w", err)
+		}
+		delete(object, "is_ai_generated")
+	}
+
+	if raw, found := object["is_comment_enabled"]; found {
+		err = json.Unmarshal(raw, &a.IsCommentEnabled)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_comment_enabled': %w", err)
+		}
+		delete(object, "is_comment_enabled")
+	}
+
+	if raw, found := object["is_shared_to_feed"]; found {
+		err = json.Unmarshal(raw, &a.IsSharedToFeed)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_shared_to_feed': %w", err)
+		}
+		delete(object, "is_shared_to_feed")
+	}
+
+	if raw, found := object["legacy_instagram_media_id"]; found {
+		err = json.Unmarshal(raw, &a.LegacyInstagramMediaId)
+		if err != nil {
+			return fmt.Errorf("error reading 'legacy_instagram_media_id': %w", err)
+		}
+		delete(object, "legacy_instagram_media_id")
+	}
+
+	if raw, found := object["like_count"]; found {
+		err = json.Unmarshal(raw, &a.LikeCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'like_count': %w", err)
+		}
+		delete(object, "like_count")
+	}
+
+	if raw, found := object["media_audio_type"]; found {
+		err = json.Unmarshal(raw, &a.MediaAudioType)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_audio_type': %w", err)
+		}
+		delete(object, "media_audio_type")
+	}
+
 	if raw, found := object["media_type"]; found {
 		err = json.Unmarshal(raw, &a.MediaType)
 		if err != nil {
 			return fmt.Errorf("error reading 'media_type': %w", err)
 		}
 		delete(object, "media_type")
+	}
+
+	if raw, found := object["media_url"]; found {
+		err = json.Unmarshal(raw, &a.MediaUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_url': %w", err)
+		}
+		delete(object, "media_url")
+	}
+
+	if raw, found := object["owner"]; found {
+		err = json.Unmarshal(raw, &a.Owner)
+		if err != nil {
+			return fmt.Errorf("error reading 'owner': %w", err)
+		}
+		delete(object, "owner")
+	}
+
+	if raw, found := object["permalink"]; found {
+		err = json.Unmarshal(raw, &a.Permalink)
+		if err != nil {
+			return fmt.Errorf("error reading 'permalink': %w", err)
+		}
+		delete(object, "permalink")
+	}
+
+	if raw, found := object["shortcode"]; found {
+		err = json.Unmarshal(raw, &a.Shortcode)
+		if err != nil {
+			return fmt.Errorf("error reading 'shortcode': %w", err)
+		}
+		delete(object, "shortcode")
+	}
+
+	if raw, found := object["thumbnail_url"]; found {
+		err = json.Unmarshal(raw, &a.ThumbnailUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'thumbnail_url': %w", err)
+		}
+		delete(object, "thumbnail_url")
+	}
+
+	if raw, found := object["timestamp"]; found {
+		err = json.Unmarshal(raw, &a.Timestamp)
+		if err != nil {
+			return fmt.Errorf("error reading 'timestamp': %w", err)
+		}
+		delete(object, "timestamp")
+	}
+
+	if raw, found := object["username"]; found {
+		err = json.Unmarshal(raw, &a.Username)
+		if err != nil {
+			return fmt.Errorf("error reading 'username': %w", err)
+		}
+		delete(object, "username")
 	}
 
 	if len(object) != 0 {
@@ -1349,15 +4521,15 @@ func (a *PostMediaMultipartBody1) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for PostMediaMultipartBody1 to handle AdditionalProperties
-func (a PostMediaMultipartBody1) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramMedia to handle AdditionalProperties
+func (a InstagramMedia) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.Caption != nil {
-		object["caption"], err = json.Marshal(a.Caption)
+	if a.AltText != nil {
+		object["alt_text"], err = json.Marshal(a.AltText)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'caption': %w", err)
+			return nil, fmt.Errorf("error marshaling 'alt_text': %w", err)
 		}
 	}
 
@@ -1368,6 +4540,76 @@ func (a PostMediaMultipartBody1) MarshalJSON() ([]byte, error) {
 		}
 	}
 
+	if a.Comments != nil {
+		object["comments"], err = json.Marshal(a.Comments)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'comments': %w", err)
+		}
+	}
+
+	if a.CommentsCount != nil {
+		object["comments_count"], err = json.Marshal(a.CommentsCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'comments_count': %w", err)
+		}
+	}
+
+	if a.CopyrightCheckInformation != nil {
+		object["copyright_check_information"], err = json.Marshal(a.CopyrightCheckInformation)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'copyright_check_information': %w", err)
+		}
+	}
+
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	if a.IsAiGenerated != nil {
+		object["is_ai_generated"], err = json.Marshal(a.IsAiGenerated)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_ai_generated': %w", err)
+		}
+	}
+
+	if a.IsCommentEnabled != nil {
+		object["is_comment_enabled"], err = json.Marshal(a.IsCommentEnabled)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_comment_enabled': %w", err)
+		}
+	}
+
+	if a.IsSharedToFeed != nil {
+		object["is_shared_to_feed"], err = json.Marshal(a.IsSharedToFeed)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_shared_to_feed': %w", err)
+		}
+	}
+
+	if a.LegacyInstagramMediaId != nil {
+		object["legacy_instagram_media_id"], err = json.Marshal(a.LegacyInstagramMediaId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'legacy_instagram_media_id': %w", err)
+		}
+	}
+
+	if a.LikeCount != nil {
+		object["like_count"], err = json.Marshal(a.LikeCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'like_count': %w", err)
+		}
+	}
+
+	if a.MediaAudioType != nil {
+		object["media_audio_type"], err = json.Marshal(a.MediaAudioType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_audio_type': %w", err)
+		}
+	}
+
 	if a.MediaType != nil {
 		object["media_type"], err = json.Marshal(a.MediaType)
 		if err != nil {
@@ -1375,6 +4617,55 @@ func (a PostMediaMultipartBody1) MarshalJSON() ([]byte, error) {
 		}
 	}
 
+	if a.MediaUrl != nil {
+		object["media_url"], err = json.Marshal(a.MediaUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_url': %w", err)
+		}
+	}
+
+	if a.Owner != nil {
+		object["owner"], err = json.Marshal(a.Owner)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'owner': %w", err)
+		}
+	}
+
+	if a.Permalink != nil {
+		object["permalink"], err = json.Marshal(a.Permalink)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'permalink': %w", err)
+		}
+	}
+
+	if a.Shortcode != nil {
+		object["shortcode"], err = json.Marshal(a.Shortcode)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'shortcode': %w", err)
+		}
+	}
+
+	if a.ThumbnailUrl != nil {
+		object["thumbnail_url"], err = json.Marshal(a.ThumbnailUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'thumbnail_url': %w", err)
+		}
+	}
+
+	if a.Timestamp != nil {
+		object["timestamp"], err = json.Marshal(a.Timestamp)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'timestamp': %w", err)
+		}
+	}
+
+	if a.Username != nil {
+		object["username"], err = json.Marshal(a.Username)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'username': %w", err)
+		}
+	}
+
 	for fieldName, field := range a.AdditionalProperties {
 		object[fieldName], err = json.Marshal(field)
 		if err != nil {
@@ -1384,37 +4675,45 @@ func (a PostMediaMultipartBody1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for PostMedia200JSONResponseBody. Returns the specified
+// Getter for additional properties for InstagramMediaList. Returns the specified
 // element and whether it was found
-func (a PostMedia200JSONResponseBody) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramMediaList) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for PostMedia200JSONResponseBody
-func (a *PostMedia200JSONResponseBody) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramMediaList
+func (a *InstagramMediaList) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for PostMedia200JSONResponseBody to handle AdditionalProperties
-func (a *PostMedia200JSONResponseBody) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramMediaList to handle AdditionalProperties
+func (a *InstagramMediaList) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["id"]; found {
-		err = json.Unmarshal(raw, &a.Id)
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
 		if err != nil {
-			return fmt.Errorf("error reading 'id': %w", err)
+			return fmt.Errorf("error reading 'data': %w", err)
 		}
-		delete(object, "id")
+		delete(object, "data")
+	}
+
+	if raw, found := object["paging"]; found {
+		err = json.Unmarshal(raw, &a.Paging)
+		if err != nil {
+			return fmt.Errorf("error reading 'paging': %w", err)
+		}
+		delete(object, "paging")
 	}
 
 	if len(object) != 0 {
@@ -1431,15 +4730,22 @@ func (a *PostMedia200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for PostMedia200JSONResponseBody to handle AdditionalProperties
-func (a PostMedia200JSONResponseBody) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramMediaList to handle AdditionalProperties
+func (a InstagramMediaList) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
+	if a.Data != nil {
+		object["data"], err = json.Marshal(a.Data)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+			return nil, fmt.Errorf("error marshaling 'data': %w", err)
+		}
+	}
+
+	if a.Paging != nil {
+		object["paging"], err = json.Marshal(a.Paging)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'paging': %w", err)
 		}
 	}
 
@@ -1452,37 +4758,37 @@ func (a PostMedia200JSONResponseBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for PostMediaPublishMultipartBody. Returns the specified
+// Getter for additional properties for InstagramSuccess. Returns the specified
 // element and whether it was found
-func (a PostMediaPublishMultipartBody) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramSuccess) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for PostMediaPublishMultipartBody
-func (a *PostMediaPublishMultipartBody) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramSuccess
+func (a *InstagramSuccess) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for PostMediaPublishMultipartBody to handle AdditionalProperties
-func (a *PostMediaPublishMultipartBody) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramSuccess to handle AdditionalProperties
+func (a *InstagramSuccess) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["creation_id"]; found {
-		err = json.Unmarshal(raw, &a.CreationId)
+	if raw, found := object["success"]; found {
+		err = json.Unmarshal(raw, &a.Success)
 		if err != nil {
-			return fmt.Errorf("error reading 'creation_id': %w", err)
+			return fmt.Errorf("error reading 'success': %w", err)
 		}
-		delete(object, "creation_id")
+		delete(object, "success")
 	}
 
 	if len(object) != 0 {
@@ -1499,15 +4805,15 @@ func (a *PostMediaPublishMultipartBody) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for PostMediaPublishMultipartBody to handle AdditionalProperties
-func (a PostMediaPublishMultipartBody) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramSuccess to handle AdditionalProperties
+func (a InstagramSuccess) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.CreationId != nil {
-		object["creation_id"], err = json.Marshal(a.CreationId)
+	if a.Success != nil {
+		object["success"], err = json.Marshal(a.Success)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'creation_id': %w", err)
+			return nil, fmt.Errorf("error marshaling 'success': %w", err)
 		}
 	}
 
@@ -1520,37 +4826,45 @@ func (a PostMediaPublishMultipartBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for PostMediaPublish200JSONResponseBody. Returns the specified
+// Getter for additional properties for InstagramTaggedMediaList. Returns the specified
 // element and whether it was found
-func (a PostMediaPublish200JSONResponseBody) Get(fieldName string) (value interface{}, found bool) {
+func (a InstagramTaggedMediaList) Get(fieldName string) (value interface{}, found bool) {
 	if a.AdditionalProperties != nil {
 		value, found = a.AdditionalProperties[fieldName]
 	}
 	return
 }
 
-// Setter for additional properties for PostMediaPublish200JSONResponseBody
-func (a *PostMediaPublish200JSONResponseBody) Set(fieldName string, value interface{}) {
+// Setter for additional properties for InstagramTaggedMediaList
+func (a *InstagramTaggedMediaList) Set(fieldName string, value interface{}) {
 	if a.AdditionalProperties == nil {
 		a.AdditionalProperties = make(map[string]interface{})
 	}
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Override default JSON handling for PostMediaPublish200JSONResponseBody to handle AdditionalProperties
-func (a *PostMediaPublish200JSONResponseBody) UnmarshalJSON(b []byte) error {
+// Override default JSON handling for InstagramTaggedMediaList to handle AdditionalProperties
+func (a *InstagramTaggedMediaList) UnmarshalJSON(b []byte) error {
 	object := make(map[string]json.RawMessage)
 	err := json.Unmarshal(b, &object)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["id"]; found {
-		err = json.Unmarshal(raw, &a.Id)
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
 		if err != nil {
-			return fmt.Errorf("error reading 'id': %w", err)
+			return fmt.Errorf("error reading 'data': %w", err)
 		}
-		delete(object, "id")
+		delete(object, "data")
+	}
+
+	if raw, found := object["paging"]; found {
+		err = json.Unmarshal(raw, &a.Paging)
+		if err != nil {
+			return fmt.Errorf("error reading 'paging': %w", err)
+		}
+		delete(object, "paging")
 	}
 
 	if len(object) != 0 {
@@ -1567,15 +4881,22 @@ func (a *PostMediaPublish200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Override default JSON handling for PostMediaPublish200JSONResponseBody to handle AdditionalProperties
-func (a PostMediaPublish200JSONResponseBody) MarshalJSON() ([]byte, error) {
+// Override default JSON handling for InstagramTaggedMediaList to handle AdditionalProperties
+func (a InstagramTaggedMediaList) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
+	if a.Data != nil {
+		object["data"], err = json.Marshal(a.Data)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+			return nil, fmt.Errorf("error marshaling 'data': %w", err)
+		}
+	}
+
+	if a.Paging != nil {
+		object["paging"], err = json.Marshal(a.Paging)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'paging': %w", err)
 		}
 	}
 
@@ -1588,140 +4909,2152 @@ func (a PostMediaPublish200JSONResponseBody) MarshalJSON() ([]byte, error) {
 	return json.Marshal(object)
 }
 
-// Getter for additional properties for PostRepliesJSONBody. Returns the specified
-// element and whether it was found
-func (a PostRepliesJSONBody) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
+// AsContainerStatusStatus0 returns the union data inside the ContainerStatus_Status as a ContainerStatusStatus0
+func (t ContainerStatus_Status) AsContainerStatusStatus0() (ContainerStatusStatus0, error) {
+	var body ContainerStatusStatus0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
 }
 
-// Setter for additional properties for PostRepliesJSONBody
-func (a *PostRepliesJSONBody) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
+// FromContainerStatusStatus0 overwrites any union data inside the ContainerStatus_Status as the provided ContainerStatusStatus0
+func (t *ContainerStatus_Status) FromContainerStatusStatus0(v ContainerStatusStatus0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
 }
 
-// Override default JSON handling for PostRepliesJSONBody to handle AdditionalProperties
-func (a *PostRepliesJSONBody) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
+// MergeContainerStatusStatus0 performs a merge with any union data inside the ContainerStatus_Status, using the provided ContainerStatusStatus0
+func (t *ContainerStatus_Status) MergeContainerStatusStatus0(v ContainerStatusStatus0) error {
+	b, err := json.Marshal(v)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["message"]; found {
-		err = json.Unmarshal(raw, &a.Message)
-		if err != nil {
-			return fmt.Errorf("error reading 'message': %w", err)
-		}
-		delete(object, "message")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
 }
 
-// Override default JSON handling for PostRepliesJSONBody to handle AdditionalProperties
-func (a PostRepliesJSONBody) MarshalJSON() ([]byte, error) {
-	var err error
-	object := make(map[string]json.RawMessage)
-
-	if a.Message != nil {
-		object["message"], err = json.Marshal(a.Message)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'message': %w", err)
-		}
-	}
-
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
-		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
-		}
-	}
-	return json.Marshal(object)
+// AsContainerStatusStatus1 returns the union data inside the ContainerStatus_Status as a ContainerStatusStatus1
+func (t ContainerStatus_Status) AsContainerStatusStatus1() (ContainerStatusStatus1, error) {
+	var body ContainerStatusStatus1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
 }
 
-// Getter for additional properties for PostReplies200JSONResponseBody. Returns the specified
-// element and whether it was found
-func (a PostReplies200JSONResponseBody) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
+// FromContainerStatusStatus1 overwrites any union data inside the ContainerStatus_Status as the provided ContainerStatusStatus1
+func (t *ContainerStatus_Status) FromContainerStatusStatus1(v ContainerStatusStatus1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
 }
 
-// Setter for additional properties for PostReplies200JSONResponseBody
-func (a *PostReplies200JSONResponseBody) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
-// Override default JSON handling for PostReplies200JSONResponseBody to handle AdditionalProperties
-func (a *PostReplies200JSONResponseBody) UnmarshalJSON(b []byte) error {
-	object := make(map[string]json.RawMessage)
-	err := json.Unmarshal(b, &object)
+// MergeContainerStatusStatus1 performs a merge with any union data inside the ContainerStatus_Status, using the provided ContainerStatusStatus1
+func (t *ContainerStatus_Status) MergeContainerStatusStatus1(v ContainerStatusStatus1) error {
+	b, err := json.Marshal(v)
 	if err != nil {
 		return err
 	}
 
-	if raw, found := object["id"]; found {
-		err = json.Unmarshal(raw, &a.Id)
-		if err != nil {
-			return fmt.Errorf("error reading 'id': %w", err)
-		}
-		delete(object, "id")
-	}
-
-	if len(object) != 0 {
-		a.AdditionalProperties = make(map[string]interface{})
-		for fieldName, fieldBuf := range object {
-			var fieldVal interface{}
-			err := json.Unmarshal(fieldBuf, &fieldVal)
-			if err != nil {
-				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
-			}
-			a.AdditionalProperties[fieldName] = fieldVal
-		}
-	}
-	return nil
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
 }
 
-// Override default JSON handling for PostReplies200JSONResponseBody to handle AdditionalProperties
-func (a PostReplies200JSONResponseBody) MarshalJSON() ([]byte, error) {
-	var err error
+func (t ContainerStatus_Status) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ContainerStatus_Status) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsGraphAPIErrorErrorErrorData0 returns the union data inside the GraphAPIError_Error_ErrorData as a GraphAPIErrorErrorErrorData0
+func (t GraphAPIError_Error_ErrorData) AsGraphAPIErrorErrorErrorData0() (GraphAPIErrorErrorErrorData0, error) {
+	var body GraphAPIErrorErrorErrorData0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGraphAPIErrorErrorErrorData0 overwrites any union data inside the GraphAPIError_Error_ErrorData as the provided GraphAPIErrorErrorErrorData0
+func (t *GraphAPIError_Error_ErrorData) FromGraphAPIErrorErrorErrorData0(v GraphAPIErrorErrorErrorData0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGraphAPIErrorErrorErrorData0 performs a merge with any union data inside the GraphAPIError_Error_ErrorData, using the provided GraphAPIErrorErrorErrorData0
+func (t *GraphAPIError_Error_ErrorData) MergeGraphAPIErrorErrorErrorData0(v GraphAPIErrorErrorErrorData0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGraphAPIErrorErrorErrorData1 returns the union data inside the GraphAPIError_Error_ErrorData as a GraphAPIErrorErrorErrorData1
+func (t GraphAPIError_Error_ErrorData) AsGraphAPIErrorErrorErrorData1() (GraphAPIErrorErrorErrorData1, error) {
+	var body GraphAPIErrorErrorErrorData1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGraphAPIErrorErrorErrorData1 overwrites any union data inside the GraphAPIError_Error_ErrorData as the provided GraphAPIErrorErrorErrorData1
+func (t *GraphAPIError_Error_ErrorData) FromGraphAPIErrorErrorErrorData1(v GraphAPIErrorErrorErrorData1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGraphAPIErrorErrorErrorData1 performs a merge with any union data inside the GraphAPIError_Error_ErrorData, using the provided GraphAPIErrorErrorErrorData1
+func (t *GraphAPIError_Error_ErrorData) MergeGraphAPIErrorErrorErrorData1(v GraphAPIErrorErrorErrorData1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t GraphAPIError_Error_ErrorData) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *GraphAPIError_Error_ErrorData) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsIceBreakers0 returns the union data inside the IceBreakers as a IceBreakers0
+func (t IceBreakers) AsIceBreakers0() (IceBreakers0, error) {
+	var body IceBreakers0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromIceBreakers0 overwrites any union data inside the IceBreakers as the provided IceBreakers0
+func (t *IceBreakers) FromIceBreakers0(v IceBreakers0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeIceBreakers0 performs a merge with any union data inside the IceBreakers, using the provided IceBreakers0
+func (t *IceBreakers) MergeIceBreakers0(v IceBreakers0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsIceBreakers1 returns the union data inside the IceBreakers as a IceBreakers1
+func (t IceBreakers) AsIceBreakers1() (IceBreakers1, error) {
+	var body IceBreakers1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromIceBreakers1 overwrites any union data inside the IceBreakers as the provided IceBreakers1
+func (t *IceBreakers) FromIceBreakers1(v IceBreakers1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeIceBreakers1 performs a merge with any union data inside the IceBreakers, using the provided IceBreakers1
+func (t *IceBreakers) MergeIceBreakers1(v IceBreakers1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t IceBreakers) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *IceBreakers) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsInstagramCommentUser0 returns the union data inside the InstagramComment_User as a InstagramCommentUser0
+func (t InstagramComment_User) AsInstagramCommentUser0() (InstagramCommentUser0, error) {
+	var body InstagramCommentUser0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCommentUser0 overwrites any union data inside the InstagramComment_User as the provided InstagramCommentUser0
+func (t *InstagramComment_User) FromInstagramCommentUser0(v InstagramCommentUser0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCommentUser0 performs a merge with any union data inside the InstagramComment_User, using the provided InstagramCommentUser0
+func (t *InstagramComment_User) MergeInstagramCommentUser0(v InstagramCommentUser0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramID returns the union data inside the InstagramComment_User as a InstagramID
+func (t InstagramComment_User) AsInstagramID() (InstagramID, error) {
+	var body InstagramID
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramID overwrites any union data inside the InstagramComment_User as the provided InstagramID
+func (t *InstagramComment_User) FromInstagramID(v InstagramID) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramID performs a merge with any union data inside the InstagramComment_User, using the provided InstagramID
+func (t *InstagramComment_User) MergeInstagramID(v InstagramID) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramComment_User) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstagramComment_User) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsInstagramCreateContainer0 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer0
+func (t InstagramCreateContainer) AsInstagramCreateContainer0() (InstagramCreateContainer0, error) {
+	var body InstagramCreateContainer0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer0 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer0
+func (t *InstagramCreateContainer) FromInstagramCreateContainer0(v InstagramCreateContainer0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer0 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer0
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer0(v InstagramCreateContainer0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer1 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer1
+func (t InstagramCreateContainer) AsInstagramCreateContainer1() (InstagramCreateContainer1, error) {
+	var body InstagramCreateContainer1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer1 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer1
+func (t *InstagramCreateContainer) FromInstagramCreateContainer1(v InstagramCreateContainer1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer1 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer1
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer1(v InstagramCreateContainer1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer2 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer2
+func (t InstagramCreateContainer) AsInstagramCreateContainer2() (InstagramCreateContainer2, error) {
+	var body InstagramCreateContainer2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer2 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer2
+func (t *InstagramCreateContainer) FromInstagramCreateContainer2(v InstagramCreateContainer2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer2 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer2
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer2(v InstagramCreateContainer2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer3 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer3
+func (t InstagramCreateContainer) AsInstagramCreateContainer3() (InstagramCreateContainer3, error) {
+	var body InstagramCreateContainer3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer3 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer3
+func (t *InstagramCreateContainer) FromInstagramCreateContainer3(v InstagramCreateContainer3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer3 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer3
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer3(v InstagramCreateContainer3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer4 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer4
+func (t InstagramCreateContainer) AsInstagramCreateContainer4() (InstagramCreateContainer4, error) {
+	var body InstagramCreateContainer4
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer4 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer4
+func (t *InstagramCreateContainer) FromInstagramCreateContainer4(v InstagramCreateContainer4) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer4 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer4
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer4(v InstagramCreateContainer4) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer5 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer5
+func (t InstagramCreateContainer) AsInstagramCreateContainer5() (InstagramCreateContainer5, error) {
+	var body InstagramCreateContainer5
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer5 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer5
+func (t *InstagramCreateContainer) FromInstagramCreateContainer5(v InstagramCreateContainer5) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer5 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer5
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer5(v InstagramCreateContainer5) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer6 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer6
+func (t InstagramCreateContainer) AsInstagramCreateContainer6() (InstagramCreateContainer6, error) {
+	var body InstagramCreateContainer6
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer6 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer6
+func (t *InstagramCreateContainer) FromInstagramCreateContainer6(v InstagramCreateContainer6) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer6 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer6
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer6(v InstagramCreateContainer6) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer7 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer7
+func (t InstagramCreateContainer) AsInstagramCreateContainer7() (InstagramCreateContainer7, error) {
+	var body InstagramCreateContainer7
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer7 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer7
+func (t *InstagramCreateContainer) FromInstagramCreateContainer7(v InstagramCreateContainer7) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer7 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer7
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer7(v InstagramCreateContainer7) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer8 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer8
+func (t InstagramCreateContainer) AsInstagramCreateContainer8() (InstagramCreateContainer8, error) {
+	var body InstagramCreateContainer8
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer8 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer8
+func (t *InstagramCreateContainer) FromInstagramCreateContainer8(v InstagramCreateContainer8) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer8 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer8
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer8(v InstagramCreateContainer8) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer9 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer9
+func (t InstagramCreateContainer) AsInstagramCreateContainer9() (InstagramCreateContainer9, error) {
+	var body InstagramCreateContainer9
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer9 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer9
+func (t *InstagramCreateContainer) FromInstagramCreateContainer9(v InstagramCreateContainer9) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer9 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer9
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer9(v InstagramCreateContainer9) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer10 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer10
+func (t InstagramCreateContainer) AsInstagramCreateContainer10() (InstagramCreateContainer10, error) {
+	var body InstagramCreateContainer10
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer10 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer10
+func (t *InstagramCreateContainer) FromInstagramCreateContainer10(v InstagramCreateContainer10) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer10 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer10
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer10(v InstagramCreateContainer10) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer11 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer11
+func (t InstagramCreateContainer) AsInstagramCreateContainer11() (InstagramCreateContainer11, error) {
+	var body InstagramCreateContainer11
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer11 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer11
+func (t *InstagramCreateContainer) FromInstagramCreateContainer11(v InstagramCreateContainer11) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer11 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer11
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer11(v InstagramCreateContainer11) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer12 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer12
+func (t InstagramCreateContainer) AsInstagramCreateContainer12() (InstagramCreateContainer12, error) {
+	var body InstagramCreateContainer12
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer12 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer12
+func (t *InstagramCreateContainer) FromInstagramCreateContainer12(v InstagramCreateContainer12) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer12 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer12
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer12(v InstagramCreateContainer12) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer13 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer13
+func (t InstagramCreateContainer) AsInstagramCreateContainer13() (InstagramCreateContainer13, error) {
+	var body InstagramCreateContainer13
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer13 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer13
+func (t *InstagramCreateContainer) FromInstagramCreateContainer13(v InstagramCreateContainer13) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer13 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer13
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer13(v InstagramCreateContainer13) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer14 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer14
+func (t InstagramCreateContainer) AsInstagramCreateContainer14() (InstagramCreateContainer14, error) {
+	var body InstagramCreateContainer14
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer14 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer14
+func (t *InstagramCreateContainer) FromInstagramCreateContainer14(v InstagramCreateContainer14) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer14 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer14
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer14(v InstagramCreateContainer14) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer15 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer15
+func (t InstagramCreateContainer) AsInstagramCreateContainer15() (InstagramCreateContainer15, error) {
+	var body InstagramCreateContainer15
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer15 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer15
+func (t *InstagramCreateContainer) FromInstagramCreateContainer15(v InstagramCreateContainer15) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer15 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer15
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer15(v InstagramCreateContainer15) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer16 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer16
+func (t InstagramCreateContainer) AsInstagramCreateContainer16() (InstagramCreateContainer16, error) {
+	var body InstagramCreateContainer16
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer16 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer16
+func (t *InstagramCreateContainer) FromInstagramCreateContainer16(v InstagramCreateContainer16) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer16 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer16
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer16(v InstagramCreateContainer16) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer17 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer17
+func (t InstagramCreateContainer) AsInstagramCreateContainer17() (InstagramCreateContainer17, error) {
+	var body InstagramCreateContainer17
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer17 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer17
+func (t *InstagramCreateContainer) FromInstagramCreateContainer17(v InstagramCreateContainer17) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer17 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer17
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer17(v InstagramCreateContainer17) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer18 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer18
+func (t InstagramCreateContainer) AsInstagramCreateContainer18() (InstagramCreateContainer18, error) {
+	var body InstagramCreateContainer18
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer18 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer18
+func (t *InstagramCreateContainer) FromInstagramCreateContainer18(v InstagramCreateContainer18) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer18 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer18
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer18(v InstagramCreateContainer18) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer19 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer19
+func (t InstagramCreateContainer) AsInstagramCreateContainer19() (InstagramCreateContainer19, error) {
+	var body InstagramCreateContainer19
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer19 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer19
+func (t *InstagramCreateContainer) FromInstagramCreateContainer19(v InstagramCreateContainer19) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer19 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer19
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer19(v InstagramCreateContainer19) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer20 returns the union data inside the InstagramCreateContainer as a InstagramCreateContainer20
+func (t InstagramCreateContainer) AsInstagramCreateContainer20() (InstagramCreateContainer20, error) {
+	var body InstagramCreateContainer20
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer20 overwrites any union data inside the InstagramCreateContainer as the provided InstagramCreateContainer20
+func (t *InstagramCreateContainer) FromInstagramCreateContainer20(v InstagramCreateContainer20) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer20 performs a merge with any union data inside the InstagramCreateContainer, using the provided InstagramCreateContainer20
+func (t *InstagramCreateContainer) MergeInstagramCreateContainer20(v InstagramCreateContainer20) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramCreateContainer) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	if err != nil {
+		return nil, err
+	}
 	object := make(map[string]json.RawMessage)
-
-	if a.Id != nil {
-		object["id"], err = json.Marshal(a.Id)
+	if t.union != nil {
+		err = json.Unmarshal(b, &object)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+			return nil, err
 		}
 	}
 
-	for fieldName, field := range a.AdditionalProperties {
-		object[fieldName], err = json.Marshal(field)
+	if t.AltText != nil {
+		object["alt_text"], err = json.Marshal(t.AltText)
 		if err != nil {
-			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+			return nil, fmt.Errorf("error marshaling 'alt_text': %w", err)
 		}
 	}
-	return json.Marshal(object)
+
+	if t.AudioName != nil {
+		object["audio_name"], err = json.Marshal(t.AudioName)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'audio_name': %w", err)
+		}
+	}
+
+	if t.Caption != nil {
+		object["caption"], err = json.Marshal(t.Caption)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'caption': %w", err)
+		}
+	}
+
+	if t.Children != nil {
+		object["children"], err = json.Marshal(t.Children)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'children': %w", err)
+		}
+	}
+
+	if t.Collaborators != nil {
+		object["collaborators"], err = json.Marshal(t.Collaborators)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'collaborators': %w", err)
+		}
+	}
+
+	if t.CoverUrl != nil {
+		object["cover_url"], err = json.Marshal(t.CoverUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'cover_url': %w", err)
+		}
+	}
+
+	if t.ImageUrl != nil {
+		object["image_url"], err = json.Marshal(t.ImageUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'image_url': %w", err)
+		}
+	}
+
+	if t.IsAiGenerated != nil {
+		object["is_ai_generated"], err = json.Marshal(t.IsAiGenerated)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_ai_generated': %w", err)
+		}
+	}
+
+	if t.IsCarouselItem != nil {
+		object["is_carousel_item"], err = json.Marshal(t.IsCarouselItem)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_carousel_item': %w", err)
+		}
+	}
+
+	if t.LocationId != nil {
+		object["location_id"], err = json.Marshal(t.LocationId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'location_id': %w", err)
+		}
+	}
+
+	if t.MediaType != nil {
+		object["media_type"], err = json.Marshal(t.MediaType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_type': %w", err)
+		}
+	}
+
+	if t.ShareToFeed != nil {
+		object["share_to_feed"], err = json.Marshal(t.ShareToFeed)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'share_to_feed': %w", err)
+		}
+	}
+
+	if t.ThumbOffset != nil {
+		object["thumb_offset"], err = json.Marshal(t.ThumbOffset)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'thumb_offset': %w", err)
+		}
+	}
+
+	if t.TrialParams != nil {
+		object["trial_params"], err = json.Marshal(t.TrialParams)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'trial_params': %w", err)
+		}
+	}
+
+	if t.UserTags != nil {
+		object["user_tags"], err = json.Marshal(t.UserTags)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'user_tags': %w", err)
+		}
+	}
+
+	if t.VideoUrl != nil {
+		object["video_url"], err = json.Marshal(t.VideoUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'video_url': %w", err)
+		}
+	}
+	b, err = json.Marshal(object)
+	return b, err
+}
+
+func (t *InstagramCreateContainer) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	if err != nil {
+		return err
+	}
+	object := make(map[string]json.RawMessage)
+	err = json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["alt_text"]; found {
+		err = json.Unmarshal(raw, &t.AltText)
+		if err != nil {
+			return fmt.Errorf("error reading 'alt_text': %w", err)
+		}
+	}
+
+	if raw, found := object["audio_name"]; found {
+		err = json.Unmarshal(raw, &t.AudioName)
+		if err != nil {
+			return fmt.Errorf("error reading 'audio_name': %w", err)
+		}
+	}
+
+	if raw, found := object["caption"]; found {
+		err = json.Unmarshal(raw, &t.Caption)
+		if err != nil {
+			return fmt.Errorf("error reading 'caption': %w", err)
+		}
+	}
+
+	if raw, found := object["children"]; found {
+		err = json.Unmarshal(raw, &t.Children)
+		if err != nil {
+			return fmt.Errorf("error reading 'children': %w", err)
+		}
+	}
+
+	if raw, found := object["collaborators"]; found {
+		err = json.Unmarshal(raw, &t.Collaborators)
+		if err != nil {
+			return fmt.Errorf("error reading 'collaborators': %w", err)
+		}
+	}
+
+	if raw, found := object["cover_url"]; found {
+		err = json.Unmarshal(raw, &t.CoverUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'cover_url': %w", err)
+		}
+	}
+
+	if raw, found := object["image_url"]; found {
+		err = json.Unmarshal(raw, &t.ImageUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'image_url': %w", err)
+		}
+	}
+
+	if raw, found := object["is_ai_generated"]; found {
+		err = json.Unmarshal(raw, &t.IsAiGenerated)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_ai_generated': %w", err)
+		}
+	}
+
+	if raw, found := object["is_carousel_item"]; found {
+		err = json.Unmarshal(raw, &t.IsCarouselItem)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_carousel_item': %w", err)
+		}
+	}
+
+	if raw, found := object["location_id"]; found {
+		err = json.Unmarshal(raw, &t.LocationId)
+		if err != nil {
+			return fmt.Errorf("error reading 'location_id': %w", err)
+		}
+	}
+
+	if raw, found := object["media_type"]; found {
+		err = json.Unmarshal(raw, &t.MediaType)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_type': %w", err)
+		}
+	}
+
+	if raw, found := object["share_to_feed"]; found {
+		err = json.Unmarshal(raw, &t.ShareToFeed)
+		if err != nil {
+			return fmt.Errorf("error reading 'share_to_feed': %w", err)
+		}
+	}
+
+	if raw, found := object["thumb_offset"]; found {
+		err = json.Unmarshal(raw, &t.ThumbOffset)
+		if err != nil {
+			return fmt.Errorf("error reading 'thumb_offset': %w", err)
+		}
+	}
+
+	if raw, found := object["trial_params"]; found {
+		err = json.Unmarshal(raw, &t.TrialParams)
+		if err != nil {
+			return fmt.Errorf("error reading 'trial_params': %w", err)
+		}
+	}
+
+	if raw, found := object["user_tags"]; found {
+		err = json.Unmarshal(raw, &t.UserTags)
+		if err != nil {
+			return fmt.Errorf("error reading 'user_tags': %w", err)
+		}
+	}
+
+	if raw, found := object["video_url"]; found {
+		err = json.Unmarshal(raw, &t.VideoUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'video_url': %w", err)
+		}
+	}
+
+	return err
+}
+
+// AsInstagramCreateContainer70 returns the union data inside the InstagramCreateContainer7 as a InstagramCreateContainer70
+func (t InstagramCreateContainer7) AsInstagramCreateContainer70() (InstagramCreateContainer70, error) {
+	var body InstagramCreateContainer70
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer70 overwrites any union data inside the InstagramCreateContainer7 as the provided InstagramCreateContainer70
+func (t *InstagramCreateContainer7) FromInstagramCreateContainer70(v InstagramCreateContainer70) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer70 performs a merge with any union data inside the InstagramCreateContainer7, using the provided InstagramCreateContainer70
+func (t *InstagramCreateContainer7) MergeInstagramCreateContainer70(v InstagramCreateContainer70) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer71 returns the union data inside the InstagramCreateContainer7 as a InstagramCreateContainer71
+func (t InstagramCreateContainer7) AsInstagramCreateContainer71() (InstagramCreateContainer71, error) {
+	var body InstagramCreateContainer71
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer71 overwrites any union data inside the InstagramCreateContainer7 as the provided InstagramCreateContainer71
+func (t *InstagramCreateContainer7) FromInstagramCreateContainer71(v InstagramCreateContainer71) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer71 performs a merge with any union data inside the InstagramCreateContainer7, using the provided InstagramCreateContainer71
+func (t *InstagramCreateContainer7) MergeInstagramCreateContainer71(v InstagramCreateContainer71) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainer72 returns the union data inside the InstagramCreateContainer7 as a InstagramCreateContainer72
+func (t InstagramCreateContainer7) AsInstagramCreateContainer72() (InstagramCreateContainer72, error) {
+	var body InstagramCreateContainer72
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainer72 overwrites any union data inside the InstagramCreateContainer7 as the provided InstagramCreateContainer72
+func (t *InstagramCreateContainer7) FromInstagramCreateContainer72(v InstagramCreateContainer72) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainer72 performs a merge with any union data inside the InstagramCreateContainer7, using the provided InstagramCreateContainer72
+func (t *InstagramCreateContainer7) MergeInstagramCreateContainer72(v InstagramCreateContainer72) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramCreateContainer7) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstagramCreateContainer7) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsInstagramCreateContainerForm0 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm0
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm0() (InstagramCreateContainerForm0, error) {
+	var body InstagramCreateContainerForm0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm0 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm0
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm0(v InstagramCreateContainerForm0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm0 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm0
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm0(v InstagramCreateContainerForm0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm1 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm1
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm1() (InstagramCreateContainerForm1, error) {
+	var body InstagramCreateContainerForm1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm1 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm1
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm1(v InstagramCreateContainerForm1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm1 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm1
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm1(v InstagramCreateContainerForm1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm2 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm2
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm2() (InstagramCreateContainerForm2, error) {
+	var body InstagramCreateContainerForm2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm2 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm2
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm2(v InstagramCreateContainerForm2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm2 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm2
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm2(v InstagramCreateContainerForm2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm3 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm3
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm3() (InstagramCreateContainerForm3, error) {
+	var body InstagramCreateContainerForm3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm3 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm3
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm3(v InstagramCreateContainerForm3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm3 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm3
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm3(v InstagramCreateContainerForm3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm4 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm4
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm4() (InstagramCreateContainerForm4, error) {
+	var body InstagramCreateContainerForm4
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm4 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm4
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm4(v InstagramCreateContainerForm4) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm4 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm4
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm4(v InstagramCreateContainerForm4) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm5 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm5
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm5() (InstagramCreateContainerForm5, error) {
+	var body InstagramCreateContainerForm5
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm5 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm5
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm5(v InstagramCreateContainerForm5) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm5 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm5
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm5(v InstagramCreateContainerForm5) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm6 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm6
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm6() (InstagramCreateContainerForm6, error) {
+	var body InstagramCreateContainerForm6
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm6 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm6
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm6(v InstagramCreateContainerForm6) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm6 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm6
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm6(v InstagramCreateContainerForm6) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm7 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm7
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm7() (InstagramCreateContainerForm7, error) {
+	var body InstagramCreateContainerForm7
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm7 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm7
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm7(v InstagramCreateContainerForm7) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm7 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm7
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm7(v InstagramCreateContainerForm7) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm8 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm8
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm8() (InstagramCreateContainerForm8, error) {
+	var body InstagramCreateContainerForm8
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm8 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm8
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm8(v InstagramCreateContainerForm8) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm8 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm8
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm8(v InstagramCreateContainerForm8) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm9 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm9
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm9() (InstagramCreateContainerForm9, error) {
+	var body InstagramCreateContainerForm9
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm9 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm9
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm9(v InstagramCreateContainerForm9) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm9 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm9
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm9(v InstagramCreateContainerForm9) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm10 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm10
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm10() (InstagramCreateContainerForm10, error) {
+	var body InstagramCreateContainerForm10
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm10 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm10
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm10(v InstagramCreateContainerForm10) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm10 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm10
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm10(v InstagramCreateContainerForm10) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm11 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm11
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm11() (InstagramCreateContainerForm11, error) {
+	var body InstagramCreateContainerForm11
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm11 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm11
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm11(v InstagramCreateContainerForm11) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm11 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm11
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm11(v InstagramCreateContainerForm11) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm12 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm12
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm12() (InstagramCreateContainerForm12, error) {
+	var body InstagramCreateContainerForm12
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm12 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm12
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm12(v InstagramCreateContainerForm12) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm12 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm12
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm12(v InstagramCreateContainerForm12) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm13 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm13
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm13() (InstagramCreateContainerForm13, error) {
+	var body InstagramCreateContainerForm13
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm13 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm13
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm13(v InstagramCreateContainerForm13) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm13 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm13
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm13(v InstagramCreateContainerForm13) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm14 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm14
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm14() (InstagramCreateContainerForm14, error) {
+	var body InstagramCreateContainerForm14
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm14 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm14
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm14(v InstagramCreateContainerForm14) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm14 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm14
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm14(v InstagramCreateContainerForm14) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm15 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm15
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm15() (InstagramCreateContainerForm15, error) {
+	var body InstagramCreateContainerForm15
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm15 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm15
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm15(v InstagramCreateContainerForm15) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm15 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm15
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm15(v InstagramCreateContainerForm15) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm16 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm16
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm16() (InstagramCreateContainerForm16, error) {
+	var body InstagramCreateContainerForm16
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm16 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm16
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm16(v InstagramCreateContainerForm16) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm16 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm16
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm16(v InstagramCreateContainerForm16) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm17 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm17
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm17() (InstagramCreateContainerForm17, error) {
+	var body InstagramCreateContainerForm17
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm17 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm17
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm17(v InstagramCreateContainerForm17) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm17 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm17
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm17(v InstagramCreateContainerForm17) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm18 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm18
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm18() (InstagramCreateContainerForm18, error) {
+	var body InstagramCreateContainerForm18
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm18 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm18
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm18(v InstagramCreateContainerForm18) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm18 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm18
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm18(v InstagramCreateContainerForm18) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm19 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm19
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm19() (InstagramCreateContainerForm19, error) {
+	var body InstagramCreateContainerForm19
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm19 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm19
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm19(v InstagramCreateContainerForm19) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm19 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm19
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm19(v InstagramCreateContainerForm19) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm20 returns the union data inside the InstagramCreateContainerForm as a InstagramCreateContainerForm20
+func (t InstagramCreateContainerForm) AsInstagramCreateContainerForm20() (InstagramCreateContainerForm20, error) {
+	var body InstagramCreateContainerForm20
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm20 overwrites any union data inside the InstagramCreateContainerForm as the provided InstagramCreateContainerForm20
+func (t *InstagramCreateContainerForm) FromInstagramCreateContainerForm20(v InstagramCreateContainerForm20) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm20 performs a merge with any union data inside the InstagramCreateContainerForm, using the provided InstagramCreateContainerForm20
+func (t *InstagramCreateContainerForm) MergeInstagramCreateContainerForm20(v InstagramCreateContainerForm20) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramCreateContainerForm) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	if err != nil {
+		return nil, err
+	}
+	object := make(map[string]json.RawMessage)
+	if t.union != nil {
+		err = json.Unmarshal(b, &object)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	if t.AltText != nil {
+		object["alt_text"], err = json.Marshal(t.AltText)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'alt_text': %w", err)
+		}
+	}
+
+	if t.AudioName != nil {
+		object["audio_name"], err = json.Marshal(t.AudioName)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'audio_name': %w", err)
+		}
+	}
+
+	if t.Caption != nil {
+		object["caption"], err = json.Marshal(t.Caption)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'caption': %w", err)
+		}
+	}
+
+	if t.Children != nil {
+		object["children"], err = json.Marshal(t.Children)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'children': %w", err)
+		}
+	}
+
+	if t.Collaborators != nil {
+		object["collaborators"], err = json.Marshal(t.Collaborators)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'collaborators': %w", err)
+		}
+	}
+
+	if t.CoverUrl != nil {
+		object["cover_url"], err = json.Marshal(t.CoverUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'cover_url': %w", err)
+		}
+	}
+
+	if t.ImageUrl != nil {
+		object["image_url"], err = json.Marshal(t.ImageUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'image_url': %w", err)
+		}
+	}
+
+	if t.IsAiGenerated != nil {
+		object["is_ai_generated"], err = json.Marshal(t.IsAiGenerated)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_ai_generated': %w", err)
+		}
+	}
+
+	if t.IsCarouselItem != nil {
+		object["is_carousel_item"], err = json.Marshal(t.IsCarouselItem)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'is_carousel_item': %w", err)
+		}
+	}
+
+	if t.LocationId != nil {
+		object["location_id"], err = json.Marshal(t.LocationId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'location_id': %w", err)
+		}
+	}
+
+	if t.MediaType != nil {
+		object["media_type"], err = json.Marshal(t.MediaType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_type': %w", err)
+		}
+	}
+
+	if t.ShareToFeed != nil {
+		object["share_to_feed"], err = json.Marshal(t.ShareToFeed)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'share_to_feed': %w", err)
+		}
+	}
+
+	if t.ThumbOffset != nil {
+		object["thumb_offset"], err = json.Marshal(t.ThumbOffset)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'thumb_offset': %w", err)
+		}
+	}
+
+	if t.TrialParams != nil {
+		object["trial_params"], err = json.Marshal(t.TrialParams)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'trial_params': %w", err)
+		}
+	}
+
+	if t.UserTags != nil {
+		object["user_tags"], err = json.Marshal(t.UserTags)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'user_tags': %w", err)
+		}
+	}
+
+	if t.VideoUrl != nil {
+		object["video_url"], err = json.Marshal(t.VideoUrl)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'video_url': %w", err)
+		}
+	}
+	b, err = json.Marshal(object)
+	return b, err
+}
+
+func (t *InstagramCreateContainerForm) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	if err != nil {
+		return err
+	}
+	object := make(map[string]json.RawMessage)
+	err = json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["alt_text"]; found {
+		err = json.Unmarshal(raw, &t.AltText)
+		if err != nil {
+			return fmt.Errorf("error reading 'alt_text': %w", err)
+		}
+	}
+
+	if raw, found := object["audio_name"]; found {
+		err = json.Unmarshal(raw, &t.AudioName)
+		if err != nil {
+			return fmt.Errorf("error reading 'audio_name': %w", err)
+		}
+	}
+
+	if raw, found := object["caption"]; found {
+		err = json.Unmarshal(raw, &t.Caption)
+		if err != nil {
+			return fmt.Errorf("error reading 'caption': %w", err)
+		}
+	}
+
+	if raw, found := object["children"]; found {
+		err = json.Unmarshal(raw, &t.Children)
+		if err != nil {
+			return fmt.Errorf("error reading 'children': %w", err)
+		}
+	}
+
+	if raw, found := object["collaborators"]; found {
+		err = json.Unmarshal(raw, &t.Collaborators)
+		if err != nil {
+			return fmt.Errorf("error reading 'collaborators': %w", err)
+		}
+	}
+
+	if raw, found := object["cover_url"]; found {
+		err = json.Unmarshal(raw, &t.CoverUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'cover_url': %w", err)
+		}
+	}
+
+	if raw, found := object["image_url"]; found {
+		err = json.Unmarshal(raw, &t.ImageUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'image_url': %w", err)
+		}
+	}
+
+	if raw, found := object["is_ai_generated"]; found {
+		err = json.Unmarshal(raw, &t.IsAiGenerated)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_ai_generated': %w", err)
+		}
+	}
+
+	if raw, found := object["is_carousel_item"]; found {
+		err = json.Unmarshal(raw, &t.IsCarouselItem)
+		if err != nil {
+			return fmt.Errorf("error reading 'is_carousel_item': %w", err)
+		}
+	}
+
+	if raw, found := object["location_id"]; found {
+		err = json.Unmarshal(raw, &t.LocationId)
+		if err != nil {
+			return fmt.Errorf("error reading 'location_id': %w", err)
+		}
+	}
+
+	if raw, found := object["media_type"]; found {
+		err = json.Unmarshal(raw, &t.MediaType)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_type': %w", err)
+		}
+	}
+
+	if raw, found := object["share_to_feed"]; found {
+		err = json.Unmarshal(raw, &t.ShareToFeed)
+		if err != nil {
+			return fmt.Errorf("error reading 'share_to_feed': %w", err)
+		}
+	}
+
+	if raw, found := object["thumb_offset"]; found {
+		err = json.Unmarshal(raw, &t.ThumbOffset)
+		if err != nil {
+			return fmt.Errorf("error reading 'thumb_offset': %w", err)
+		}
+	}
+
+	if raw, found := object["trial_params"]; found {
+		err = json.Unmarshal(raw, &t.TrialParams)
+		if err != nil {
+			return fmt.Errorf("error reading 'trial_params': %w", err)
+		}
+	}
+
+	if raw, found := object["user_tags"]; found {
+		err = json.Unmarshal(raw, &t.UserTags)
+		if err != nil {
+			return fmt.Errorf("error reading 'user_tags': %w", err)
+		}
+	}
+
+	if raw, found := object["video_url"]; found {
+		err = json.Unmarshal(raw, &t.VideoUrl)
+		if err != nil {
+			return fmt.Errorf("error reading 'video_url': %w", err)
+		}
+	}
+
+	return err
+}
+
+// AsInstagramCreateContainerForm70 returns the union data inside the InstagramCreateContainerForm7 as a InstagramCreateContainerForm70
+func (t InstagramCreateContainerForm7) AsInstagramCreateContainerForm70() (InstagramCreateContainerForm70, error) {
+	var body InstagramCreateContainerForm70
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm70 overwrites any union data inside the InstagramCreateContainerForm7 as the provided InstagramCreateContainerForm70
+func (t *InstagramCreateContainerForm7) FromInstagramCreateContainerForm70(v InstagramCreateContainerForm70) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm70 performs a merge with any union data inside the InstagramCreateContainerForm7, using the provided InstagramCreateContainerForm70
+func (t *InstagramCreateContainerForm7) MergeInstagramCreateContainerForm70(v InstagramCreateContainerForm70) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm71 returns the union data inside the InstagramCreateContainerForm7 as a InstagramCreateContainerForm71
+func (t InstagramCreateContainerForm7) AsInstagramCreateContainerForm71() (InstagramCreateContainerForm71, error) {
+	var body InstagramCreateContainerForm71
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm71 overwrites any union data inside the InstagramCreateContainerForm7 as the provided InstagramCreateContainerForm71
+func (t *InstagramCreateContainerForm7) FromInstagramCreateContainerForm71(v InstagramCreateContainerForm71) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm71 performs a merge with any union data inside the InstagramCreateContainerForm7, using the provided InstagramCreateContainerForm71
+func (t *InstagramCreateContainerForm7) MergeInstagramCreateContainerForm71(v InstagramCreateContainerForm71) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramCreateContainerForm72 returns the union data inside the InstagramCreateContainerForm7 as a InstagramCreateContainerForm72
+func (t InstagramCreateContainerForm7) AsInstagramCreateContainerForm72() (InstagramCreateContainerForm72, error) {
+	var body InstagramCreateContainerForm72
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramCreateContainerForm72 overwrites any union data inside the InstagramCreateContainerForm7 as the provided InstagramCreateContainerForm72
+func (t *InstagramCreateContainerForm7) FromInstagramCreateContainerForm72(v InstagramCreateContainerForm72) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramCreateContainerForm72 performs a merge with any union data inside the InstagramCreateContainerForm7, using the provided InstagramCreateContainerForm72
+func (t *InstagramCreateContainerForm7) MergeInstagramCreateContainerForm72(v InstagramCreateContainerForm72) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramCreateContainerForm7) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstagramCreateContainerForm7) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsInstagramInsightValueValue0 returns the union data inside the InstagramInsightValue_Value as a InstagramInsightValueValue0
+func (t InstagramInsightValue_Value) AsInstagramInsightValueValue0() (InstagramInsightValueValue0, error) {
+	var body InstagramInsightValueValue0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramInsightValueValue0 overwrites any union data inside the InstagramInsightValue_Value as the provided InstagramInsightValueValue0
+func (t *InstagramInsightValue_Value) FromInstagramInsightValueValue0(v InstagramInsightValueValue0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramInsightValueValue0 performs a merge with any union data inside the InstagramInsightValue_Value, using the provided InstagramInsightValueValue0
+func (t *InstagramInsightValue_Value) MergeInstagramInsightValueValue0(v InstagramInsightValueValue0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramInsightValueValue1 returns the union data inside the InstagramInsightValue_Value as a InstagramInsightValueValue1
+func (t InstagramInsightValue_Value) AsInstagramInsightValueValue1() (InstagramInsightValueValue1, error) {
+	var body InstagramInsightValueValue1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramInsightValueValue1 overwrites any union data inside the InstagramInsightValue_Value as the provided InstagramInsightValueValue1
+func (t *InstagramInsightValue_Value) FromInstagramInsightValueValue1(v InstagramInsightValueValue1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramInsightValueValue1 performs a merge with any union data inside the InstagramInsightValue_Value, using the provided InstagramInsightValueValue1
+func (t *InstagramInsightValue_Value) MergeInstagramInsightValueValue1(v InstagramInsightValueValue1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t InstagramInsightValue_Value) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *InstagramInsightValue_Value) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMessagingAttachmentPayloadIsReusable0 returns the union data inside the MessagingAttachment_Payload_IsReusable as a MessagingAttachmentPayloadIsReusable0
+func (t MessagingAttachment_Payload_IsReusable) AsMessagingAttachmentPayloadIsReusable0() (MessagingAttachmentPayloadIsReusable0, error) {
+	var body MessagingAttachmentPayloadIsReusable0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessagingAttachmentPayloadIsReusable0 overwrites any union data inside the MessagingAttachment_Payload_IsReusable as the provided MessagingAttachmentPayloadIsReusable0
+func (t *MessagingAttachment_Payload_IsReusable) FromMessagingAttachmentPayloadIsReusable0(v MessagingAttachmentPayloadIsReusable0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessagingAttachmentPayloadIsReusable0 performs a merge with any union data inside the MessagingAttachment_Payload_IsReusable, using the provided MessagingAttachmentPayloadIsReusable0
+func (t *MessagingAttachment_Payload_IsReusable) MergeMessagingAttachmentPayloadIsReusable0(v MessagingAttachmentPayloadIsReusable0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMessagingAttachmentPayloadIsReusable1 returns the union data inside the MessagingAttachment_Payload_IsReusable as a MessagingAttachmentPayloadIsReusable1
+func (t MessagingAttachment_Payload_IsReusable) AsMessagingAttachmentPayloadIsReusable1() (MessagingAttachmentPayloadIsReusable1, error) {
+	var body MessagingAttachmentPayloadIsReusable1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessagingAttachmentPayloadIsReusable1 overwrites any union data inside the MessagingAttachment_Payload_IsReusable as the provided MessagingAttachmentPayloadIsReusable1
+func (t *MessagingAttachment_Payload_IsReusable) FromMessagingAttachmentPayloadIsReusable1(v MessagingAttachmentPayloadIsReusable1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessagingAttachmentPayloadIsReusable1 performs a merge with any union data inside the MessagingAttachment_Payload_IsReusable, using the provided MessagingAttachmentPayloadIsReusable1
+func (t *MessagingAttachment_Payload_IsReusable) MergeMessagingAttachmentPayloadIsReusable1(v MessagingAttachmentPayloadIsReusable1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MessagingAttachment_Payload_IsReusable) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MessagingAttachment_Payload_IsReusable) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
 }
 
 // AsMessagingButton0 returns the union data inside the MessagingButton as a MessagingButton0
@@ -1786,22 +7119,22 @@ func (t *MessagingButton) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsMessagingUserProfileName0 returns the union data inside the MessagingUserProfile_Name as a MessagingUserProfileName0
-func (t MessagingUserProfile_Name) AsMessagingUserProfileName0() (MessagingUserProfileName0, error) {
-	var body MessagingUserProfileName0
+// AsMessagingQuickReply0 returns the union data inside the MessagingQuickReply as a MessagingQuickReply0
+func (t MessagingQuickReply) AsMessagingQuickReply0() (MessagingQuickReply0, error) {
+	var body MessagingQuickReply0
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMessagingUserProfileName0 overwrites any union data inside the MessagingUserProfile_Name as the provided MessagingUserProfileName0
-func (t *MessagingUserProfile_Name) FromMessagingUserProfileName0(v MessagingUserProfileName0) error {
+// FromMessagingQuickReply0 overwrites any union data inside the MessagingQuickReply as the provided MessagingQuickReply0
+func (t *MessagingQuickReply) FromMessagingQuickReply0(v MessagingQuickReply0) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMessagingUserProfileName0 performs a merge with any union data inside the MessagingUserProfile_Name, using the provided MessagingUserProfileName0
-func (t *MessagingUserProfile_Name) MergeMessagingUserProfileName0(v MessagingUserProfileName0) error {
+// MergeMessagingQuickReply0 performs a merge with any union data inside the MessagingQuickReply, using the provided MessagingQuickReply0
+func (t *MessagingQuickReply) MergeMessagingQuickReply0(v MessagingQuickReply0) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -1812,32 +7145,22 @@ func (t *MessagingUserProfile_Name) MergeMessagingUserProfileName0(v MessagingUs
 	return err
 }
 
-func (t MessagingUserProfile_Name) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MessagingUserProfile_Name) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMessagingUserProfileProfilePic0 returns the union data inside the MessagingUserProfile_ProfilePic as a MessagingUserProfileProfilePic0
-func (t MessagingUserProfile_ProfilePic) AsMessagingUserProfileProfilePic0() (MessagingUserProfileProfilePic0, error) {
-	var body MessagingUserProfileProfilePic0
+// AsMessagingQuickReply1 returns the union data inside the MessagingQuickReply as a MessagingQuickReply1
+func (t MessagingQuickReply) AsMessagingQuickReply1() (MessagingQuickReply1, error) {
+	var body MessagingQuickReply1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMessagingUserProfileProfilePic0 overwrites any union data inside the MessagingUserProfile_ProfilePic as the provided MessagingUserProfileProfilePic0
-func (t *MessagingUserProfile_ProfilePic) FromMessagingUserProfileProfilePic0(v MessagingUserProfileProfilePic0) error {
+// FromMessagingQuickReply1 overwrites any union data inside the MessagingQuickReply as the provided MessagingQuickReply1
+func (t *MessagingQuickReply) FromMessagingQuickReply1(v MessagingQuickReply1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMessagingUserProfileProfilePic0 performs a merge with any union data inside the MessagingUserProfile_ProfilePic, using the provided MessagingUserProfileProfilePic0
-func (t *MessagingUserProfile_ProfilePic) MergeMessagingUserProfileProfilePic0(v MessagingUserProfileProfilePic0) error {
+// MergeMessagingQuickReply1 performs a merge with any union data inside the MessagingQuickReply, using the provided MessagingQuickReply1
+func (t *MessagingQuickReply) MergeMessagingQuickReply1(v MessagingQuickReply1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -1848,12 +7171,12 @@ func (t *MessagingUserProfile_ProfilePic) MergeMessagingUserProfileProfilePic0(v
 	return err
 }
 
-func (t MessagingUserProfile_ProfilePic) MarshalJSON() ([]byte, error) {
+func (t MessagingQuickReply) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MessagingUserProfile_ProfilePic) UnmarshalJSON(b []byte) error {
+func (t *MessagingQuickReply) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -2084,22 +7407,234 @@ func (t *SendInstagramMessage_Recipient) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsMessagingConversation returns the union data inside the ReadInstagramMessagingObject200JSONResponseBody as a MessagingConversation
-func (t ReadInstagramMessagingObject200JSONResponseBody) AsMessagingConversation() (MessagingConversation, error) {
+// AsInstagramAccount returns the union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody as a InstagramAccount
+func (t ReadAuthenticatedInstagramAccount200JSONResponseBody) AsInstagramAccount() (InstagramAccount, error) {
+	var body InstagramAccount
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramAccount overwrites any union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody as the provided InstagramAccount
+func (t *ReadAuthenticatedInstagramAccount200JSONResponseBody) FromInstagramAccount(v InstagramAccount) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramAccount performs a merge with any union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody, using the provided InstagramAccount
+func (t *ReadAuthenticatedInstagramAccount200JSONResponseBody) MergeInstagramAccount(v InstagramAccount) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramSelfUser returns the union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody as a InstagramSelfUser
+func (t ReadAuthenticatedInstagramAccount200JSONResponseBody) AsInstagramSelfUser() (InstagramSelfUser, error) {
+	var body InstagramSelfUser
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramSelfUser overwrites any union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody as the provided InstagramSelfUser
+func (t *ReadAuthenticatedInstagramAccount200JSONResponseBody) FromInstagramSelfUser(v InstagramSelfUser) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramSelfUser performs a merge with any union data inside the ReadAuthenticatedInstagramAccount200JSONResponseBody, using the provided InstagramSelfUser
+func (t *ReadAuthenticatedInstagramAccount200JSONResponseBody) MergeInstagramSelfUser(v InstagramSelfUser) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ReadAuthenticatedInstagramAccount200JSONResponseBody) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ReadAuthenticatedInstagramAccount200JSONResponseBody) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsReadInstagramNode200JSONResponseBody00 returns the union data inside the ReadInstagramNode200JSONResponseBody0 as a ReadInstagramNode200JSONResponseBody00
+func (t ReadInstagramNode200JSONResponseBody0) AsReadInstagramNode200JSONResponseBody00() (ReadInstagramNode200JSONResponseBody00, error) {
+	var body ReadInstagramNode200JSONResponseBody00
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromReadInstagramNode200JSONResponseBody00 overwrites any union data inside the ReadInstagramNode200JSONResponseBody0 as the provided ReadInstagramNode200JSONResponseBody00
+func (t *ReadInstagramNode200JSONResponseBody0) FromReadInstagramNode200JSONResponseBody00(v ReadInstagramNode200JSONResponseBody00) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeReadInstagramNode200JSONResponseBody00 performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody0, using the provided ReadInstagramNode200JSONResponseBody00
+func (t *ReadInstagramNode200JSONResponseBody0) MergeReadInstagramNode200JSONResponseBody00(v ReadInstagramNode200JSONResponseBody00) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsContainerStatus returns the union data inside the ReadInstagramNode200JSONResponseBody0 as a ContainerStatus
+func (t ReadInstagramNode200JSONResponseBody0) AsContainerStatus() (ContainerStatus, error) {
+	var body ContainerStatus
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromContainerStatus overwrites any union data inside the ReadInstagramNode200JSONResponseBody0 as the provided ContainerStatus
+func (t *ReadInstagramNode200JSONResponseBody0) FromContainerStatus(v ContainerStatus) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeContainerStatus performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody0, using the provided ContainerStatus
+func (t *ReadInstagramNode200JSONResponseBody0) MergeContainerStatus(v ContainerStatus) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ReadInstagramNode200JSONResponseBody0) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ReadInstagramNode200JSONResponseBody0) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsInstagramAccount returns the union data inside the ReadInstagramNode200JSONResponseBody00 as a InstagramAccount
+func (t ReadInstagramNode200JSONResponseBody00) AsInstagramAccount() (InstagramAccount, error) {
+	var body InstagramAccount
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramAccount overwrites any union data inside the ReadInstagramNode200JSONResponseBody00 as the provided InstagramAccount
+func (t *ReadInstagramNode200JSONResponseBody00) FromInstagramAccount(v InstagramAccount) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramAccount performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody00, using the provided InstagramAccount
+func (t *ReadInstagramNode200JSONResponseBody00) MergeInstagramAccount(v InstagramAccount) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramMedia returns the union data inside the ReadInstagramNode200JSONResponseBody00 as a InstagramMedia
+func (t ReadInstagramNode200JSONResponseBody00) AsInstagramMedia() (InstagramMedia, error) {
+	var body InstagramMedia
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramMedia overwrites any union data inside the ReadInstagramNode200JSONResponseBody00 as the provided InstagramMedia
+func (t *ReadInstagramNode200JSONResponseBody00) FromInstagramMedia(v InstagramMedia) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramMedia performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody00, using the provided InstagramMedia
+func (t *ReadInstagramNode200JSONResponseBody00) MergeInstagramMedia(v InstagramMedia) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsInstagramComment returns the union data inside the ReadInstagramNode200JSONResponseBody00 as a InstagramComment
+func (t ReadInstagramNode200JSONResponseBody00) AsInstagramComment() (InstagramComment, error) {
+	var body InstagramComment
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromInstagramComment overwrites any union data inside the ReadInstagramNode200JSONResponseBody00 as the provided InstagramComment
+func (t *ReadInstagramNode200JSONResponseBody00) FromInstagramComment(v InstagramComment) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeInstagramComment performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody00, using the provided InstagramComment
+func (t *ReadInstagramNode200JSONResponseBody00) MergeInstagramComment(v InstagramComment) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ReadInstagramNode200JSONResponseBody00) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ReadInstagramNode200JSONResponseBody00) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMessagingConversation returns the union data inside the ReadInstagramNode200JSONResponseBody1 as a MessagingConversation
+func (t ReadInstagramNode200JSONResponseBody1) AsMessagingConversation() (MessagingConversation, error) {
 	var body MessagingConversation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMessagingConversation overwrites any union data inside the ReadInstagramMessagingObject200JSONResponseBody as the provided MessagingConversation
-func (t *ReadInstagramMessagingObject200JSONResponseBody) FromMessagingConversation(v MessagingConversation) error {
+// FromMessagingConversation overwrites any union data inside the ReadInstagramNode200JSONResponseBody1 as the provided MessagingConversation
+func (t *ReadInstagramNode200JSONResponseBody1) FromMessagingConversation(v MessagingConversation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMessagingConversation performs a merge with any union data inside the ReadInstagramMessagingObject200JSONResponseBody, using the provided MessagingConversation
-func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeMessagingConversation(v MessagingConversation) error {
+// MergeMessagingConversation performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody1, using the provided MessagingConversation
+func (t *ReadInstagramNode200JSONResponseBody1) MergeMessagingConversation(v MessagingConversation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2110,22 +7645,22 @@ func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeMessagingConversa
 	return err
 }
 
-// AsConversationMessage returns the union data inside the ReadInstagramMessagingObject200JSONResponseBody as a ConversationMessage
-func (t ReadInstagramMessagingObject200JSONResponseBody) AsConversationMessage() (ConversationMessage, error) {
+// AsConversationMessage returns the union data inside the ReadInstagramNode200JSONResponseBody1 as a ConversationMessage
+func (t ReadInstagramNode200JSONResponseBody1) AsConversationMessage() (ConversationMessage, error) {
 	var body ConversationMessage
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromConversationMessage overwrites any union data inside the ReadInstagramMessagingObject200JSONResponseBody as the provided ConversationMessage
-func (t *ReadInstagramMessagingObject200JSONResponseBody) FromConversationMessage(v ConversationMessage) error {
+// FromConversationMessage overwrites any union data inside the ReadInstagramNode200JSONResponseBody1 as the provided ConversationMessage
+func (t *ReadInstagramNode200JSONResponseBody1) FromConversationMessage(v ConversationMessage) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeConversationMessage performs a merge with any union data inside the ReadInstagramMessagingObject200JSONResponseBody, using the provided ConversationMessage
-func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeConversationMessage(v ConversationMessage) error {
+// MergeConversationMessage performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody1, using the provided ConversationMessage
+func (t *ReadInstagramNode200JSONResponseBody1) MergeConversationMessage(v ConversationMessage) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2136,22 +7671,22 @@ func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeConversationMessa
 	return err
 }
 
-// AsMessagingUserProfile returns the union data inside the ReadInstagramMessagingObject200JSONResponseBody as a MessagingUserProfile
-func (t ReadInstagramMessagingObject200JSONResponseBody) AsMessagingUserProfile() (MessagingUserProfile, error) {
+// AsMessagingUserProfile returns the union data inside the ReadInstagramNode200JSONResponseBody1 as a MessagingUserProfile
+func (t ReadInstagramNode200JSONResponseBody1) AsMessagingUserProfile() (MessagingUserProfile, error) {
 	var body MessagingUserProfile
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMessagingUserProfile overwrites any union data inside the ReadInstagramMessagingObject200JSONResponseBody as the provided MessagingUserProfile
-func (t *ReadInstagramMessagingObject200JSONResponseBody) FromMessagingUserProfile(v MessagingUserProfile) error {
+// FromMessagingUserProfile overwrites any union data inside the ReadInstagramNode200JSONResponseBody1 as the provided MessagingUserProfile
+func (t *ReadInstagramNode200JSONResponseBody1) FromMessagingUserProfile(v MessagingUserProfile) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMessagingUserProfile performs a merge with any union data inside the ReadInstagramMessagingObject200JSONResponseBody, using the provided MessagingUserProfile
-func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeMessagingUserProfile(v MessagingUserProfile) error {
+// MergeMessagingUserProfile performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody1, using the provided MessagingUserProfile
+func (t *ReadInstagramNode200JSONResponseBody1) MergeMessagingUserProfile(v MessagingUserProfile) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2162,32 +7697,32 @@ func (t *ReadInstagramMessagingObject200JSONResponseBody) MergeMessagingUserProf
 	return err
 }
 
-func (t ReadInstagramMessagingObject200JSONResponseBody) MarshalJSON() ([]byte, error) {
+func (t ReadInstagramNode200JSONResponseBody1) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *ReadInstagramMessagingObject200JSONResponseBody) UnmarshalJSON(b []byte) error {
+func (t *ReadInstagramNode200JSONResponseBody1) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsPostMediaMultipartBody0 returns the union data inside the PostMediaMultipartBody as a PostMediaMultipartBody0
-func (t PostMediaMultipartBody) AsPostMediaMultipartBody0() (PostMediaMultipartBody0, error) {
-	var body PostMediaMultipartBody0
+// AsReadInstagramNode200JSONResponseBody0 returns the union data inside the ReadInstagramNode200JSONResponseBody as a ReadInstagramNode200JSONResponseBody0
+func (t ReadInstagramNode200JSONResponseBody) AsReadInstagramNode200JSONResponseBody0() (ReadInstagramNode200JSONResponseBody0, error) {
+	var body ReadInstagramNode200JSONResponseBody0
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPostMediaMultipartBody0 overwrites any union data inside the PostMediaMultipartBody as the provided PostMediaMultipartBody0
-func (t *PostMediaMultipartBody) FromPostMediaMultipartBody0(v PostMediaMultipartBody0) error {
+// FromReadInstagramNode200JSONResponseBody0 overwrites any union data inside the ReadInstagramNode200JSONResponseBody as the provided ReadInstagramNode200JSONResponseBody0
+func (t *ReadInstagramNode200JSONResponseBody) FromReadInstagramNode200JSONResponseBody0(v ReadInstagramNode200JSONResponseBody0) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePostMediaMultipartBody0 performs a merge with any union data inside the PostMediaMultipartBody, using the provided PostMediaMultipartBody0
-func (t *PostMediaMultipartBody) MergePostMediaMultipartBody0(v PostMediaMultipartBody0) error {
+// MergeReadInstagramNode200JSONResponseBody0 performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody, using the provided ReadInstagramNode200JSONResponseBody0
+func (t *ReadInstagramNode200JSONResponseBody) MergeReadInstagramNode200JSONResponseBody0(v ReadInstagramNode200JSONResponseBody0) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2198,22 +7733,22 @@ func (t *PostMediaMultipartBody) MergePostMediaMultipartBody0(v PostMediaMultipa
 	return err
 }
 
-// AsPostMediaMultipartBody1 returns the union data inside the PostMediaMultipartBody as a PostMediaMultipartBody1
-func (t PostMediaMultipartBody) AsPostMediaMultipartBody1() (PostMediaMultipartBody1, error) {
-	var body PostMediaMultipartBody1
+// AsReadInstagramNode200JSONResponseBody1 returns the union data inside the ReadInstagramNode200JSONResponseBody as a ReadInstagramNode200JSONResponseBody1
+func (t ReadInstagramNode200JSONResponseBody) AsReadInstagramNode200JSONResponseBody1() (ReadInstagramNode200JSONResponseBody1, error) {
+	var body ReadInstagramNode200JSONResponseBody1
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPostMediaMultipartBody1 overwrites any union data inside the PostMediaMultipartBody as the provided PostMediaMultipartBody1
-func (t *PostMediaMultipartBody) FromPostMediaMultipartBody1(v PostMediaMultipartBody1) error {
+// FromReadInstagramNode200JSONResponseBody1 overwrites any union data inside the ReadInstagramNode200JSONResponseBody as the provided ReadInstagramNode200JSONResponseBody1
+func (t *ReadInstagramNode200JSONResponseBody) FromReadInstagramNode200JSONResponseBody1(v ReadInstagramNode200JSONResponseBody1) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePostMediaMultipartBody1 performs a merge with any union data inside the PostMediaMultipartBody, using the provided PostMediaMultipartBody1
-func (t *PostMediaMultipartBody) MergePostMediaMultipartBody1(v PostMediaMultipartBody1) error {
+// MergeReadInstagramNode200JSONResponseBody1 performs a merge with any union data inside the ReadInstagramNode200JSONResponseBody, using the provided ReadInstagramNode200JSONResponseBody1
+func (t *ReadInstagramNode200JSONResponseBody) MergeReadInstagramNode200JSONResponseBody1(v ReadInstagramNode200JSONResponseBody1) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2224,32 +7759,32 @@ func (t *PostMediaMultipartBody) MergePostMediaMultipartBody1(v PostMediaMultipa
 	return err
 }
 
-func (t PostMediaMultipartBody) MarshalJSON() ([]byte, error) {
+func (t ReadInstagramNode200JSONResponseBody) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *PostMediaMultipartBody) UnmarshalJSON(b []byte) error {
+func (t *ReadInstagramNode200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsPostMediaMultipartBody00 returns the union data inside the PostMediaMultipartBody0 as a PostMediaMultipartBody00
-func (t PostMediaMultipartBody0) AsPostMediaMultipartBody00() (PostMediaMultipartBody00, error) {
-	var body PostMediaMultipartBody00
+// AsGraphAPIError returns the union data inside the ReadInstagramNodedefaultJSONResponseBody0 as a GraphAPIError
+func (t ReadInstagramNodedefaultJSONResponseBody0) AsGraphAPIError() (GraphAPIError, error) {
+	var body GraphAPIError
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPostMediaMultipartBody00 overwrites any union data inside the PostMediaMultipartBody0 as the provided PostMediaMultipartBody00
-func (t *PostMediaMultipartBody0) FromPostMediaMultipartBody00(v PostMediaMultipartBody00) error {
+// FromGraphAPIError overwrites any union data inside the ReadInstagramNodedefaultJSONResponseBody0 as the provided GraphAPIError
+func (t *ReadInstagramNodedefaultJSONResponseBody0) FromGraphAPIError(v GraphAPIError) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePostMediaMultipartBody00 performs a merge with any union data inside the PostMediaMultipartBody0, using the provided PostMediaMultipartBody00
-func (t *PostMediaMultipartBody0) MergePostMediaMultipartBody00(v PostMediaMultipartBody00) error {
+// MergeGraphAPIError performs a merge with any union data inside the ReadInstagramNodedefaultJSONResponseBody0, using the provided GraphAPIError
+func (t *ReadInstagramNodedefaultJSONResponseBody0) MergeGraphAPIError(v GraphAPIError) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2260,22 +7795,22 @@ func (t *PostMediaMultipartBody0) MergePostMediaMultipartBody00(v PostMediaMulti
 	return err
 }
 
-// AsPostMediaMultipartBody01 returns the union data inside the PostMediaMultipartBody0 as a PostMediaMultipartBody01
-func (t PostMediaMultipartBody0) AsPostMediaMultipartBody01() (PostMediaMultipartBody01, error) {
-	var body PostMediaMultipartBody01
+// AsPublishingError returns the union data inside the ReadInstagramNodedefaultJSONResponseBody0 as a PublishingError
+func (t ReadInstagramNodedefaultJSONResponseBody0) AsPublishingError() (PublishingError, error) {
+	var body PublishingError
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPostMediaMultipartBody01 overwrites any union data inside the PostMediaMultipartBody0 as the provided PostMediaMultipartBody01
-func (t *PostMediaMultipartBody0) FromPostMediaMultipartBody01(v PostMediaMultipartBody01) error {
+// FromPublishingError overwrites any union data inside the ReadInstagramNodedefaultJSONResponseBody0 as the provided PublishingError
+func (t *ReadInstagramNodedefaultJSONResponseBody0) FromPublishingError(v PublishingError) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePostMediaMultipartBody01 performs a merge with any union data inside the PostMediaMultipartBody0, using the provided PostMediaMultipartBody01
-func (t *PostMediaMultipartBody0) MergePostMediaMultipartBody01(v PostMediaMultipartBody01) error {
+// MergePublishingError performs a merge with any union data inside the ReadInstagramNodedefaultJSONResponseBody0, using the provided PublishingError
+func (t *ReadInstagramNodedefaultJSONResponseBody0) MergePublishingError(v PublishingError) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -2286,12 +7821,198 @@ func (t *PostMediaMultipartBody0) MergePostMediaMultipartBody01(v PostMediaMulti
 	return err
 }
 
-func (t PostMediaMultipartBody0) MarshalJSON() ([]byte, error) {
+func (t ReadInstagramNodedefaultJSONResponseBody0) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *PostMediaMultipartBody0) UnmarshalJSON(b []byte) error {
+func (t *ReadInstagramNodedefaultJSONResponseBody0) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsReadInstagramNodedefaultJSONResponseBody0 returns the union data inside the ReadInstagramNodedefaultJSONResponseBody as a ReadInstagramNodedefaultJSONResponseBody0
+func (t ReadInstagramNodedefaultJSONResponseBody) AsReadInstagramNodedefaultJSONResponseBody0() (ReadInstagramNodedefaultJSONResponseBody0, error) {
+	var body ReadInstagramNodedefaultJSONResponseBody0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromReadInstagramNodedefaultJSONResponseBody0 overwrites any union data inside the ReadInstagramNodedefaultJSONResponseBody as the provided ReadInstagramNodedefaultJSONResponseBody0
+func (t *ReadInstagramNodedefaultJSONResponseBody) FromReadInstagramNodedefaultJSONResponseBody0(v ReadInstagramNodedefaultJSONResponseBody0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeReadInstagramNodedefaultJSONResponseBody0 performs a merge with any union data inside the ReadInstagramNodedefaultJSONResponseBody, using the provided ReadInstagramNodedefaultJSONResponseBody0
+func (t *ReadInstagramNodedefaultJSONResponseBody) MergeReadInstagramNodedefaultJSONResponseBody0(v ReadInstagramNodedefaultJSONResponseBody0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGraphAPIError returns the union data inside the ReadInstagramNodedefaultJSONResponseBody as a GraphAPIError
+func (t ReadInstagramNodedefaultJSONResponseBody) AsGraphAPIError() (GraphAPIError, error) {
+	var body GraphAPIError
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGraphAPIError overwrites any union data inside the ReadInstagramNodedefaultJSONResponseBody as the provided GraphAPIError
+func (t *ReadInstagramNodedefaultJSONResponseBody) FromGraphAPIError(v GraphAPIError) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGraphAPIError performs a merge with any union data inside the ReadInstagramNodedefaultJSONResponseBody, using the provided GraphAPIError
+func (t *ReadInstagramNodedefaultJSONResponseBody) MergeGraphAPIError(v GraphAPIError) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ReadInstagramNodedefaultJSONResponseBody) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ReadInstagramNodedefaultJSONResponseBody) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMessengerProfileResult returns the union data inside the DeleteInstagramMessengerProfile200JSONResponseBody as a MessengerProfileResult
+func (t DeleteInstagramMessengerProfile200JSONResponseBody) AsMessengerProfileResult() (MessengerProfileResult, error) {
+	var body MessengerProfileResult
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessengerProfileResult overwrites any union data inside the DeleteInstagramMessengerProfile200JSONResponseBody as the provided MessengerProfileResult
+func (t *DeleteInstagramMessengerProfile200JSONResponseBody) FromMessengerProfileResult(v MessengerProfileResult) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessengerProfileResult performs a merge with any union data inside the DeleteInstagramMessengerProfile200JSONResponseBody, using the provided MessengerProfileResult
+func (t *DeleteInstagramMessengerProfile200JSONResponseBody) MergeMessengerProfileResult(v MessengerProfileResult) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMessagingSuccess returns the union data inside the DeleteInstagramMessengerProfile200JSONResponseBody as a MessagingSuccess
+func (t DeleteInstagramMessengerProfile200JSONResponseBody) AsMessagingSuccess() (MessagingSuccess, error) {
+	var body MessagingSuccess
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessagingSuccess overwrites any union data inside the DeleteInstagramMessengerProfile200JSONResponseBody as the provided MessagingSuccess
+func (t *DeleteInstagramMessengerProfile200JSONResponseBody) FromMessagingSuccess(v MessagingSuccess) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessagingSuccess performs a merge with any union data inside the DeleteInstagramMessengerProfile200JSONResponseBody, using the provided MessagingSuccess
+func (t *DeleteInstagramMessengerProfile200JSONResponseBody) MergeMessagingSuccess(v MessagingSuccess) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DeleteInstagramMessengerProfile200JSONResponseBody) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DeleteInstagramMessengerProfile200JSONResponseBody) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMessengerProfileResult returns the union data inside the SetInstagramMessengerProfile200JSONResponseBody as a MessengerProfileResult
+func (t SetInstagramMessengerProfile200JSONResponseBody) AsMessengerProfileResult() (MessengerProfileResult, error) {
+	var body MessengerProfileResult
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessengerProfileResult overwrites any union data inside the SetInstagramMessengerProfile200JSONResponseBody as the provided MessengerProfileResult
+func (t *SetInstagramMessengerProfile200JSONResponseBody) FromMessengerProfileResult(v MessengerProfileResult) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessengerProfileResult performs a merge with any union data inside the SetInstagramMessengerProfile200JSONResponseBody, using the provided MessengerProfileResult
+func (t *SetInstagramMessengerProfile200JSONResponseBody) MergeMessengerProfileResult(v MessengerProfileResult) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMessagingSuccess returns the union data inside the SetInstagramMessengerProfile200JSONResponseBody as a MessagingSuccess
+func (t SetInstagramMessengerProfile200JSONResponseBody) AsMessagingSuccess() (MessagingSuccess, error) {
+	var body MessagingSuccess
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMessagingSuccess overwrites any union data inside the SetInstagramMessengerProfile200JSONResponseBody as the provided MessagingSuccess
+func (t *SetInstagramMessengerProfile200JSONResponseBody) FromMessagingSuccess(v MessagingSuccess) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMessagingSuccess performs a merge with any union data inside the SetInstagramMessengerProfile200JSONResponseBody, using the provided MessagingSuccess
+func (t *SetInstagramMessengerProfile200JSONResponseBody) MergeMessagingSuccess(v MessagingSuccess) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t SetInstagramMessengerProfile200JSONResponseBody) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *SetInstagramMessengerProfile200JSONResponseBody) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -2360,27 +8081,51 @@ func (t *WriteInstagramWelcomeFlow200JSONResponseBody) UnmarshalJSON(b []byte) e
 
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
+
+	// (GET /v25.0/me)
+	ReadAuthenticatedInstagramAccount(w http.ResponseWriter, r *http.Request, params ReadAuthenticatedInstagramAccountParams)
 	// ListAuthenticatedInstagramConversations list Instagram Conversations
 	// (GET /v25.0/me/conversations)
 	ListAuthenticatedInstagramConversations(w http.ResponseWriter, r *http.Request, params ListAuthenticatedInstagramConversationsParams)
-	// ReadInstagramMessagingObject read Instagram Messaging Object
+
+	// (DELETE /v25.0/{objectID})
+	DeleteInstagramComment(w http.ResponseWriter, r *http.Request, objectID string)
+
 	// (GET /v25.0/{objectID})
-	ReadInstagramMessagingObject(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramMessagingObjectParams)
-	// GetComments Get Comments
+	ReadInstagramNode(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramNodeParams)
+
+	// (POST /v25.0/{objectID})
+	ModerateInstagramNode(w http.ResponseWriter, r *http.Request, objectID string, params ModerateInstagramNodeParams)
+
+	// (GET /v25.0/{objectID}/children)
+	ReadInstagramMediaChildren(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramMediaChildrenParams)
+
 	// (GET /v25.0/{objectID}/comments)
-	GetComments(w http.ResponseWriter, r *http.Request, objectID string, params GetCommentsParams)
+	ReadInstagramComments(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramCommentsParams)
+
+	// (POST /v25.0/{objectID}/comments)
+	CreateInstagramComment(w http.ResponseWriter, r *http.Request, objectID string, params CreateInstagramCommentParams)
+
+	// (GET /v25.0/{objectID}/content_publishing_limit)
+	InstagramReadPublishingLimit(w http.ResponseWriter, r *http.Request, objectID string, params InstagramReadPublishingLimitParams)
 	// ListInstagramConversations list Instagram Conversations
 	// (GET /v25.0/{objectID}/conversations)
 	ListInstagramConversations(w http.ResponseWriter, r *http.Request, objectID string, params ListInstagramConversationsParams)
-	// GetInsights Instagram Account Insights
+
 	// (GET /v25.0/{objectID}/insights)
-	GetInsights(w http.ResponseWriter, r *http.Request, objectID string, params GetInsightsParams)
-	// PostMedia Create an image container
+	ReadInstagramInsights(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramInsightsParams)
+
+	// (GET /v25.0/{objectID}/media)
+	ReadInstagramAccountMedia(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramAccountMediaParams)
+
 	// (POST /v25.0/{objectID}/media)
-	PostMedia(w http.ResponseWriter, r *http.Request, objectID string)
-	// PostMediaPublish Publish the container
+	InstagramCreatePublishingContainer(w http.ResponseWriter, r *http.Request, objectID string)
+
 	// (POST /v25.0/{objectID}/media_publish)
-	PostMediaPublish(w http.ResponseWriter, r *http.Request, objectID string)
+	InstagramPublishContainer(w http.ResponseWriter, r *http.Request, objectID string)
+
+	// (POST /v25.0/{objectID}/mentions)
+	ReplyToInstagramMention(w http.ResponseWriter, r *http.Request, objectID string, params ReplyToInstagramMentionParams)
 	// UploadInstagramMessageAttachment upload Instagram Message Attachment
 	// (POST /v25.0/{objectID}/message_attachments)
 	UploadInstagramMessageAttachment(w http.ResponseWriter, r *http.Request, objectID string)
@@ -2396,9 +8141,12 @@ type ServerInterface interface {
 	// SetInstagramMessengerProfile set Instagram Messenger Profile
 	// (POST /v25.0/{objectID}/messenger_profile)
 	SetInstagramMessengerProfile(w http.ResponseWriter, r *http.Request, objectID string)
-	// PostReplies Reply to a comment
+
+	// (GET /v25.0/{objectID}/replies)
+	ReadInstagramCommentReplies(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramCommentRepliesParams)
+
 	// (POST /v25.0/{objectID}/replies)
-	PostReplies(w http.ResponseWriter, r *http.Request, objectID string)
+	ReplyToInstagramComment(w http.ResponseWriter, r *http.Request, objectID string, params ReplyToInstagramCommentParams)
 	// DeleteInstagramWebhookSubscription delete Instagram Webhook Subscription
 	// (DELETE /v25.0/{objectID}/subscribed_apps)
 	DeleteInstagramWebhookSubscription(w http.ResponseWriter, r *http.Request, objectID string)
@@ -2408,6 +8156,9 @@ type ServerInterface interface {
 	// SubscribeInstagramWebhooks subscribe Instagram Webhooks
 	// (POST /v25.0/{objectID}/subscribed_apps)
 	SubscribeInstagramWebhooks(w http.ResponseWriter, r *http.Request, objectID string, params SubscribeInstagramWebhooksParams)
+
+	// (GET /v25.0/{objectID}/tags)
+	ReadInstagramTaggedMedia(w http.ResponseWriter, r *http.Request, objectID string, params ReadInstagramTaggedMediaParams)
 	// DeleteInstagramWelcomeFlow delete Instagram Welcome Flow
 	// (DELETE /v25.0/{objectID}/welcome_message_flows)
 	DeleteInstagramWelcomeFlow(w http.ResponseWriter, r *http.Request, objectID string, params DeleteInstagramWelcomeFlowParams)
@@ -2427,6 +8178,52 @@ type ServerInterfaceWrapper struct {
 }
 
 type MiddlewareFunc func(http.Handler) http.Handler
+
+// ReadAuthenticatedInstagramAccount operation middleware
+func (siw *ServerInterfaceWrapper) ReadAuthenticatedInstagramAccount(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadAuthenticatedInstagramAccountParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "access_token" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "access_token", r.URL.Query(), &params.AccessToken, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "access_token"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "access_token", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReadAuthenticatedInstagramAccount(w, r, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
 
 // ListAuthenticatedInstagramConversations operation middleware
 func (siw *ServerInterfaceWrapper) ListAuthenticatedInstagramConversations(w http.ResponseWriter, r *http.Request) {
@@ -2474,8 +8271,8 @@ func (siw *ServerInterfaceWrapper) ListAuthenticatedInstagramConversations(w htt
 	handler.ServeHTTP(w, r)
 }
 
-// ReadInstagramMessagingObject operation middleware
-func (siw *ServerInterfaceWrapper) ReadInstagramMessagingObject(w http.ResponseWriter, r *http.Request) {
+// DeleteInstagramComment operation middleware
+func (siw *ServerInterfaceWrapper) DeleteInstagramComment(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2489,24 +8286,8 @@ func (siw *ServerInterfaceWrapper) ReadInstagramMessagingObject(w http.ResponseW
 		return
 	}
 
-	// Parameter object where we will unmarshal all parameters from the context
-	var params ReadInstagramMessagingObjectParams
-
-	// ------------- Optional query parameter "fields" -------------
-
-	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
-	if err != nil {
-		var requiredError *runtime.RequiredParameterError
-		if errors.As(err, &requiredError) {
-			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
-		} else {
-			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
-		}
-		return
-	}
-
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.ReadInstagramMessagingObject(w, r, objectID, params)
+		siw.Handler.DeleteInstagramComment(w, r, objectID)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2516,8 +8297,8 @@ func (siw *ServerInterfaceWrapper) ReadInstagramMessagingObject(w http.ResponseW
 	handler.ServeHTTP(w, r)
 }
 
-// GetComments operation middleware
-func (siw *ServerInterfaceWrapper) GetComments(w http.ResponseWriter, r *http.Request) {
+// ReadInstagramNode operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramNode(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2532,7 +8313,7 @@ func (siw *ServerInterfaceWrapper) GetComments(w http.ResponseWriter, r *http.Re
 	}
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params GetCommentsParams
+	var params ReadInstagramNodeParams
 
 	// ------------- Optional query parameter "fields" -------------
 
@@ -2548,7 +8329,321 @@ func (siw *ServerInterfaceWrapper) GetComments(w http.ResponseWriter, r *http.Re
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.GetComments(w, r, objectID, params)
+		siw.Handler.ReadInstagramNode(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ModerateInstagramNode operation middleware
+func (siw *ServerInterfaceWrapper) ModerateInstagramNode(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ModerateInstagramNodeParams
+
+	// ------------- Optional query parameter "hide" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "hide", r.URL.Query(), &params.Hide, runtime.BindQueryParameterOptions{Type: "boolean", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "hide"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "hide", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "comment_enabled" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "comment_enabled", r.URL.Query(), &params.CommentEnabled, runtime.BindQueryParameterOptions{Type: "boolean", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "comment_enabled"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "comment_enabled", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ModerateInstagramNode(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ReadInstagramMediaChildren operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramMediaChildren(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadInstagramMediaChildrenParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "before" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "before", r.URL.Query(), &params.Before, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "before"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "before", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "after" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "after", r.URL.Query(), &params.After, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "after"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "after", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "limit" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "limit", r.URL.Query(), &params.Limit, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "limit"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "limit", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReadInstagramMediaChildren(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ReadInstagramComments operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramComments(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadInstagramCommentsParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "before" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "before", r.URL.Query(), &params.Before, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "before"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "before", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "after" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "after", r.URL.Query(), &params.After, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "after"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "after", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "limit" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "limit", r.URL.Query(), &params.Limit, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "limit"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "limit", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReadInstagramComments(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// CreateInstagramComment operation middleware
+func (siw *ServerInterfaceWrapper) CreateInstagramComment(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params CreateInstagramCommentParams
+
+	// ------------- Required query parameter "message" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "message", r.URL.Query(), &params.Message, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "message"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "message", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.CreateInstagramComment(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// InstagramReadPublishingLimit operation middleware
+func (siw *ServerInterfaceWrapper) InstagramReadPublishingLimit(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params InstagramReadPublishingLimitParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "since" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "since", r.URL.Query(), &params.Since, runtime.BindQueryParameterOptions{Type: "integer", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "since"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "since", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.InstagramReadPublishingLimit(w, r, objectID, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2613,8 +8708,8 @@ func (siw *ServerInterfaceWrapper) ListInstagramConversations(w http.ResponseWri
 	handler.ServeHTTP(w, r)
 }
 
-// GetInsights operation middleware
-func (siw *ServerInterfaceWrapper) GetInsights(w http.ResponseWriter, r *http.Request) {
+// ReadInstagramInsights operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramInsights(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2629,11 +8724,11 @@ func (siw *ServerInterfaceWrapper) GetInsights(w http.ResponseWriter, r *http.Re
 	}
 
 	// Parameter object where we will unmarshal all parameters from the context
-	var params GetInsightsParams
+	var params ReadInstagramInsightsParams
 
-	// ------------- Optional query parameter "metric" -------------
+	// ------------- Required query parameter "metric" -------------
 
-	err = runtime.BindQueryParameterWithOptions("form", true, false, "metric", r.URL.Query(), &params.Metric, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "metric", r.URL.Query(), &params.Metric, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
 	if err != nil {
 		var requiredError *runtime.RequiredParameterError
 		if errors.As(err, &requiredError) {
@@ -2657,8 +8752,73 @@ func (siw *ServerInterfaceWrapper) GetInsights(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	// ------------- Optional query parameter "metric_type" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "metric_type", r.URL.Query(), &params.MetricType, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "metric_type"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "metric_type", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "breakdown" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "breakdown", r.URL.Query(), &params.Breakdown, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "breakdown"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "breakdown", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "timeframe" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "timeframe", r.URL.Query(), &params.Timeframe, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "timeframe"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "timeframe", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "since" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "since", r.URL.Query(), &params.Since, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "since"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "since", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "until" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "until", r.URL.Query(), &params.Until, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "until"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "until", Err: err})
+		}
+		return
+	}
+
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.GetInsights(w, r, objectID, params)
+		siw.Handler.ReadInstagramInsights(w, r, objectID, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2668,8 +8828,115 @@ func (siw *ServerInterfaceWrapper) GetInsights(w http.ResponseWriter, r *http.Re
 	handler.ServeHTTP(w, r)
 }
 
-// PostMedia operation middleware
-func (siw *ServerInterfaceWrapper) PostMedia(w http.ResponseWriter, r *http.Request) {
+// ReadInstagramAccountMedia operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramAccountMedia(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadInstagramAccountMediaParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "before" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "before", r.URL.Query(), &params.Before, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "before"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "before", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "after" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "after", r.URL.Query(), &params.After, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "after"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "after", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "limit" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "limit", r.URL.Query(), &params.Limit, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "limit"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "limit", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "since" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "since", r.URL.Query(), &params.Since, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "since"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "since", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "until" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "until", r.URL.Query(), &params.Until, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "until"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "until", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReadInstagramAccountMedia(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// InstagramCreatePublishingContainer operation middleware
+func (siw *ServerInterfaceWrapper) InstagramCreatePublishingContainer(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2684,7 +8951,7 @@ func (siw *ServerInterfaceWrapper) PostMedia(w http.ResponseWriter, r *http.Requ
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostMedia(w, r, objectID)
+		siw.Handler.InstagramCreatePublishingContainer(w, r, objectID)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2694,8 +8961,8 @@ func (siw *ServerInterfaceWrapper) PostMedia(w http.ResponseWriter, r *http.Requ
 	handler.ServeHTTP(w, r)
 }
 
-// PostMediaPublish operation middleware
-func (siw *ServerInterfaceWrapper) PostMediaPublish(w http.ResponseWriter, r *http.Request) {
+// InstagramPublishContainer operation middleware
+func (siw *ServerInterfaceWrapper) InstagramPublishContainer(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2710,7 +8977,75 @@ func (siw *ServerInterfaceWrapper) PostMediaPublish(w http.ResponseWriter, r *ht
 	}
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostMediaPublish(w, r, objectID)
+		siw.Handler.InstagramPublishContainer(w, r, objectID)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ReplyToInstagramMention operation middleware
+func (siw *ServerInterfaceWrapper) ReplyToInstagramMention(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReplyToInstagramMentionParams
+
+	// ------------- Required query parameter "media_id" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "media_id", r.URL.Query(), &params.MediaId, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "media_id"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "media_id", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "comment_id" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "comment_id", r.URL.Query(), &params.CommentId, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "comment_id"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "comment_id", Err: err})
+		}
+		return
+	}
+
+	// ------------- Required query parameter "message" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, true, "message", r.URL.Query(), &params.Message, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "message"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "message", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReplyToInstagramMention(w, r, objectID, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2790,9 +9125,9 @@ func (siw *ServerInterfaceWrapper) DeleteInstagramMessengerProfile(w http.Respon
 	// Parameter object where we will unmarshal all parameters from the context
 	var params DeleteInstagramMessengerProfileParams
 
-	// ------------- Required query parameter "fields" -------------
+	// ------------- Optional query parameter "fields" -------------
 
-	err = runtime.BindQueryParameterWithOptions("form", true, true, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
 	if err != nil {
 		var requiredError *runtime.RequiredParameterError
 		if errors.As(err, &requiredError) {
@@ -2882,8 +9217,8 @@ func (siw *ServerInterfaceWrapper) SetInstagramMessengerProfile(w http.ResponseW
 	handler.ServeHTTP(w, r)
 }
 
-// PostReplies operation middleware
-func (siw *ServerInterfaceWrapper) PostReplies(w http.ResponseWriter, r *http.Request) {
+// ReadInstagramCommentReplies operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramCommentReplies(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	_ = err
@@ -2897,8 +9232,105 @@ func (siw *ServerInterfaceWrapper) PostReplies(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadInstagramCommentRepliesParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "before" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "before", r.URL.Query(), &params.Before, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "before"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "before", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "after" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "after", r.URL.Query(), &params.After, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "after"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "after", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "limit" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "limit", r.URL.Query(), &params.Limit, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "limit"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "limit", Err: err})
+		}
+		return
+	}
+
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		siw.Handler.PostReplies(w, r, objectID)
+		siw.Handler.ReadInstagramCommentReplies(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ReplyToInstagramComment operation middleware
+func (siw *ServerInterfaceWrapper) ReplyToInstagramComment(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReplyToInstagramCommentParams
+
+	// ------------- Optional query parameter "message" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "message", r.URL.Query(), &params.Message, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "message"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "message", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReplyToInstagramComment(w, r, objectID, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -2993,6 +9425,87 @@ func (siw *ServerInterfaceWrapper) SubscribeInstagramWebhooks(w http.ResponseWri
 
 	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		siw.Handler.SubscribeInstagramWebhooks(w, r, objectID, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
+
+// ReadInstagramTaggedMedia operation middleware
+func (siw *ServerInterfaceWrapper) ReadInstagramTaggedMedia(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// ------------- Path parameter "objectID" -------------
+	var objectID string
+
+	err = runtime.BindStyledParameterWithOptions("simple", "objectID", r.PathValue("objectID"), &objectID, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationPath, Explode: false, Required: true, Type: "string", Format: "", ValueIsUnescaped: true})
+	if err != nil {
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "objectID", Err: err})
+		return
+	}
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params ReadInstagramTaggedMediaParams
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "before" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "before", r.URL.Query(), &params.Before, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "before"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "before", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "after" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "after", r.URL.Query(), &params.After, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "after"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "after", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "limit" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "limit", r.URL.Query(), &params.Limit, runtime.BindQueryParameterOptions{Type: "integer", Format: "int64"})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "limit"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "limit", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.ReadInstagramTaggedMedia(w, r, objectID, params)
 	}))
 
 	for _, middleware := range siw.HandlerMiddlewares {
@@ -3248,22 +9761,32 @@ func HandlerWithOptions(si ServerInterface, options StdHTTPServerOptions) http.H
 		ErrorHandlerFunc:   options.ErrorHandlerFunc,
 	}
 
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/me", wrapper.ReadAuthenticatedInstagramAccount)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/me/conversations", wrapper.ListAuthenticatedInstagramConversations)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}", wrapper.ReadInstagramMessagingObject)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/comments", wrapper.GetComments)
+	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/v25.0/{objectID}", wrapper.DeleteInstagramComment)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}", wrapper.ReadInstagramNode)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}", wrapper.ModerateInstagramNode)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/children", wrapper.ReadInstagramMediaChildren)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/comments", wrapper.ReadInstagramComments)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/comments", wrapper.CreateInstagramComment)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/content_publishing_limit", wrapper.InstagramReadPublishingLimit)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/conversations", wrapper.ListInstagramConversations)
-	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/insights", wrapper.GetInsights)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/media", wrapper.PostMedia)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/media_publish", wrapper.PostMediaPublish)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/insights", wrapper.ReadInstagramInsights)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/media", wrapper.ReadInstagramAccountMedia)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/media", wrapper.InstagramCreatePublishingContainer)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/media_publish", wrapper.InstagramPublishContainer)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/mentions", wrapper.ReplyToInstagramMention)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/message_attachments", wrapper.UploadInstagramMessageAttachment)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/messages", wrapper.SendInstagramMessage)
 	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/v25.0/{objectID}/messenger_profile", wrapper.DeleteInstagramMessengerProfile)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/messenger_profile", wrapper.GetInstagramMessengerProfile)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/messenger_profile", wrapper.SetInstagramMessengerProfile)
-	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/replies", wrapper.PostReplies)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/replies", wrapper.ReadInstagramCommentReplies)
+	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/replies", wrapper.ReplyToInstagramComment)
 	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/v25.0/{objectID}/subscribed_apps", wrapper.DeleteInstagramWebhookSubscription)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/subscribed_apps", wrapper.GetInstagramWebhookSubscriptions)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/subscribed_apps", wrapper.SubscribeInstagramWebhooks)
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/tags", wrapper.ReadInstagramTaggedMedia)
 	m.HandleFunc(http.MethodDelete+" "+options.BaseURL+"/v25.0/{objectID}/welcome_message_flows", wrapper.DeleteInstagramWelcomeFlow)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v25.0/{objectID}/welcome_message_flows", wrapper.GetInstagramWelcomeFlows)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v25.0/{objectID}/welcome_message_flows", wrapper.WriteInstagramWelcomeFlow)

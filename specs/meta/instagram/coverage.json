@@ -1,0 +1,3705 @@
+{
+  "retrieved_at": "2026-10-18",
+  "evidence": "documentation-based",
+  "live_verified": false,
+  "counting_rule": "One operation per HTTP method and path in each product document. Shared node variants and message payload variants are not counted as separate operations. Counts across versions are repetitions, not unique provider capabilities.",
+  "latest_graph_release": "v26.0",
+  "release_table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+  "versions": {
+    "v24.0": {
+      "products": {
+        "facebook-login": {
+          "file": "specs/meta/instagram/v24.0/facebook-login.openapi.yaml",
+          "sha256": "8c453c8411095c320359a5f00e760f867fc4de7df87e78d67373f0c9c5f7b430",
+          "path_count": 45,
+          "operation_count": 60,
+          "schema_count": 110,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/ig_hashtag_search",
+              "operation_id": "searchInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag-search"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/recent_media",
+              "operation_id": "readHashtagRecentMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/recent-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/top_media",
+              "operation_id": "readHashtagTopMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/top-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/media",
+              "operation_id": "readFacebookInstagramMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/media",
+              "operation_id": "FacebookCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/stories",
+              "operation_id": "readFacebookInstagramStories",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/stories"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/live_media",
+              "operation_id": "readFacebookInstagramLiveMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/live_media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/recently_searched_hashtags",
+              "operation_id": "readRecentlySearchedInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/recently_searched_hashtags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/media_publish",
+              "operation_id": "FacebookPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/content_publishing_limit",
+              "operation_id": "FacebookReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/ig_audio",
+              "operation_id": "SearchInstagramAudio",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/error-codes"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/conversations",
+              "operation_id": "listFacebookLoginInstagramConversations",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "getFacebookLoginPageSubscriptions",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeFacebookLoginPage",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteFacebookLoginPageSubscription",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/messages",
+              "operation_id": "FacebookSendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/send-message",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/product-template.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/message_attachments",
+              "operation_id": "FacebookUploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookGetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookSetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookDeleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/instagram_oembed",
+              "operation_id": "getInstagramOEmbed",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/oembed",
+                "https://developers.facebook.com/docs/graph-api/reference/instagram-oembed/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/collaborators",
+              "operation_id": "GetMediaCollaborators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/collaborators.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/available_catalogs",
+              "operation_id": "GetAvailableCatalogs",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/available_catalogs.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/catalog_product_search",
+              "operation_id": "SearchCatalogProducts",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/catalog_product_search.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/connected_threads_user",
+              "operation_id": "GetConnectedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/connected_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "GetInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "CreateInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/product_appeal",
+              "operation_id": "GetProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/product_appeal",
+              "operation_id": "CreateProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/product_tags",
+              "operation_id": "GetMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/product_tags",
+              "operation_id": "UpdateMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/creator_marketplace_creators",
+              "operation_id": "GetCreatorMarketplaceCreators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/iguserexportforcam.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/creator_marketplace_brand_info",
+              "operation_id": "GetCreatorMarketplaceBrandInfo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/pass_thread_control",
+              "operation_id": "instagramPassThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/release_thread_control",
+              "operation_id": "instagramReleaseThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/take_thread_control",
+              "operation_id": "instagramTakeThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/extend_thread_control",
+              "operation_id": "instagramExtendThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/request_thread_control",
+              "operation_id": "instagramRequestThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/thread_owner",
+              "operation_id": "getInstagramThreadOwner",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/me",
+              "operation_id": "getInstagramConversationRoutingStatus",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/moderate_conversations",
+              "operation_id": "moderateInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/moderate-conversations.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/upcoming_events",
+              "operation_id": "listInstagramUpcomingEvents",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/upcoming_events",
+              "operation_id": "createInstagramUpcomingEvent",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/collaboration_invites",
+              "operation_id": "listInstagramCollaborationInvites",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/collaboration_invites",
+              "operation_id": "decideInstagramCollaborationInvite",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/collaborative_media",
+              "operation_id": "listInstagramCollaborativeMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/likes",
+              "operation_id": "likeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/likes",
+              "operation_id": "unlikeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/me/accounts",
+              "operation_id": "listFacebookPagesWithInstagramAccount",
+              "sources": [
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            }
+          ]
+        },
+        "instagram-login": {
+          "file": "specs/meta/instagram/v24.0/instagram-login.openapi.yaml",
+          "sha256": "66938d2e123c545539db6c9dfe4f1728ccf3f21dfab6586cff23649a3174085c",
+          "path_count": 18,
+          "operation_count": 29,
+          "schema_count": 58,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/media",
+              "operation_id": "readInstagramAccountMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/media",
+              "operation_id": "InstagramCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/me",
+              "operation_id": "readAuthenticatedInstagramAccount",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/me",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/media_publish",
+              "operation_id": "InstagramPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/content_publishing_limit",
+              "operation_id": "InstagramReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/messages",
+              "operation_id": "sendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/sender-actions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/quick-replies",
+                "https://developers.facebook.com/documentation/instagram-platform/private-replies"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/message_attachments",
+              "operation_id": "uploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/conversations",
+              "operation_id": "listInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "getInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "setInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/messenger_profile",
+              "operation_id": "deleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/welcome_message_flows",
+              "operation_id": "getInstagramWelcomeFlows",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/welcome_message_flows",
+              "operation_id": "writeInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/welcome_message_flows",
+              "operation_id": "deleteInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "getInstagramWebhookSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeInstagramWebhooks",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteInstagramWebhookSubscription",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/me/conversations",
+              "operation_id": "listAuthenticatedInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            }
+          ]
+        },
+        "oauth": {
+          "file": "specs/meta/instagram/v24.0/oauth.openapi.yaml",
+          "sha256": "5ef2a7e231ea5852731fb84a7cfcaaa00daef8e54ff0b4e6f10c8c592ee5dc83",
+          "path_count": 11,
+          "operation_count": 13,
+          "schema_count": 10,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/oauth/authorize",
+              "operation_id": "authorizeInstagramBusinessLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/oauth/access_token",
+              "operation_id": "exchangeInstagramAuthorizationCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/oauth/access_token",
+              "operation_id": "exchangeFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/access_token",
+              "operation_id": "exchangeInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/refresh_access_token",
+              "operation_id": "refreshInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/dialog/oauth",
+              "operation_id": "authorizeFacebookLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/oauth/client_code",
+              "operation_id": "createFacebookClientCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/debug_token",
+              "operation_id": "debugFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/permissions",
+              "operation_id": "getFacebookPermissionsById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/permissions",
+              "operation_id": "revokeFacebookAuthorizationById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/me/permissions",
+              "operation_id": "getFacebookPermissionsSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/me/permissions",
+              "operation_id": "revokeFacebookAuthorizationSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}/permissions/{permission_name}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/instagram/v24.0/upload.openapi.yaml",
+          "sha256": "07d069de429d21743690dfc8abff2eb8bf2ad3e7ba86cfaf0c98e39f51e61e59",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/ig-api-upload/v24.0/{containerID}",
+              "operation_id": "UploadInstagramVideo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/instagram/v24.0/webhooks.openapi.yaml",
+          "sha256": "7333e200dd8319ae73e88a21788ea4d364e2d559e09927c2b3bc4d3d5bb60cbd",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 15,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/webhooks/instagram",
+              "operation_id": "receiveInstagramWebhook",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/webhooks/instagram",
+              "operation_id": "verifyInstagramWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+              ]
+            }
+          ]
+        }
+      },
+      "contract_operation_count": 105,
+      "runtime_operation_count": 4
+    },
+    "v25.0": {
+      "products": {
+        "facebook-login": {
+          "file": "specs/meta/instagram/v25.0/facebook-login.openapi.yaml",
+          "sha256": "af45ae98789de91d6b5d54d8e5c2c713244782f5964d5eb750a8f1ba29b393ff",
+          "path_count": 45,
+          "operation_count": 60,
+          "schema_count": 110,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/ig_hashtag_search",
+              "operation_id": "searchInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag-search"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/recent_media",
+              "operation_id": "readHashtagRecentMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/recent-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/top_media",
+              "operation_id": "readHashtagTopMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/top-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/media",
+              "operation_id": "readFacebookInstagramMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/media",
+              "operation_id": "FacebookCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/stories",
+              "operation_id": "readFacebookInstagramStories",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/stories"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/live_media",
+              "operation_id": "readFacebookInstagramLiveMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/live_media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/recently_searched_hashtags",
+              "operation_id": "readRecentlySearchedInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/recently_searched_hashtags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/media_publish",
+              "operation_id": "FacebookPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/content_publishing_limit",
+              "operation_id": "FacebookReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/ig_audio",
+              "operation_id": "SearchInstagramAudio",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/error-codes"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/conversations",
+              "operation_id": "listFacebookLoginInstagramConversations",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "getFacebookLoginPageSubscriptions",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeFacebookLoginPage",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteFacebookLoginPageSubscription",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/messages",
+              "operation_id": "FacebookSendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/send-message",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/product-template.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/message_attachments",
+              "operation_id": "FacebookUploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookGetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookSetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookDeleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/instagram_oembed",
+              "operation_id": "getInstagramOEmbed",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/oembed",
+                "https://developers.facebook.com/docs/graph-api/reference/instagram-oembed/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/collaborators",
+              "operation_id": "GetMediaCollaborators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/collaborators.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/available_catalogs",
+              "operation_id": "GetAvailableCatalogs",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/available_catalogs.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/catalog_product_search",
+              "operation_id": "SearchCatalogProducts",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/catalog_product_search.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/connected_threads_user",
+              "operation_id": "GetConnectedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/connected_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "GetInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "CreateInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/product_appeal",
+              "operation_id": "GetProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/product_appeal",
+              "operation_id": "CreateProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/product_tags",
+              "operation_id": "GetMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/product_tags",
+              "operation_id": "UpdateMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/creator_marketplace_creators",
+              "operation_id": "GetCreatorMarketplaceCreators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/iguserexportforcam.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/creator_marketplace_brand_info",
+              "operation_id": "GetCreatorMarketplaceBrandInfo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/pass_thread_control",
+              "operation_id": "instagramPassThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/release_thread_control",
+              "operation_id": "instagramReleaseThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/take_thread_control",
+              "operation_id": "instagramTakeThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/extend_thread_control",
+              "operation_id": "instagramExtendThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/request_thread_control",
+              "operation_id": "instagramRequestThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/thread_owner",
+              "operation_id": "getInstagramThreadOwner",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/me",
+              "operation_id": "getInstagramConversationRoutingStatus",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/moderate_conversations",
+              "operation_id": "moderateInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/moderate-conversations.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/upcoming_events",
+              "operation_id": "listInstagramUpcomingEvents",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/upcoming_events",
+              "operation_id": "createInstagramUpcomingEvent",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/collaboration_invites",
+              "operation_id": "listInstagramCollaborationInvites",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/collaboration_invites",
+              "operation_id": "decideInstagramCollaborationInvite",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/collaborative_media",
+              "operation_id": "listInstagramCollaborativeMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/likes",
+              "operation_id": "likeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/likes",
+              "operation_id": "unlikeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/me/accounts",
+              "operation_id": "listFacebookPagesWithInstagramAccount",
+              "sources": [
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            }
+          ]
+        },
+        "instagram-login": {
+          "file": "specs/meta/instagram/v25.0/instagram-login.openapi.yaml",
+          "sha256": "78b232b5ad6fc753f1780bc2172d86149e2168304dd1d60ee7cfc4e5db533112",
+          "path_count": 18,
+          "operation_count": 29,
+          "schema_count": 58,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/media",
+              "operation_id": "readInstagramAccountMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/media",
+              "operation_id": "InstagramCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/me",
+              "operation_id": "readAuthenticatedInstagramAccount",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/me",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/media_publish",
+              "operation_id": "InstagramPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/content_publishing_limit",
+              "operation_id": "InstagramReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/messages",
+              "operation_id": "sendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/sender-actions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/quick-replies",
+                "https://developers.facebook.com/documentation/instagram-platform/private-replies"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/message_attachments",
+              "operation_id": "uploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/conversations",
+              "operation_id": "listInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "getInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "setInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/messenger_profile",
+              "operation_id": "deleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/welcome_message_flows",
+              "operation_id": "getInstagramWelcomeFlows",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/welcome_message_flows",
+              "operation_id": "writeInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/welcome_message_flows",
+              "operation_id": "deleteInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "getInstagramWebhookSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeInstagramWebhooks",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteInstagramWebhookSubscription",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/me/conversations",
+              "operation_id": "listAuthenticatedInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            }
+          ]
+        },
+        "oauth": {
+          "file": "specs/meta/instagram/v25.0/oauth.openapi.yaml",
+          "sha256": "4b5d0aae296677a5070c642f85c2da4b15e7cfb4a43de3a637187294e439c09b",
+          "path_count": 11,
+          "operation_count": 13,
+          "schema_count": 10,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/oauth/authorize",
+              "operation_id": "authorizeInstagramBusinessLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/oauth/access_token",
+              "operation_id": "exchangeInstagramAuthorizationCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/oauth/access_token",
+              "operation_id": "exchangeFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/access_token",
+              "operation_id": "exchangeInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/refresh_access_token",
+              "operation_id": "refreshInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/dialog/oauth",
+              "operation_id": "authorizeFacebookLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/oauth/client_code",
+              "operation_id": "createFacebookClientCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/debug_token",
+              "operation_id": "debugFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/permissions",
+              "operation_id": "getFacebookPermissionsById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/permissions",
+              "operation_id": "revokeFacebookAuthorizationById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/me/permissions",
+              "operation_id": "getFacebookPermissionsSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/me/permissions",
+              "operation_id": "revokeFacebookAuthorizationSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}/permissions/{permission_name}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/instagram/v25.0/upload.openapi.yaml",
+          "sha256": "cf21c0d18c36f0417a8d92b86718df3cbb7d8a318a33ef2e90235d8b55fd53f1",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/ig-api-upload/v25.0/{containerID}",
+              "operation_id": "UploadInstagramVideo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/instagram/v25.0/webhooks.openapi.yaml",
+          "sha256": "f9d9cfaa9fa675d08be55b8c195cd1d09249953479eaac3f50c5eac99dc5d74c",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 15,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/webhooks/instagram",
+              "operation_id": "receiveInstagramWebhook",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/webhooks/instagram",
+              "operation_id": "verifyInstagramWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+              ]
+            }
+          ]
+        }
+      },
+      "contract_operation_count": 105,
+      "runtime_operation_count": 4
+    },
+    "v26.0": {
+      "products": {
+        "facebook-login": {
+          "file": "specs/meta/instagram/v26.0/facebook-login.openapi.yaml",
+          "sha256": "1394f96f78e286c886ce8b8d19a572e97807c9ed405997996381cea9d37f6a5e",
+          "path_count": 45,
+          "operation_count": 60,
+          "schema_count": 110,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/ig_hashtag_search",
+              "operation_id": "searchInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag-search"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/recent_media",
+              "operation_id": "readHashtagRecentMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/recent-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/top_media",
+              "operation_id": "readHashtagTopMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/top-media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/media",
+              "operation_id": "readFacebookInstagramMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/media",
+              "operation_id": "FacebookCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/stories",
+              "operation_id": "readFacebookInstagramStories",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/stories"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/live_media",
+              "operation_id": "readFacebookInstagramLiveMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/live_media"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/recently_searched_hashtags",
+              "operation_id": "readRecentlySearchedInstagramHashtags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/recently_searched_hashtags"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/media_publish",
+              "operation_id": "FacebookPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/content_publishing_limit",
+              "operation_id": "FacebookReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/ig_audio",
+              "operation_id": "SearchInstagramAudio",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/error-codes"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/conversations",
+              "operation_id": "listFacebookLoginInstagramConversations",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "getFacebookLoginPageSubscriptions",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeFacebookLoginPage",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteFacebookLoginPageSubscription",
+              "sources": [
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/messages",
+              "operation_id": "FacebookSendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/send-message",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/product-template.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/message_attachments",
+              "operation_id": "FacebookUploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookGetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookSetInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "FacebookDeleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/instagram_oembed",
+              "operation_id": "getInstagramOEmbed",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/oembed",
+                "https://developers.facebook.com/docs/graph-api/reference/instagram-oembed/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/collaborators",
+              "operation_id": "GetMediaCollaborators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/collaborators.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/available_catalogs",
+              "operation_id": "GetAvailableCatalogs",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/available_catalogs.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/catalog_product_search",
+              "operation_id": "SearchCatalogProducts",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/catalog_product_search.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/connected_threads_user",
+              "operation_id": "GetConnectedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/connected_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "GetInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/instagram_backed_threads_user",
+              "operation_id": "CreateInstagramBackedThreadsUser",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/product_appeal",
+              "operation_id": "GetProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/product_appeal",
+              "operation_id": "CreateProductAppeal",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/product_tags",
+              "operation_id": "GetMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/product_tags",
+              "operation_id": "UpdateMediaProductTags",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/creator_marketplace_creators",
+              "operation_id": "GetCreatorMarketplaceCreators",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/iguserexportforcam.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/creator_marketplace_brand_info",
+              "operation_id": "GetCreatorMarketplaceBrandInfo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/pass_thread_control",
+              "operation_id": "instagramPassThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/release_thread_control",
+              "operation_id": "instagramReleaseThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/take_thread_control",
+              "operation_id": "instagramTakeThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/extend_thread_control",
+              "operation_id": "instagramExtendThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/request_thread_control",
+              "operation_id": "instagramRequestThreadControl",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/thread_owner",
+              "operation_id": "getInstagramThreadOwner",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/me",
+              "operation_id": "getInstagramConversationRoutingStatus",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/moderate_conversations",
+              "operation_id": "moderateInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/moderate-conversations.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/upcoming_events",
+              "operation_id": "listInstagramUpcomingEvents",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/upcoming_events",
+              "operation_id": "createInstagramUpcomingEvent",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/collaboration_invites",
+              "operation_id": "listInstagramCollaborationInvites",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/collaboration_invites",
+              "operation_id": "decideInstagramCollaborationInvite",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/collaborative_media",
+              "operation_id": "listInstagramCollaborativeMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/likes",
+              "operation_id": "likeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/likes",
+              "operation_id": "unlikeInstagramMediaOrComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/user-likes.md",
+                "https://developers.facebook.com/documentation/instagram-platform/changelog.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/me/accounts",
+              "operation_id": "listFacebookPagesWithInstagramAccount",
+              "sources": [
+                "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
+                "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              ]
+            }
+          ]
+        },
+        "instagram-login": {
+          "file": "specs/meta/instagram/v26.0/instagram-login.openapi.yaml",
+          "sha256": "81f891bf97e4d6d1b27545cc46e9ec8ac58506db4d2e522afb1ae1f7c321b76a",
+          "path_count": 18,
+          "operation_count": 29,
+          "schema_count": 58,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "readInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "moderateInstagramNode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "deleteInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/children",
+              "operation_id": "readInstagramMediaChildren",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "readInstagramComments",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "createInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/replies",
+              "operation_id": "readInstagramCommentReplies",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/replies",
+              "operation_id": "replyToInstagramComment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies",
+                "https://developers.facebook.com/documentation/instagram-platform/comment-moderation"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/tags",
+              "operation_id": "readInstagramTaggedMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/mentions",
+              "operation_id": "replyToInstagramMention",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/insights",
+              "operation_id": "readInstagramInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/media",
+              "operation_id": "readInstagramAccountMedia",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/media",
+              "operation_id": "InstagramCreatePublishingContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/me",
+              "operation_id": "readAuthenticatedInstagramAccount",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/me",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/media_publish",
+              "operation_id": "InstagramPublishContainer",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/content_publishing_limit",
+              "operation_id": "InstagramReadPublishingLimit",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/messages",
+              "operation_id": "sendInstagramMessage",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/sender-actions",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/quick-replies",
+                "https://developers.facebook.com/documentation/instagram-platform/private-replies"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/message_attachments",
+              "operation_id": "uploadInstagramMessageAttachment",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload",
+                "https://github.com/fbsamples/messenger-platform-samples/blob/3c3853a84a5d87d2567e75e649655822f535fdf6/postman/instagram-platform-api.postman_collection.json"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/conversations",
+              "operation_id": "listInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "getInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "setInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/messenger_profile",
+              "operation_id": "deleteInstagramMessengerProfile",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/welcome_message_flows",
+              "operation_id": "getInstagramWelcomeFlows",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/welcome_message_flows",
+              "operation_id": "writeInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/welcome_message_flows",
+              "operation_id": "deleteInstagramWelcomeFlow",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "getInstagramWebhookSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "subscribeInstagramWebhooks",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/subscribed_apps",
+              "operation_id": "deleteInstagramWebhookSubscription",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/me/conversations",
+              "operation_id": "listAuthenticatedInstagramConversations",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api"
+              ]
+            }
+          ]
+        },
+        "oauth": {
+          "file": "specs/meta/instagram/v26.0/oauth.openapi.yaml",
+          "sha256": "fd9caa42637596a1aa8823ccb010e013af855f3d842524cee6515f7874506242",
+          "path_count": 11,
+          "operation_count": 13,
+          "schema_count": 10,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/oauth/authorize",
+              "operation_id": "authorizeInstagramBusinessLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login",
+                "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/oauth/access_token",
+              "operation_id": "exchangeInstagramAuthorizationCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/oauth/access_token",
+              "operation_id": "exchangeFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived",
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/access_token",
+              "operation_id": "exchangeInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/refresh_access_token",
+              "operation_id": "refreshInstagramLongLivedToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/dialog/oauth",
+              "operation_id": "authorizeFacebookLogin",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/oauth/client_code",
+              "operation_id": "createFacebookClientCode",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens/get-long-lived"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/debug_token",
+              "operation_id": "debugFacebookAccessToken",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/permissions",
+              "operation_id": "getFacebookPermissionsById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/permissions",
+              "operation_id": "revokeFacebookAuthorizationById",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/me/permissions",
+              "operation_id": "getFacebookPermissionsSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/me/permissions",
+              "operation_id": "revokeFacebookAuthorizationSelf",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke",
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}/permissions/{permission_name}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/documentation/facebook-login/guides/permissions/request-revoke"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/instagram/v26.0/upload.openapi.yaml",
+          "sha256": "7fe5c171219238c8f55a2920dbc31ddd7804ae261abe361cbf7bb782d30ed030",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/ig-api-upload/v26.0/{containerID}",
+              "operation_id": "UploadInstagramVideo",
+              "sources": [
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/instagram/v26.0/webhooks.openapi.yaml",
+          "sha256": "7d4f876500ef338afccefc6eda7f5a837568c9b3351378a116efe089e2d7a8d1",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 15,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/webhooks/instagram",
+              "operation_id": "receiveInstagramWebhook",
+              "sources": [
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks",
+                "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/webhooks/instagram",
+              "operation_id": "verifyInstagramWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/business-messaging/messenger-platform/webhooks"
+              ]
+            }
+          ]
+        }
+      },
+      "contract_operation_count": 105,
+      "runtime_operation_count": 0
+    }
+  },
+  "contract_operation_count": 315,
+  "official_indices": [
+    {
+      "url": "https://developers.facebook.com/documentation/instagram-platform/llms.txt",
+      "entry_count": 88,
+      "entries": [
+        {
+          "title": "Instagram Platform",
+          "url": "https://developers.facebook.com/documentation/instagram-platform.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Overview",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/overview.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Webhooks",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Instagram Post Shares: New Attachment Type and Transition Period",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/new.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Examples",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/webhooks/examples.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Create an App",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/create-an-instagram-app.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Instagram API with Instagram Login",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Migration Guide",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/migration-guide.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Business Login for Instagram",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Get started",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/get-started.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Messaging",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "User Profile API",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/user-profile.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Quick Replies",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/quick-replies.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Generic Template",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/generic-template.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Button Template",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/button-template.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Sender Actions",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/sender-actions.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Persistent Menu",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/persistent-menu.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Ice Breakers",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "ig.me",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/ig-me.md",
+          "directly_cited_in_contract": false,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Conversation Routing",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/messaging-api/conversation-routing.md",
+          "directly_cited_in_contract": false,
+          "disposition": "indexed-alias-returned-navigation; use-confirmed-product-specific-sources"
+        },
+        {
+          "title": "Welcome message ads",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/welcome-message-ads.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Conversations API",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/conversations-api.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Mentions",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/mentions.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Upload Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/upload-media.md",
+          "directly_cited_in_contract": false,
+          "disposition": "indexed-alias-returned-navigation; use-confirmed-product-specific-sources"
+        },
+        {
+          "title": "Instagram API with Facebook Login",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Get Started",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Facebook Login for Business",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/business-login-for-instagram.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Business Discovery",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/business-discovery.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Creator Marketplace API",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/creator-marketplace.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Copyright Detection",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/copyright-detection.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Hashtag Search",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/hashtag-search.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Mentions",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/mentions.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Product Tagging",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/product-tagging.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Upcoming Events",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Publish Content",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/content-publishing.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Resumable Uploads",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/content-publishing/resumable-uploads.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Audio API",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/content-publishing/audio-api.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Comment Moderation",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/comment-moderation.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Private Replies",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/private-replies.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Insights",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/insights.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Sharing to Feed",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/sharing-to-feed.md",
+          "directly_cited_in_contract": false,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Sharing to Stories",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/sharing-to-stories.md",
+          "directly_cited_in_contract": false,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "oEmbed",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/oembed.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Embed Button",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/embed-button.md",
+          "directly_cited_in_contract": false,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Self Messaging",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/self-messaging.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "API Reference",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Error Codes",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/error-codes.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Access Token",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/access_token.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "IG Comment",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Replies",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-comment/replies.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "IG Container",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "IG Hashtag Search",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag-search.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "IG Hashtag",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Recent Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/recent-media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Top Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/top-media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "IG Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Children",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/children.md",
+          "directly_cited_in_contract": true,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Collaborators",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/collaborators.md",
+          "directly_cited_in_contract": true,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Comments",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/comments.md",
+          "directly_cited_in_contract": true,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Insights",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Product Tags",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-media/product_tags.md",
+          "directly_cited_in_contract": true,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "IG User",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Available Catalogs",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/available_catalogs.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Business Discovery",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Catalog Product Search",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/catalog_product_search.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Connected Threads User",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/connected_threads_user.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Content Publishing Limit",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Insights",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Instagram-Backed Threads User",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/instagram_backed_threads_user.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Live Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/live_media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Media Publish",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Mentions",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentions.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Mentioned Comment",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_comment.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Mentioned Media",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_media.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Product Appeal",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/product_appeal.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Recently Searched Hashtags",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/recently_searched_hashtags.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Stories",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/stories.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Tags",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/tags.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "/me",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/me.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Oauth Authorize",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/oauth-authorize.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Page",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/page.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Refresh Access Token",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/refresh_access_token.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "/refresh_access_token",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/reference/refresh-access-token.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "App Review",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/app-review.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Support",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/support.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Changelog",
+          "url": "https://developers.facebook.com/documentation/instagram-platform/changelog.md",
+          "directly_cited_in_contract": true,
+          "disposition": "context-setup-policy-or-release-guidance"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/llms.txt",
+      "entry_count": 28,
+      "entries": [
+        {
+          "title": "Instagram Messaging",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Overview",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/overview.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Getting Started",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Sample Experience",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/sample-experience.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Send a Message",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/send-message.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Generic Template",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/generic-template.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Button Template",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/button-template.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Product Template",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/product-template.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Quick Replies",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/quick-replies.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Sender Actions",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/sender-actions.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Attachment Upload API",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/attachment-upload.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Conversation Routing",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Conversation Routing APIs",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/conversation-routing/apis.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Human Agent Escalation",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/human-agent-escalation.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Ice Breakers",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ice-breakers.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "ig.me links",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/ig-me-links.md",
+          "directly_cited_in_contract": false,
+          "disposition": "client-link-or-ui-workflow-not-separate-http-operation"
+        },
+        {
+          "title": "Persistent Menu",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/persistent-menu.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "Private Replies",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/private-replies.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Story Mention",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/story-mention.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Moderate Conversations API",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/moderate-conversations.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "User Profile API",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/user-profile.md",
+          "directly_cited_in_contract": false,
+          "disposition": "covered-category-via-related-reference; exact-page-not-cited"
+        },
+        {
+          "title": "Marketing Messages",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/marketing-messages.md",
+          "directly_cited_in_contract": false,
+          "disposition": "unavailable-public-documentation"
+        },
+        {
+          "title": "Ways to Get Opt-Ins",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/features/recurring-notifications/ways-to-get-opt-ins.md",
+          "directly_cited_in_contract": false,
+          "disposition": "unavailable-public-documentation"
+        },
+        {
+          "title": "Webhooks",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/webhooks.md",
+          "directly_cited_in_contract": true,
+          "disposition": "source-linked-contract-evidence"
+        },
+        {
+          "title": "App Review",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/app-review.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Apps For Other Businesses",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/app-review/apps-for-other-businesses.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Apps For Your Own Business",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/app-review/apps-for-your-own-business.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        },
+        {
+          "title": "Webhook Debugger",
+          "url": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/webhooks/debugging.md",
+          "directly_cited_in_contract": false,
+          "disposition": "context-setup-policy-or-release-guidance"
+        }
+      ]
+    }
+  ],
+  "source_caveats": [
+    "Current ig_post payload supersedes legacy share for Instagram posts February 1, 2026.",
+    "Current reference docs do not independently prove historical release parity.",
+    "Current reference documentation is not proof of historical release parity.",
+    "Discarded unrelated welcome-flow response saved under Text Message and unrelated flow_id response saved under Sticker.",
+    "Facebook Login versus Instagram Login fields and event availability vary; preserve named variants.",
+    "Guide prose describes success true/false, but malformed response snippet quotes true as a string. Boolean schema follows prose; no live response was tested.",
+    "Guide says end_time must not be set for EVENT_END and elsewhere calls it end_date. Only documented end_time parameter is modeled.",
+    "Instagram Platform examples include some outer arrays and malformed illustrative JSON; envelopes use the canonical object form from valid messaging examples.",
+    "Legacy replies page misspells page_read_engagement; use current dual-product moderation requirements.",
+    "Media period table accepts several periods but response section says lifetime always; account period requirement cannot apply to media node.",
+    "No blanket HUMAN_AGENT requirement for private replies.",
+    "Permission is spelled ad_reads in reference; no silent correction.",
+    "Read limitations exclude Reels while write limitations support 30 Reels tags.",
+    "Response table uses string_sale_price_string; sample and pinned SDK use stripped_sale_price_string. Both represented as optional.",
+    "This Page moderation guide uses lower-case action names; official IGUser SDK uses uppercase enum values. Do not collapse Page and IGUser request variants.",
+    "notification_subtypes is an array represented as a JSON array in curl form field.",
+    "notification_target_time is documented only for create, not update.",
+    "story_insights example duplicates postback payload; no genuine story-insights shape inferred."
+  ],
+  "remaining_boundaries": [
+    "Current documentation applied to supported release directories is not independent historical semantic verification.",
+    "Marketing-message and opt-in guides are unavailable; no production endpoint inferred from graph.intern.facebook.com examples.",
+    "story_insights sample duplicates postback payload; genuine event payload not established.",
+    "Not every indexed page is a distinct HTTP operation; exact citation match is not a coverage percentage.",
+    "Marketing API partnership-ad account/post operations are outside scope, including March 30 2026 creator_username filter and ad-code changes.",
+    "Instagram Login stories/live_media per-edge applicability remains uncertain; no cross-login inference.",
+    "No live API observations, generated client SDK, broad runtime implementation, or automatic upstream requests."
+  ]
+}

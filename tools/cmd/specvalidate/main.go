@@ -47,11 +47,14 @@ func validate(path string) error {
 		return fmt.Errorf("full contracts require x-contract-only: true")
 	}
 	kind, _ := doc.Extensions["x-contract-kind"].(string)
-	if kind != "" && kind != "graph" && kind != "oauth" && kind != "webhook" {
+	if kind != "" && kind != "graph" && kind != "oauth" && kind != "webhook" && kind != "upload" {
 		return fmt.Errorf("unknown x-contract-kind %q", kind)
 	}
 	if !contractOnly && kind != "" {
 		return fmt.Errorf("unversioned exceptions require a contract-only document")
+	}
+	if kind == "upload" && len(doc.Servers) == 0 {
+		return fmt.Errorf("upload contracts require an explicit upload server")
 	}
 	if contractOnly {
 		if err := validateServers(doc.Servers, kind); err != nil {
@@ -60,7 +63,7 @@ func validate(path string) error {
 	}
 	ids := make(map[string]bool)
 	for route, item := range doc.Paths.Map() {
-		if !strings.HasPrefix(route, "/"+version+"/") && !allowedUnversioned(kind, route) {
+		if !allowedRoute(kind, version, route) {
 			return fmt.Errorf("route %q does not belong to version %s or its explicit contract kind", route, version)
 		}
 		if contractOnly {
@@ -104,6 +107,13 @@ func validate(path string) error {
 
 // These exceptions are provider OAuth endpoints and our example receiver path,
 // never a general exemption from versioned route validation.
+func allowedRoute(kind, version, route string) bool {
+	if kind == "upload" {
+		return route == "/ig-api-upload/"+version+"/{containerID}"
+	}
+	return strings.HasPrefix(route, "/"+version+"/") || allowedUnversioned(kind, route)
+}
+
 func allowedUnversioned(kind, route string) bool {
 	switch kind {
 	case "oauth":
@@ -119,6 +129,12 @@ func allowedUnversioned(kind, route string) bool {
 
 func validateServers(servers openapi3.Servers, kind string) error {
 	for _, server := range servers {
+		if kind == "upload" {
+			if server.URL != "https://rupload.facebook.com" {
+				return fmt.Errorf("unapproved upload server %q", server.URL)
+			}
+			continue
+		}
 		if kind == "webhook" && server.URL == "http://localhost:3000" {
 			continue
 		}
