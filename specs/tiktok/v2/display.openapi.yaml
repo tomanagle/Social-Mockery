@@ -1,0 +1,777 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TikTok Display API reference contract",
+    "version": "v2",
+    "description": "Documentation-based native interface only. No simulator routes or live verification. v2 is a protocol generation, not a dated Graph API release."
+  },
+  "servers": [
+    {
+      "url": "https://open.tiktokapis.com"
+    }
+  ],
+  "x-provider": "tiktok",
+  "x-contract-only": true,
+  "x-contract-kind": "graph",
+  "x-version-evidence": {
+    "generation": "v2",
+    "retrieved": "2026-10-18",
+    "current-reference": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+    "legacy-exclusion": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+    "note": "Current v2 endpoint references; no evidence of a previous generally supported generation for this selected surface. SDK semantic versions are independent."
+  },
+  "security": [
+    {
+      "TikTokOAuth": []
+    }
+  ],
+  "paths": {
+    "/v2/user/info/": {
+      "get": {
+        "operationId": "getTikTokUserInfo",
+        "summary": "getTikTokUserInfo",
+        "description": "User-authorized data only. List returns public posts newest first; query checks that IDs belong to the authorized user. Fields belong in the query even for POST. Default rate is 600 requests per minute per API, calculated over a sliding window; higher limits may be approved. No account-global bucket assumption. Required grants are field-dependent as recorded in x-field-scopes; no universal basic-only grant is inferred for every projection.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field projection. Permitted fields and scopes depend on object."
+          }
+        ],
+        "security": [
+          {
+            "TikTokOAuth": []
+          }
+        ],
+        "x-field-scopes": {
+          "user.info.basic": [
+            "open_id",
+            "union_id",
+            "avatar_url",
+            "avatar_url_100",
+            "avatar_large_url",
+            "display_name"
+          ],
+          "user.info.profile": [
+            "bio_description",
+            "profile_deep_link",
+            "is_verified",
+            "username"
+          ],
+          "user.info.stats": [
+            "follower_count",
+            "following_count",
+            "likes_count",
+            "video_count"
+          ]
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "400": [
+            "invalid_params",
+            "scope_permission_missed"
+          ],
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "500": [
+            "internal_error"
+          ]
+        },
+        "x-errors-not-exhaustive": true
+      }
+    },
+    "/v2/video/list/": {
+      "post": {
+        "operationId": "listTikTokVideos",
+        "summary": "listTikTokVideos",
+        "description": "User-authorized data only. List returns public posts newest first; query checks that IDs belong to the authorized user. Fields belong in the query even for POST. Default rate is 600 requests per minute per API, calculated over a sliding window; higher limits may be approved. No account-global bucket assumption.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListVideosResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.list"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListVideosRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field projection. Permitted fields and scopes depend on object."
+          }
+        ],
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "400": [
+            "invalid_params",
+            "scope_permission_missed"
+          ],
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "500": [
+            "internal_error"
+          ]
+        },
+        "x-errors-not-exhaustive": true
+      }
+    },
+    "/v2/video/query/": {
+      "post": {
+        "operationId": "queryTikTokVideos",
+        "summary": "queryTikTokVideos",
+        "description": "User-authorized data only. List returns public posts newest first; query checks that IDs belong to the authorized user. Fields belong in the query even for POST. Default rate is 600 requests per minute per API, calculated over a sliding window; higher limits may be approved. No account-global bucket assumption.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+          "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryVideosResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.list"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryVideosRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field projection. Permitted fields and scopes depend on object."
+          }
+        ],
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+            "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "400": [
+            "invalid_params",
+            "scope_permission_missed"
+          ],
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "500": [
+            "internal_error"
+          ]
+        },
+        "x-errors-not-exhaustive": true
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TikTokOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://www.tiktok.com/v2/auth/authorize/",
+            "tokenUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "refreshUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "scopes": {
+              "user.info.basic": "Basic account identifier, avatar and display name",
+              "user.info.profile": "Additional profile fields",
+              "user.info.stats": "Profile statistics",
+              "video.list": "Read authorized public videos",
+              "video.publish": "Direct Post",
+              "video.upload": "Upload to creator inbox"
+            }
+          }
+        },
+        "description": "Bearer user access token. TikTok authorization uses client_key and comma-separated scopes; endpoint-specific grants and app approval apply."
+      }
+    },
+    "schemas": {
+      "APIError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "ok indicates success; other codes must be handled even when HTTP status is 200."
+          },
+          "message": {
+            "type": "string"
+          },
+          "log_id": {
+            "type": "string",
+            "description": "Wire examples and generic error reference use log_id; posting tables also spell logid."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "open_id": {
+            "type": "string"
+          },
+          "union_id": {
+            "type": "string"
+          },
+          "avatar_url": {
+            "type": "string"
+          },
+          "avatar_url_100": {
+            "type": "string"
+          },
+          "avatar_large_url": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "bio_description": {
+            "type": "string"
+          },
+          "profile_deep_link": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "follower_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "following_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "likes_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_count": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "description": "Fields are projection-dependent and scope-dependent; optional is distinct from explicit null. basic: identifiers/avatar/display_name; profile: bio/profile link/verification/username; stats: counts."
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "cover_image_url": {
+            "type": "string"
+          },
+          "share_url": {
+            "type": "string"
+          },
+          "video_description": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "embed_html": {
+            "type": "string"
+          },
+          "embed_link": {
+            "type": "string"
+          },
+          "create_time": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "view_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "like_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "share_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_aigc": {
+            "type": "boolean"
+          }
+        },
+        "description": "Projected fields from official Video Object; id is a string. create_time seconds; cover URL documented TTL six hours. No fps field invented from the query example."
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "ListVideosRequest": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "integer",
+            "format": "int64",
+            "description": "UTC Unix milliseconds; next-page cursor when has_more is true, or custom timestamp to list earlier posts."
+          },
+          "max_count": {
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "maximum": 20
+          }
+        }
+      },
+      "ListVideosResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "videos": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Video"
+                }
+              },
+              "cursor": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "QueryVideosRequest": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "type": "object",
+            "properties": {
+              "video_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "video_ids"
+            ]
+          }
+        },
+        "required": [
+          "filters"
+        ]
+      },
+      "QueryVideosResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "videos": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Video"
+                }
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      }
+    }
+  }
+}

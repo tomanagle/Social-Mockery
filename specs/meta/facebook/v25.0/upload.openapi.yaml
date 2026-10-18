@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Facebook Upload API",
+    "version": "v25.0",
+    "description": "Documentation-based, bounded native Facebook Pages contracts. Generated interfaces do not register runtime routes. Current shared documentation plus pinned SDK evidence; no live verification or independent historical parity claim."
+  },
+  "x-provider": "facebook",
+  "x-contract-only": true,
+  "x-contract-kind": "upload",
+  "x-version-evidence": {
+    "latest-release": "v26.0",
+    "latest-release-verified": true,
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "sdk-revision": "542e10e31c40f7925f9ac03c000922a2fd0a2365",
+    "reference-scope": "Current shared references; historical behavior, account eligibility and field rollout are not independently verified."
+  },
+  "servers": [
+    {
+      "url": "https://rupload.facebook.com"
+    }
+  ],
+  "security": [
+    {
+      "OAuthToken": []
+    }
+  ],
+  "paths": {
+    "/video-upload/v25.0/{videoID}": {
+      "post": {
+        "operationId": "uploadFacebookVideo",
+        "description": "Use returned upload_url. Versioned URL shown in official curl examples; prose and response example omit version, an unresolved source inconsistency, not a license to construct arbitrary URLs. Local bytes require offset and file_size; hosted variant uses file_url header and no binary body.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "file_size",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "file_url",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "videoID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "x-transfer-variants": [
+          {
+            "name": "binary",
+            "required-headers": [
+              "offset",
+              "file_size"
+            ],
+            "body": "raw bytes"
+          },
+          {
+            "name": "hosted",
+            "required-headers": [
+              "file_url"
+            ],
+            "body": "absent"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuthToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "OAuth <PAGE_ACCESS_TOKEN>; this upload scheme differs from Graph Bearer."
+      }
+    },
+    "schemas": {
+      "GraphError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "code": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "error_subcode": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_transient": {
+                "type": "boolean"
+              },
+              "error_user_title": {
+                "type": "string"
+              },
+              "error_user_msg": {
+                "type": "string"
+              },
+              "fbtrace_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

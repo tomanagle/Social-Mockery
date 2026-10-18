@@ -1,0 +1,725 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TikTok OAuth and Login Kit reference contract",
+    "version": "v2",
+    "description": "Documentation-based native interface only. No simulator routes or live verification. v2 is a protocol generation, not a dated Graph API release."
+  },
+  "servers": [
+    {
+      "url": "https://open.tiktokapis.com"
+    }
+  ],
+  "x-provider": "tiktok",
+  "x-contract-only": true,
+  "x-contract-kind": "oauth",
+  "x-version-evidence": {
+    "generation": "v2",
+    "retrieved": "2026-10-18",
+    "current-reference": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+    "legacy-exclusion": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+    "note": "Current v2 endpoint references; no evidence of a previous generally supported generation for this selected surface. SDK semantic versions are independent."
+  },
+  "security": [],
+  "paths": {
+    "/v2/auth/authorize/": {
+      "get": {
+        "operationId": "authorizeTikTok",
+        "summary": "Open TikTok user authorization",
+        "description": "Interactive browser flow; callback query parameters modeled separately. No claim about a fixed intermediate page status. PKCE is required for desktop; mobile SDK delivery is outside this HTTP interface.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/login-kit-web",
+          "https://developers.tiktok.com/docs/en/login-kit-desktop"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/login-kit-web",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/login-kit-desktop",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "default": {
+            "description": "Interactive sign-in/consent and redirect to registered callback; callback contains code/scopes/state or error/error_description."
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_key",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code"
+              ]
+            },
+            "description": ""
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated requested scopes; user can grant only a subset."
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Registered exact callback URI. Web uses HTTPS; desktop uses registered loopback URI with port."
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Unique unpredictable anti-CSRF value; match callback."
+          },
+          {
+            "name": "disable_auto_auth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "description": ""
+          },
+          {
+            "name": "code_challenge",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Required for desktop PKCE; official desktop guide uses hex-encoded SHA256, not an inferred base64url substitution."
+          },
+          {
+            "name": "code_challenge_method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "S256"
+              ]
+            },
+            "description": "Required for desktop."
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://www.tiktok.com"
+          }
+        ],
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-web",
+            "https://developers.tiktok.com/docs/en/login-kit-desktop"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-web",
+            "https://developers.tiktok.com/docs/en/login-kit-desktop"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    },
+    "/v2/oauth/token/": {
+      "post": {
+        "operationId": "exchangeOrRefreshUserToken",
+        "summary": "Exchange code or refresh a user token",
+        "description": "Client credentials grant is intentionally excluded: client tokens serve Research/Commercial Content products and do not authorize user Display/Posting calls. No mixed v1/v2 tokens.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+          "https://developers.tiktok.com/docs/en/oauth-error-handling"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/oauth-error-handling",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "OAuth result; inspect flat error. HTTP status-to-error mapping is not exhaustively specified.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTokenOutcome"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "OAuth failure envelope; source does not map every error category to an HTTP status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OAuthError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UserTokenRequest"
+              }
+            }
+          }
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "https://developers.tiktok.com/docs/en/oauth-error-handling"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "https://developers.tiktok.com/docs/en/oauth-error-handling"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    },
+    "/v2/oauth/revoke/": {
+      "post": {
+        "operationId": "revokeTikTokAccess",
+        "summary": "Revoke user authorization",
+        "description": "",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+          "https://developers.tiktok.com/docs/en/oauth-error-handling"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/oauth-error-handling",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Successful response struct is empty; source does not establish exhaustive HTTP-status separation of failures. Inspect any returned body for flat OAuth error."
+          },
+          "default": {
+            "description": "OAuth failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OAuthError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeRequest"
+              }
+            }
+          }
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "https://developers.tiktok.com/docs/en/oauth-error-handling"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+            "https://developers.tiktok.com/docs/en/oauth-error-handling"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    },
+    "/v2/oauth/get_qrcode/": {
+      "post": {
+        "operationId": "createTikTokQRCode",
+        "summary": "QR code authorization get_qrcode",
+        "description": "Generate and persist client_ticket, inject it into returned scan URL, and verify the echoed ticket before trusting confirmed status. Validate state. Expired codes require a new get_qrcode; status is not a token.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "OAuth result; inspect flat error. HTTP status-to-error mapping is not exhaustively specified.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QRCodeResponseOutcome"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "OAuth failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OAuthError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/QRCodeRequest"
+              }
+            }
+          }
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    },
+    "/v2/oauth/check_qrcode/": {
+      "post": {
+        "operationId": "checkTikTokQRCode",
+        "summary": "QR code authorization check_qrcode",
+        "description": "Generate and persist client_ticket, inject it into returned scan URL, and verify the echoed ticket before trusting confirmed status. Validate state. Expired codes require a new get_qrcode; status is not a token.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "OAuth result; inspect flat error. HTTP status-to-error mapping is not exhaustively specified.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QRCodeStatusOutcome"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "OAuth failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OAuthError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/QRCodeStatusRequest"
+              }
+            }
+          }
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TikTokOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://www.tiktok.com/v2/auth/authorize/",
+            "tokenUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "refreshUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "scopes": {
+              "user.info.basic": "Basic account identifier, avatar and display name",
+              "user.info.profile": "Additional profile fields",
+              "user.info.stats": "Profile statistics",
+              "video.list": "Read authorized public videos",
+              "video.publish": "Direct Post",
+              "video.upload": "Upload to creator inbox"
+            }
+          }
+        },
+        "description": "Bearer user access token. TikTok authorization uses client_key and comma-separated scopes; endpoint-specific grants and app approval apply."
+      }
+    },
+    "schemas": {
+      "OAuthError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "error_description": {
+            "type": "string"
+          },
+          "log_id": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthorizationCallback": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "scopes": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "error_description": {
+            "type": "string"
+          }
+        },
+        "description": "Parameters appended to the registered callback URL, not a TikTok JSON API. Validate state and inspect scopes actually granted."
+      },
+      "AuthorizationCodeGrant": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "grant_type": {
+            "type": "string",
+            "enum": [
+              "authorization_code"
+            ]
+          },
+          "code": {
+            "type": "string"
+          },
+          "redirect_uri": {
+            "type": "string"
+          },
+          "code_verifier": {
+            "type": "string",
+            "description": "Required for mobile and desktop. Use the verifier associated with the authorization request."
+          }
+        },
+        "required": [
+          "client_key",
+          "client_secret",
+          "grant_type",
+          "code",
+          "redirect_uri"
+        ]
+      },
+      "RefreshTokenGrant": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "grant_type": {
+            "type": "string",
+            "enum": [
+              "refresh_token"
+            ]
+          },
+          "refresh_token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "client_key",
+          "client_secret",
+          "grant_type",
+          "refresh_token"
+        ]
+      },
+      "UserTokenRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AuthorizationCodeGrant"
+          },
+          {
+            "$ref": "#/components/schemas/RefreshTokenGrant"
+          }
+        ]
+      },
+      "UserToken": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Seconds until access token expiry; initial documentation value 86400."
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "May rotate on refresh; replace stored value with response."
+          },
+          "refresh_expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Seconds remaining; initial refresh lifetime documented as 365 days."
+          },
+          "open_id": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string",
+            "description": "Comma-separated scopes actually granted."
+          },
+          "token_type": {
+            "type": "string",
+            "enum": [
+              "Bearer"
+            ]
+          }
+        }
+      },
+      "RevokeRequest": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "description": "User access token to revoke."
+          }
+        },
+        "required": [
+          "client_key",
+          "client_secret",
+          "token"
+        ]
+      },
+      "QRCodeRequest": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "client_key",
+          "scope"
+        ]
+      },
+      "QRCodeResponse": {
+        "type": "object",
+        "properties": {
+          "scan_qrcode_url": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "QRCodeStatusRequest": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "client_key",
+          "client_secret",
+          "token"
+        ]
+      },
+      "QRCodeStatus": {
+        "type": "object",
+        "properties": {
+          "client_ticket": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "redirect_uri": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "description": "status examples: new, expired, scanned, confirmed, utilised. Table documents code, while confirmed example uses redirect_uri containing code; both retained, neither universally required."
+      },
+      "UserTokenOutcome": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/UserToken"
+          },
+          {
+            "$ref": "#/components/schemas/OAuthError"
+          }
+        ],
+        "description": "OAuth response fields; source does not establish that success versus failure is distinguished exclusively by HTTP status. Inspect flat error, not error.code."
+      },
+      "QRCodeResponseOutcome": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/QRCodeResponse"
+          },
+          {
+            "$ref": "#/components/schemas/OAuthError"
+          }
+        ],
+        "description": "OAuth response fields; source does not establish that success versus failure is distinguished exclusively by HTTP status. Inspect flat error, not error.code."
+      },
+      "QRCodeStatusOutcome": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/QRCodeStatus"
+          },
+          {
+            "$ref": "#/components/schemas/OAuthError"
+          }
+        ],
+        "description": "OAuth response fields; source does not establish that success versus failure is distinguished exclusively by HTTP status. Inspect flat error, not error.code."
+      }
+    }
+  }
+}

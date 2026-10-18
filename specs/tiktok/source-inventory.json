@@ -1,0 +1,327 @@
+{
+  "provider": "tiktok",
+  "retrieved": "2026-10-18",
+  "status": "documentation-based",
+  "live_verified": false,
+  "sources": [
+    {
+      "url": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+      "resolved_url": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "c09a3ea1965471be598c0211fa929d2d2e857e03690e2db2983375eb37cd5d20",
+      "bytes": 356916,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/bulletin/migration-guidance-qr-code-authorization-v2",
+      "resolved_url": "https://developers.tiktok.com/bulletin/migration-guidance-qr-code-authorization-v2",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "7b5a4d8d523aa45bdeb1bd2527c3f8ab5061afa46130dbff699c680fdabe2eea",
+      "bytes": 341030,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/changelog",
+      "resolved_url": "https://developers.tiktok.com/docs/en/changelog",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "1baef784da2e4d3f9db7549c153be4acdd44e1e4331ff5f4884a84da5ddfa726",
+      "bytes": 267453,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/client-access-token-management",
+      "resolved_url": "https://developers.tiktok.com/docs/en/client-access-token-management",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "547b529cebf2418091294c5a3427d6d502e597d6314e25de419e39ad6aafe7d5",
+      "bytes": 222182,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "1cdffd13b5f0552c60466e45b4adc0d79095e888dc261602a7cb92927c0b50a6",
+      "bytes": 269412,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "dc0e66b4b85db3e85100523e58b77a242ed0ff3f27242ac2700a1ca886799c32",
+      "bytes": 268582,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "04437b68d03f84fb16f8a49b34cd2191af3d9ef40849fb8c9eb8e715cf93812a",
+      "bytes": 249859,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "b68ad8f27ebbb540758c999bb528461d3e0e97ff4cb4f78c43724bbf6669784a",
+      "bytes": 262742,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "ad1ed1d899c660451d6232272c01e80dc0b6ac40bd1b7f145de6e855d1f081c0",
+      "bytes": 234954,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "24b4ba756dd5df06410805cadcbe3ed96432809c159dec0b73ebed5abcc5731b",
+      "bytes": 254051,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/content-sharing-guidelines",
+      "resolved_url": "https://developers.tiktok.com/docs/en/content-sharing-guidelines",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "8b8bd8aeff36f6100b7be7bb99d0dc564ec74a1586ad349c2b096949cdc7e072",
+      "bytes": 235073,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/legacy-user-access-guide",
+      "resolved_url": "https://developers.tiktok.com/docs/en/legacy-user-access-guide",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "7ba733411257d3bc92179942c559807a087894a1f0aff2534a9951f13878528e",
+      "bytes": 253663,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/login-kit-desktop",
+      "resolved_url": "https://developers.tiktok.com/docs/en/login-kit-desktop",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "b4d0a3027281d49f3abb76116bbee88255d39714ad7ab5f5beba7fce9b0f5b5d",
+      "bytes": 245657,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization",
+      "resolved_url": "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "9402b0097a39defcbc44ffd822e9f684b2334395eba6b4cd00bc191501690bb8",
+      "bytes": 255266,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/login-kit-web",
+      "resolved_url": "https://developers.tiktok.com/docs/en/login-kit-web",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "c4385f490ce1fd3c23839145783203214f81106b48b699225a5e0d3dcc671991",
+      "bytes": 239738,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/oauth-error-handling",
+      "resolved_url": "https://developers.tiktok.com/docs/en/oauth-error-handling",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "e2dd42e8a7b5cf5f7430eded6ce7d3669381198bca2f47341e7333ed450b2c1c",
+      "bytes": 218788,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+      "resolved_url": "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "76bbaa2cda5c6706812c62d32d72cfcfe8bcac126186af60d2448c060a107076",
+      "bytes": 257554,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "607e790732730eb5548587786cbc6c57459f5b534648496c27b3f1fe291c22cd",
+      "bytes": 218795,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "5e18ca6f0bafd35c54068f3211afda917f58b2d61eed85570ed62e6aae1b1930",
+      "bytes": 233368,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "f6d450c6430fb3cf083e520862dade1a960507b5e36ea3c1fcb3b8776e62838e",
+      "bytes": 213579,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "2f992fe54267f97bb1fb61ef6581ea9448efee3dd82e24e3fb4ae911c47c09d0",
+      "bytes": 207978,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "cc846af9b32ee76c2218b39f2a7f0fb2608e73bef6a42022af3235ffc62a5394",
+      "bytes": 225733,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "5207d6376f2d05df2fd3707b1ba578d8b53dd5ec9df4166016686ab07b227231",
+      "bytes": 214380,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+      "resolved_url": "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "cfbdb8a1dbdeb00dbd47029d73b0cb0da87dcdcfb7fdc0b6c30d564da7d2916b",
+      "bytes": 225858,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/webhooks-events",
+      "resolved_url": "https://developers.tiktok.com/docs/en/webhooks-events",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "9e337f101924760b50f0fd1d14e96e15bcba321625ac13fd84de4d532f2323da",
+      "bytes": 226506,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/webhooks-overview",
+      "resolved_url": "https://developers.tiktok.com/docs/en/webhooks-overview",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "e0674f5564289c26ac6bfde193001e7f3bbb68e9ea79e14b7d338c13e1c7098f",
+      "bytes": 209901,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/webhooks-verification",
+      "resolved_url": "https://developers.tiktok.com/docs/en/webhooks-verification",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-html",
+      "sha256_html": "bf865b6f133dd5c738d8ed122322bb9c582c4c3aed6d4df49df45d8142221b39",
+      "bytes": 214669,
+      "revision": "Mutable published documentation; no upstream immutable revision exposed."
+    }
+  ],
+  "sdk_and_postman": [
+    {
+      "url": "https://github.com/tiktok/tiktok-opensdk-ios",
+      "ownership_evidence": "GitHub verified tiktok.com organization; README links TikTok Developer Portal and Login Kit docs.",
+      "tag": "v2.5.0",
+      "tag_object": "ff0941cc8db431b761c2b6248bcbf645257c531f",
+      "commit": "cb0cdc785b653c3be116fd1302ec280fbcfac695",
+      "retrieved": "2026-10-18",
+      "status": "retrieved-public-official-sdk",
+      "files": [
+        {
+          "url": "https://github.com/tiktok/tiktok-opensdk-ios/blob/cb0cdc785b653c3be116fd1302ec280fbcfac695/Sources/TikTokOpenAuthSDK/Public/PKCE.swift",
+          "sha256": "31feb111557fb41211bb93e1c64f17e95e6bb8c081e9cb1332866ab438c192a8"
+        },
+        {
+          "url": "https://github.com/tiktok/tiktok-opensdk-ios/blob/cb0cdc785b653c3be116fd1302ec280fbcfac695/Sources/TikTokOpenAuthSDK/Public/TikTokAuthRequest+URLParams.swift",
+          "sha256": "ebd783a0250764ef6ad6b47473485105baef4f31404357a1d0ac659bd437db60"
+        }
+      ],
+      "scope": "Corroborates hexadecimal PKCE challenge and comma-separated scopes in mobile client; client behavior does not establish all web server requiredness. SDK v2.5.0 is not HTTP API v2.5."
+    },
+    {
+      "url": "https://www.postman.com/tiktok/tiktok-api-for-business/overview",
+      "retrieved": "2026-10-18",
+      "status": "discovered-public-official-branded-workspace",
+      "scope": "TikTok for Business V1.3; excluded from Login Kit / Display / Content Posting contract evidence. No matching provider-owned social collection export was verified; no revision or file hash is invented."
+    },
+    {
+      "url": "https://github.com/tiktok/tiktok-business-api-sdk",
+      "retrieved": "2026-10-18",
+      "status": "discovered-official-organization-repository",
+      "scope": "Separate TikTok Business API. Not imported as social REST endpoint evidence."
+    }
+  ],
+  "category_reconciliation": [
+    {
+      "category": "Login Kit web/desktop",
+      "disposition": "Authorization, user token exchange/refresh/revoke included; native app-switch SDK paths not REST."
+    },
+    {
+      "category": "Login Kit QR",
+      "disposition": "get_qrcode/check_qrcode included, source inconsistencies retained."
+    },
+    {
+      "category": "Display API",
+      "disposition": "All three endpoint-reference operations and Video Object projected fields included."
+    },
+    {
+      "category": "Content Posting API",
+      "disposition": "Both video init references, photo init, creator info, status and media-guide cancellation included."
+    },
+    {
+      "category": "Media transfer",
+      "disposition": "Opaque PUT transport included; URL pulls described as init variants, not fabricated extra routes."
+    },
+    {
+      "category": "Webhooks",
+      "disposition": "Delivery envelope, authorization removal, posting events, signature verification and retries included; configuration is Developer Portal UI."
+    },
+    {
+      "category": "Version/migration",
+      "disposition": "Current v2 reference with legacy exclusion; no fabricated previous supported release."
+    },
+    {
+      "category": "App review/scopes/policy",
+      "disposition": "Context and access gates, not new HTTP operations."
+    },
+    {
+      "category": "SDK/Postman",
+      "disposition": "Pinned official mobile SDK supports client auth behavior; Business Postman/SDK belong to a separate excluded product."
+    },
+    {
+      "category": "Out of scope",
+      "disposition": "Research, Commercial Content, Data Portability, TikTok for Business, Shop, Minis, native Share Kit, public embeds."
+    }
+  ]
+}

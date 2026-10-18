@@ -420,6 +420,9 @@ type AuthorizeFacebookLoginParams struct {
 	ResponseType *string                               `form:"response_type,omitempty" json:"response_type,omitempty"`
 	Scope        *string                               `form:"scope,omitempty" json:"scope,omitempty"`
 	AuthType     *AuthorizeFacebookLoginParamsAuthType `form:"auth_type,omitempty" json:"auth_type,omitempty"`
+
+	// ConfigId Facebook Login for Business configuration ID. It selects configured assets, permissions and token type. For a User-token configuration, scope can still be included but the guide recommends using the configuration instead.
+	ConfigId *string `form:"config_id,omitempty" json:"config_id,omitempty"`
 }
 
 // AuthorizeFacebookLoginParamsAuthType defines parameters for AuthorizeFacebookLogin.
@@ -968,6 +971,19 @@ func (siw *ServerInterfaceWrapper) AuthorizeFacebookLogin(w http.ResponseWriter,
 			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "auth_type"})
 		} else {
 			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "auth_type", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "config_id" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "config_id", r.URL.Query(), &params.ConfigId, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "config_id"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "config_id", Err: err})
 		}
 		return
 	}

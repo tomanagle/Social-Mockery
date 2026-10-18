@@ -15,10 +15,16 @@ type Account struct {
 	Type     string `json:"type" yaml:"type"`
 }
 type Token struct {
-	Value     string   `json:"value" yaml:"value"`
-	AccountID string   `json:"account_id" yaml:"account_id"`
-	Scopes    []string `json:"scopes" yaml:"scopes"`
-	ExpiresAt int64    `json:"expires_at" yaml:"expires_at"`
+	RefreshToken     string   `json:"refresh_token,omitempty" yaml:"refresh_token,omitempty"`
+	RefreshExpiresAt int64    `json:"refresh_expires_at,omitempty" yaml:"refresh_expires_at,omitempty"`
+	GrantAccountID   string   `json:"grant_account_id,omitempty" yaml:"grant_account_id,omitempty"`
+	AppID            string   `json:"app_id,omitempty" yaml:"app_id,omitempty"`
+	Product          string   `json:"product,omitempty" yaml:"product,omitempty"`
+	AssetIDs         []string `json:"asset_ids,omitempty" yaml:"asset_ids,omitempty"`
+	Value            string   `json:"value" yaml:"value"`
+	AccountID        string   `json:"account_id" yaml:"account_id"`
+	Scopes           []string `json:"scopes" yaml:"scopes"`
+	ExpiresAt        int64    `json:"expires_at" yaml:"expires_at"`
 }
 type Container struct {
 	ID          string `json:"id"`
@@ -39,13 +45,31 @@ type Post struct {
 	CreatedAt int64  `json:"created_at"`
 }
 type Seed struct {
-	Version           int       `json:"version" yaml:"version"`
-	Clock             string    `json:"clock" yaml:"clock"`
-	ProcessingSeconds int64     `json:"processing_seconds" yaml:"processing_seconds"`
-	Accounts          []Account `json:"accounts" yaml:"accounts"`
-	Tokens            []Token   `json:"tokens" yaml:"tokens"`
+	Apps              []OAuthApp   `json:"apps,omitempty" yaml:"apps,omitempty"`
+	Grants            []OAuthGrant `json:"grants,omitempty" yaml:"grants,omitempty"`
+	Assets            []OAuthAsset `json:"assets,omitempty" yaml:"assets,omitempty"`
+	Version           int          `json:"version" yaml:"version"`
+	Clock             string       `json:"clock" yaml:"clock"`
+	ProcessingSeconds int64        `json:"processing_seconds" yaml:"processing_seconds"`
+	Accounts          []Account    `json:"accounts" yaml:"accounts"`
+	Tokens            []Token      `json:"tokens" yaml:"tokens"`
 }
 type Repository interface {
+	OAuthRefreshToken(context.Context, string) (Token, error)
+	RefreshOAuthToken(context.Context, string, Token) error
+	OAuthApp(context.Context, string) (OAuthApp, error)
+	OAuthAccounts(context.Context, string) ([]Account, error)
+	OAuthAssets(context.Context, string) ([]OAuthAsset, error)
+	OAuthGrant(context.Context, string, string) (OAuthGrant, error)
+	PutOAuthSession(context.Context, OAuthSession) error
+	CompleteOAuthSession(context.Context, string, OAuthCode) error
+	GetOAuthSession(context.Context, string) (OAuthSession, error)
+	DeleteOAuthSession(context.Context, string) error
+	PutOAuthCode(context.Context, OAuthCode) error
+	GetOAuthCode(context.Context, string) (OAuthCode, error)
+	RedeemOAuthCode(context.Context, string, Token, OAuthGrant) error
+	UpsertOAuthFixtures(context.Context, Seed) error
+
 	Reset(context.Context, Seed, int64) error
 	Clock(context.Context) (int64, int64, error)
 	Advance(context.Context, int64) (int64, error)

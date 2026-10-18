@@ -1,0 +1,204 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TikTok opaque video upload transport reference contract",
+    "version": "v2",
+    "description": "Transport shape for the opaque upload_url returned by Posting API. /{uploadPath} is a placeholder for the returned path, not a fixed endpoint or permission to construct URLs. Examples vary across /video/ and /upload/ and regional hosts. Preserve the complete returned URL and query."
+  },
+  "servers": [
+    {
+      "url": "https://open-upload.tiktokapis.com"
+    }
+  ],
+  "x-provider": "tiktok",
+  "x-contract-only": true,
+  "x-contract-kind": "upload",
+  "x-version-evidence": {
+    "generation": "v2",
+    "retrieved": "2026-10-18",
+    "current-reference": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+    "legacy-exclusion": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+    "note": "Current v2 endpoint references; no evidence of a previous generally supported generation for this selected surface. SDK semantic versions are independent."
+  },
+  "security": [],
+  "paths": {
+    "/{uploadPath}": {
+      "put": {
+        "operationId": "uploadTikTokVideoBytes",
+        "summary": "Upload a sequential media chunk",
+        "description": "",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "201": {
+            "description": "All chunks accepted; posting processing begins.",
+            "headers": {
+              "Content-Range": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Upload progress: bytes 0-{UPLOADED_BYTES}/{TOTAL_BYTE_LENGTH} as written by provider guide."
+              }
+            }
+          },
+          "206": {
+            "description": "Chunk accepted; more chunks expected.",
+            "headers": {
+              "Content-Range": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Upload progress: bytes 0-{UPLOADED_BYTES}/{TOTAL_BYTE_LENGTH} as written by provider guide."
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed header or body size mismatch."
+          },
+          "403": {
+            "description": "Upload URL expired."
+          },
+          "404": {
+            "description": "Upload task not found."
+          },
+          "416": {
+            "description": "Range does not match upload progress."
+          },
+          "5XX": {
+            "description": "Server/gateway error; guide recommends retrying this chunk."
+          }
+        },
+        "parameters": [
+          {
+            "name": "uploadPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Opaque path from upload_url; example video/ or upload/. Not a user-chosen path."
+          },
+          {
+            "name": "Content-Length",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "Actual chunk byte length."
+          },
+          {
+            "name": "Content-Range",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "bytes FIRST_BYTE-LAST_BYTE/TOTAL_BYTE_LENGTH"
+          },
+          {
+            "name": "upload_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Illustrative returned query component; not independently constructed."
+          },
+          {
+            "name": "upload_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Illustrative signed query component; preserve entire returned query, including future fields."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "video/mp4": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "video/quicktime": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "video/webm": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TikTokOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://www.tiktok.com/v2/auth/authorize/",
+            "tokenUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "refreshUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "scopes": {
+              "user.info.basic": "Basic account identifier, avatar and display name",
+              "user.info.profile": "Additional profile fields",
+              "user.info.stats": "Profile statistics",
+              "video.list": "Read authorized public videos",
+              "video.publish": "Direct Post",
+              "video.upload": "Upload to creator inbox"
+            }
+          }
+        },
+        "description": "Bearer user access token. TikTok authorization uses client_key and comma-separated scopes; endpoint-specific grants and app approval apply."
+      }
+    },
+    "schemas": {}
+  },
+  "x-dynamic-upload-url": true
+}

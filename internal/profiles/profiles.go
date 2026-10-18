@@ -85,7 +85,7 @@ func Validate(s store.Seed) error {
 			}
 		}
 	}
-	return nil
+	return validateOAuth(s, ids)
 }
 func validID(s string) bool {
 	if len(s) == 0 || len(s) > 64 {

@@ -1,0 +1,3427 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Facebook Pages API",
+    "version": "v25.0",
+    "description": "Documentation-based, bounded native Facebook Pages contracts. Generated interfaces do not register runtime routes. Current shared documentation plus pinned SDK evidence; no live verification or independent historical parity claim."
+  },
+  "x-provider": "facebook",
+  "x-contract-only": true,
+  "x-contract-kind": "graph",
+  "x-version-evidence": {
+    "latest-release": "v26.0",
+    "latest-release-verified": true,
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "sdk-revision": "542e10e31c40f7925f9ac03c000922a2fd0a2365",
+    "reference-scope": "Current shared references; historical behavior, account eligibility and field rollout are not independently verified."
+  },
+  "servers": [
+    {
+      "url": "https://graph.facebook.com"
+    }
+  ],
+  "security": [
+    {
+      "BearerToken": []
+    },
+    {
+      "QueryToken": []
+    }
+  ],
+  "paths": {
+    "/v25.0/me": {
+      "get": {
+        "operationId": "readFacebookIdentity",
+        "description": "The token subject; User or Page identity depends on token type. Field projection is not an account-type coercion.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/user/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Actor"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Facebook User or Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          }
+        ]
+      }
+    },
+    "/v25.0/{userID}/accounts": {
+      "get": {
+        "operationId": "listManagedPages",
+        "description": "userID may be me. Returns only granted Page assets accessible to the Facebook User token. Request fields=id,name,access_token,tasks,instagram_business_account for token discovery/Instagram handoff. instagram_business_account also requires instagram_basic and an eligible linked professional account.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/user/accounts/",
+          "https://www.postman.com/meta/facebook/request/bqfxwbp/get-access-tokens-of-pages-you-manage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_show_list"
+        ],
+        "x-token-type": "Facebook User",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{objectID}": {
+      "get": {
+        "operationId": "readFacebookNode",
+        "description": "Page/post/comment/photo/video reads share the Graph node route. Requested fields, node identity, Page tasks and permissions govern visibility. Page access_token and instagram_business_account discovery uses a Facebook User token with appropriate Page access; instagram_basic does not grant general Page publishing.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/",
+          "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+          "https://developers.facebook.com/docs/graph-api/reference/comment/",
+          "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Page"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Post"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Comment"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Video"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Node and field dependent; Facebook User or Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "updateFacebookNode",
+        "description": "Page details, owned Page post updates and comment editing/hiding share a node route. Apply the matching permission and task set; schemas are alternatives, not permission union.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/",
+          "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+          "https://developers.facebook.com/docs/graph-api/reference/comment/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/EditPage"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EditPost"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EditComment"
+                  }
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/EditPage"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EditPost"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EditComment"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-node-permissions": {
+          "Page": [
+            "pages_manage_metadata"
+          ],
+          "Post": [
+            "pages_manage_posts",
+            "pages_read_engagement",
+            "pages_show_list"
+          ],
+          "Comment": [
+            "pages_manage_engagement",
+            "pages_read_engagement"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deleteFacebookContent",
+        "description": "Delete a Page post or comment; this is not Page account deletion. Page-owned post requires pages_manage_posts; comment moderation requires pages_manage_engagement and applicable ownership/task checks.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+          "https://developers.facebook.com/docs/graph-api/reference/comment/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Page",
+        "x-node-permissions": {
+          "Post": [
+            "pages_manage_posts",
+            "pages_read_engagement",
+            "pages_show_list"
+          ],
+          "Comment": [
+            "pages_manage_engagement",
+            "pages_read_engagement"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/feed": {
+      "get": {
+        "operationId": "readPageFeed",
+        "description": "Read Page feed. User-generated content additionally requires pages_read_user_content. Public content on Pages not managed by the user is a separate reviewed feature, not granted by pages_show_list.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/feed/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement",
+          "pages_read_user_content"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT or MANAGE or MODERATE"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "publishPagePost",
+        "description": "Text/link/attached-photo posts. At least appropriate content must be supplied; provider validates branch-specific combinations. For scheduling set published=false and scheduled_publish_time; guide says 10 minutes\u201330 days, reference-specific constraints still apply.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/feed/",
+          "https://developers.facebook.com/documentation/pages-api/posts.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_posts",
+          "pages_read_engagement",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePost"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePostForm"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/posts": {
+      "get": {
+        "operationId": "readPagePosts",
+        "description": "Page-authored posts selected by the named edge; not a personal-profile publishing API.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/posts/",
+          "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/published_posts": {
+      "get": {
+        "operationId": "readPublishedPagePosts",
+        "description": "Page-authored posts selected by the named edge; not a personal-profile publishing API.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/published_posts/",
+          "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/scheduled_posts": {
+      "get": {
+        "operationId": "readScheduledPagePosts",
+        "description": "Page-authored posts selected by the named edge; not a personal-profile publishing API.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/scheduled_posts/",
+          "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{objectID}/comments": {
+      "get": {
+        "operationId": "readFacebookComments",
+        "description": "Comment reads for a Page post or reply thread. Additional pages_read_user_content applies when reading user-generated content.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+          "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement",
+          "pages_read_user_content"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createFacebookComment",
+        "description": "Comment or reply as the Page. Mentions use the message text and eligible Page-scoped IDs; Page Mentioning feature and prior interaction restrictions apply. Personal-profile comments are outside this contract.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+          "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_engagement",
+          "pages_read_engagement"
+        ],
+        "x-page-tasks": [
+          "MODERATE"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateComment"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateComment"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "objectID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/photos": {
+      "get": {
+        "operationId": "readPagePhotos",
+        "description": "",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhotoList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "publishPagePhoto",
+        "description": "Hosted URL or binary multipart upload. url and source are distinct transfer branches. The simulator never downloads URLs.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhotoResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_posts",
+          "pages_read_engagement",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePhotoURL"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatePhotoURL"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreatePhotoFile"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePhotoURL"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/videos": {
+      "post": {
+        "operationId": "publishPageVideo",
+        "description": "Hosted file or source upload, or start/transfer/finish/cancel resumable phases. file_url cannot be used with upload_phase. Transfer chunks are multipart binary; do not encode binary in JSON. Native graph-video host is retained. Advertising and live video branches are excluded. Current publishing guide additionally accepts fbuploader_video_file_chunk from the separate Graph Resumable Upload API. That app-level handle-upload protocol is outside this bounded Page/Reel upload slice.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/videos/",
+          "https://developers.facebook.com/docs/video-api/guides/publishing/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoUploadResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_posts",
+          "pages_read_engagement",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/VideoURL"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoStart"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoFinish"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoCancel"
+                  }
+                ]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/VideoFile"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoTransfer"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoStart"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoFinish"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoCancel"
+                  },
+                  {
+                    "$ref": "#/components/schemas/VideoHandle"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://graph-video.facebook.com"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/video_reels": {
+      "get": {
+        "operationId": "readPageReels",
+        "description": "",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated field selection and supported Graph field expansion."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "publishPageReel",
+        "description": "Start returns video_id/upload_url; upload bytes to returned rupload URL; poll video status; finish publishes. Guide table says complete while its enum/example say finish; contract follows enum/example and SDK. SCHEDULED requires scheduled_publish_time; no fake all-phase uniform response.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReelUploadResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_posts",
+          "pages_read_engagement",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ReelStart"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReelFinish"
+                  }
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ReelStart"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReelFinish"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/insights": {
+      "get": {
+        "operationId": "readPageInsights",
+        "description": "Metric availability varies by Page/content/date/period. 2025/2026 all-version deprecations mean old guide examples are not current valid metrics. Use current provider metric tables; no exhaustive metric or period enum is inferred.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+          "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsightList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "read_insights",
+          "pages_read_engagement"
+        ],
+        "x-page-tasks": [
+          "ANALYZE"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "metric",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "breakdown",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/insights/{metric}": {
+      "get": {
+        "operationId": "readPageInsightMetric",
+        "description": "Metric availability varies by Page/content/date/period. 2025/2026 all-version deprecations mean old guide examples are not current valid metrics. Use current provider metric tables; no exhaustive metric or period enum is inferred.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+          "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsightList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "read_insights",
+          "pages_read_engagement"
+        ],
+        "x-page-tasks": [
+          "ANALYZE"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "breakdown",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metric",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/subscribed_apps": {
+      "get": {
+        "operationId": "readPageSubscriptions",
+        "description": "App-level webhook object/field subscription and Page installation are distinct. feed requires pages_manage_metadata and pages_show_list; messages also requires pages_messaging and MESSAGING task. This field parameter cannot configure Instagram webhooks; those use the app dashboard.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+          "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppSubscriptionList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_metadata",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT or MANAGE or MODERATE"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "subscribePageApp",
+        "description": "App-level webhook object/field subscription and Page installation are distinct. feed requires pages_manage_metadata and pages_show_list; messages also requires pages_messaging and MESSAGING task. This field parameter cannot configure Instagram webhooks; those use the app dashboard.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+          "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_metadata",
+          "pages_show_list"
+        ],
+        "x-page-tasks": [
+          "CREATE_CONTENT or MANAGE or MODERATE"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscribed_fields": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "subscribed_fields"
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscribed_fields": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "subscribed_fields"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "unsubscribePageApp",
+        "description": "Remove this app's own Page webhook subscription using its App access token. Does not revoke all Page apps or unsubscribe Instagram dashboard fields.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+          "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "App access token for its own Page subscription",
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/pages/search": {
+      "get": {
+        "operationId": "searchFacebookPages",
+        "description": "Logged-in flow uses a User token; app-token public metadata/content flows require Page Public Metadata Access or Page Public Content Access respectively. These reviewed features are not granted by a consent checkbox.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/search-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Facebook User or reviewed-feature App token",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/settings": {
+      "get": {
+        "operationId": "readPageSettings",
+        "description": "",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageSettingList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_metadata"
+        ],
+        "x-page-tasks": [
+          "MANAGE"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "updatePageSettings",
+        "description": "The options object maps setting names to provider-supported boolean values; strings in guide examples are illustrative, not an exhaustive accepted coercion policy.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_metadata"
+        ],
+        "x-page-tasks": [
+          "MANAGE"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "option": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "required": [
+                  "option"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/ratings": {
+      "get": {
+        "operationId": "readPageRecommendations",
+        "description": "",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageReviewList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_read_user_content",
+          "pages_read_engagement"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/blocked": {
+      "post": {
+        "operationId": "blockPageCommenter",
+        "description": "Block the eligible Page-scoped user ID. Response keys are PSIDs, not a fixed success property.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_engagement"
+        ],
+        "x-page-tasks": [
+          "MODERATE"
+        ],
+        "x-token-type": "Page",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user"
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v25.0/{pageID}/page_status": {
+      "get": {
+        "operationId": "readPageIntegrity",
+        "description": "January 2026 guide shows /{pageID}/page_status in its request while prose says /pages_status; preserve the demonstrated native route, do not invent a root endpoint. Status/violation/feature strings are extensible.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/documentation/pages-api/integrity-webhook.md",
+          "https://developers.facebook.com/documentation/pages-api/changelog.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageIntegrity"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-permissions": [
+          "pages_manage_metadata"
+        ],
+        "x-token-type": "Page",
+        "parameters": [
+          {
+            "name": "pageID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "GraphError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "code": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "error_subcode": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_transient": {
+                "type": "boolean"
+              },
+              "error_user_title": {
+                "type": "string"
+              },
+              "error_user_msg": {
+                "type": "string"
+              },
+              "fbtrace_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "IDResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Paging": {
+        "type": "object",
+        "properties": {
+          "cursors": {
+            "type": "object",
+            "properties": {
+              "before": {
+                "type": "string"
+              },
+              "after": {
+                "type": "string"
+              }
+            }
+          },
+          "next": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          }
+        }
+      },
+      "Actor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "about": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "category_list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Actor"
+            }
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "link": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "fan_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "followers_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "instagram_business_account": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "connected_instagram_account": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "story": {
+            "type": "string"
+          },
+          "created_time": {
+            "type": "string"
+          },
+          "updated_time": {
+            "type": "string"
+          },
+          "permalink_url": {
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "is_published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "attachments": {
+            "type": "object",
+            "properties": {}
+          },
+          "comments": {
+            "type": "object",
+            "properties": {}
+          },
+          "reactions": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "created_time": {
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "is_hidden": {
+            "type": "boolean"
+          },
+          "can_hide": {
+            "type": "boolean"
+          },
+          "can_remove": {
+            "type": "boolean"
+          },
+          "can_comment": {
+            "type": "boolean"
+          },
+          "like_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "comment_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "attachment": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "Photo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created_time": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "height": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "width": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "created_time": {
+            "type": "string"
+          },
+          "permalink_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "object",
+            "properties": {
+              "video_status": {
+                "type": "string"
+              },
+              "uploading_phase": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "bytes_transfered": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "source_file_size": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "errors": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {}
+                    }
+                  }
+                }
+              },
+              "processing_phase": {
+                "type": "object",
+                "properties": {}
+              },
+              "publishing_phase": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "copyright_check_information": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "Insight": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {},
+                "end_time": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "AppSubscription": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "subscribed_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "PageList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Page"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "PostList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "CommentList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "PhotoList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Photo"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "VideoList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Video"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "InsightList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Insight"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "AppSubscriptionList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppSubscription"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "CreatePost": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "attached_media": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "media_fbid": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "media_fbid"
+              ]
+            }
+          },
+          "place": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreatePostForm": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "string"
+          },
+          "attached_media": {
+            "type": "string",
+            "description": "JSON-encoded array of media_fbid objects."
+          },
+          "place": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          }
+        }
+      },
+      "EditPost": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "is_published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "EditComment": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "is_hidden": {
+            "type": "boolean"
+          },
+          "attachment_id": {
+            "type": "string"
+          },
+          "attachment_url": {
+            "type": "string"
+          },
+          "attachment_share_url": {
+            "type": "string"
+          }
+        }
+      },
+      "EditPage": {
+        "type": "object",
+        "properties": {
+          "about": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateComment": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "attachment_id": {
+            "type": "string"
+          },
+          "attachment_url": {
+            "type": "string"
+          }
+        }
+      },
+      "CreatePhotoURL": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "CreatePhotoFile": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "format": "binary"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "PhotoResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "post_id": {
+            "type": "string"
+          }
+        }
+      },
+      "VideoURL": {
+        "type": "object",
+        "properties": {
+          "file_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "file_url"
+        ],
+        "not": {
+          "required": [
+            "upload_phase"
+          ]
+        }
+      },
+      "VideoFile": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "format": "binary"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "VideoStart": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "start"
+            ]
+          },
+          "file_size": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "upload_phase",
+          "file_size"
+        ],
+        "not": {
+          "required": [
+            "file_url"
+          ]
+        }
+      },
+      "VideoTransfer": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "transfer"
+            ]
+          },
+          "upload_session_id": {
+            "type": "string"
+          },
+          "start_offset": {
+            "type": "string"
+          },
+          "video_file_chunk": {
+            "type": "string",
+            "format": "binary"
+          }
+        },
+        "required": [
+          "upload_phase",
+          "upload_session_id",
+          "start_offset",
+          "video_file_chunk"
+        ],
+        "not": {
+          "required": [
+            "file_url"
+          ]
+        }
+      },
+      "VideoFinish": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "finish"
+            ]
+          },
+          "upload_session_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "upload_phase",
+          "upload_session_id"
+        ],
+        "not": {
+          "required": [
+            "file_url"
+          ]
+        }
+      },
+      "VideoCancel": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "cancel"
+            ]
+          },
+          "upload_session_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "upload_phase",
+          "upload_session_id"
+        ],
+        "not": {
+          "required": [
+            "file_url"
+          ]
+        }
+      },
+      "VideoUploadResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "string"
+          },
+          "upload_session_id": {
+            "type": "string"
+          },
+          "start_offset": {
+            "type": "string"
+          },
+          "end_offset": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "skip_upload": {
+            "type": "boolean"
+          },
+          "upload_domain": {
+            "type": "string"
+          },
+          "region_hint": {
+            "type": "string"
+          }
+        }
+      },
+      "ReelStart": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "start"
+            ]
+          }
+        },
+        "required": [
+          "upload_phase"
+        ]
+      },
+      "ReelFinish": {
+        "type": "object",
+        "properties": {
+          "upload_phase": {
+            "type": "string",
+            "enum": [
+              "finish"
+            ]
+          },
+          "video_id": {
+            "type": "string"
+          },
+          "video_state": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "SCHEDULED",
+              "PUBLISHED"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "scheduled_publish_time": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "place": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "upload_phase",
+          "video_id",
+          "video_state"
+        ]
+      },
+      "ReelUploadResult": {
+        "type": "object",
+        "properties": {
+          "video_id": {
+            "type": "string"
+          },
+          "upload_url": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VideoHandle": {
+        "type": "object",
+        "properties": {
+          "fbuploader_video_file_chunk": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "fbuploader_video_file_chunk"
+        ]
+      },
+      "PageSetting": {
+        "type": "object",
+        "properties": {
+          "setting": {
+            "type": "string"
+          },
+          "value": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageSettingList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageSetting"
+            }
+          }
+        }
+      },
+      "PageReview": {
+        "type": "object",
+        "properties": {
+          "created_time": {
+            "type": "string"
+          },
+          "recommendation_type": {
+            "type": "string"
+          },
+          "review_text": {
+            "type": "string"
+          },
+          "reviewer": {
+            "$ref": "#/components/schemas/Actor"
+          }
+        }
+      },
+      "PageReviewList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PageReview"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "PageIntegrity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string"
+          },
+          "violations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "restrictions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "feature": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "applied_time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "expiration_time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "violation_type": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "recommended_actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "action_type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "violation_type": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "actions_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "created_time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "updated_time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "violation_type": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-access-requirements": {
+    "user-consent": "Scopes requested by the login dialog are not proof of granted permissions. Inspect granted scopes and granted Page assets.",
+    "app-access": "App Review/Advanced Access for people outside app/business roles; development role testing differs. Business verification and additional feature approval depend on app/use case.",
+    "asset-access": "Page tokens derive from a Facebook User grant for a selected Page, appropriate Page tasks and app. No permission or asset expansion on token derivation.",
+    "instagram-bridge": "instagram_basic is the Facebook Login scope for basic linked professional Instagram reads. It is not instagram_business_basic and does not authorize publishing, messaging, comments or insights. See the separately versioned Instagram Facebook Login contracts.",
+    "source": "https://developers.facebook.com/documentation/pages-api/overview.md"
+  }
+}

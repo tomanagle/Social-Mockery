@@ -40,7 +40,7 @@ docker:
 	docker build -f dev/Dockerfile -t social-mockery .
 
 .PHONY: generate generate-check spec-validate
-SPEC_FILES := $(sort $(wildcard specs/*/*/*/openapi.yaml specs/*/*/*/*.openapi.yaml))
+SPEC_FILES := $(shell find specs -type f \( -name 'openapi.yaml' -o -name '*.openapi.yaml' \) | LC_ALL=C sort)
 GENERATOR_CONFIGS := $(sort $(wildcard configs/openapi/*.yaml))
 spec-validate:
 	cd tools && go run -mod=readonly ./cmd/specvalidate $(addprefix ../,$(SPEC_FILES))

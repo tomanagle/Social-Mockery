@@ -1,4 +1,4 @@
-# Phase 1 API
+# Local API
 
 Start the server with `profiles/example.yaml` as shown in the README. These examples need curl and Python 3 (only to read JSON response IDs). Use fixture credentials, never production tokens.
 

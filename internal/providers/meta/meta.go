@@ -523,6 +523,44 @@ func (p *Provider) authorize(w http.ResponseWriter, r *http.Request, values url.
 		}
 		return store.Token{}, 0, false
 	}
+	// OAuth-issued tokens remain bounded by the current app approval and user grant.
+	if t.AppID != "" {
+		expected := "instagram"
+		if host == "graph.facebook.com" {
+			expected = "instagram_facebook"
+		}
+		app, appErr := p.engine.Store.OAuthApp(r.Context(), t.AppID)
+		grant, grantErr := p.engine.Store.OAuthGrant(r.Context(), t.AppID, t.GrantAccountID)
+		valid := appErr == nil && grantErr == nil && t.Product == expected && app.Product == expected && has(app.AccountIDs, t.GrantAccountID)
+		for _, scope := range t.Scopes {
+			valid = valid && has(app.ApprovedScopes, scope) && has(grant.Scopes, scope)
+		}
+		for _, asset := range t.AssetIDs {
+			valid = valid && has(grant.AssetIDs, asset)
+		}
+
+		if valid && t.Product == "instagram_facebook" {
+			assets, assetErr := p.engine.Store.OAuthAssets(r.Context(), t.GrantAccountID)
+			linked, accountErr := p.engine.Store.Account(r.Context(), t.AccountID)
+			valid = assetErr == nil && accountErr == nil && linked.Type != "PERSONAL" && len(t.AssetIDs) == 1
+			for _, id := range t.AssetIDs {
+				found := false
+				for _, asset := range assets {
+					if asset.ID == id && asset.InstagramAccountID == t.AccountID {
+						found = true
+						for _, scope := range t.Scopes {
+							valid = valid && simulation.PageTaskAllows(asset.Tasks, scope)
+						}
+					}
+				}
+				valid = valid && found
+			}
+		}
+		if !valid {
+			failure(w, 400, 190, "Access token grant or app approval is no longer valid")
+			return store.Token{}, 0, false
+		}
+	}
 	now, _, err := p.engine.Store.Clock(r.Context())
 	if err != nil {
 		failStore(w, err)

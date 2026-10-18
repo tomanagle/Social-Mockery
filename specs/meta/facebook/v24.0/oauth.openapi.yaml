@@ -1,0 +1,653 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Facebook OAuth API",
+    "version": "v24.0",
+    "description": "Documentation-based, bounded native Facebook Pages contracts. Generated interfaces do not register runtime routes. Current shared documentation plus pinned SDK evidence; no live verification or independent historical parity claim."
+  },
+  "x-provider": "facebook",
+  "x-contract-only": true,
+  "x-contract-kind": "oauth",
+  "x-version-evidence": {
+    "latest-release": "v26.0",
+    "latest-release-verified": true,
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "sdk-revision": "f1722382526f18b5ab33de007641c4b89f5d86fc",
+    "reference-scope": "Current shared references; historical behavior, account eligibility and field rollout are not independently verified."
+  },
+  "servers": [
+    {
+      "url": "https://graph.facebook.com"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/v24.0/dialog/oauth": {
+      "get": {
+        "operationId": "authorizeFacebook",
+        "description": "Browser authorization and permission consent. Requested scopes may be declined; state must be validated by client. App approval, Page grants and Page tasks are independent gates. Code flow is represented; implicit/hybrid responses are outside this slice. Ordinary Facebook Login permits partial permission decline; config_id selects Facebook Login for Business, where all requested permissions are required and at least one supported business permission beyond automatic email/public_profile is needed. Business system-user token configurations are outside this core code-flow slice.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+          "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Provider browser login/consent UI; markup is provider-owned and not standardized."
+          },
+          "302": {
+            "description": "Redirect to registered redirect_uri with code/state, or error=access_denied, error_reason=user_denied and error_description on denial.",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code"
+              ]
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated requested permissions, not proof of grants. Facebook Login Instagram access uses instagram_basic, not instagram_business_basic."
+          },
+          {
+            "name": "auth_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "config_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "display",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://www.facebook.com"
+          }
+        ],
+        "x-consent-products": {
+          "facebook-login": {
+            "partial-permission-decline": true,
+            "rerequest": "auth_type=rerequest re-prompts previously declined permissions.",
+            "source": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+          },
+          "facebook-login-for-business": {
+            "all-requested-permissions-required": true,
+            "automatically-granted": [
+              "email",
+              "public_profile"
+            ],
+            "additional-supported-business-permission-required": true,
+            "configuration-parameter": "config_id",
+            "source": "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+          },
+          "boundary": "The all-or-nothing grant rule is specific to Facebook Login for Business; do not apply it to ordinary Facebook Login. Business Integration System User configurations are documented separately and are not proof every Instagram operation accepts that token type."
+        }
+      }
+    },
+    "/v24.0/oauth/access_token": {
+      "get": {
+        "operationId": "exchangeFacebookToken",
+        "description": "Code exchange requires client_id,client_secret,redirect_uri and code. Long-lived exchange instead requires grant_type=fb_exchange_token and fb_exchange_token. redirect_uri must match authorization. No refresh_token grant or universal permanent-token lifetime is invented.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+          "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "grant_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "fb_exchange_token"
+              ]
+            }
+          },
+          {
+            "name": "fb_exchange_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "x-parameter-variants": [
+          {
+            "required": [
+              "client_id",
+              "client_secret",
+              "redirect_uri",
+              "code"
+            ]
+          },
+          {
+            "required": [
+              "client_id",
+              "client_secret",
+              "grant_type",
+              "fb_exchange_token"
+            ],
+            "grant_type": "fb_exchange_token"
+          }
+        ]
+      }
+    },
+    "/v24.0/debug_token": {
+      "get": {
+        "operationId": "debugFacebookToken",
+        "description": "Inspect validity, app binding, scope grants, granular target IDs and expiry. The inspecting access token must be authorized to debug the input token; the input token is not the authenticating token.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DebugToken"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Authorized app or developer access token",
+        "parameters": [
+          {
+            "name": "input_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerToken": []
+          },
+          {
+            "QueryToken": []
+          }
+        ]
+      }
+    },
+    "/v24.0/{userID}/permissions": {
+      "get": {
+        "operationId": "readFacebookPermissions",
+        "description": "User-scoped permission inspection or removal. userID may be me. Revocation invalidates the corresponding access, it does not remove the Facebook account.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Facebook User",
+        "security": [
+          {
+            "BearerToken": []
+          },
+          {
+            "QueryToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "revokeFacebookPermissions",
+        "description": "User-scoped permission inspection or removal. userID may be me. Revocation invalidates the corresponding access, it does not remove the Facebook account.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Facebook User",
+        "security": [
+          {
+            "BearerToken": []
+          },
+          {
+            "QueryToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v24.0/{userID}/permissions/{permission}": {
+      "delete": {
+        "operationId": "revokeFacebookPermission",
+        "description": "Remove the named permission grant using a User token or the current App token. The official Revoking Permissions section returns literal true, distinct from the base-edge DELETE success envelope. userID may be me when supported by the token subject.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documented response. Selected fields and granted access determine returned properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph error envelope; no exhaustive HTTP status mapping is inferred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphError"
+                }
+              }
+            }
+          }
+        },
+        "x-token-type": "Facebook User or current App access token",
+        "security": [
+          {
+            "BearerToken": []
+          },
+          {
+            "QueryToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "permission",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "GraphError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "code": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "error_subcode": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_transient": {
+                "type": "boolean"
+              },
+              "error_user_title": {
+                "type": "string"
+              },
+              "error_user_msg": {
+                "type": "string"
+              },
+              "fbtrace_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Paging": {
+        "type": "object",
+        "properties": {
+          "cursors": {
+            "type": "object",
+            "properties": {
+              "before": {
+                "type": "string"
+              },
+              "after": {
+                "type": "string"
+              }
+            }
+          },
+          "next": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          }
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Permission": {
+        "type": "object",
+        "properties": {
+          "permission": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "PermissionList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
+          }
+        }
+      },
+      "DebugToken": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "app_id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "application": {
+                "type": "string"
+              },
+              "data_access_expires_at": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "expires_at": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_valid": {
+                "type": "boolean"
+              },
+              "issued_at": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "scopes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "granular_scopes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "scope": {
+                      "type": "string"
+                    },
+                    "target_ids": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                  }
+                }
+              },
+              "user_id": {
+                "type": "string"
+              },
+              "profile_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

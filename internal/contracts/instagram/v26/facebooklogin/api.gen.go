@@ -1244,21 +1244,6 @@ func (e GetInstagramConversationRoutingStatusParamsFields) Valid() bool {
 	}
 }
 
-// Defines values for ListFacebookLoginInstagramConversationsParamsPlatform.
-const (
-	INSTAGRAM ListFacebookLoginInstagramConversationsParamsPlatform = "INSTAGRAM"
-)
-
-// Valid indicates whether the value is a known member of the ListFacebookLoginInstagramConversationsParamsPlatform enum.
-func (e ListFacebookLoginInstagramConversationsParamsPlatform) Valid() bool {
-	switch e {
-	case INSTAGRAM:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for GetCreatorMarketplaceCreatorsParamsCreatorMinFollowers.
 const (
 	GetCreatorMarketplaceCreatorsParamsCreatorMinFollowersN0      GetCreatorMarketplaceCreatorsParamsCreatorMinFollowers = 0
@@ -3648,15 +3633,12 @@ type FacebookReadPublishingLimitParams struct {
 
 // ListFacebookLoginInstagramConversationsParams defines parameters for ListFacebookLoginInstagramConversations.
 type ListFacebookLoginInstagramConversationsParams struct {
-	Platform *ListFacebookLoginInstagramConversationsParamsPlatform `form:"platform,omitempty" json:"platform,omitempty"`
-	UserId   *string                                                `form:"user_id,omitempty" json:"user_id,omitempty"`
-	Fields   *string                                                `form:"fields,omitempty" json:"fields,omitempty"`
-	Folder   *string                                                `form:"folder,omitempty" json:"folder,omitempty"`
-	Tags     *string                                                `form:"tags,omitempty" json:"tags,omitempty"`
+	Platform *string `form:"platform,omitempty" json:"platform,omitempty"`
+	UserId   *string `form:"user_id,omitempty" json:"user_id,omitempty"`
+	Fields   *string `form:"fields,omitempty" json:"fields,omitempty"`
+	Folder   *string `form:"folder,omitempty" json:"folder,omitempty"`
+	Tags     *string `form:"tags,omitempty" json:"tags,omitempty"`
 }
-
-// ListFacebookLoginInstagramConversationsParamsPlatform defines parameters for ListFacebookLoginInstagramConversations.
-type ListFacebookLoginInstagramConversationsParamsPlatform string
 
 // GetCreatorMarketplaceBrandInfoParams defines parameters for GetCreatorMarketplaceBrandInfo.
 type GetCreatorMarketplaceBrandInfoParams struct {

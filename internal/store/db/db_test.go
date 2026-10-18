@@ -21,7 +21,7 @@ func TestMustInitializesDatabase(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	if version != 1 || foreignKeys != 1 || initialized != 0 {
+	if version != 2 || foreignKeys != 1 || initialized != 0 {
 		t.Fatalf("database not initialized: version=%d foreign_keys=%d initialized=%d", version, foreignKeys, initialized)
 	}
 	if got := connection.Stats().MaxOpenConnections; got != 1 {
@@ -32,7 +32,7 @@ func TestMustInitializesDatabase(t *testing.T) {
 func TestMustPanicsOnInitializationFailure(t *testing.T) {
 	futureSchema := filepath.Join(t.TempDir(), "future.db")
 	connection := Must(futureSchema)
-	if _, err := connection.Exec("PRAGMA user_version=2"); err != nil {
+	if _, err := connection.Exec("PRAGMA user_version=3"); err != nil {
 		t.Fatal(err)
 	}
 	if err := connection.Close(); err != nil {

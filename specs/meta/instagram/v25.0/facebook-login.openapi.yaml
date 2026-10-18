@@ -31,7 +31,7 @@
     "/v25.0/{objectID}": {
       "get": {
         "operationId": "readInstagramNode",
-        "description": "Account, media and comment IDs share the same route. Permission requirements depend on node and field; comments require manage_comments. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants.",
+        "description": "Account, media and comment IDs share the same route. Permission requirements depend on node and field; comments require manage_comments. Shared Graph path: node-specific or request-specific variants are recorded in x-operation-variants.",
         "parameters": [
           {
             "name": "fields",
@@ -254,7 +254,8 @@
           "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
           "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
           "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
-          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
         ],
         "x-permissions": {
           "required": [
@@ -279,7 +280,11 @@
             "permissions": [
               "instagram_basic",
               "pages_read_engagement"
-            ]
+            ],
+            "access-token-types": [
+              "facebook-user"
+            ],
+            "token-source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user"
           },
           {
             "node": "media",
@@ -358,7 +363,8 @@
             "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery",
             "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_media",
             "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/mentioned_comment",
-            "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag"
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -561,14 +567,21 @@
                 "description": "Facebook User access token used by the official collection."
               }
             ],
-            "permissions": [],
-            "permission-evidence": "See variant source; absence of a scope list is not a claim that no permissions are required.",
+            "permissions": [
+              "instagram_basic",
+              "pages_show_list"
+            ],
+            "permission-evidence": "Official getting-started sequence requests instagram_basic and pages_show_list to discover the linked professional account; this is workflow evidence, not a full Page field permission matrix.",
             "sources": [
               "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
-              "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+              "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+              "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
             ],
             "description": "",
-            "request-body-required": false
+            "request-body-required": false,
+            "access-token-types": [
+              "facebook-user"
+            ]
           }
         ],
         "x-permission-applicability": "Top-level permissions describe the original node-specific operation only. Each merged variant has independent permission evidence; consult its sources and permission-evidence."
@@ -1692,7 +1705,8 @@
         },
         "x-sources": [
           "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
-          "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+          "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights",
+          "https://developers.facebook.com/documentation/instagram-platform/insights"
         ],
         "x-permissions": {
           "required": [
@@ -1735,7 +1749,8 @@
         "x-request-evidence": {
           "sources": [
             "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
-            "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+            "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights",
+            "https://developers.facebook.com/documentation/instagram-platform/insights"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -1747,6 +1762,12 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/insights"
         }
       }
     },
@@ -2183,6 +2204,12 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
         }
       },
       "post": {
@@ -2294,7 +2321,91 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
-        }
+        },
+        "x-permissions": {
+          "required": [
+            "instagram_basic",
+            "instagram_content_publish",
+            "pages_read_engagement"
+          ],
+          "conditional": [
+            {
+              "when": "Page role granted through Business Manager",
+              "anyOf": [
+                "ads_management",
+                "ads_read"
+              ]
+            },
+            {
+              "when": "Product-tagging containers",
+              "required": [
+                "catalog_management",
+                "instagram_shopping_tag_products"
+              ]
+            }
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+          "note": "Endpoint reference token requirement; current publishing guide and official collection also document a Page-token publishing flow."
+        },
+        "x-page-task-requirements": {
+          "anyOf": [
+            "MANAGE",
+            "CREATE_CONTENT"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+        },
+        "x-account-constraints": {
+          "linked-facebook-page-required": true,
+          "page-publishing-authorization": "Must be completed if the linked Page requires it.",
+          "two-factor-authentication": "The Facebook User must have completed two-factor authentication if the linked Page requires it.",
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media"
+        },
+        "x-publishing-access-source-conflict": {
+          "endpoint-reference": {
+            "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+            "access-token-types": [
+              "facebook-user"
+            ],
+            "permissions": [
+              "instagram_basic",
+              "instagram_content_publish",
+              "pages_read_engagement"
+            ],
+            "business-manager-permissions": {
+              "anyOf": [
+                "ads_management",
+                "ads_read"
+              ]
+            }
+          },
+          "publishing-guide": {
+            "source": "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+            "access-token-types": [
+              "facebook-page"
+            ],
+            "permissions": [
+              "instagram_basic",
+              "instagram_content_publish",
+              "pages_read_engagement"
+            ],
+            "business-manager-permissions": {
+              "required": [
+                "ads_management",
+                "ads_read"
+              ]
+            }
+          },
+          "resolution": "Retain source-specific requirements. No Page-token-only rule, unconditional scope union, or live-verified equivalence is asserted."
+        },
+        "x-source-caveats": [
+          "Publishing guide and endpoint reference differ on token type, Business Manager scope alternatives, and (for media_publish) pages_read_engagement. See x-publishing-access-source-conflict."
+        ]
       }
     },
     "/v25.0/{objectID}/stories": {
@@ -2739,7 +2850,89 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
-        }
+        },
+        "x-permissions": {
+          "required": [
+            "instagram_basic",
+            "instagram_content_publish"
+          ],
+          "conditional": [
+            {
+              "when": "Page role granted through Business Manager",
+              "anyOf": [
+                "ads_management",
+                "ads_read"
+              ]
+            },
+            {
+              "when": "Product-tagging containers",
+              "required": [
+                "catalog_management",
+                "instagram_shopping_tag_products"
+              ]
+            }
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish"
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+          "note": "Endpoint reference token requirement; current publishing guide and official collection also document a Page-token publishing flow."
+        },
+        "x-page-task-requirements": {
+          "anyOf": [
+            "MANAGE",
+            "CREATE_CONTENT"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish"
+        },
+        "x-account-constraints": {
+          "linked-facebook-page-required": true,
+          "page-publishing-authorization": "Must be completed if the linked Page requires it.",
+          "two-factor-authentication": "The Facebook User must have completed two-factor authentication if the linked Page requires it.",
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish"
+        },
+        "x-publishing-access-source-conflict": {
+          "endpoint-reference": {
+            "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+            "access-token-types": [
+              "facebook-user"
+            ],
+            "permissions": [
+              "instagram_basic",
+              "instagram_content_publish"
+            ],
+            "business-manager-permissions": {
+              "anyOf": [
+                "ads_management",
+                "ads_read"
+              ]
+            }
+          },
+          "publishing-guide": {
+            "source": "https://developers.facebook.com/documentation/instagram-platform/content-publishing",
+            "access-token-types": [
+              "facebook-page"
+            ],
+            "permissions": [
+              "instagram_basic",
+              "instagram_content_publish",
+              "pages_read_engagement"
+            ],
+            "business-manager-permissions": {
+              "required": [
+                "ads_management",
+                "ads_read"
+              ]
+            }
+          },
+          "resolution": "Retain source-specific requirements. No Page-token-only rule, unconditional scope union, or live-verified equivalence is asserted."
+        },
+        "x-source-caveats": [
+          "Publishing guide and endpoint reference differ on token type, Business Manager scope alternatives, and (for media_publish) pages_read_engagement. See x-publishing-access-source-conflict."
+        ]
       }
     },
     "/v25.0/{objectID}/content_publishing_limit": {
@@ -2809,13 +3002,15 @@
           }
         ],
         "x-sources": [
-          "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+          "https://developers.facebook.com/documentation/instagram-platform/content-publishing"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
-            "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+            "https://developers.facebook.com/documentation/instagram-platform/content-publishing"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -2826,6 +3021,30 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-permissions": {
+          "required": [
+            "instagram_basic",
+            "instagram_content_publish",
+            "pages_read_engagement"
+          ],
+          "conditional": [
+            {
+              "when": "Page role granted through Business Manager",
+              "anyOf": [
+                "ads_management",
+                "ads_read"
+              ]
+            }
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+          "note": "Endpoint reference token requirement; current publishing guide and official collection also document a Page-token publishing flow."
         }
       }
     },
@@ -2996,7 +3215,7 @@
       "get": {
         "operationId": "listFacebookLoginInstagramConversations",
         "summary": "list Facebook Login Instagram Conversations",
-        "description": "Facebook Page conversation edge for Instagram messaging. Use Page token; fields can select messages,is_owner. Platform selector independently supported by official Page SDK.",
+        "description": "Facebook Page conversation edge for Instagram messaging. The official getting-started HTTP flow uses a Page token and platform=instagram. fields can select messages,is_owner. SDK parameter evidence does not prove server enum completeness.",
         "parameters": [
           {
             "name": "objectID",
@@ -3012,10 +3231,8 @@
             "required": false,
             "schema": {
               "type": "string",
-              "enum": [
-                "INSTAGRAM"
-              ],
-              "description": "Current official SDK uses uppercase INSTAGRAM."
+              "example": "instagram",
+              "description": "Official HTTP guide uses lowercase instagram; the official Page SDK exposes uppercase INSTAGRAM. Values remain permissive because SDK enums do not establish exhaustive server validation."
             }
           },
           {
@@ -3097,7 +3314,8 @@
         "x-sources": [
           "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
           "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py",
+          "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
@@ -3105,7 +3323,8 @@
           "sources": [
             "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
             "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py",
+            "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -3118,7 +3337,32 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
-        }
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-page"
+          ],
+          "source": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
+        },
+        "x-permissions": {
+          "required": [
+            "instagram_basic",
+            "instagram_manage_messages"
+          ],
+          "workflow": [
+            "pages_manage_metadata"
+          ],
+          "source": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md",
+          "workflow-note": "pages_manage_metadata belongs to the messaging setup/webhook workflow; the guide is not an exhaustive conversation-edge permission matrix."
+        },
+        "x-messaging-account-requirements": {
+          "linked-facebook-page-required": true,
+          "allow-access-to-messages-setting-required": true,
+          "source": "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
+        },
+        "x-source-caveats": [
+          "Official HTTP guide uses platform=instagram while official Page SDK enum is INSTAGRAM; neither example nor SDK validation establishes a case-sensitive exhaustive server enum."
+        ]
       }
     },
     "/v25.0/{objectID}/subscribed_apps": {
@@ -3187,13 +3431,15 @@
           }
         ],
         "x-sources": [
-          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
-            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+            "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -3204,12 +3450,33 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-page"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
+        },
+        "x-permissions": {
+          "required": [
+            "pages_manage_metadata",
+            "pages_show_list"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
+        },
+        "x-page-task-requirements": {
+          "anyOf": [
+            "CREATE_CONTENT",
+            "MANAGE",
+            "MODERATE"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
         }
       },
       "post": {
         "operationId": "subscribeFacebookLoginPage",
         "summary": "subscribe Facebook Login Page",
-        "description": "Facebook Page subscriptions use Page field vocabulary, not Instagram Login field names.",
+        "description": "Subscribe the app to Facebook Page webhook fields. The Page reference explicitly says subscribed_fields cannot configure Instagram Webhooks; Instagram topic subscription must be configured in the app dashboard.",
         "parameters": [
           {
             "name": "objectID",
@@ -3267,14 +3534,16 @@
         ],
         "x-sources": [
           "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
             "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+            "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -3286,6 +3555,32 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-page"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
+        },
+        "x-permissions": {
+          "required": [
+            "pages_manage_metadata",
+            "pages_show_list"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
+        },
+        "x-page-task-requirements": {
+          "anyOf": [
+            "CREATE_CONTENT",
+            "MANAGE",
+            "MODERATE"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
+        },
+        "x-instagram-webhook-boundary": {
+          "subscribed-fields-configures-instagram-webhooks": false,
+          "configuration": "Meta App Dashboard",
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
         }
       },
       "delete": {
@@ -3329,13 +3624,15 @@
           }
         ],
         "x-sources": [
-          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+          "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+          "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
-            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+            "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+            "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -3346,6 +3643,17 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-app"
+          ],
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+          "note": "An app can remove its own Page webhook subscription with an App Access Token. This does not grant access to remove another app subscription."
+        },
+        "x-permissions": {
+          "source": "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+          "note": "The deletion reference specifies the own-app App Access Token branch; no additional OAuth scope list is stated."
         }
       }
     },
@@ -7284,7 +7592,9 @@
         "x-sources": [
           "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
           "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
-          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+          "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+          "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started",
+          "https://developers.facebook.com/docs/permissions/"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
@@ -7292,7 +7602,9 @@
           "sources": [
             "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
             "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
-            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started",
+            "https://developers.facebook.com/docs/permissions/"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -7305,7 +7617,23 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
-        }
+        },
+        "x-permissions": {
+          "required": [
+            "pages_show_list"
+          ],
+          "workflow": [
+            "instagram_basic"
+          ],
+          "workflow-note": "instagram_basic is requested by the Instagram account-discovery workflow; it is not asserted as a universal requirement to list unrelated Facebook Pages."
+        },
+        "x-access-token-requirements": {
+          "types": [
+            "facebook-user"
+          ],
+          "source": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
+        },
+        "description": "List Pages visible to the Facebook User token, optionally projecting access_token, tasks and instagram_business_account. A returned Page access_token acts for that Page; instagram_business_account.id is the linked professional Instagram account ID. Selecting a returned Page does not grant additional Page tasks or scopes."
       }
     }
   },
@@ -12016,5 +12344,96 @@
       "code": 10,
       "error_subcode": 9053
     }
-  ]
+  ],
+  "x-login-access-requirements": {
+    "login-product": "facebook-login",
+    "authorization-product": "Facebook Login for Business",
+    "host": "graph.facebook.com",
+    "professional-account-required": true,
+    "linked-facebook-page-required": true,
+    "access-token-types": [
+      "facebook-user",
+      "facebook-page"
+    ],
+    "access-token-applicability": "Token type is operation-specific. Read the operation and node-variant requirements; the product-level list is not permission to use either type for every operation. Page subscription removal has a separately documented app-token branch.",
+    "basic-permission": "instagram_basic",
+    "other-login-basic-permission": "instagram_business_basic",
+    "scope-family-note": "instagram_business_basic and instagram_business_* scopes belong to Instagram Login; they do not replace Facebook Login instagram_basic and instagram_* scopes.",
+    "standard-access": "For professional accounts the app owns or manages and people with applicable app/business roles; some features remain limited during testing.",
+    "advanced-access": "For professional accounts the app does not own or manage and people without applicable app/business roles; requires App Review and Business Verification.",
+    "page-task-permissions": {
+      "PROFILE_PLUS_ADVERTISE": [
+        "instagram_basic"
+      ],
+      "PROFILE_PLUS_CREATE_CONTENT": [
+        "instagram_basic",
+        "instagram_content_publish"
+      ],
+      "PROFILE_PLUS_FULL_CONTROL": [
+        "instagram_basic",
+        "instagram_content_publish"
+      ],
+      "PROFILE_PLUS_ANALYZE": [
+        "instagram_basic",
+        "instagram_manage_insights"
+      ],
+      "PROFILE_PLUS_MESSAGING": [
+        "instagram_basic",
+        "instagram_manage_messages"
+      ],
+      "PROFILE_PLUS_MODERATE": [
+        "instagram_basic",
+        "instagram_manage_comments"
+      ]
+    },
+    "page-task-note": "Overview reports PROFILE_PLUS_* task names. Several per-operation references and examples still report MANAGE/CREATE_CONTENT/MODERATE/etc.; retain source vocabulary rather than inventing a universal task enum.",
+    "sources": [
+      "https://developers.facebook.com/documentation/instagram-platform/overview",
+      "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
+    ],
+    "retrieved": "2026-10-18",
+    "live-verified": false
+  },
+  "x-permission-dependency-evidence": {
+    "source": "https://developers.facebook.com/docs/permissions/",
+    "retrieved": "2026-10-18",
+    "dependencies": {
+      "instagram_basic": [
+        "pages_read_user_content",
+        "pages_show_list"
+      ],
+      "instagram_content_publish": [
+        "instagram_basic",
+        "pages_read_engagement",
+        "pages_show_list"
+      ],
+      "instagram_manage_comments": [
+        "instagram_basic",
+        "pages_read_engagement",
+        "pages_show_list"
+      ],
+      "instagram_manage_insights": [
+        "instagram_basic",
+        "pages_read_engagement",
+        "pages_show_list"
+      ],
+      "instagram_manage_messages": [
+        "instagram_basic",
+        "pages_read_engagement",
+        "pages_show_list"
+      ],
+      "pages_read_engagement": [
+        "pages_show_list"
+      ],
+      "pages_show_list": []
+    },
+    "applicability": "Permission-reference dependencies are retained separately from endpoint permission tables; they are not an unconditional flattened scope list for every request.",
+    "source-conflict": "The permission reference lists pages_read_user_content and pages_show_list dependencies for instagram_basic. The Instagram getting-started flow requests instagram_basic and pages_show_list, and endpoint references often list pages_read_engagement. These sources are not identical; no undocumented universal expansion or historical parity is asserted.",
+    "comparison": {
+      "instagram_business_basic": {
+        "dependencies": [],
+        "login-product": "instagram-login"
+      }
+    }
+  }
 }

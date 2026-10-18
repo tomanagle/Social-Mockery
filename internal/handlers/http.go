@@ -6,6 +6,7 @@ import (
 	"errors"
 	"github.com/tomanagle/Social-Mockery/internal/profiles"
 	"github.com/tomanagle/Social-Mockery/internal/providers/meta"
+	"github.com/tomanagle/Social-Mockery/internal/providers/oauth"
 	"github.com/tomanagle/Social-Mockery/internal/simulation"
 	"github.com/tomanagle/Social-Mockery/internal/telemetry"
 	"io"
@@ -37,6 +38,8 @@ func New(engine *simulation.Engine, adminToken string, instrumentation ...*telem
 				name = "simulation.reset"
 			case "/admin/clock/advance":
 				name = "clock.advance"
+			case "/admin/oauth/fixtures":
+				name = "oauth.fixtures.upsert"
 			}
 			started := time.Now()
 			ctx, span := t.Start(r.Context(), name)
@@ -110,6 +113,20 @@ func New(engine *simulation.Engine, adminToken string, instrumentation ...*telem
 		}
 		meta.JSON(w, 200, map[string]bool{"reset": true})
 	}))
+	oauthProvider := oauth.New(engine)
+	mux.HandleFunc("POST /oauth/consent", oauthProvider.Consent)
+	mux.HandleFunc("POST /admin/oauth/fixtures", admin(func(w http.ResponseWriter, r *http.Request) {
+		seed, err := profiles.Decode(http.MaxBytesReader(w, r.Body, profiles.MaxBytes))
+		if err != nil {
+			meta.JSON(w, 400, map[string]string{"error": "Invalid complete OAuth fixture profile"})
+			return
+		}
+		if err = engine.Store.UpsertOAuthFixtures(r.Context(), seed); err != nil {
+			meta.JSON(w, 400, map[string]string{"error": "OAuth fixture validation or storage failure"})
+			return
+		}
+		meta.JSON(w, 200, map[string]bool{"upserted": true})
+	}))
 	provider := meta.New(engine, t)
 	slots := make(chan struct{}, 128)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -125,6 +142,10 @@ func New(engine *simulation.Engine, adminToken string, instrumentation ...*telem
 			return
 		}
 		if strings.HasPrefix(r.RequestURI, "/https:") || strings.HasPrefix(r.RequestURI, "/http:") {
+			if _, _, ok := oauth.Match(r); ok {
+				oauthProvider.ServeHTTP(w, r)
+				return
+			}
 			provider.ServeHTTP(w, r)
 			return
 		}

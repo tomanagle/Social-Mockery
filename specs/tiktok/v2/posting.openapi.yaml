@@ -1,0 +1,1380 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TikTok Content Posting API reference contract",
+    "version": "v2",
+    "description": "Documentation-based native interface only. No simulator routes or live verification. v2 is a protocol generation, not a dated Graph API release."
+  },
+  "servers": [
+    {
+      "url": "https://open.tiktokapis.com"
+    }
+  ],
+  "x-provider": "tiktok",
+  "x-contract-only": true,
+  "x-contract-kind": "graph",
+  "x-version-evidence": {
+    "generation": "v2",
+    "retrieved": "2026-10-18",
+    "current-reference": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+    "legacy-exclusion": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+    "note": "Current v2 endpoint references; no evidence of a previous generally supported generation for this selected surface. SDK semantic versions are independent."
+  },
+  "security": [
+    {
+      "TikTokOAuth": []
+    }
+  ],
+  "paths": {
+    "/v2/post/publish/video/init/": {
+      "post": {
+        "operationId": "directPostTikTokVideo",
+        "summary": "directPostTikTokVideo",
+        "description": "Initialization is not publication. Direct Post requires latest creator settings and explicit user consent; inbox uploads require in-app editing/confirmation. Unaudited Direct Post is private-only. PULL_FROM_URL requires verified ownership. Returned upload URL must not be reconstructed.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishInitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.publish"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectVideoRequest"
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "requests": 6,
+          "window_seconds": 60,
+          "key": "user access_token"
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok"
+          ],
+          "400": [
+            "invalid_param"
+          ],
+          "403": [
+            "spam_risk_too_many_posts",
+            "spam_risk_user_banned_from_posting",
+            "url_ownership_unverified",
+            "reached_active_user_cap",
+            "unaudited_client_can_only_post_to_private_accounts",
+            "privacy_level_option_mismatch"
+          ]
+        }
+      }
+    },
+    "/v2/post/publish/inbox/video/init/": {
+      "post": {
+        "operationId": "uploadTikTokInboxVideo",
+        "summary": "uploadTikTokInboxVideo",
+        "description": "Initialization is not publication. Direct Post requires latest creator settings and explicit user consent; inbox uploads require in-app editing/confirmation. Unaudited Direct Post is private-only. PULL_FROM_URL requires verified ownership. Returned upload URL must not be reconstructed.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishInitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.upload"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InboxVideoRequest"
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "requests": 6,
+          "window_seconds": 60,
+          "key": "user access_token"
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok"
+          ],
+          "400": [
+            "invalid_param"
+          ],
+          "403": [
+            "spam_risk_user_banned_from_posting",
+            "url_ownership_unverified",
+            "spam_risk_too_many_pending_share"
+          ]
+        }
+      }
+    },
+    "/v2/post/publish/content/init/": {
+      "post": {
+        "operationId": "publishTikTokPhotos",
+        "summary": "publishTikTokPhotos",
+        "description": "DIRECT_POST requires video.publish; MEDIA_UPLOAD requires video.upload and supported TikTok app version (reference minimum 31.8). Photo upload requires creator finishing in app. is_aigc is top-level for photos, inside post_info for videos.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhotoInitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.publish"
+            ]
+          },
+          {
+            "TikTokOAuth": [
+              "video.upload"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhotoRequest"
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "requests": 6,
+          "window_seconds": 60,
+          "key": "user access_token"
+        },
+        "x-scope-by-post-mode": {
+          "DIRECT_POST": "video.publish",
+          "MEDIA_UPLOAD": "video.upload"
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok"
+          ],
+          "400": [
+            "invalid_param",
+            "app_version_check_failed"
+          ],
+          "403": [
+            "spam_risk_too_many_posts",
+            "spam_risk_user_banned_from_posting",
+            "url_ownership_unverified",
+            "reached_active_user_cap",
+            "unaudited_client_can_only_post_to_private_accounts",
+            "privacy_level_option_mismatch",
+            "spam_risk_too_many_pending_share"
+          ],
+          "5XX": [
+            "internal_error"
+          ]
+        }
+      }
+    },
+    "/v2/post/publish/creator_info/query/": {
+      "post": {
+        "operationId": "queryTikTokCreatorInfo",
+        "summary": "queryTikTokCreatorInfo",
+        "description": "Call for each export screen and use latest account constraints. HTTP 200 intentionally includes spam_risk_too_many_posts, spam_risk_user_banned_from_posting and reached_active_user_cap; do not start posting when these are returned. No JSON request body is documented.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatorInfoResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.publish"
+            ]
+          }
+        ],
+        "x-rate-limit": {
+          "requests": 20,
+          "window_seconds": 60,
+          "key": "user access_token"
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok",
+            "spam_risk_too_many_posts",
+            "spam_risk_user_banned_from_posting",
+            "reached_active_user_cap"
+          ]
+        }
+      }
+    },
+    "/v2/post/publish/status/fetch/": {
+      "post": {
+        "operationId": "fetchTikTokPublishStatus",
+        "summary": "fetchTikTokPublishStatus",
+        "description": "SEND_TO_USER_INBOX is awaiting creator action, not publication. Public post IDs are withheld until moderation; no fixed completion deadline. Response field misspelling publicaly_available_post_id preserved.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishStatusResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.publish"
+            ]
+          },
+          {
+            "TikTokOAuth": [
+              "video.upload"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishIDRequest"
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "requests": 30,
+          "window_seconds": 60,
+          "key": "user access_token"
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok"
+          ],
+          "400": [
+            "invalid_publish_id",
+            "token_not_authorized_for_specified_publish_id"
+          ],
+          "5XX": [
+            "internal_error"
+          ]
+        },
+        "x-documented-fail-reasons": [
+          "file_format_check_failed",
+          "duration_check_failed",
+          "frame_rate_check_failed",
+          "picture_size_check_failed",
+          "internal",
+          "video_pull_failed",
+          "photo_pull_failed",
+          "publish_cancelled",
+          "auth_removed",
+          "spam_risk_too_many_posts",
+          "spam_risk_user_banned_from_posting",
+          "spam_risk_text",
+          "spam_risk"
+        ]
+      }
+    },
+    "/v2/post/publish/cancel/": {
+      "post": {
+        "operationId": "cancelTikTokDownload",
+        "summary": "cancelTikTokDownload",
+        "description": "Best-effort cancellation of ongoing PULL_FROM_URL downloads, not deletion of published content or generic upload cancellation. Cannot cancel near completion/file processing; publish_not_cancellable is HTTP 400.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+          "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Documented response; inspect error.code, not HTTP status alone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Documented error; code/message carry details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TikTokOAuth": [
+              "video.publish"
+            ]
+          },
+          {
+            "TikTokOAuth": [
+              "video.upload"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishIDRequest"
+              }
+            }
+          }
+        },
+        "x-errors-not-exhaustive": true,
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+            "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        },
+        "x-documented-error-codes-by-status": {
+          "401": [
+            "access_token_invalid",
+            "scope_not_authorized"
+          ],
+          "429": [
+            "rate_limit_exceeded"
+          ],
+          "200": [
+            "ok"
+          ],
+          "400": [
+            "invalid_publish_id",
+            "token_not_authorized_for_specified_publish_id",
+            "publish_not_cancellable"
+          ],
+          "403": [
+            "url_ownership_unverified"
+          ],
+          "5XX": [
+            "internal_error"
+          ]
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TikTokOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://www.tiktok.com/v2/auth/authorize/",
+            "tokenUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "refreshUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "scopes": {
+              "user.info.basic": "Basic account identifier, avatar and display name",
+              "user.info.profile": "Additional profile fields",
+              "user.info.stats": "Profile statistics",
+              "video.list": "Read authorized public videos",
+              "video.publish": "Direct Post",
+              "video.upload": "Upload to creator inbox"
+            }
+          }
+        },
+        "description": "Bearer user access token. TikTok authorization uses client_key and comma-separated scopes; endpoint-specific grants and app approval apply."
+      }
+    },
+    "schemas": {
+      "APIError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "ok indicates success; other codes must be handled even when HTTP status is 200."
+          },
+          "message": {
+            "type": "string"
+          },
+          "log_id": {
+            "type": "string",
+            "description": "Wire examples and generic error reference use log_id; posting tables also spell logid."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "PrivacyLevel": {
+        "type": "string",
+        "enum": [
+          "PUBLIC_TO_EVERYONE",
+          "MUTUAL_FOLLOW_FRIENDS",
+          "FOLLOWER_OF_CREATOR",
+          "SELF_ONLY"
+        ],
+        "description": "Must be one of current creator_info privacy_level_options; never silently choose a default."
+      },
+      "PullVideoSource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "PULL_FROM_URL"
+            ]
+          },
+          "video_url": {
+            "type": "string",
+            "description": "HTTPS URL under verified domain/prefix; redirects are unsupported; available through download completion."
+          }
+        },
+        "required": [
+          "source",
+          "video_url"
+        ]
+      },
+      "FileVideoSource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "FILE_UPLOAD"
+            ]
+          },
+          "video_size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "chunk_size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total_chunk_count": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "maximum": 1000
+          }
+        },
+        "description": "Sequential chunks; normally 5\u201364 MB, final may include trailing bytes up to 128 MB; videos below 5 MB use one whole chunk. total_chunk_count is floor(video_size/chunk_size) per guide; do not infer ceil.",
+        "required": [
+          "source",
+          "video_size",
+          "chunk_size",
+          "total_chunk_count"
+        ]
+      },
+      "VideoSource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PullVideoSource"
+          },
+          {
+            "$ref": "#/components/schemas/FileVideoSource"
+          }
+        ]
+      },
+      "VideoPostInfo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Maximum 2200 UTF-16 units per reference; not expressed as JSON Schema maxLength, whose counting differs."
+          },
+          "privacy_level": {
+            "$ref": "#/components/schemas/PrivacyLevel"
+          },
+          "disable_duet": {
+            "type": "boolean"
+          },
+          "disable_stitch": {
+            "type": "boolean"
+          },
+          "disable_comment": {
+            "type": "boolean"
+          },
+          "video_cover_timestamp_ms": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brand_content_toggle": {
+            "type": "boolean"
+          },
+          "brand_organic_toggle": {
+            "type": "boolean"
+          },
+          "is_aigc": {
+            "type": "boolean"
+          }
+        },
+        "description": "Branded-content requiredness conflicts between table and examples; toggles retained optional here and called out in provenance. Interactions must respect creator settings.",
+        "required": [
+          "privacy_level"
+        ]
+      },
+      "DirectVideoRequest": {
+        "type": "object",
+        "properties": {
+          "post_info": {
+            "$ref": "#/components/schemas/VideoPostInfo"
+          },
+          "source_info": {
+            "$ref": "#/components/schemas/VideoSource"
+          }
+        },
+        "required": [
+          "post_info",
+          "source_info"
+        ]
+      },
+      "InboxVideoRequest": {
+        "type": "object",
+        "properties": {
+          "source_info": {
+            "$ref": "#/components/schemas/VideoSource"
+          }
+        },
+        "required": [
+          "source_info"
+        ]
+      },
+      "PublishInitResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "publish_id": {
+                "type": "string",
+                "maxLength": 64
+              },
+              "upload_url": {
+                "type": "string",
+                "maxLength": 256,
+                "description": "Present for FILE_UPLOAD; use entire opaque returned URL. Valid one hour."
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "PhotoInitResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "publish_id": {
+                "type": "string",
+                "maxLength": 64
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "PhotoSource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "PULL_FROM_URL"
+            ]
+          },
+          "photo_images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 35
+          },
+          "photo_cover_index": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "source",
+          "photo_images",
+          "photo_cover_index"
+        ]
+      },
+      "DirectPhotoPostInfo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Up to 90 UTF-16 units."
+          },
+          "description": {
+            "type": "string",
+            "description": "Up to 4000 UTF-16 units."
+          },
+          "privacy_level": {
+            "$ref": "#/components/schemas/PrivacyLevel"
+          },
+          "disable_comment": {
+            "type": "boolean"
+          },
+          "auto_add_music": {
+            "type": "boolean"
+          },
+          "brand_content_toggle": {
+            "type": "boolean"
+          },
+          "brand_organic_toggle": {
+            "type": "boolean"
+          }
+        },
+        "description": "Direct Post controls only; branded toggles table/example requiredness conflict retained.",
+        "required": [
+          "privacy_level"
+        ]
+      },
+      "InboxPhotoPostInfo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Up to 90 UTF-16 units."
+          },
+          "description": {
+            "type": "string",
+            "description": "Up to 4000 UTF-16 units."
+          }
+        },
+        "description": "Creator completes editing and posting in TikTok. Title/description supported."
+      },
+      "DirectPhotoRequest": {
+        "type": "object",
+        "properties": {
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "PHOTO"
+            ]
+          },
+          "post_mode": {
+            "type": "string",
+            "enum": [
+              "DIRECT_POST"
+            ]
+          },
+          "post_info": {
+            "$ref": "#/components/schemas/DirectPhotoPostInfo"
+          },
+          "source_info": {
+            "$ref": "#/components/schemas/PhotoSource"
+          },
+          "is_aigc": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "media_type",
+          "post_mode",
+          "post_info",
+          "source_info"
+        ]
+      },
+      "InboxPhotoRequest": {
+        "type": "object",
+        "properties": {
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "PHOTO"
+            ]
+          },
+          "post_mode": {
+            "type": "string",
+            "enum": [
+              "MEDIA_UPLOAD"
+            ]
+          },
+          "post_info": {
+            "$ref": "#/components/schemas/InboxPhotoPostInfo"
+          },
+          "source_info": {
+            "$ref": "#/components/schemas/PhotoSource"
+          },
+          "is_aigc": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "media_type",
+          "post_mode",
+          "post_info",
+          "source_info"
+        ]
+      },
+      "PhotoRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DirectPhotoRequest"
+          },
+          {
+            "$ref": "#/components/schemas/InboxPhotoRequest"
+          }
+        ]
+      },
+      "CreatorInfoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "creator_avatar_url": {
+                "type": "string",
+                "description": "Documented TTL two hours."
+              },
+              "creator_username": {
+                "type": "string"
+              },
+              "creator_nickname": {
+                "type": "string"
+              },
+              "privacy_level_options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PrivacyLevel"
+                }
+              },
+              "comment_disabled": {
+                "type": "boolean"
+              },
+              "duet_disabled": {
+                "type": "boolean"
+              },
+              "stitch_disabled": {
+                "type": "boolean"
+              },
+              "max_video_post_duration_sec": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      },
+      "PublishIDRequest": {
+        "type": "object",
+        "properties": {
+          "publish_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "publish_id"
+        ]
+      },
+      "PublishStatusResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PROCESSING_UPLOAD",
+                  "PROCESSING_DOWNLOAD",
+                  "SEND_TO_USER_INBOX",
+                  "PUBLISH_COMPLETE",
+                  "FAILED"
+                ]
+              },
+              "fail_reason": {
+                "type": "string"
+              },
+              "publicaly_available_post_id": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "description": "Deliberate documented wire spelling. Public/moderated posts only; one uploaded draft can produce multiple posts."
+              },
+              "uploaded_bytes": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "downloaded_bytes": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/APIError"
+          }
+        }
+      }
+    }
+  }
+}

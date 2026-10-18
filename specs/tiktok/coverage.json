@@ -1,0 +1,208 @@
+{
+  "retrieved_at": "2026-10-18",
+  "provider": "tiktok",
+  "evidence": "documentation-based",
+  "live_verified": false,
+  "counting_rule": "One HTTP method/path per product; token grants, content modes and event variants are not separate operations. Dynamic upload path and callback path are interface templates, not fixed upstream API endpoints.",
+  "versions": {
+    "v2": {
+      "products": {
+        "oauth": {
+          "file": "specs/tiktok/v2/oauth.openapi.yaml",
+          "sha256": "1dd6f62915684a99e04c941c023dfee8349187ff79e447b335392a9b9b189506",
+          "path_count": 5,
+          "operation_count": 5,
+          "schema_count": 14,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v2/auth/authorize/",
+              "operation_id": "authorizeTikTok",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/login-kit-web",
+                "https://developers.tiktok.com/docs/en/login-kit-desktop"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/oauth/token/",
+              "operation_id": "exchangeOrRefreshUserToken",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+                "https://developers.tiktok.com/docs/en/oauth-error-handling"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/oauth/revoke/",
+              "operation_id": "revokeTikTokAccess",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/oauth-user-access-token-management",
+                "https://developers.tiktok.com/docs/en/oauth-error-handling"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/oauth/get_qrcode/",
+              "operation_id": "createTikTokQRCode",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/oauth/check_qrcode/",
+              "operation_id": "checkTikTokQRCode",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/login-kit-qr-code-authorization"
+              ]
+            }
+          ]
+        },
+        "display": {
+          "file": "specs/tiktok/v2/display.openapi.yaml",
+          "sha256": "3890ab0f3d78bedf2324e85ff4df897460181efa219e92024a85ea9465d9869e",
+          "path_count": 3,
+          "operation_count": 3,
+          "schema_count": 9,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v2/user/info/",
+              "operation_id": "getTikTokUserInfo",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-get-user-info",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/video/list/",
+              "operation_id": "listTikTokVideos",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-list",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/video/query/",
+              "operation_id": "queryTikTokVideos",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-query",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-video-object",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-error-handling",
+                "https://developers.tiktok.com/docs/en/tiktok-api-v2-rate-limit"
+              ]
+            }
+          ]
+        },
+        "posting": {
+          "file": "specs/tiktok/v2/posting.openapi.yaml",
+          "sha256": "12d5e76f1e922a0d4aaac7398a5b550df28d2a065eca2d8f0f11a0bdf3c77cb0",
+          "path_count": 6,
+          "operation_count": 6,
+          "schema_count": 20,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/video/init/",
+              "operation_id": "directPostTikTokVideo",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/inbox/video/init/",
+              "operation_id": "uploadTikTokInboxVideo",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-upload-video",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/content/init/",
+              "operation_id": "publishTikTokPhotos",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-photo-post",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/creator_info/query/",
+              "operation_id": "queryTikTokCreatorInfo",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-query-creator-info",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/status/fetch/",
+              "operation_id": "fetchTikTokPublishStatus",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v2/post/publish/cancel/",
+              "operation_id": "cancelTikTokDownload",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/tiktok/v2/upload.openapi.yaml",
+          "sha256": "f5ea6928e9a6bb609bb591d1e51de8ff500eff976e4ce5c3f39f928a2e7cf0d1",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 0,
+          "operations": [
+            {
+              "method": "PUT",
+              "path": "/{uploadPath}",
+              "operation_id": "uploadTikTokVideoBytes",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide",
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-direct-post"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/tiktok/v2/webhooks.openapi.yaml",
+          "sha256": "303e34b8501c4c06959f6b714a53c324465d129ab6eaefefd947145d49495838",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 4,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/webhooks/tiktok",
+              "operation_id": "receiveTikTokWebhook",
+              "sources": [
+                "https://developers.tiktok.com/docs/en/webhooks-overview",
+                "https://developers.tiktok.com/docs/en/webhooks-events",
+                "https://developers.tiktok.com/docs/en/webhooks-verification",
+                "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

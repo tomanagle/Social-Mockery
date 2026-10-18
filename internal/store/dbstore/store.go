@@ -6,8 +6,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/tomanagle/Social-Mockery/internal/profiles"
 	"github.com/tomanagle/Social-Mockery/internal/store"
 	"math"
+	"slices"
 )
 
 type Store struct{ db *sql.DB }
@@ -20,12 +22,15 @@ func mapped(err error) error {
 	return err
 }
 func (s *Store) Reset(ctx context.Context, seed store.Seed, now int64) error {
+	if err := profiles.Validate(seed); err != nil {
+		return err
+	}
 	tx, err := s.db.BeginTx(ctx, nil)
 	if err != nil {
 		return err
 	}
 	defer tx.Rollback()
-	for _, table := range []string{"posts", "containers", "tokens", "accounts"} {
+	for _, table := range []string{"oauth_codes", "oauth_sessions", "oauth_grants", "oauth_assets", "oauth_apps", "posts", "containers", "tokens", "accounts"} {
 		if _, err = tx.ExecContext(ctx, "DELETE FROM "+table); err != nil {
 			return err
 		}
@@ -36,13 +41,34 @@ func (s *Store) Reset(ctx context.Context, seed store.Seed, now int64) error {
 		}
 	}
 	for _, t := range seed.Tokens {
+		if t.AppID != "" && t.GrantAccountID == "" {
+			t.GrantAccountID = t.AccountID
+			for _, app := range seed.Apps {
+				if app.ID != t.AppID || slices.Contains(app.AccountIDs, t.AccountID) {
+					continue
+				}
+				for _, asset := range seed.Assets {
+					if slices.Contains(t.AssetIDs, asset.ID) && asset.InstagramAccountID == t.AccountID && slices.Contains(app.AccountIDs, asset.AccountID) {
+						t.GrantAccountID = asset.AccountID
+						break
+					}
+				}
+			}
+		}
 		b, e := json.Marshal(t.Scopes)
 		if e != nil {
 			return e
 		}
-		if _, err = tx.ExecContext(ctx, `INSERT INTO tokens VALUES(?,?,?,?)`, t.Value, t.AccountID, string(b), t.ExpiresAt); err != nil {
+		assets, e := json.Marshal(t.AssetIDs)
+		if e != nil {
+			return e
+		}
+		if _, err = tx.ExecContext(ctx, `INSERT INTO tokens(value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at) VALUES(?,?,?,?,?,?,?,?,?,?)`, t.Value, t.AccountID, string(b), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, t.RefreshToken, t.RefreshExpiresAt); err != nil {
 			return err
 		}
+	}
+	if err = upsertFixtures(ctx, tx, seed); err != nil {
+		return err
 	}
 	if _, err = tx.ExecContext(ctx, `UPDATE settings SET now=?,processing_seconds=?,sequence=0,initialized=1 WHERE id=1`, now, seed.ProcessingSeconds); err != nil {
 		return err
@@ -67,16 +93,26 @@ func (s *Store) Account(ctx context.Context, id string) (store.Account, error) {
 	err := s.db.QueryRowContext(ctx, `SELECT id,username,type FROM accounts WHERE id=?`, id).Scan(&a.ID, &a.Username, &a.Type)
 	return a, mapped(err)
 }
-func (s *Store) Token(ctx context.Context, value string) (store.Token, error) {
+
+const tokenColumns = "value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at"
+
+func scanToken(row *sql.Row) (store.Token, error) {
 	var t store.Token
-	var scopes string
-	err := s.db.QueryRowContext(ctx, `SELECT value,account_id,scopes,expires_at FROM tokens WHERE value=?`, value).Scan(&t.Value, &t.AccountID, &scopes, &t.ExpiresAt)
+	var scopes, assets string
+	err := row.Scan(&t.Value, &t.AccountID, &scopes, &t.ExpiresAt, &t.AppID, &t.Product, &assets, &t.GrantAccountID, &t.RefreshToken, &t.RefreshExpiresAt)
 	if err != nil {
 		return t, mapped(err)
+	}
+	if err = json.Unmarshal([]byte(assets), &t.AssetIDs); err != nil {
+		return t, err
 	}
 	err = json.Unmarshal([]byte(scopes), &t.Scopes)
 	return t, err
 }
+func (s *Store) Token(ctx context.Context, value string) (store.Token, error) {
+	return scanToken(s.db.QueryRowContext(ctx, "SELECT "+tokenColumns+" FROM tokens WHERE value=?", value))
+}
+
 func nextID(ctx context.Context, tx *sql.Tx) (string, error) {
 	for {
 		var n int64

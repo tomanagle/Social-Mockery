@@ -1,41 +1,49 @@
 # Social Mockery
 
-A local, deterministic social API simulator. Phase 1 implements a focused subset of Instagram Graph publishing so applications can exercise image and Reel creation, processing, polling, and publishing without contacting Meta.
+Test social integrations locally without real accounts, uploads or API calls. Social Mockery simulates OAuth permission screens and a focused Instagram publishing workflow, with seeded accounts, repeatable IDs and a clock you control.
 
-This is not a complete Meta emulator. Compatibility is based on Posty's `workspaces/libs/platforms/src/instagram/publish.ts` request flow and Meta's official Postman API examples, not a live production verification. Existing applications must point their API requests at this server; their entire test suites are not expected to work unchanged.
+## Supported providers
 
-## Quick start
+Runnable simulation:
 
-Requirements: Go 1.26 or newer, CGO enabled, and a C compiler (SQLite uses `github.com/mattn/go-sqlite3`). On Debian/Ubuntu, install `build-essential`; on macOS, install the Xcode command-line tools.
+- [x] Instagram: image/Reel publishing on Graph v24.0 and v25.0; Instagram Login and Facebook Login consent/code exchange (Facebook Login v24.0–v26.0)
+- [x] Facebook: Login consent and code exchange on Graph v24.0, v25.0 and v26.0
+- [x] TikTok: v2 Login consent, code exchange and token refresh
+- [ ] Facebook Page publishing and TikTok publishing at runtime
+
+Reference specifications and generated Go interfaces: [Instagram v24–v26](specs/meta/instagram/README.md), [Facebook v24–v26](specs/meta/facebook/README.md), [TikTok v2](specs/tiktok/README.md). These cover more endpoints than the running simulator.
+
+## Run it
+
+Requires Go 1.26+, CGO and a C compiler (SQLite).
 
 ```sh
 make build
 ./bin/social-mockery --addr 127.0.0.1:3000 --db :memory: --seed profiles/example.yaml
-```
-
-In another terminal:
-
-```sh
 curl -fsS http://127.0.0.1:3000/healthz
 ```
 
-For persisted state, use `--db ./social-mockery.db`. On subsequent starts, omit `--seed` to preserve the virtual clock and records. Explicit `--seed` always replaces existing database state with that profile. See [the API guide](docs/api.md) for copy-and-paste image and Reel flows, and [development](docs/development.md) for layout, tests, and Docker.
+Or use Docker with live reload: `make dev` (stop with `make dev-down`). For persistent state use `--db ./social-mockery.db`; omit `--seed` on later starts to keep existing data.
 
-## URL rewriting
+## Use it
 
-Keep the original API host and version in the local request path:
+Point your integration at the local server, keeping the original host and API path:
 
 ```text
 https://graph.instagram.com/v25.0/17841400000000001/media
-                           ↓
-http://127.0.0.1:3000/https://graph.instagram.com/v25.0/17841400000000001/media
+→ http://127.0.0.1:3000/https://graph.instagram.com/v25.0/17841400000000001/media
 ```
 
-Supported upstream host labels: `graph.instagram.com` and `graph.facebook.com`. Supported API versions: `v24.0` and `v25.0`. These labels select the local provider route; requests are never forwarded upstream. Supporting the `graph.facebook.com` host does not implement Facebook publishing.
+The example account is `17841400000000001`, with token `mock-token`. Create a publishing container:
 
-## Deterministic fixtures
+```sh
+curl -fsS -X POST \
+  http://127.0.0.1:3000/https://graph.instagram.com/v25.0/17841400000000001/media \
+  -H 'Authorization: Bearer mock-token' \
+  --data-urlencode 'image_url=https://example.invalid/photo.jpg'
+```
 
-The example profile starts at `2026-01-01T00:00:00Z`, with account `17841400000000001` and token `mock-token`. Containers process for five virtual seconds. Real time does not advance processing: use the clock endpoint explicitly.
+Advance processing by five virtual seconds, then publish the returned container ID via `/{account_id}/media_publish`. [Copy-and-paste publishing examples](docs/api.md).
 
 ```sh
 curl -fsS -X POST http://127.0.0.1:3000/admin/clock/advance \
@@ -43,29 +51,10 @@ curl -fsS -X POST http://127.0.0.1:3000/admin/clock/advance \
 curl -fsS -X POST http://127.0.0.1:3000/admin/reset
 ```
 
-Reset clears simulator records and restarts deterministic IDs and the virtual clock using the startup profile. To supply a replacement profile, send it to `/admin/reset` with `Content-Type: application/yaml` and `--data-binary @profiles/example.yaml`. `expires_at: 0` means a fixture token never expires.
+For browser login/consent tests, start with `--seed profiles/oauth-demo.yaml`. Choose a mock account, approve or deny permissions, select Page assets and exchange the returned code. Configure your callback in the seed; the demo callback is an illustrative address. [OAuth examples and setup](docs/oauth-consent.md).
 
-## Local safety
+## Keep it local
 
-The default listener is loopback-only. There are no real Meta credentials to configure and no media downloads or network proxying. Media URLs are fixture inputs. Set `--admin-token YOUR_LOCAL_SECRET` to protect admin endpoints, and supply that value to admin requests as a Bearer token. Keep the server private: this is a development tool, not an Internet-facing service. `--max-records` defaults to `10000` to bound simulator state.
+Use fixture credentials only. The server never forwards provider requests or downloads media URLs. Keep the loopback listener; protect admin routes with `--admin-token YOUR_LOCAL_SECRET` if needed. Reset or explicit seeding replaces simulator state. Behavior is documentation-based or synthetic, not live-provider verified.
 
-## Phase 1 boundaries
-
-Implemented scope: single-image and single-Reel publishing, container status polling, published-media lookup and listing, fixture tokens, reset, and a controllable persisted clock.
-
-Not implemented: OAuth, app review, analytics, Facebook publishing, carousels, Stories, scenario configuration, webhooks, snapshots, or an SDK. See [compatibility notes](docs/compatibility.md) before integrating.
-
-## License
-
-Licensed under the [MIT License](LICENSE).
-
-## Spec-first development
-
-The four-operation runtime subset has its own [OpenAPI specification](specs/meta/instagram/v25.0/openapi.yaml). Separate [Instagram reference contracts](specs/meta/instagram/README.md) cover Facebook Login, Instagram Login, OAuth, native upload and webhooks for v24.0/v25.0/v26.0; generated reference packages do not register runtime routes. v26.0 is the latest officially verified Graph release, but the simulator still runs only v24.0/v25.0. Run `make generate` for official Go models/server interfaces and `make generate-check` for deterministic drift checks across all documents. The [provider-spec research skill](.agents/skills/provider-spec-research/SKILL.md) and [workflow guide](docs/specifications.md) cover adding providers without claiming unverified API fidelity.
-
-## Observability
-
-Optional OpenTelemetry tracing, metrics and correlated structured logs are
-available over OTLP HTTP/protobuf or gRPC. All exporters are disabled by default.
-See [observability setup and guarantees](docs/observability.md) for the local
-Collector/Jaeger Compose stack, environment variables, privacy and tests.
+[Development and tests](docs/development.md) · [API compatibility](docs/compatibility.md) · [Specifications](docs/specifications.md) · [Optional telemetry](docs/observability.md) · [MIT license](LICENSE)

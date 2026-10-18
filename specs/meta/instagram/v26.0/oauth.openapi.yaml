@@ -758,6 +758,15 @@
                 "rerequest"
               ]
             }
+          },
+          {
+            "name": "config_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Facebook Login for Business configuration ID. It selects configured assets, permissions and token type. For a User-token configuration, scope can still be included but the guide recommends using the configuration instead."
           }
         ],
         "responses": {
@@ -794,13 +803,15 @@
           }
         },
         "x-sources": [
-          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+          "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+          "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
         ],
         "x-behavior-provenance": "documentation-based",
         "x-simulator-implemented": false,
         "x-request-evidence": {
           "sources": [
-            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+            "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+            "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
           ],
           "classification": "official-documentation",
           "live-verified": false
@@ -811,6 +822,24 @@
           ],
           "classification": "official-documentation",
           "live-verified": false
+        },
+        "x-consent-products": {
+          "facebook-login": {
+            "partial-permission-decline": true,
+            "rerequest": "auth_type=rerequest re-prompts previously declined permissions.",
+            "source": "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+          },
+          "facebook-login-for-business": {
+            "all-requested-permissions-required": true,
+            "automatically-granted": [
+              "email",
+              "public_profile"
+            ],
+            "additional-supported-business-permission-required": true,
+            "configuration-parameter": "config_id",
+            "source": "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+          },
+          "boundary": "The all-or-nothing grant rule is specific to Facebook Login for Business; do not apply it to ordinary Facebook Login. Business Integration System User configurations are documented separately and are not proof every Instagram operation accepts that token type."
         }
       }
     },
@@ -1959,5 +1988,18 @@
         ]
       }
     }
+  },
+  "x-login-scope-families": {
+    "facebook-login": {
+      "basic": "instagram_basic",
+      "feature-prefix": "instagram_",
+      "page-discovery": "pages_show_list"
+    },
+    "instagram-login": {
+      "basic": "instagram_business_basic",
+      "feature-prefix": "instagram_business_"
+    },
+    "source": "https://developers.facebook.com/documentation/instagram-platform/overview",
+    "note": "These are distinct permission families. Feature-prefix is descriptive, not an exhaustive allowed-scope pattern."
   }
 }

@@ -10,6 +10,18 @@ The official [Graph API version table](https://developers.facebook.com/docs/grap
 
 Current documentation plus pinned SDK evidence supports the contract inventory. Repeating current reference behavior in three release directories does **not** independently verify every historical permission, field, enum, metric, rollout, account restriction, or server response. No operation is live-verified.
 
+## Facebook Login access and consent
+
+The [current Instagram overview](https://developers.facebook.com/documentation/instagram-platform/overview) requires a professional Instagram account linked to a Facebook Page for Facebook Login. Its scopes remain `instagram_basic`, `instagram_content_publish`, `instagram_manage_comments`, `instagram_manage_insights` and `instagram_manage_messages`, with operation-specific Page scopes. `instagram_business_basic` and the `instagram_business_*` family belong to Instagram Login. These are distinct authorization products.
+
+Facebook User and Page tokens are both used, with operation-specific requirements. The [getting-started read flow](https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started) uses a User token for Page discovery and Instagram media reads. Publishing endpoint references specify User tokens, while the publishing guide and provider collection also show Page-token publishing. Their Business Manager scope requirements differ too; the contracts preserve each source instead of flattening them into a universal requirement. Permission-reference dependencies are separately labeled evidence because they differ from individual endpoint and getting-started scope tables.
+
+Page tasks constrain which permissions a person can grant. Current overview names use `PROFILE_PLUS_*`, while some endpoint references retain `MANAGE`, `CREATE_CONTENT` and other legacy labels. Standard Access covers owned/managed professional accounts and applicable app/business roles. Serving other accounts requires Advanced Access, App Review and Business Verification. These are authorization requirements, not extra HTTP endpoints or implemented simulator policies.
+
+The OAuth dialog includes the optional [Facebook Login for Business configuration ID](https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/). Ordinary Facebook Login supports declining individual permissions; Facebook Login for Business states that all requested permissions must be granted or none are granted. Do not apply that business rule to ordinary Facebook Login.
+
+The [Page subscription reference](https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/) has method-specific access rules: GET/POST require Page-token scope/task eligibility, while DELETE documents an App-token branch for removing the app's own subscription. Its `subscribed_fields` parameter cannot configure Instagram topic webhooks; that setup uses the app dashboard.
+
 ## Measured inventory
 
 | Version | Facebook Login | Instagram Login | OAuth | Upload | Webhooks | Total operations |
@@ -51,7 +63,7 @@ Named insights updates include `link_clicks`, `total_likes`, `facebook_views`, `
 
 - Instagram authorization sources disagree on `www.instagram.com` versus `api.instagram.com`; retain source-specific host evidence.
 - Instagram `/me` reference uses a direct user response while a getting-started example wraps `data`; preserve the conflict. Permission deletion reference uses `success` while a guide describes literal `true`.
-- Media insights period tables and response prose differ. Permission tables also differ on conditional Business Manager scopes; avoid combining alternatives into a universal requirement.
+- Media insights period tables and response prose differ. Permission tables also differ on conditional Business Manager scopes; avoid combining alternatives into a universal requirement. Publishing references use User tokens and alternative ads scopes while the guide uses Page tokens and lists both ads scopes. The Facebook conversations HTTP guide uses lowercase `platform=instagram`, while the SDK enum is uppercase `INSTAGRAM`; the server parameter remains permissive rather than treating SDK validation as exhaustive.
 - Product-tag reference spells `ad_reads`, disagrees with samples/SDK on `string_sale_price_string` versus `stripped_sale_price_string`, and excludes Reels reads while supporting Reels tagging writes.
 - Some messaging samples have wrong host, action or unrelated welcome-flow response; these do not authorize cross-product host substitution or false response shapes.
 - Moderation prose describes boolean success while malformed examples quote it; Page lower-case actions and IGUser SDK upper-case enums must remain distinct.

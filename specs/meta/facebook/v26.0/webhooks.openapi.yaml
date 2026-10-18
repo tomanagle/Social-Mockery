@@ -1,0 +1,221 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Facebook Webhooks API",
+    "version": "v26.0",
+    "description": "Documentation-based, bounded native Facebook Pages contracts. Generated interfaces do not register runtime routes. Current shared documentation plus pinned SDK evidence; no live verification or independent historical parity claim."
+  },
+  "x-provider": "facebook",
+  "x-contract-only": true,
+  "x-contract-kind": "webhook",
+  "x-version-evidence": {
+    "latest-release": "v26.0",
+    "latest-release-verified": true,
+    "release-table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+    "retrieved": "2026-10-18",
+    "sdk-revision": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+    "reference-scope": "Current shared references; historical behavior, account eligibility and field rollout are not independently verified."
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid",
+      "description": "Application-chosen HTTPS receiver; /webhooks/facebook is an illustrative local path."
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/webhooks/facebook": {
+      "get": {
+        "operationId": "verifyFacebookWebhook",
+        "description": "Return hub.challenge verbatim only after validating hub.mode and configured hub.verify_token. This is application callback verification, not OAuth token exchange.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+          "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Verification challenge as plaintext.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Receiver rejects invalid verification; illustrative application policy."
+          }
+        },
+        "parameters": [
+          {
+            "name": "hub.mode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hub.verify_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hub.challenge",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "receiveFacebookWebhook",
+        "description": "Validate X-Hub-Signature-256 using HMAC-SHA256 of unmodified raw request body and app secret, then acknowledge. Typed Page feed changes only; Messenger payloads are a separate product. Guide prints an outer array whereas generic Webhooks delivery uses one object; canonical object envelope retained and conflict recorded.",
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "x-sources": [
+          "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+          "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+        ],
+        "responses": {
+          "200": {
+            "description": "Receiver acknowledgement."
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageWebhook"
+              }
+            }
+          }
+        },
+        "x-signature": {
+          "algorithm": "HMAC-SHA256",
+          "signed-data": "raw request body",
+          "header-prefix": "sha256="
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "FeedChange": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "value": {
+            "type": "object",
+            "properties": {
+              "item": {
+                "type": "string"
+              },
+              "verb": {
+                "type": "string"
+              },
+              "post_id": {
+                "type": "string"
+              },
+              "comment_id": {
+                "type": "string"
+              },
+              "parent_id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "created_time": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "is_hidden": {
+                "type": "boolean"
+              },
+              "from": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PageWebhook": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "page"
+            ]
+          },
+          "entry": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "changes": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeedChange"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "object",
+          "entry"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1094 @@
+{
+  "retrieved_at": "2026-10-18",
+  "evidence": "documentation-based",
+  "live_verified": false,
+  "runtime_implemented": false,
+  "latest_graph_release": "v26.0",
+  "release_table": "https://developers.facebook.com/docs/graph-api/changelog/versions/",
+  "counting_rule": "One HTTP method/path entry per product and version. Repeated versions are not unique capabilities. Bounded Facebook Pages slice, not all Graph/Marketing/Messenger APIs.",
+  "versions": {
+    "v24.0": {
+      "products": {
+        "oauth": {
+          "file": "specs/meta/facebook/v24.0/oauth.openapi.yaml",
+          "sha256": "b9b2247905fec7076793445e2599589504e32676b9aa052658e770c238b15c78",
+          "path_count": 5,
+          "operation_count": 6,
+          "schema_count": 7,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v24.0/dialog/oauth",
+              "operation_id": "authorizeFacebook",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/oauth/access_token",
+              "operation_id": "exchangeFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/debug_token",
+              "operation_id": "debugFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{userID}/permissions",
+              "operation_id": "readFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{userID}/permissions",
+              "operation_id": "revokeFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{userID}/permissions/{permission}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            }
+          ]
+        },
+        "pages": {
+          "file": "specs/meta/facebook/v24.0/pages.openapi.yaml",
+          "sha256": "57122997ab4a4181a27fc5d67c61b2006fe93dcd0d3c87294bb63ffa8f24a062",
+          "path_count": 19,
+          "operation_count": 28,
+          "schema_count": 44,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v24.0/me",
+              "operation_id": "readFacebookIdentity",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{userID}/accounts",
+              "operation_id": "listManagedPages",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/accounts/",
+                "https://www.postman.com/meta/facebook/request/bqfxwbp/get-access-tokens-of-pages-you-manage"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "readFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/",
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "updateFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{objectID}",
+              "operation_id": "deleteFacebookContent",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/feed",
+              "operation_id": "readPageFeed",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/feed",
+              "operation_id": "publishPagePost",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/",
+                "https://developers.facebook.com/documentation/pages-api/posts.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/posts",
+              "operation_id": "readPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/published_posts",
+              "operation_id": "readPublishedPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/published_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/scheduled_posts",
+              "operation_id": "readScheduledPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/scheduled_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/f1722382526f18b5ab33de007641c4b89f5d86fc/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "readFacebookComments",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{objectID}/comments",
+              "operation_id": "createFacebookComment",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/photos",
+              "operation_id": "readPagePhotos",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/photos",
+              "operation_id": "publishPagePhoto",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/videos",
+              "operation_id": "publishPageVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/videos/",
+                "https://developers.facebook.com/docs/video-api/guides/publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/video_reels",
+              "operation_id": "readPageReels",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/video_reels",
+              "operation_id": "publishPageReel",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/insights",
+              "operation_id": "readPageInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/insights/{metric}",
+              "operation_id": "readPageInsightMetric",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/subscribed_apps",
+              "operation_id": "readPageSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/subscribed_apps",
+              "operation_id": "subscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v24.0/{pageID}/subscribed_apps",
+              "operation_id": "unsubscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/pages/search",
+              "operation_id": "searchFacebookPages",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/search-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/settings",
+              "operation_id": "readPageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/settings",
+              "operation_id": "updatePageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/ratings",
+              "operation_id": "readPageRecommendations",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v24.0/{pageID}/blocked",
+              "operation_id": "blockPageCommenter",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v24.0/{pageID}/page_status",
+              "operation_id": "readPageIntegrity",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/integrity-webhook.md",
+                "https://developers.facebook.com/documentation/pages-api/changelog.md"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/facebook/v24.0/upload.openapi.yaml",
+          "sha256": "915fa2d42469908b5252e17329670759f109e2fc6b2b016e76f50c378aca0eab",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/video-upload/v24.0/{videoID}",
+              "operation_id": "uploadFacebookVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/facebook/v24.0/webhooks.openapi.yaml",
+          "sha256": "faeaf9ee6abfbdcdd2a4e43b8cd5022458cd4d0a9b253ba1427928e949749e5a",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/webhooks/facebook",
+              "operation_id": "verifyFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/webhooks/facebook",
+              "operation_id": "receiveFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            }
+          ]
+        }
+      },
+      "operation_count": 37
+    },
+    "v25.0": {
+      "products": {
+        "oauth": {
+          "file": "specs/meta/facebook/v25.0/oauth.openapi.yaml",
+          "sha256": "9e6b09529d9c4d2474658213883c4943022722819bc53a019aa36ae5ed9026bb",
+          "path_count": 5,
+          "operation_count": 6,
+          "schema_count": 7,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v25.0/dialog/oauth",
+              "operation_id": "authorizeFacebook",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/oauth/access_token",
+              "operation_id": "exchangeFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/debug_token",
+              "operation_id": "debugFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{userID}/permissions",
+              "operation_id": "readFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{userID}/permissions",
+              "operation_id": "revokeFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{userID}/permissions/{permission}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            }
+          ]
+        },
+        "pages": {
+          "file": "specs/meta/facebook/v25.0/pages.openapi.yaml",
+          "sha256": "7c85de70f1ecf541cbc56d44676311dc1b3e6cafd6450ca4056016c9b784d7dd",
+          "path_count": 19,
+          "operation_count": 28,
+          "schema_count": 44,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v25.0/me",
+              "operation_id": "readFacebookIdentity",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{userID}/accounts",
+              "operation_id": "listManagedPages",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/accounts/",
+                "https://www.postman.com/meta/facebook/request/bqfxwbp/get-access-tokens-of-pages-you-manage"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "readFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/",
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "updateFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{objectID}",
+              "operation_id": "deleteFacebookContent",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/feed",
+              "operation_id": "readPageFeed",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/feed",
+              "operation_id": "publishPagePost",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/",
+                "https://developers.facebook.com/documentation/pages-api/posts.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/posts",
+              "operation_id": "readPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/published_posts",
+              "operation_id": "readPublishedPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/published_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/scheduled_posts",
+              "operation_id": "readScheduledPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/scheduled_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/542e10e31c40f7925f9ac03c000922a2fd0a2365/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "readFacebookComments",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{objectID}/comments",
+              "operation_id": "createFacebookComment",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/photos",
+              "operation_id": "readPagePhotos",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/photos",
+              "operation_id": "publishPagePhoto",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/videos",
+              "operation_id": "publishPageVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/videos/",
+                "https://developers.facebook.com/docs/video-api/guides/publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/video_reels",
+              "operation_id": "readPageReels",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/video_reels",
+              "operation_id": "publishPageReel",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/insights",
+              "operation_id": "readPageInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/insights/{metric}",
+              "operation_id": "readPageInsightMetric",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/subscribed_apps",
+              "operation_id": "readPageSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/subscribed_apps",
+              "operation_id": "subscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v25.0/{pageID}/subscribed_apps",
+              "operation_id": "unsubscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/pages/search",
+              "operation_id": "searchFacebookPages",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/search-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/settings",
+              "operation_id": "readPageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/settings",
+              "operation_id": "updatePageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/ratings",
+              "operation_id": "readPageRecommendations",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v25.0/{pageID}/blocked",
+              "operation_id": "blockPageCommenter",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v25.0/{pageID}/page_status",
+              "operation_id": "readPageIntegrity",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/integrity-webhook.md",
+                "https://developers.facebook.com/documentation/pages-api/changelog.md"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/facebook/v25.0/upload.openapi.yaml",
+          "sha256": "e71a777457cef4ea2b39b368751b68a423d79d36de3b405910385e87e833dd58",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/video-upload/v25.0/{videoID}",
+              "operation_id": "uploadFacebookVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/facebook/v25.0/webhooks.openapi.yaml",
+          "sha256": "feb1d23be3ea4324c42190eecb996c35edac21436fa3b482151491fc2c543461",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/webhooks/facebook",
+              "operation_id": "verifyFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/webhooks/facebook",
+              "operation_id": "receiveFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            }
+          ]
+        }
+      },
+      "operation_count": 37
+    },
+    "v26.0": {
+      "products": {
+        "oauth": {
+          "file": "specs/meta/facebook/v26.0/oauth.openapi.yaml",
+          "sha256": "1304981ef828c5d5b6a6bb5b925535650f14fd070f80c71be494b5535930c9b6",
+          "path_count": 5,
+          "operation_count": 6,
+          "schema_count": 7,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v26.0/dialog/oauth",
+              "operation_id": "authorizeFacebook",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/oauth/access_token",
+              "operation_id": "exchangeFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow/",
+                "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/debug_token",
+              "operation_id": "debugFacebookToken",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/debug_token/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{userID}/permissions",
+              "operation_id": "readFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{userID}/permissions",
+              "operation_id": "revokeFacebookPermissions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{userID}/permissions/{permission}",
+              "operation_id": "revokeFacebookPermission",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/permissions/"
+              ]
+            }
+          ]
+        },
+        "pages": {
+          "file": "specs/meta/facebook/v26.0/pages.openapi.yaml",
+          "sha256": "b8fcad845c9264ad9718604185594f6aff68b4501a72e7ddcea3abee1d2c11c5",
+          "path_count": 19,
+          "operation_count": 28,
+          "schema_count": 44,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/v26.0/me",
+              "operation_id": "readFacebookIdentity",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{userID}/accounts",
+              "operation_id": "listManagedPages",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/user/accounts/",
+                "https://www.postman.com/meta/facebook/request/bqfxwbp/get-access-tokens-of-pages-you-manage"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "readFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/",
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "updateFacebookNode",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/",
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{objectID}",
+              "operation_id": "deleteFacebookContent",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page-post/",
+                "https://developers.facebook.com/docs/graph-api/reference/comment/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/feed",
+              "operation_id": "readPageFeed",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/feed",
+              "operation_id": "publishPagePost",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/feed/",
+                "https://developers.facebook.com/documentation/pages-api/posts.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/posts",
+              "operation_id": "readPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/published_posts",
+              "operation_id": "readPublishedPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/published_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/scheduled_posts",
+              "operation_id": "readScheduledPagePosts",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/scheduled_posts/",
+                "https://github.com/facebook/facebook-python-business-sdk/blob/efd8423a2e595ea8d4c04eb824ce113f2f1d68cd/facebook_business/adobjects/page.py"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "readFacebookComments",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{objectID}/comments",
+              "operation_id": "createFacebookComment",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/object/comments/",
+                "https://developers.facebook.com/documentation/pages-api/comments-mentions.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/photos",
+              "operation_id": "readPagePhotos",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/photos",
+              "operation_id": "publishPagePhoto",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/photos/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/videos",
+              "operation_id": "publishPageVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/videos/",
+                "https://developers.facebook.com/docs/video-api/guides/publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/video_reels",
+              "operation_id": "readPageReels",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/video_reels",
+              "operation_id": "publishPageReel",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/insights",
+              "operation_id": "readPageInsights",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/insights/{metric}",
+              "operation_id": "readPageInsightMetric",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page.md",
+                "https://developers.facebook.com/documentation/pages-api/platforminsights/page/deprecated-metrics.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/subscribed_apps",
+              "operation_id": "readPageSubscriptions",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/subscribed_apps",
+              "operation_id": "subscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "DELETE",
+              "path": "/v26.0/{pageID}/subscribed_apps",
+              "operation_id": "unsubscribePageApp",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/pages/search",
+              "operation_id": "searchFacebookPages",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/search-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/settings",
+              "operation_id": "readPageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/settings",
+              "operation_id": "updatePageSettings",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/ratings",
+              "operation_id": "readPageRecommendations",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/v26.0/{pageID}/blocked",
+              "operation_id": "blockPageCommenter",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/manage-pages.md"
+              ]
+            },
+            {
+              "method": "GET",
+              "path": "/v26.0/{pageID}/page_status",
+              "operation_id": "readPageIntegrity",
+              "sources": [
+                "https://developers.facebook.com/documentation/pages-api/integrity-webhook.md",
+                "https://developers.facebook.com/documentation/pages-api/changelog.md"
+              ]
+            }
+          ]
+        },
+        "upload": {
+          "file": "specs/meta/facebook/v26.0/upload.openapi.yaml",
+          "sha256": "217365e96a01b4b1e27f7cb00f715e55955d1b34faebe40c3019b88936d553f5",
+          "path_count": 1,
+          "operation_count": 1,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "POST",
+              "path": "/video-upload/v26.0/{videoID}",
+              "operation_id": "uploadFacebookVideo",
+              "sources": [
+                "https://developers.facebook.com/docs/video-api/guides/reels-publishing/"
+              ]
+            }
+          ]
+        },
+        "webhooks": {
+          "file": "specs/meta/facebook/v26.0/webhooks.openapi.yaml",
+          "sha256": "ddfc08f86073a21975c53f854589751f845f4914e35ec2a01d4b85de2c984037",
+          "path_count": 1,
+          "operation_count": 2,
+          "schema_count": 2,
+          "operations": [
+            {
+              "method": "GET",
+              "path": "/webhooks/facebook",
+              "operation_id": "verifyFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            },
+            {
+              "method": "POST",
+              "path": "/webhooks/facebook",
+              "operation_id": "receiveFacebookWebhook",
+              "sources": [
+                "https://developers.facebook.com/docs/graph-api/webhooks/getting-started/",
+                "https://developers.facebook.com/documentation/pages-api/webhooks-for-pages.md"
+              ]
+            }
+          ]
+        }
+      },
+      "operation_count": 37
+    }
+  }
+}

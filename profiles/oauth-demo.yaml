@@ -1,0 +1,56 @@
+version: 1
+clock: 2026-01-01T00:00:00Z
+processing_seconds: 5
+accounts:
+  - id: "17841400000000001"
+    username: mock_creator
+    type: BUSINESS
+  - id: "17841400000000002"
+    username: mock_linked_instagram
+    type: BUSINESS
+tokens:
+  - value: mock-token
+    account_id: "17841400000000001"
+    scopes:
+      - instagram_business_basic
+      - instagram_business_content_publish
+      - instagram_basic
+      - instagram_content_publish
+    expires_at: 0
+apps:
+  - id: mock-instagram-app
+    name: Mock Instagram Login
+    secret: mock-instagram-secret
+    product: instagram
+    redirect_uris: ["https://client.example.test/callback"]
+    approved_scopes: [instagram_business_basic, instagram_business_content_publish]
+    account_ids: ["17841400000000001"]
+  - id: mock-instagram-facebook-app
+    name: Mock Instagram with Facebook Login
+    secret: mock-instagram-facebook-secret
+    product: instagram_facebook
+    redirect_uris: ["https://client.example.test/callback"]
+    approved_scopes: [instagram_basic, instagram_content_publish, pages_show_list, pages_read_engagement]
+    account_ids: ["17841400000000001"]
+  - id: mock-facebook-app
+    name: Mock Facebook Login
+    secret: mock-facebook-secret
+    product: facebook
+    redirect_uris: ["https://client.example.test/callback"]
+    approved_scopes: [public_profile, pages_show_list, pages_read_engagement, pages_manage_posts]
+    account_ids: ["17841400000000001"]
+  - id: mock-tiktok-app
+    name: Mock TikTok Web Login
+    secret: mock-tiktok-secret
+    product: tiktok
+    redirect_uris: ["https://client.example.test/callback"]
+    approved_scopes: [user.info.basic, video.publish]
+    account_ids: ["17841400000000001"]
+    require_pkce: false
+assets:
+  - id: "1001"
+    name: Mock Creator Page
+    account_id: "17841400000000001"
+    instagram_account_id: "17841400000000002"
+    tasks: [CREATE_CONTENT, MANAGE]
+grants: []

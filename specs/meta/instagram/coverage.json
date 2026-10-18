@@ -10,7 +10,7 @@
       "products": {
         "facebook-login": {
           "file": "specs/meta/instagram/v24.0/facebook-login.openapi.yaml",
-          "sha256": "8c453c8411095c320359a5f00e760f867fc4de7df87e78d67373f0c9c5f7b430",
+          "sha256": "5a9b785acea75bdfdd7cc8545bb9bd13dd2e24487f6026c7fe4e2dc36bbd6ec7",
           "path_count": 45,
           "operation_count": 60,
           "schema_count": 110,
@@ -34,7 +34,8 @@
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
               ]
             },
             {
@@ -123,7 +124,8 @@
               "operation_id": "readInstagramInsights",
               "sources": [
                 "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
-                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/insights"
               ]
             },
             {
@@ -208,7 +210,8 @@
               "path": "/v24.0/{objectID}/content_publishing_limit",
               "operation_id": "FacebookReadPublishingLimit",
               "sources": [
-                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing"
               ]
             },
             {
@@ -227,7 +230,8 @@
               "sources": [
                 "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
               ]
             },
             {
@@ -235,7 +239,8 @@
               "path": "/v24.0/{objectID}/subscribed_apps",
               "operation_id": "getFacebookLoginPageSubscriptions",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -244,7 +249,8 @@
               "operation_id": "subscribeFacebookLoginPage",
               "sources": [
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -252,7 +258,8 @@
               "path": "/v24.0/{objectID}/subscribed_apps",
               "operation_id": "deleteFacebookLoginPageSubscription",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -540,7 +547,9 @@
               "sources": [
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
                 "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started",
+                "https://developers.facebook.com/docs/permissions/"
               ]
             }
           ]
@@ -818,7 +827,7 @@
         },
         "oauth": {
           "file": "specs/meta/instagram/v24.0/oauth.openapi.yaml",
-          "sha256": "5ef2a7e231ea5852731fb84a7cfcaaa00daef8e54ff0b4e6f10c8c592ee5dc83",
+          "sha256": "4ac2c2c6a29821b501fce6a57ae914ad88af1edb9b5ab7ceae276aa35b211c0c",
           "path_count": 11,
           "operation_count": 13,
           "schema_count": 10,
@@ -873,7 +882,8 @@
               "path": "/v24.0/dialog/oauth",
               "operation_id": "authorizeFacebookLogin",
               "sources": [
-                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
               ]
             },
             {
@@ -995,7 +1005,7 @@
       "products": {
         "facebook-login": {
           "file": "specs/meta/instagram/v25.0/facebook-login.openapi.yaml",
-          "sha256": "af45ae98789de91d6b5d54d8e5c2c713244782f5964d5eb750a8f1ba29b393ff",
+          "sha256": "183a2ea9476f98a85f27863b41a49fa9f536f2a3aaa6dd4c6d59ac3917730068",
           "path_count": 45,
           "operation_count": 60,
           "schema_count": 110,
@@ -1019,7 +1029,8 @@
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
               ]
             },
             {
@@ -1108,7 +1119,8 @@
               "operation_id": "readInstagramInsights",
               "sources": [
                 "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
-                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/insights"
               ]
             },
             {
@@ -1193,7 +1205,8 @@
               "path": "/v25.0/{objectID}/content_publishing_limit",
               "operation_id": "FacebookReadPublishingLimit",
               "sources": [
-                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing"
               ]
             },
             {
@@ -1212,7 +1225,8 @@
               "sources": [
                 "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
               ]
             },
             {
@@ -1220,7 +1234,8 @@
               "path": "/v25.0/{objectID}/subscribed_apps",
               "operation_id": "getFacebookLoginPageSubscriptions",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -1229,7 +1244,8 @@
               "operation_id": "subscribeFacebookLoginPage",
               "sources": [
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -1237,7 +1253,8 @@
               "path": "/v25.0/{objectID}/subscribed_apps",
               "operation_id": "deleteFacebookLoginPageSubscription",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -1525,7 +1542,9 @@
               "sources": [
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
                 "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started",
+                "https://developers.facebook.com/docs/permissions/"
               ]
             }
           ]
@@ -1803,7 +1822,7 @@
         },
         "oauth": {
           "file": "specs/meta/instagram/v25.0/oauth.openapi.yaml",
-          "sha256": "4b5d0aae296677a5070c642f85c2da4b15e7cfb4a43de3a637187294e439c09b",
+          "sha256": "b3f7536a54eb8529a44b05012b30a94cf3083b70f7ef57b918fdadf978e46043",
           "path_count": 11,
           "operation_count": 13,
           "schema_count": 10,
@@ -1858,7 +1877,8 @@
               "path": "/v25.0/dialog/oauth",
               "operation_id": "authorizeFacebookLogin",
               "sources": [
-                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
               ]
             },
             {
@@ -1980,7 +2000,7 @@
       "products": {
         "facebook-login": {
           "file": "specs/meta/instagram/v26.0/facebook-login.openapi.yaml",
-          "sha256": "1394f96f78e286c886ce8b8d19a572e97807c9ed405997996381cea9d37f6a5e",
+          "sha256": "d2bc000b57910456ce2f9699520a899685b7737e722ff9c2f670c78072f22288",
           "path_count": 45,
           "operation_count": 60,
           "schema_count": 110,
@@ -2004,7 +2024,8 @@
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/upcoming-events.md",
                 "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/collaboration.md",
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started"
               ]
             },
             {
@@ -2093,7 +2114,8 @@
               "operation_id": "readInstagramInsights",
               "sources": [
                 "https://developers.facebook.com/documentation/instagram-platform/api-reference/instagram-user/insights",
-                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights"
+                "https://developers.facebook.com/documentation/instagram-platform/reference/instagram-media/insights",
+                "https://developers.facebook.com/documentation/instagram-platform/insights"
               ]
             },
             {
@@ -2178,7 +2200,8 @@
               "path": "/v26.0/{objectID}/content_publishing_limit",
               "operation_id": "FacebookReadPublishingLimit",
               "sources": [
-                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit"
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+                "https://developers.facebook.com/documentation/instagram-platform/content-publishing"
               ]
             },
             {
@@ -2197,7 +2220,8 @@
               "sources": [
                 "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/unifiedthread.py",
+                "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started.md"
               ]
             },
             {
@@ -2205,7 +2229,8 @@
               "path": "/v26.0/{objectID}/subscribed_apps",
               "operation_id": "getFacebookLoginPageSubscriptions",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -2214,7 +2239,8 @@
               "operation_id": "subscribeFacebookLoginPage",
               "sources": [
                 "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/messenger-platform-api.postman_collection.json",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -2222,7 +2248,8 @@
               "path": "/v26.0/{objectID}/subscribed_apps",
               "operation_id": "deleteFacebookLoginPageSubscription",
               "sources": [
-                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py"
+                "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/main/facebook_business/adobjects/page.py",
+                "https://developers.facebook.com/docs/graph-api/reference/page/subscribed_apps/"
               ]
             },
             {
@@ -2510,7 +2537,9 @@
               "sources": [
                 "https://www.postman.com/meta/workspace/instagram/documentation/23987686-9386f468-7714-490f-9bfc-9442db5c8f00",
                 "https://www.postman.com/meta/instagram/request/lpx8lul/get-access-tokens-of-pages-you-manage",
-                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json"
+                "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/main/postman/instagram-platform-api.postman_collection.json",
+                "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/get-started",
+                "https://developers.facebook.com/docs/permissions/"
               ]
             }
           ]
@@ -2788,7 +2817,7 @@
         },
         "oauth": {
           "file": "specs/meta/instagram/v26.0/oauth.openapi.yaml",
-          "sha256": "fd9caa42637596a1aa8823ccb010e013af855f3d842524cee6515f7874506242",
+          "sha256": "62a538742a57d1c3272d59ef7ed7f0580ea6634edb9325edf1a0f47ad79fd8a4",
           "path_count": 11,
           "operation_count": 13,
           "schema_count": 10,
@@ -2843,7 +2872,8 @@
               "path": "/v26.0/dialog/oauth",
               "operation_id": "authorizeFacebookLogin",
               "sources": [
-                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow"
+                "https://developers.facebook.com/documentation/facebook-login/guides/advanced/manual-flow",
+                "https://developers.facebook.com/documentation/facebook-login/facebook-login-for-business/"
               ]
             },
             {

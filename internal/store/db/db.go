@@ -42,10 +42,10 @@ func migrate(db *sql.DB) error {
 	if err := db.QueryRow(`PRAGMA user_version`).Scan(&version); err != nil {
 		return err
 	}
-	if version > 1 {
-		return fmt.Errorf("database schema %d is newer than supported version 1", version)
+	if version > 2 {
+		return fmt.Errorf("database schema %d is newer than supported version 2", version)
 	}
-	if version == 1 {
+	if version == 2 {
 		return nil
 	}
 	tx, err := db.Begin()
@@ -53,7 +53,8 @@ func migrate(db *sql.DB) error {
 		return err
 	}
 	defer tx.Rollback()
-	_, err = tx.Exec(`
+	if version == 0 {
+		_, err = tx.Exec(`
  CREATE TABLE settings (id INTEGER PRIMARY KEY CHECK(id=1), now INTEGER NOT NULL, processing_seconds INTEGER NOT NULL, sequence INTEGER NOT NULL, initialized INTEGER NOT NULL);
  INSERT INTO settings VALUES(1,1767225600,5,0,0);
  CREATE TABLE accounts (id TEXT PRIMARY KEY, username TEXT NOT NULL, type TEXT NOT NULL);
@@ -63,7 +64,27 @@ func migrate(db *sql.DB) error {
  CREATE INDEX posts_account ON posts(account_id,id);
  PRAGMA user_version=1;
  `)
-	if err != nil {
+		if err != nil {
+			return err
+		}
+	}
+	if _, err = tx.Exec(`
+ ALTER TABLE tokens ADD COLUMN refresh_token TEXT NOT NULL DEFAULT '';
+ ALTER TABLE tokens ADD COLUMN refresh_expires_at INTEGER NOT NULL DEFAULT 0;
+ CREATE UNIQUE INDEX tokens_refresh_unique ON tokens(refresh_token) WHERE refresh_token<>'';
+ ALTER TABLE tokens ADD COLUMN grant_account_id TEXT NOT NULL DEFAULT '';
+ ALTER TABLE tokens ADD COLUMN app_id TEXT NOT NULL DEFAULT '';
+ ALTER TABLE tokens ADD COLUMN product TEXT NOT NULL DEFAULT '';
+ ALTER TABLE tokens ADD COLUMN asset_ids TEXT NOT NULL DEFAULT '[]';
+ CREATE TABLE oauth_apps (id TEXT PRIMARY KEY, data TEXT NOT NULL);
+ CREATE TABLE oauth_assets (id TEXT PRIMARY KEY, account_id TEXT NOT NULL REFERENCES accounts(id), data TEXT NOT NULL);
+ CREATE TABLE oauth_grants (app_id TEXT NOT NULL REFERENCES oauth_apps(id), account_id TEXT NOT NULL REFERENCES accounts(id), data TEXT NOT NULL, PRIMARY KEY(app_id,account_id));
+ CREATE TABLE oauth_sessions (id TEXT PRIMARY KEY, app_id TEXT NOT NULL REFERENCES oauth_apps(id), expires_at INTEGER NOT NULL, data TEXT NOT NULL);
+ CREATE TABLE oauth_codes (id TEXT PRIMARY KEY, app_id TEXT NOT NULL REFERENCES oauth_apps(id), account_id TEXT NOT NULL REFERENCES accounts(id), expires_at INTEGER NOT NULL, data TEXT NOT NULL);
+ CREATE INDEX oauth_sessions_expiry ON oauth_sessions(expires_at);
+ CREATE INDEX oauth_codes_expiry ON oauth_codes(expires_at);
+ PRAGMA user_version=2;
+ `); err != nil {
 		return err
 	}
 	return tx.Commit()

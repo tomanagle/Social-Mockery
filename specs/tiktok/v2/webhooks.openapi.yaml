@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TikTok application webhook receiver reference contract",
+    "version": "v2",
+    "description": "Documentation-based native interface only. No simulator routes or live verification. v2 is a protocol generation, not a dated Graph API release."
+  },
+  "servers": [
+    {
+      "url": "https://example.invalid"
+    }
+  ],
+  "x-provider": "tiktok",
+  "x-contract-only": true,
+  "x-contract-kind": "webhook",
+  "x-version-evidence": {
+    "generation": "v2",
+    "retrieved": "2026-10-18",
+    "current-reference": "https://developers.tiktok.com/docs/en/tiktok-api-v2-introduction",
+    "legacy-exclusion": "https://developers.tiktok.com/bulletin/migration-guidance-oauth-v1",
+    "note": "Current v2 endpoint references; no evidence of a previous generally supported generation for this selected surface. SDK semantic versions are independent."
+  },
+  "security": [],
+  "paths": {
+    "/webhooks/tiktok": {
+      "post": {
+        "operationId": "receiveTikTokWebhook",
+        "summary": "Receive TikTok event delivery",
+        "description": "Application-selected callback placeholder, not a TikTok API route. HTTPS required; immediately acknowledge HTTP 200. At-least-once best effort; deduplicate. Non-200 retries with exponential backoff for up to 72 hours. No invented GET challenge. Preserve raw bytes for verification; no universal timestamp tolerance specified.",
+        "x-sources": [
+          "https://developers.tiktok.com/docs/en/webhooks-overview",
+          "https://developers.tiktok.com/docs/en/webhooks-events",
+          "https://developers.tiktok.com/docs/en/webhooks-verification",
+          "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status"
+        ],
+        "x-provenance": [
+          {
+            "url": "https://developers.tiktok.com/docs/en/webhooks-overview",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/webhooks-events",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/webhooks-verification",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          },
+          {
+            "url": "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status",
+            "retrieved": "2026-10-18",
+            "kind": "official-tiktok-documentation",
+            "status": "retrieved-public-documentation"
+          }
+        ],
+        "x-behavior-provenance": "documentation-based",
+        "x-simulator-implemented": false,
+        "responses": {
+          "200": {
+            "description": "Acknowledge receipt."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEnvelope"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "TikTok-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "t=TIMESTAMP,s=SIGNATURE. HMAC-SHA256 with client_secret over timestamp + dot + unchanged raw body; compare safely and reject stale timestamp by consumer policy."
+          }
+        ],
+        "x-event-content-schemas": {
+          "authorization.removed": "#/components/schemas/AuthorizationRemovedContent",
+          "post.publish.failed": "#/components/schemas/PostingEventContent",
+          "post.publish.complete": "#/components/schemas/PostingEventContent",
+          "post.publish.inbox_delivered": "#/components/schemas/PostingEventContent",
+          "post.publish.publicly_available": "#/components/schemas/PostingEventContent",
+          "post.publish.no_longer_publicaly_available": "#/components/schemas/PostingEventContent"
+        },
+        "x-source-conflicts": [
+          "Events overview lists legacy Video Kit video.upload.failed/video.publish.completed with share_id. These are not renamed aliases for Content Posting post.publish.* with publish_id.",
+          "post.publish.no_longer_publicaly_available preserves documented misspelling."
+        ],
+        "x-request-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/webhooks-overview",
+            "https://developers.tiktok.com/docs/en/webhooks-events",
+            "https://developers.tiktok.com/docs/en/webhooks-verification",
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status"
+          ],
+          "note": "Native method, path, encoding and typed fields from cited references. Conditional constraints and source conflicts remain in descriptions; no live test."
+        },
+        "x-response-evidence": {
+          "status": "documentation-based",
+          "sources": [
+            "https://developers.tiktok.com/docs/en/webhooks-overview",
+            "https://developers.tiktok.com/docs/en/webhooks-events",
+            "https://developers.tiktok.com/docs/en/webhooks-verification",
+            "https://developers.tiktok.com/docs/en/content-posting-api-reference-get-video-status"
+          ],
+          "note": "Documented fields/statuses only; response property presence remains permissive where source gives no universal requiredness. Example-only details are not universal guarantees."
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TikTokOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://www.tiktok.com/v2/auth/authorize/",
+            "tokenUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "refreshUrl": "https://open.tiktokapis.com/v2/oauth/token/",
+            "scopes": {
+              "user.info.basic": "Basic account identifier, avatar and display name",
+              "user.info.profile": "Additional profile fields",
+              "user.info.stats": "Profile statistics",
+              "video.list": "Read authorized public videos",
+              "video.publish": "Direct Post",
+              "video.upload": "Upload to creator inbox"
+            }
+          }
+        },
+        "description": "Bearer user access token. TikTok authorization uses client_key and comma-separated scopes; endpoint-specific grants and app approval apply."
+      }
+    },
+    "schemas": {
+      "WebhookEnvelope": {
+        "type": "object",
+        "properties": {
+          "client_key": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string",
+            "description": "authorization.removed and Content Posting post.publish.* events; not a closed enum."
+          },
+          "create_time": {
+            "type": "integer",
+            "format": "int64",
+            "description": "UTC epoch seconds."
+          },
+          "user_openid": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "description": "JSON serialized into a STRING, not a nested object. Decode only after authenticating original raw body."
+          }
+        }
+      },
+      "AuthorizationRemovedContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "integer",
+            "description": "0 unknown, 1 user disconnected, 2 account deleted, 3 age changed, 4 account banned, 5 developer revoked."
+          }
+        }
+      },
+      "PostingEventContent": {
+        "type": "object",
+        "properties": {
+          "publish_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "publish_type": {
+            "type": "string",
+            "description": "INBOX_SHARE for Upload flows; other values not inferred."
+          },
+          "post_id": {
+            "$ref": "#/components/schemas/PostIDValue"
+          }
+        }
+      },
+      "PostIDValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "description": "Webhook table lists post_id without scalar type; preserve either string or int64 until evidence resolves the encoding."
+      }
+    }
+  }
+}
