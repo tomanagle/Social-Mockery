@@ -16,16 +16,33 @@ import (
 	"testing"
 )
 
-func TestParseStartHelp(t *testing.T) {
-	if _, err := parseStart([]string{"--help"}); !errors.Is(err, flag.ErrHelp) {
+func TestParseFlagsHelp(t *testing.T) {
+	if _, err := parseFlags([]string{"--help"}); !errors.Is(err, flag.ErrHelp) {
 		t.Fatalf("help error = %v", err)
 	}
 }
 
-func TestParseStart(t *testing.T) {
-	cfg, err := parseStart([]string{"--db", ":memory:", "--max-records", "42"})
+func TestParseFlags(t *testing.T) {
+	cfg, err := parseFlags([]string{"--db", ":memory:", "--max-records", "42"})
 	if err != nil || cfg.Database != ":memory:" || cfg.MaxRecords != 42 {
-		t.Fatalf("parseStart = (%+v, %v)", cfg, err)
+		t.Fatalf("parseFlags = (%+v, %v)", cfg, err)
+	}
+}
+
+func TestParseFlagsDefaults(t *testing.T) {
+	cfg, err := parseFlags(nil)
+	if err != nil || cfg.Addr != "127.0.0.1:3000" || cfg.Database != ":memory:" || cfg.SeedPath != "" || cfg.MaxRecords != 10000 {
+		t.Fatalf("defaults = (%+v, %v)", cfg, err)
+	}
+}
+
+func TestParseFlagsRejectsSubcommands(t *testing.T) {
+	for _, command := range []string{"start", "reset", "help"} {
+		t.Run(command, func(t *testing.T) {
+			if _, err := parseFlags([]string{command}); err == nil {
+				t.Fatal("unexpected subcommand accepted")
+			}
+		})
 	}
 }
 
@@ -100,12 +117,11 @@ func TestMainStartupFailures(t *testing.T) {
 		args         []string
 		panicMessage string
 	}{
-		{"config", []string{"start", "--addr", "secret-do-not-log"}, "config: initialization failed"},
-		{"profile", []string{"start", "--seed", filepath.Join(t.TempDir(), "secret-do-not-log")}, "profiles: initialization failed"},
-		{"database", []string{"start", "--db", "file::memory:?_journal_mode=secret-do-not-log"}, "db: initialization failed"},
-		{"listener", []string{"start", "--addr", listener.Addr().String()}, "app: initialization failed"},
-		{"start help", []string{"start", "--help"}, ""},
-		{"reset help", []string{"reset", "--help"}, ""},
+		{"config", []string{"--addr", "secret-do-not-log"}, "config: initialization failed"},
+		{"profile", []string{"--seed", filepath.Join(t.TempDir(), "secret-do-not-log")}, "profiles: initialization failed"},
+		{"database", []string{"--db", "file::memory:?_journal_mode=secret-do-not-log"}, "db: initialization failed"},
+		{"listener", []string{"--addr", listener.Addr().String()}, "app: initialization failed"},
+		{"help", []string{"--help"}, ""},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			args, err := json.Marshal(tc.args)

@@ -81,7 +81,7 @@ Admin routes are local server routes, without the provider prefix:
 - `POST /admin/clock/advance`: JSON body `{"seconds":5}`
 - `POST /admin/reset`: reset simulator state; an empty body restores the startup seed, or supply a complete JSON/YAML profile
 
-When `start --admin-token local-secret` is set, include `Authorization: Bearer local-secret` on admin requests. This is distinct from the simulated Meta access token. The examples above assume the optional admin token is unset.
+When `--admin-token local-secret` is set, include `Authorization: Bearer local-secret` on admin requests. This is distinct from the simulated Meta access token. The examples above assume the optional admin token is unset.
 
 ```sh
 # Empty reset body: restore startup fixtures.
@@ -91,10 +91,6 @@ curl -fsS -X POST http://127.0.0.1:3000/admin/reset
 curl -fsS -X POST http://127.0.0.1:3000/admin/reset \
   -H 'Content-Type: application/yaml' \
   --data-binary @profiles/example.yaml
-
-# Equivalent CLI commands:
-./bin/social-mockery reset --url http://127.0.0.1:3000
-./bin/social-mockery reset --url http://127.0.0.1:3000 --seed profiles/example.yaml
 ```
 
 Reset deletes simulator-generated records and restarts IDs deterministically. Do not reset a shared instance while another test is using it. The admin surface intentionally contains no Phase 2 scenario, webhook, or snapshot APIs.

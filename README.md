@@ -10,7 +10,7 @@ Requirements: Go 1.26 or newer, CGO enabled, and a C compiler (SQLite uses `gith
 
 ```sh
 make build
-./bin/social-mockery start --addr 127.0.0.1:3000 --db :memory: --seed profiles/example.yaml
+./bin/social-mockery --addr 127.0.0.1:3000 --db :memory: --seed profiles/example.yaml
 ```
 
 In another terminal:
@@ -40,14 +40,14 @@ The example profile starts at `2026-01-01T00:00:00Z`, with account `178414000000
 ```sh
 curl -fsS -X POST http://127.0.0.1:3000/admin/clock/advance \
   -H 'Content-Type: application/json' -d '{"seconds":5}'
-./bin/social-mockery reset --url http://127.0.0.1:3000
+curl -fsS -X POST http://127.0.0.1:3000/admin/reset
 ```
 
-Reset clears simulator records and restarts deterministic IDs and the virtual clock using the startup profile. Use `reset --seed profiles/example.yaml` to supply a replacement profile for that reset. `expires_at: 0` means a fixture token never expires.
+Reset clears simulator records and restarts deterministic IDs and the virtual clock using the startup profile. To supply a replacement profile, send it to `/admin/reset` with `Content-Type: application/yaml` and `--data-binary @profiles/example.yaml`. `expires_at: 0` means a fixture token never expires.
 
 ## Local safety
 
-The default listener is loopback-only. There are no real Meta credentials to configure and no media downloads or network proxying. Media URLs are fixture inputs. Set `--admin-token YOUR_LOCAL_SECRET` to protect admin endpoints, and supply that value to the reset command with `--admin-token` or to admin requests as a Bearer token. Keep the server private: this is a development tool, not an Internet-facing service. `--max-records` defaults to `10000` to bound simulator state.
+The default listener is loopback-only. There are no real Meta credentials to configure and no media downloads or network proxying. Media URLs are fixture inputs. Set `--admin-token YOUR_LOCAL_SECRET` to protect admin endpoints, and supply that value to admin requests as a Bearer token. Keep the server private: this is a development tool, not an Internet-facing service. `--max-records` defaults to `10000` to bound simulator state.
 
 ## Phase 1 boundaries
 

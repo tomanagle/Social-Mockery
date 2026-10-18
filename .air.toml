@@ -4,7 +4,7 @@ tmp_dir = "tmp"
 [build]
 cmd = "CGO_ENABLED=1 go build -o ./tmp/social-mockery ./cmd"
 bin = "./tmp/social-mockery"
-args_bin = ["start", "--addr", "127.0.0.1:3000", "--db", ":memory:", "--seed", "profiles/example.yaml"]
+args_bin = ["--addr", "127.0.0.1:3000", "--db", ":memory:", "--seed", "profiles/example.yaml"]
 include_ext = ["go", "yaml"]
 exclude_dir = ["tmp", "bin", ".git"]
 delay = 500

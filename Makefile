@@ -4,7 +4,7 @@ build:
 	CGO_ENABLED=1 go build -o bin/social-mockery ./cmd
 
 run:
-	CGO_ENABLED=1 go run ./cmd start --addr 127.0.0.1:3000 --db :memory: --seed profiles/example.yaml
+	CGO_ENABLED=1 go run ./cmd --addr 127.0.0.1:3000 --db :memory: --seed profiles/example.yaml
 
 dev:
 	docker compose -f dev/compose.yaml up --build

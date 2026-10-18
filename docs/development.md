@@ -38,23 +38,20 @@ The benchmark command runs whatever benchmarks the package tests define and repo
 
 `make run` starts the example fixture with an in-memory database. An optional `.air.toml` is provided for developers who already use Air: run `air` in the repository root. Air is a development utility, not a Go module dependency. Reloading restarts the server and resets its in-memory database.
 
-## CLI
+## Startup flags
+
+Running `social-mockery` directly starts the server with default settings. There are no subcommands.
 
 ```text
-social-mockery start
+social-mockery
   --addr 127.0.0.1:3000
   --db :memory:
   --seed profiles/example.yaml
   --admin-token optional-local-secret
   --max-records 10000
-
-social-mockery reset
-  --url http://127.0.0.1:3000
-  --admin-token optional-local-secret
-  --seed profiles/example.yaml
 ```
 
-Without `--seed`, a new database uses the built-in example fixtures and an existing database retains its state. Explicit `--seed` always replaces existing database state, so omit it when restarting a database you want to preserve. The reset command's seed is optional; omitting it requests the server's startup seed. The admin token is optional but advisable whenever the service is reachable beyond one trusted local process.
+Without `--seed`, a new database uses the built-in example fixtures and an existing database retains its state. Explicit `--seed` always replaces existing database state, so omit it when restarting a database you want to preserve. Reset state through `POST /admin/reset`; an empty body restores the startup seed, while a JSON/YAML body supplies a replacement profile. The admin token is optional but advisable whenever the service is reachable beyond one trusted local process.
 
 ## Docker
 

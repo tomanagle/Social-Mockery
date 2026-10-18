@@ -19,4 +19,4 @@ COPY profiles/example.yaml /app/profiles/example.yaml
 USER 10001:10001
 EXPOSE 3000
 ENTRYPOINT ["social-mockery"]
-CMD ["start", "--addr", ":3000"]
+CMD ["--addr", ":3000"]

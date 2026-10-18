@@ -17,7 +17,7 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf \
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 \
 OTEL_TRACES_SAMPLER=always_on \
 OTEL_METRIC_EXPORT_INTERVAL=5000 \
-go run ./cmd start --seed profiles/example.yaml
+go run ./cmd --seed profiles/example.yaml
 ```
 
 Run a publishing request from the README. Open http://localhost:16686 and select
