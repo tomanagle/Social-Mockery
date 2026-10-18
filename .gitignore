@@ -1,0 +1,10 @@
+/bin/
+/tmp/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite*
+coverage*
+.env
+.env.*
+.DS_Store

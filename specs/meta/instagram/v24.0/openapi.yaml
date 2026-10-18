@@ -1,0 +1,574 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Social Mockery Instagram supported subset",
+    "version": "v24.0",
+    "description": "Versioned supported subset, not an exhaustive Meta contract. Generated interfaces are shared while request validation enforces configured versions. Authentication is required by the implementation; the empty security alternative represents tokens in POST form bodies, which OpenAPI cannot express as apiKey security."
+  },
+  "servers": [
+    {
+      "url": "https://graph.instagram.com"
+    },
+    {
+      "url": "https://graph.facebook.com"
+    }
+  ],
+  "x-behavior-provenance": {
+    "classification": "documentation-based",
+    "sources": [
+      "https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api",
+      "https://github.com/Posty-social/posty.social/blob/fcce90fb6493444c414d3f9e33aae85e2f00b8be/workspaces/libs/platforms/src/instagram/publish.ts"
+    ],
+    "liveVerified": false,
+    "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
+  },
+  "paths": {
+    "/{version}/{objectID}": {
+      "parameters": [
+        {
+          "name": "version",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "v24.0",
+              "v25.0"
+            ]
+          }
+        },
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "GetObject",
+        "description": "Fetch account, media container status or published media. Query fields projects the supported fields.",
+        "x-behavior-provenance": {
+          "classification": "documentation-based",
+          "sources": [
+            "https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api",
+            "https://github.com/Posty-social/posty.social/blob/fcce90fb6493444c414d3f9e33aae85e2f00b8be/workspaces/libs/platforms/src/instagram/publish.ts"
+          ],
+          "liveVerified": false,
+          "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph-style error; individual messages are simulator fixtures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/{version}/{objectID}/media": {
+      "parameters": [
+        {
+          "name": "version",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "v24.0",
+              "v25.0"
+            ]
+          }
+        },
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "ListMedia",
+        "description": "List published media for an account. Query fields, limit and after are supported.",
+        "x-behavior-provenance": {
+          "classification": "documentation-based",
+          "sources": [
+            "https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api",
+            "https://github.com/Posty-social/posty.social/blob/fcce90fb6493444c414d3f9e33aae85e2f00b8be/workspaces/libs/platforms/src/instagram/publish.ts"
+          ],
+          "liveVerified": false,
+          "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph-style error; individual messages are simulator fixtures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "in": "query",
+            "name": "after",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "CreateMedia",
+        "description": "Create an image or Reel container. Image media_type can be omitted. No external media URL is fetched by the simulator.",
+        "x-behavior-provenance": {
+          "classification": "documentation-based",
+          "sources": [
+            "https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api",
+            "https://github.com/Posty-social/posty.social/blob/fcce90fb6493444c414d3f9e33aae85e2f00b8be/workspaces/libs/platforms/src/instagram/publish.ts"
+          ],
+          "liveVerified": false,
+          "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph-style error; individual messages are simulator fixtures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "description": "Form encoding matches Posty. JSON is a simulator convenience; query parameters also supported.",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMediaRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMediaRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMediaRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "image_url",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "video_url",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "caption",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "media_type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/{version}/{objectID}/media_publish": {
+      "parameters": [
+        {
+          "name": "version",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "v24.0",
+              "v25.0"
+            ]
+          }
+        },
+        {
+          "name": "objectID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "operationId": "PublishMedia",
+        "description": "Publish a ready container exactly once.",
+        "x-behavior-provenance": {
+          "classification": "documentation-based",
+          "sources": [
+            "https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api",
+            "https://github.com/Posty-social/posty.social/blob/fcce90fb6493444c414d3f9e33aae85e2f00b8be/workspaces/libs/platforms/src/instagram/publish.ts"
+          ],
+          "liveVerified": false,
+          "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IDResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph-style error; individual messages are simulator fixtures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "description": "Form encoding matches Posty. JSON is a simulator convenience; query parameters also supported.",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishMediaRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishMediaRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishMediaRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "creation_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IDResponse": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateMediaRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          }
+        }
+      },
+      "PublishMediaRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "creation_id": {
+            "type": "string"
+          },
+          "access_token": {
+            "type": "string"
+          }
+        },
+        "description": "creation_id is required in the merged query/body parameters; it may be supplied in the query instead of the body."
+      },
+      "ObjectResponse": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "account_type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_code": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "media_product_type": {
+            "type": "string"
+          },
+          "media_url": {
+            "type": "string"
+          },
+          "thumbnail_url": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          }
+        }
+      },
+      "MediaList": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectResponse"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      },
+      "Paging": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string"
+          },
+          "cursors": {
+            "type": "object",
+            "properties": {
+              "after": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/GraphError"
+          }
+        }
+      },
+      "GraphError": {
+        "type": "object",
+        "required": [
+          "message",
+          "type",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "error_subcode": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "QueryToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "access_token"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerToken": []
+    },
+    {
+      "QueryToken": []
+    },
+    {}
+  ]
+}

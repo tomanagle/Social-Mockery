@@ -1,0 +1,17 @@
+# Optional local-only observability. No cloud account or credentials required.
+services:
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.161.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./configs/otel-collector.yaml:/etc/otelcol/config.yaml:ro
+    ports:
+      - "127.0.0.1:4317:4317"
+      - "127.0.0.1:4318:4318"
+      - "127.0.0.1:8889:8889"
+    depends_on:
+      - jaeger
+  jaeger:
+    image: jaegertracing/jaeger:2.22.0
+    ports:
+      - "127.0.0.1:16686:16686"

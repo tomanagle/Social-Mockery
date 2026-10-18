@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      CGO_ENABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: true
+      - name: Formatting
+        run: make fmt-check
+      - name: OpenAPI validation and generated-code drift
+        run: make generate-check
+      - name: Vet
+        run: go vet ./...
+      - name: Race tests
+        run: go test -race ./...
+      - name: Build
+        run: make build
+      - name: Benchmark smoke check
+        run: go test -run '^$' -bench . -benchtime=1x -benchmem ./...

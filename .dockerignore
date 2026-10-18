@@ -1,0 +1,10 @@
+.git
+.github
+bin
+tmp
+*.db
+*.db-shm
+*.db-wal
+*.sqlite*
+coverage*
+.env*
