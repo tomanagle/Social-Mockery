@@ -34,7 +34,9 @@ make build
 make bench
 ```
 
-The benchmark command runs whatever benchmarks the package tests define and reports allocations; it does not enforce a performance threshold. CI checks formatting, vet, race-enabled tests, a build, and a one-iteration benchmark smoke check.
+The benchmark command runs whatever benchmarks the package tests define and reports allocations; it does not enforce a performance threshold. CI checks formatting, generated-code drift, vet, tests, race-enabled tests, a build, and a one-iteration benchmark smoke check.
+
+Buildkite runs the same checks from `.buildkite/pipeline.yml` on a self-hosted Docker agent (queue `linux-docker`, provisioned by [buildkite-digitalocean](https://github.com/tomanagle/buildkite-digitalocean)). `.buildkite/go.sh` runs each command in the pinned Go image as the agent's user, downloading modules first and then running the command with `--network none`. `.buildkite/docker-smoke.sh` builds the production image, checks `/healthz`, and confirms a restart without `--seed` keeps state on a named volume. Run either script locally with `GO_IMAGE` set to the value in the pipeline file.
 
 `make run` starts the example fixture with an in-memory database. An optional `.air.toml` is provided for developers who already use Air: run `air` in the repository root. Air is a development utility, not a Go module dependency. Reloading restarts the server and resets its in-memory database.
 
