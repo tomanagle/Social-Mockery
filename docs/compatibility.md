@@ -11,11 +11,15 @@ The resource simulator supports a narrow single-media publishing flow:
 3. Publish using `creation_id`.
 4. Retrieve the published media ID/permalink or list account media.
 
+It also serves `GET /me` on `graph.instagram.com` for Instagram Login connection checks. Supported fields are `id`, `user_id`, `username`, `account_type` and `media_count`. `user_id` is the professional account ID used by publishing paths. `id` is the Instagram-scoped user ID, which is a synthetic deterministic value per app and account. `account_type` uses the documented `Business` and `Media_Creator` values; personal accounts are rejected. Documented fields with no fixture data (`name`, `profile_picture_url`, `biography`, `website`, `followers_count`, `follows_count`) are omitted rather than invented. Facebook Login `/me` on `graph.facebook.com` is not simulated.
+
 Real clients may poll using wall time; in the simulator their test harness must explicitly advance the virtual clock. The simulator keeps that clock frozen between advances, including across a persisted database restart.
 
 ## Supported routing envelope
 
 Local paths embed `https://graph.instagram.com` or `https://graph.facebook.com`, followed by `v24.0` or `v25.0`. This is an allowlisted route format, not an arbitrary upstream proxy. A recognized Graph host does not make every endpoint for that host available.
+
+Meta documents that an unversioned call uses the version set in the app dashboard. The simulator resolves an unversioned path that starts with `me` or a numeric node ID through the token's app fixture `graph_api_version`. The token must be in the query string or `Authorization` header. Legacy fixture tokens have no app, so unversioned calls with them are rejected, as are apps without `graph_api_version`. A configured version without a runtime adapter, such as `v26.0`, returns the normal unsupported-version error.
 
 The supplied BUSINESS account and fixture token include both Instagram Login-style business scopes and Facebook Login-style Instagram scopes so the supported publishing calls have predictable fixture authorization. This legacy fixture shortcut is separate from the synthetic OAuth flow. OAuth-created tokens preserve their login product, approved/granted scopes and selected assets. Real token introspection and Meta app review are not performed.
 

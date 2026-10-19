@@ -20,7 +20,7 @@ type instagramv24Adapter struct{ p *Provider }
 var _ instagramv24.ServerInterface = (*instagramv24Adapter)(nil)
 
 func (a *instagramv24Adapter) ExchangeInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv24.ExchangeInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, false)
 }
 func (a *instagramv24Adapter) ExchangeInstagramAuthorizationCode(w http.ResponseWriter, r *http.Request) {
 	a.p.serve(w, r)
@@ -29,7 +29,7 @@ func (a *instagramv24Adapter) AuthorizeInstagramBusinessLogin(w http.ResponseWri
 	a.p.serve(w, r)
 }
 func (a *instagramv24Adapter) RefreshInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv24.RefreshInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, true)
 }
 func (a *instagramv24Adapter) DebugFacebookAccessToken(w http.ResponseWriter, r *http.Request, params instagramv24.DebugFacebookAccessTokenParams) {
 	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
@@ -64,7 +64,7 @@ type instagramv25Adapter struct{ p *Provider }
 var _ instagramv25.ServerInterface = (*instagramv25Adapter)(nil)
 
 func (a *instagramv25Adapter) ExchangeInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv25.ExchangeInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, false)
 }
 func (a *instagramv25Adapter) ExchangeInstagramAuthorizationCode(w http.ResponseWriter, r *http.Request) {
 	a.p.serve(w, r)
@@ -73,7 +73,7 @@ func (a *instagramv25Adapter) AuthorizeInstagramBusinessLogin(w http.ResponseWri
 	a.p.serve(w, r)
 }
 func (a *instagramv25Adapter) RefreshInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv25.RefreshInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, true)
 }
 func (a *instagramv25Adapter) DebugFacebookAccessToken(w http.ResponseWriter, r *http.Request, params instagramv25.DebugFacebookAccessTokenParams) {
 	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
@@ -108,7 +108,7 @@ type instagramv26Adapter struct{ p *Provider }
 var _ instagramv26.ServerInterface = (*instagramv26Adapter)(nil)
 
 func (a *instagramv26Adapter) ExchangeInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv26.ExchangeInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, false)
 }
 func (a *instagramv26Adapter) ExchangeInstagramAuthorizationCode(w http.ResponseWriter, r *http.Request) {
 	a.p.serve(w, r)
@@ -117,7 +117,7 @@ func (a *instagramv26Adapter) AuthorizeInstagramBusinessLogin(w http.ResponseWri
 	a.p.serve(w, r)
 }
 func (a *instagramv26Adapter) RefreshInstagramLongLivedToken(w http.ResponseWriter, r *http.Request, params instagramv26.RefreshInstagramLongLivedTokenParams) {
-	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
+	a.p.instagramLongLived(w, r, true)
 }
 func (a *instagramv26Adapter) DebugFacebookAccessToken(w http.ResponseWriter, r *http.Request, params instagramv26.DebugFacebookAccessTokenParams) {
 	fail(w, "instagram", 501, "unsupported_operation", "This reference operation is not implemented")
@@ -286,5 +286,8 @@ func (p *Provider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	clone := r.Clone(r.Context())
 	clone.URL = &url.URL{Path: u.Path, RawQuery: u.RawQuery}
+	if product == "instagram" && u.Path == "/oauth/authorize/" {
+		clone.URL.Path = "/oauth/authorize"
+	}
 	p.routers[product+"/"+version].ServeHTTP(w, clone)
 }

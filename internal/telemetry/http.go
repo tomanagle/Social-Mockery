@@ -34,11 +34,16 @@ func Route(r *http.Request) (provider, version, route string) {
 	}
 	provider = "meta"
 	parts := strings.Split(strings.Trim(u.Path, "/"), "/")
+	if len(parts) == 1 && parts[0] == "me" {
+		return provider, "unversioned", "/me"
+	}
 	if len(parts) < 2 || (parts[0] != "v24.0" && parts[0] != "v25.0") {
 		return
 	}
 	version = parts[0]
 	switch {
+	case len(parts) == 2 && parts[1] == "me":
+		route = "/{version}/me"
 	case len(parts) == 2:
 		route = "/{version}/{id}"
 	case len(parts) == 3 && parts[2] == "media":

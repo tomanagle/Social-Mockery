@@ -23,6 +23,9 @@ type adapter24 struct{ provider *Provider }
 
 var _ v24.ServerInterface = (*adapter24)(nil)
 
+func (a *adapter24) GetMe(w http.ResponseWriter, r *http.Request, params v24.GetMeParams) {
+	a.provider.operation(w, r, "me.read")
+}
 func (a *adapter24) GetObject(w http.ResponseWriter, r *http.Request, objectID string, params v24.GetObjectParams) {
 	a.provider.operation(w, r, "object.read")
 }
@@ -40,6 +43,9 @@ type adapter25 struct{ provider *Provider }
 
 var _ v25.ServerInterface = (*adapter25)(nil)
 
+func (a *adapter25) GetMe(w http.ResponseWriter, r *http.Request, params v25.GetMeParams) {
+	a.provider.operation(w, r, "me.read")
+}
 func (a *adapter25) GetObject(w http.ResponseWriter, r *http.Request, objectID string, params v25.GetObjectParams) {
 	a.provider.operation(w, r, "object.read")
 }

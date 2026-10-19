@@ -48,6 +48,13 @@ func validRedirect(raw string) bool {
 	}
 	return u.Scheme == "http" && (u.Hostname() == "localhost" || u.Hostname() == "127.0.0.1" || u.Hostname() == "::1")
 }
+
+// graphVersion accepts Graph release labels such as v25.0.
+func graphVersion(v string) bool {
+	major, ok := strings.CutSuffix(strings.TrimPrefix(v, "v"), ".0")
+	return ok && strings.HasPrefix(v, "v") && len(major) >= 1 && len(major) <= 2 && validID(major)
+}
+
 func validateOAuth(s store.Seed, ids map[string]bool) error {
 	if len(s.Apps) > 100 || len(s.Grants) > 2000 || len(s.Assets) > 2000 {
 		return fmt.Errorf("OAuth fixture limit exceeded")
@@ -97,6 +104,9 @@ func validateOAuth(s store.Seed, ids map[string]bool) error {
 		if !validList(a.ApprovedScopes, 32) || !validList(a.AccountIDs, 1000) {
 			return fmt.Errorf("invalid OAuth scopes or accounts")
 		}
+		if a.GraphAPIVersion != "" && (a.Product == "tiktok" || !graphVersion(a.GraphAPIVersion)) {
+			return fmt.Errorf("graph_api_version must look like v25.0 and applies only to Meta apps")
+		}
 		for _, id := range a.AccountIDs {
 			if !ids[id] {
 				return fmt.Errorf("OAuth app references missing account")
@@ -139,6 +149,9 @@ func validateOAuth(s store.Seed, ids map[string]bool) error {
 	}
 	refreshTokens := map[string]bool{}
 	for _, t := range s.Tokens {
+		if t.IssuedAt < 0 || (t.Kind != "" && (t.Kind != "long_lived" || t.Product != "instagram" || t.AppID == "" || t.ExpiresAt <= 0)) {
+			return fmt.Errorf("token kind long_lived applies only to expiring Instagram Login app tokens")
+		}
 		if t.RefreshToken != "" {
 			if t.Product != "tiktok" || t.AppID == "" || len(t.RefreshToken) > 1024 || t.RefreshExpiresAt <= 0 || refreshTokens[t.RefreshToken] {
 				return fmt.Errorf("invalid OAuth refresh token")

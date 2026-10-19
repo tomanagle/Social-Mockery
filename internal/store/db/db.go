@@ -42,10 +42,10 @@ func migrate(db *sql.DB) error {
 	if err := db.QueryRow(`PRAGMA user_version`).Scan(&version); err != nil {
 		return err
 	}
-	if version > 2 {
-		return fmt.Errorf("database schema %d is newer than supported version 2", version)
+	if version > 3 {
+		return fmt.Errorf("database schema %d is newer than supported version 3", version)
 	}
-	if version == 2 {
+	if version == 3 {
 		return nil
 	}
 	tx, err := db.Begin()
@@ -68,7 +68,8 @@ func migrate(db *sql.DB) error {
 			return err
 		}
 	}
-	if _, err = tx.Exec(`
+	if version < 2 {
+		if _, err = tx.Exec(`
  ALTER TABLE tokens ADD COLUMN refresh_token TEXT NOT NULL DEFAULT '';
  ALTER TABLE tokens ADD COLUMN refresh_expires_at INTEGER NOT NULL DEFAULT 0;
  CREATE UNIQUE INDEX tokens_refresh_unique ON tokens(refresh_token) WHERE refresh_token<>'';
@@ -84,6 +85,14 @@ func migrate(db *sql.DB) error {
  CREATE INDEX oauth_sessions_expiry ON oauth_sessions(expires_at);
  CREATE INDEX oauth_codes_expiry ON oauth_codes(expires_at);
  PRAGMA user_version=2;
+ `); err != nil {
+			return err
+		}
+	}
+	if _, err = tx.Exec(`
+ ALTER TABLE tokens ADD COLUMN kind TEXT NOT NULL DEFAULT '';
+ ALTER TABLE tokens ADD COLUMN issued_at INTEGER NOT NULL DEFAULT 0;
+ PRAGMA user_version=3;
  `); err != nil {
 		return err
 	}

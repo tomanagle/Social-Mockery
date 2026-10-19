@@ -44,7 +44,38 @@ func TestMigrationV1PreservesExistingState(t *testing.T) {
 	if err = conn.QueryRow("SELECT now FROM settings").Scan(&now); err != nil || now != 123 {
 		t.Fatalf("clock lost: %d %v", now, err)
 	}
-	if err = conn.QueryRow("PRAGMA user_version").Scan(&version); err != nil || version != 2 {
+	if err = conn.QueryRow("PRAGMA user_version").Scan(&version); err != nil || version != 3 {
+		t.Fatalf("schema version: %d %v", version, err)
+	}
+}
+
+func TestMigrationV2AddsTokenLifecycleColumns(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "v2.db")
+	conn, err := sql.Open("sqlite3", path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = conn.Exec(`
+ CREATE TABLE tokens(value TEXT PRIMARY KEY,account_id TEXT,scopes TEXT,expires_at INTEGER);
+ INSERT INTO tokens VALUES('existing','1','[]',77);
+ PRAGMA user_version=2;`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = conn.Close(); err != nil {
+		t.Fatal(err)
+	}
+	conn, err = Open(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer conn.Close()
+	var kind string
+	var expires, issued, version int64
+	if err = conn.QueryRow("SELECT kind,expires_at,issued_at FROM tokens WHERE value='existing'").Scan(&kind, &expires, &issued); err != nil || kind != "" || expires != 77 || issued != 0 {
+		t.Fatalf("token after migration: kind=%q expires=%d issued=%d err=%v", kind, expires, issued, err)
+	}
+	if err = conn.QueryRow("PRAGMA user_version").Scan(&version); err != nil || version != 3 {
 		t.Fatalf("schema version: %d %v", version, err)
 	}
 }

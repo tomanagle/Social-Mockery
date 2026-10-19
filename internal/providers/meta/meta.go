@@ -2,6 +2,8 @@
 package meta
 
 import (
+	"crypto/sha256"
+	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -79,6 +81,16 @@ func (p *Provider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	parts := strings.Split(strings.TrimPrefix(u.Path, "/"), "/")
+	if len(parts) > 0 && unversionedNode(parts[0]) && !strings.Contains(u.EscapedPath(), "%") {
+		version, ok := p.unversioned(w, r, u)
+		if !ok {
+			return
+		}
+		u.Path = "/" + version + u.Path
+		parts = append([]string{version}, parts...)
+		r = r.Clone(r.Context())
+		r.RequestURI = "/" + u.String()
+	}
 	if strings.Contains(u.EscapedPath(), "%") || len(parts) < 2 || len(parts) > 3 {
 		failure(w, 404, 100, "Unsupported endpoint")
 		return
@@ -226,6 +238,10 @@ func (p *Provider) serveGraph(w http.ResponseWriter, r *http.Request) {
 	}
 	if r.Method == "GET" && edge == "media" {
 		p.list(w, r, id, values, u)
+		return
+	}
+	if r.Method == "GET" && edge == "" && id == "me" {
+		p.me(w, r, t, values, u.Host)
 		return
 	}
 	if r.Method == "GET" && edge == "" {
@@ -593,4 +609,107 @@ type graphError struct {
 }
 type errorResponse struct {
 	Error graphError `json:"error"`
+}
+
+// unversionedNode reports whether a path segment is a Graph node: the me alias
+// or a numeric ID. Anything else, such as "latest" or "v25.1", is treated as an
+// unsupported version.
+func unversionedNode(segment string) bool {
+	if segment == "me" {
+		return true
+	}
+	if segment == "" || len(segment) > 64 {
+		return false
+	}
+	for _, r := range segment {
+		if r < '0' || r > '9' {
+			return false
+		}
+	}
+	return true
+}
+
+// unversioned resolves a Graph call without a version segment to the version
+// configured for the token's app, matching the documented app-dashboard default.
+// It reads the token only from the query or Authorization header so the request
+// body stays unread for the version router.
+func (p *Provider) unversioned(w http.ResponseWriter, r *http.Request, u *url.URL) (string, bool) {
+	query, err := url.ParseQuery(u.RawQuery)
+	if err != nil || len(query["access_token"]) > 1 {
+		failure(w, 400, 100, "Malformed query parameters")
+		return "", false
+	}
+	token := query.Get("access_token")
+	if auth := r.Header.Get("Authorization"); strings.HasPrefix(auth, "Bearer ") && token == "" {
+		token = strings.TrimPrefix(auth, "Bearer ")
+	}
+	if token == "" {
+		failure(w, 400, 100, "Unversioned calls require access_token in the query string or Authorization header")
+		return "", false
+	}
+	p.engine.Mu.Lock()
+	defer p.engine.Mu.Unlock()
+	t, err := p.engine.Store.Token(r.Context(), token)
+	if err != nil {
+		if errors.Is(err, store.ErrNotFound) {
+			failure(w, 400, 190, "Invalid OAuth access token")
+		} else {
+			failStore(w, err)
+		}
+		return "", false
+	}
+	app, err := p.engine.Store.OAuthApp(r.Context(), t.AppID)
+	if t.AppID == "" || err != nil || app.GraphAPIVersion == "" {
+		failure(w, 400, 100, "Unversioned calls require graph_api_version on the token's app fixture")
+		return "", false
+	}
+	return app.GraphAPIVersion, true
+}
+
+// me serves the Instagram Login token owner. Documented fields with no fixture
+// data are omitted rather than invented.
+func (p *Provider) me(w http.ResponseWriter, r *http.Request, t store.Token, v url.Values, host string) {
+	if host != "graph.instagram.com" {
+		failure(w, 404, 100, "Facebook Login /me is not simulated; see docs/compatibility.md")
+		return
+	}
+	a, err := p.engine.Store.Account(r.Context(), t.AccountID)
+	if err != nil {
+		failStore(w, err)
+		return
+	}
+	kind := map[string]string{"BUSINESS": "Business", "CREATOR": "Media_Creator"}[a.Type]
+	if kind == "" {
+		failure(w, 403, 200, "Instagram API with Instagram Login requires a professional account")
+		return
+	}
+	count, err := p.engine.Store.PostCount(r.Context(), a.ID)
+	if err != nil {
+		failStore(w, err)
+		return
+	}
+	all := map[string]any{"id": scopedID(t.AppID, a.ID), "user_id": a.ID, "username": a.Username, "account_type": kind, "media_count": count}
+	documentedWithoutFixture := map[string]bool{"name": true, "profile_picture_url": true, "biography": true, "website": true, "followers_count": true, "follows_count": true}
+	fields := v.Get("fields")
+	if fields == "" {
+		JSON(w, 200, map[string]any{"id": all["id"]})
+		return
+	}
+	out := map[string]any{"id": all["id"]}
+	for _, field := range strings.Split(fields, ",") {
+		field = strings.TrimSpace(field)
+		if value, ok := all[field]; ok {
+			out[field] = value
+		} else if !documentedWithoutFixture[field] {
+			failure(w, 400, 100, "Unsupported field: "+field)
+			return
+		}
+	}
+	JSON(w, 200, out)
+}
+
+// scopedID derives a stable synthetic Instagram-scoped user ID per app and account.
+func scopedID(appID, accountID string) string {
+	sum := sha256.Sum256([]byte("instagram-scoped-id\x00" + appID + "\x00" + accountID))
+	return fmt.Sprintf("2%016d", binary.BigEndian.Uint64(sum[:8])%10_000_000_000_000_000)
 }

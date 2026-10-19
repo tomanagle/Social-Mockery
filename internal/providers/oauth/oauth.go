@@ -42,8 +42,16 @@ func Match(r *http.Request) (product, operation string, ok bool) {
 	switch {
 	case (u.Host == "www.instagram.com" || u.Host == "api.instagram.com") && u.Path == "/oauth/authorize":
 		return "instagram", "authorize", true
+	// Live-verified (owner-reported Posty production use, 2026-10-19): www.instagram.com
+	// accepts the trailing-slash form, although Meta's guide shows none.
+	case u.Host == "www.instagram.com" && u.Path == "/oauth/authorize/":
+		return "instagram", "authorize", true
 	case u.Host == "api.instagram.com" && u.Path == "/oauth/access_token":
 		return "instagram", "token", true
+	case u.Host == "graph.instagram.com" && u.Path == "/access_token":
+		return "instagram", "long_lived", true
+	case u.Host == "graph.instagram.com" && u.Path == "/refresh_access_token":
+		return "instagram", "refresh", true
 	case u.Host == "www.tiktok.com" && u.Path == "/v2/auth/authorize/":
 		return "tiktok", "authorize", true
 	case u.Host == "open.tiktokapis.com" && u.Path == "/v2/oauth/token/":
@@ -473,7 +481,7 @@ func (p *Provider) exchange(w http.ResponseWriter, r *http.Request, product stri
 	if product == "tiktok" {
 		ttl = 86400
 	}
-	token := store.Token{Value: "mock_" + value, AccountID: target, AppID: app.ID, Product: app.Product, Scopes: c.Scopes, AssetIDs: c.AssetIDs, ExpiresAt: now + ttl}
+	token := store.Token{Value: "mock_" + value, AccountID: target, AppID: app.ID, Product: app.Product, Scopes: c.Scopes, AssetIDs: c.AssetIDs, ExpiresAt: now + ttl, IssuedAt: now}
 	if product == "tiktok" {
 		refresh, err := randomValue()
 		if err != nil {
@@ -490,7 +498,9 @@ func (p *Provider) exchange(w http.ResponseWriter, r *http.Request, product stri
 	}
 	switch product {
 	case "instagram":
-		meta.JSON(w, 200, map[string]any{"data": []map[string]any{{"access_token": token.Value, "user_id": target, "permissions": strings.Join(c.Scopes, ",")}}})
+		// Live-verified (owner-reported Posty production use, 2026-10-19): the response
+		// is a flat object. Meta's guide wraps it in a data array; see docs/oauth-consent.md.
+		meta.JSON(w, 200, map[string]any{"access_token": token.Value, "user_id": target, "permissions": strings.Join(c.Scopes, ",")})
 	case "tiktok":
 		meta.JSON(w, 200, map[string]any{"access_token": token.Value, "expires_in": ttl, "open_id": target, "scope": strings.Join(c.Scopes, ","), "token_type": "Bearer", "refresh_token": token.RefreshToken, "refresh_expires_in": token.RefreshExpiresAt - now})
 	default:

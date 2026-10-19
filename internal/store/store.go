@@ -25,6 +25,10 @@ type Token struct {
 	AccountID        string   `json:"account_id" yaml:"account_id"`
 	Scopes           []string `json:"scopes" yaml:"scopes"`
 	ExpiresAt        int64    `json:"expires_at" yaml:"expires_at"`
+	// Kind distinguishes Instagram Login long-lived tokens ("long_lived") from
+	// short-lived or legacy fixture tokens (""). IssuedAt is virtual Unix time.
+	Kind     string `json:"kind,omitempty" yaml:"kind,omitempty"`
+	IssuedAt int64  `json:"issued_at,omitempty" yaml:"issued_at,omitempty"`
 }
 type Container struct {
 	ID          string `json:"id"`
@@ -57,6 +61,8 @@ type Seed struct {
 type Repository interface {
 	OAuthRefreshToken(context.Context, string) (Token, error)
 	RefreshOAuthToken(context.Context, string, Token) error
+	ExchangeInstagramToken(context.Context, string, Token) error
+	ExtendInstagramToken(context.Context, string, int64, int64) error
 	OAuthApp(context.Context, string) (OAuthApp, error)
 	OAuthAccounts(context.Context, string) ([]Account, error)
 	OAuthAssets(context.Context, string) ([]OAuthAsset, error)
@@ -80,4 +86,5 @@ type Repository interface {
 	Publish(context.Context, string, string, int) (Post, error)
 	Post(context.Context, string) (Post, error)
 	Posts(context.Context, string, int, int) ([]Post, error)
+	PostCount(context.Context, string) (int, error)
 }

@@ -4,6 +4,8 @@ Use this document as the working prompt for continuing Social Mockery. It record
 
 Status baseline: inspected `main` at `59b29a1e70e1fc674a90f0079fbeaa10c529d1e5` on 2026-10-19. This is a snapshot, not a promise that later code matches it. Update the status and acceptance evidence as work lands.
 
+Status updates: 2026-10-19, Instagram Login long-lived token exchange/refresh, `/me`, and unversioned Graph calls through the app's `graph_api_version` (section 4).
+
 ## 1. What we are building
 
 Build a lightweight, local social-platform simulator for developing and testing integrations without real social accounts, uploads, posts, or provider API calls. The immediate use case is testing Posty, starting with Instagram publishing and realistic connection/consent flows; Facebook Pages and TikTok resource workflows follow. The longer-term goal includes deterministic influencer/account profiles, engagement, failures, rate limits, webhooks, and reproducible scenarios.
@@ -53,7 +55,9 @@ When documentation and implementation differ, investigate and resolve the specif
 ### Instagram resource runtime
 
 - [x] Separate generated runtime contracts/adapters for Graph v24.0 and v25.0, reached via recognized `graph.instagram.com` / `graph.facebook.com` routing labels.
-- [x] Four method/path operations per version: create media, publish media, shared object read, and list media. Container and published-media reads share the object-read route.
+- [x] Five method/path operations per version: create media, publish media, shared object read, list media, and `/me`. Container and published-media reads share the object-read route.
+- [x] `GET /me` on `graph.instagram.com` with `id` (synthetic Instagram-scoped ID), `user_id`, `username`, documented `account_type` values and `media_count`; documented fields without fixture data are omitted.
+- [x] Unversioned Graph calls starting with `me` or a numeric node resolve through the token's app `graph_api_version`, per Meta's documented app-dashboard default.
 - [x] Single-image and Reel URL-input container creation; virtual processing; status reads; publish with `creation_id`; published ID/permalink reads; account-media listing.
 - [x] Token/account/scope checks, expiry, ownership, processing and publish-state checks, field selection/pagination behavior within the documented slice, and deterministic reset.
 - [x] OAuth-issued Instagram tokens connect to this resource slice, including linked-account authorization for Instagram through Facebook Login. Legacy fixture tokens remain a separate compatibility shortcut.
@@ -66,12 +70,14 @@ Not implemented here: Instagram v26 resource routing, carousel/Stories, real upl
 - [x] Provider-native authorize/token route shapes; Instagram unversioned OAuth, Facebook v24.0/v25.0/v26.0 dialog/code exchange, and TikTok v2 authorize/code exchange/refresh.
 - [x] Account choice, requested permission display, approve/deny and partial consent, eligible Page selection, app-approved scopes, persisted grants, exact registered redirect validation, returned state, expiring/single-use codes, and token issuance.
 - [x] Product-specific scope families and selected-asset/task checks. Instagram through Facebook Login requires one selected Page linked to an eligible professional account; single-Page selection is a current simulator limitation.
+- [x] Instagram Login authorize accepts Posty's `www.instagram.com/oauth/authorize/` form and the code exchange returns a flat object, both owner-reported live behaviour (2026-10-19) that conflicts with Meta's guide.
+- [x] Instagram Login long-lived token exchange (`ig_exchange_token`) and refresh (`ig_refresh_token`) on unversioned `graph.instagram.com` paths, with the documented 60-day lifetime, 24-hour refresh age and `instagram_business_basic` requirement. Exact `expires_in`, idempotent exchange and in-place refresh are synthetic.
 - [x] TikTok persistent atomic access/refresh rotation, with prior tokens invalidated and original refresh expiry retained. This exact rotation policy is synthetic.
 - [x] PKCE where configured: TikTok desktop uses its documented hexadecimal S256 representation; optional Meta simulator PKCE uses base64url. TikTok web PKCE is explicitly unsupported by this simulator.
 - [x] Browser-bound consent sessions, separate tab cookies, escaped HTML, no-store/no-referrer/frame restrictions, atomic session/code consumption, replay protection, and bounded persisted sessions/codes.
 - [x] Upsert/reconnect preserves posts. Reducing app approval or grants affects subsequent OAuth-issued Instagram authorization; legacy fixture-token semantics stay separate.
 
-Not implemented: real identity/password login, full Business Login `config_id` behavior, system-user flows, actual App Review/Business Verification, provider permission/revocation/debug endpoints, QR login, Meta long-lived exchange/refresh, Facebook Page or TikTok resource APIs. Code and token lifetimes include documented and synthetic choices; see the OAuth guide rather than generalizing one product's behavior to another.
+Not implemented: real identity/password login, full Business Login `config_id` behavior, system-user flows, actual App Review/Business Verification, provider permission/revocation/debug endpoints, QR login, Facebook long-lived exchange/refresh, Facebook Page or TikTok resource APIs. Code and token lifetimes include documented and synthetic choices; see the OAuth guide rather than generalizing one product's behavior to another.
 
 ### Observability and engineering foundation
 
@@ -90,7 +96,7 @@ Measured directly from the current reference documents:
 - Instagram: five product documents per Graph version v24.0, v25.0, v26.0; 105 operations per version (60 Facebook Login, 29 Instagram Login, 13 OAuth, 1 upload, 2 webhook callbacks). Total 315 versioned entries.
 - Facebook Pages: four product documents per version v24.0, v25.0, v26.0; 37 operations per version (28 Pages, 6 OAuth, 1 upload, 2 webhook callbacks). Total 111 versioned entries.
 - TikTok v2: five documents; 16 operations (5 OAuth, 3 Display, 6 Content Posting, 1 upload transport, 1 webhook receiver).
-- The separate narrow Instagram runtime specifications contain four operations per v24.0/v25.0. OAuth runtime uses selected reference interfaces through handwritten adapters; it does not mount every reference method.
+- The separate narrow Instagram runtime specifications contain five operations per v24.0/v25.0. OAuth runtime uses selected reference interfaces through handwritten adapters; it does not mount every reference method.
 
 Reference coverage includes substantially broader publishing, account/discovery, comments, insights, messaging, native uploads and callbacks where the selected product exposes them. Consult each inventory for exact inclusions/exclusions. A receiver template is not an upstream API endpoint, and repeated version entries are not distinct capabilities.
 

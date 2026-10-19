@@ -7,6 +7,7 @@ Test social integrations locally without real accounts, uploads or API calls. So
 Runnable simulation:
 
 - [x] Instagram: image/Reel publishing on Graph v24.0 and v25.0; Instagram Login and Facebook Login consent/code exchange (Facebook Login v24.0–v26.0)
+- [x] Instagram Login: long-lived token exchange and refresh, `/me`, and unversioned Graph calls through the app's configured version
 - [x] Facebook: Login consent and code exchange on Graph v24.0, v25.0 and v26.0
 - [x] TikTok: v2 Login consent, code exchange and token refresh
 - [ ] Facebook Page publishing and TikTok publishing at runtime

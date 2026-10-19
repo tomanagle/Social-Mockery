@@ -23,6 +23,61 @@
     "notes": "Supported subset only. Simulator timing, IDs, cursor format and error messages are synthetic."
   },
   "paths": {
+    "/v25.0/me": {
+      "get": {
+        "operationId": "GetMe",
+        "description": "Read the Instagram Login user who granted the access token. graph.instagram.com only; Facebook Login /me is not simulated.",
+        "x-behavior-provenance": {
+          "classification": "documentation-based",
+          "sources": [
+            "https://developers.facebook.com/documentation/instagram-platform/reference/me",
+            "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-instagram-login/business-login"
+          ],
+          "liveVerified": false,
+          "notes": "Supported fields: id, user_id, username, account_type, media_count. The app-scoped id derivation and error messages are synthetic."
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Graph-style error; individual messages are simulator fixtures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v25.0/{objectID}": {
       "parameters": [
         {
@@ -512,6 +567,31 @@
             "type": "integer"
           }
         }
+      },
+      "MeResponse": {
+        "type": "object",
+        "description": "Instagram Login token owner. Documented fields without fixture data are omitted rather than invented.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Instagram-scoped (app-scoped) user ID; the simulator value is a synthetic deterministic derivation."
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Instagram professional account ID used by Graph paths such as /{ig-user-id}/media."
+          },
+          "username": {
+            "type": "string"
+          },
+          "account_type": {
+            "type": "string",
+            "description": "Get-started names Business or Media_Creator; case-sensitive enum is not enforced across sources."
+          },
+          "media_count": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true
       }
     },
     "securitySchemes": {

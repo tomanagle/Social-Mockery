@@ -48,3 +48,52 @@ func TestOAuthRedirectAuthoritySafeForCSP(t *testing.T) {
 		t.Fatalf("valid encoded query rejected: %v", err)
 	}
 }
+
+func TestTokenLifecycleFixtureValidation(t *testing.T) {
+	app := func(product, version string) store.OAuthApp {
+		return store.OAuthApp{ID: "app", Name: "Demo", Secret: "secret", Product: product, RedirectURIs: []string{"https://example.test/callback"}, ApprovedScopes: []string{"instagram_business_basic"}, AccountIDs: []string{"17841400000000001"}, GraphAPIVersion: version}
+	}
+	token := func(kind string, expires int64) store.Token {
+		return store.Token{Value: "long", AccountID: "17841400000000001", AppID: "app", Product: "instagram", Scopes: []string{"instagram_business_basic"}, Kind: kind, ExpiresAt: expires, IssuedAt: 10}
+	}
+	cases := []struct {
+		name  string
+		app   store.OAuthApp
+		token *store.Token
+		valid bool
+	}{
+		{"meta app version", app("instagram", "v25.0"), nil, true},
+		{"no app version", app("instagram", ""), nil, true},
+		{"malformed version", app("instagram", "25.0"), nil, false},
+		{"minor version", app("instagram", "v25.1"), nil, false},
+		{"tiktok version", store.OAuthApp{ID: "app", Name: "Demo", Secret: "secret", Product: "tiktok", RedirectURIs: []string{"https://example.test/callback"}, GraphAPIVersion: "v25.0"}, nil, false},
+		{"long-lived token", app("instagram", ""), ptr(token("long_lived", 100)), true},
+		{"non-expiring long-lived token", app("instagram", ""), ptr(token("long_lived", 0)), false},
+		{"unknown kind", app("instagram", ""), ptr(token("forever", 100)), false},
+		{"long-lived facebook token", func() store.OAuthApp {
+			a := app("instagram_facebook", "")
+			a.ApprovedScopes = []string{"instagram_basic"}
+			return a
+		}(),
+			func() *store.Token {
+				t := token("long_lived", 100)
+				t.Product = "instagram_facebook"
+				t.Scopes = []string{"instagram_basic"}
+				return &t
+			}(), false},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			s := Default()
+			s.Apps = []store.OAuthApp{tc.app}
+			if tc.token != nil {
+				s.Tokens = append(s.Tokens, *tc.token)
+			}
+			if err := Validate(s); (err == nil) != tc.valid {
+				t.Fatalf("valid=%v err=%v", tc.valid, err)
+			}
+		})
+	}
+}
+
+func ptr[T any](v T) *T { return &v }

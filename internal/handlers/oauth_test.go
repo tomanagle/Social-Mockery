@@ -130,12 +130,8 @@ func TestOAuthConsentLifecycleSQLite(t *testing.T) {
 			}
 			response := object(t, redeem(t, h, s, code, nil), 200)
 			token, _ := response["access_token"].(string)
-			if product == "instagram" {
-				data := response["data"].([]any)[0].(map[string]any)
-				token = data["access_token"].(string)
-				if data["permissions"] != selected[0] {
-					t.Fatal("granted scopes mismatch")
-				}
+			if product == "instagram" && (response["permissions"] != selected[0] || response["user_id"] != account || response["data"] != nil) {
+				t.Fatalf("Instagram code exchange response: %v", response)
 			}
 			if product == "tiktok" && response["scope"] != selected[0] {
 				t.Fatal("granted scopes mismatch")

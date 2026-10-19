@@ -28,9 +28,6 @@ func issueOAuthToken(t *testing.T, h http.Handler, s store.Seed) string {
 	}
 	code := codeFrom(t, submitConsent(h, id, cookie, form))
 	body := object(t, redeem(t, h, s, code, nil), 200)
-	if s.Apps[0].Product == "instagram" {
-		return body["data"].([]any)[0].(map[string]any)["access_token"].(string)
-	}
 	return body["access_token"].(string)
 }
 func TestOAuthFixtureAdminAuthenticationAndOriginSQLite(t *testing.T) {

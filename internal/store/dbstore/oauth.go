@@ -306,7 +306,7 @@ func (s *Store) RedeemOAuthCode(ctx context.Context, id string, t store.Token, g
 	if err != nil {
 		return err
 	}
-	if _, err = tx.ExecContext(ctx, "INSERT INTO tokens(value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at) VALUES(?,?,?,?,?,?,?,?,?,?)", t.Value, t.AccountID, string(scopes), t.ExpiresAt, t.AppID, t.Product, string(assets), code.AccountID, t.RefreshToken, t.RefreshExpiresAt); err != nil {
+	if _, err = tx.ExecContext(ctx, "INSERT INTO tokens("+tokenColumns+") VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", t.Value, t.AccountID, string(scopes), t.ExpiresAt, t.AppID, t.Product, string(assets), code.AccountID, t.RefreshToken, t.RefreshExpiresAt, t.Kind, t.IssuedAt); err != nil {
 		return err
 	}
 	if err = putGrant(ctx, tx, g); err != nil {
@@ -359,8 +359,75 @@ func (s *Store) RefreshOAuthToken(ctx context.Context, refresh string, t store.T
 	if err != nil {
 		return err
 	}
-	if _, err = tx.ExecContext(ctx, "INSERT INTO tokens("+tokenColumns+") VALUES(?,?,?,?,?,?,?,?,?,?)", t.Value, t.AccountID, string(scopes), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, t.RefreshToken, t.RefreshExpiresAt); err != nil {
+	if _, err = tx.ExecContext(ctx, "INSERT INTO tokens("+tokenColumns+") VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", t.Value, t.AccountID, string(scopes), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, t.RefreshToken, t.RefreshExpiresAt, t.Kind, t.IssuedAt); err != nil {
 		return err
 	}
 	return tx.Commit()
+}
+
+// ExchangeInstagramToken stores the long-lived token issued for a short-lived
+// Instagram Login token. Repeating the exchange for the same short-lived token
+// replaces the same long-lived row, so repeated calls cannot grow state.
+func (s *Store) ExchangeInstagramToken(ctx context.Context, short string, t store.Token) error {
+	if short == "" || t.Value == "" || t.Value == short || t.Kind != "long_lived" || t.Product != "instagram" {
+		return store.ErrConflict
+	}
+	tx, err := s.db.BeginTx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+	old, err := scanToken(tx.QueryRowContext(ctx, "SELECT "+tokenColumns+" FROM tokens WHERE value=? AND kind='' AND product='instagram' AND app_id<>'' AND expires_at>(SELECT now FROM settings WHERE id=1)", short))
+	if err != nil {
+		return err
+	}
+	if old.AppID != t.AppID || old.AccountID != t.AccountID || old.GrantAccountID != t.GrantAccountID || !slices.Equal(old.Scopes, t.Scopes) || !slices.Equal(old.AssetIDs, t.AssetIDs) {
+		return store.ErrConflict
+	}
+	var exists bool
+	if err = tx.QueryRowContext(ctx, "SELECT EXISTS(SELECT 1 FROM tokens WHERE value=?)", t.Value).Scan(&exists); err != nil {
+		return err
+	}
+	if !exists {
+		var tokenCount int
+		if err = tx.QueryRowContext(ctx, "SELECT count(*) FROM tokens WHERE app_id<>''").Scan(&tokenCount); err != nil {
+			return err
+		}
+		if tokenCount >= maxOAuthRecords {
+			return store.ErrCapacity
+		}
+	}
+	scopes, err := json.Marshal(t.Scopes)
+	if err != nil {
+		return err
+	}
+	assets, err := json.Marshal(t.AssetIDs)
+	if err != nil {
+		return err
+	}
+	result, err := tx.ExecContext(ctx, "INSERT INTO tokens("+tokenColumns+") VALUES(?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(value) DO UPDATE SET expires_at=excluded.expires_at, issued_at=excluded.issued_at WHERE tokens.kind='long_lived' AND tokens.app_id=excluded.app_id AND tokens.account_id=excluded.account_id", t.Value, t.AccountID, string(scopes), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, "", 0, t.Kind, t.IssuedAt)
+	if err != nil {
+		return err
+	}
+	if n, err := result.RowsAffected(); err != nil || n != 1 {
+		return store.ErrConflict
+	}
+	return tx.Commit()
+}
+
+// ExtendInstagramToken refreshes an unexpired long-lived Instagram Login token
+// in place. Keeping the token value is a simulator choice; see docs/oauth-consent.md.
+func (s *Store) ExtendInstagramToken(ctx context.Context, value string, expiresAt, issuedAt int64) error {
+	result, err := s.db.ExecContext(ctx, "UPDATE tokens SET expires_at=?, issued_at=? WHERE value=? AND kind='long_lived' AND product='instagram' AND expires_at>(SELECT now FROM settings WHERE id=1) AND ?>expires_at", expiresAt, issuedAt, value, expiresAt)
+	if err != nil {
+		return err
+	}
+	n, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+	if n != 1 {
+		return store.ErrConflict
+	}
+	return nil
 }

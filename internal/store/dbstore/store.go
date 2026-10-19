@@ -63,7 +63,7 @@ func (s *Store) Reset(ctx context.Context, seed store.Seed, now int64) error {
 		if e != nil {
 			return e
 		}
-		if _, err = tx.ExecContext(ctx, `INSERT INTO tokens(value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at) VALUES(?,?,?,?,?,?,?,?,?,?)`, t.Value, t.AccountID, string(b), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, t.RefreshToken, t.RefreshExpiresAt); err != nil {
+		if _, err = tx.ExecContext(ctx, "INSERT INTO tokens("+tokenColumns+") VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", t.Value, t.AccountID, string(b), t.ExpiresAt, t.AppID, t.Product, string(assets), t.GrantAccountID, t.RefreshToken, t.RefreshExpiresAt, t.Kind, t.IssuedAt); err != nil {
 			return err
 		}
 	}
@@ -94,12 +94,12 @@ func (s *Store) Account(ctx context.Context, id string) (store.Account, error) {
 	return a, mapped(err)
 }
 
-const tokenColumns = "value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at"
+const tokenColumns = "value,account_id,scopes,expires_at,app_id,product,asset_ids,grant_account_id,refresh_token,refresh_expires_at,kind,issued_at"
 
 func scanToken(row *sql.Row) (store.Token, error) {
 	var t store.Token
 	var scopes, assets string
-	err := row.Scan(&t.Value, &t.AccountID, &scopes, &t.ExpiresAt, &t.AppID, &t.Product, &assets, &t.GrantAccountID, &t.RefreshToken, &t.RefreshExpiresAt)
+	err := row.Scan(&t.Value, &t.AccountID, &scopes, &t.ExpiresAt, &t.AppID, &t.Product, &assets, &t.GrantAccountID, &t.RefreshToken, &t.RefreshExpiresAt, &t.Kind, &t.IssuedAt)
 	if err != nil {
 		return t, mapped(err)
 	}
@@ -213,6 +213,11 @@ func (s *Store) Post(ctx context.Context, id string) (store.Post, error) {
 	var p store.Post
 	err := s.db.QueryRowContext(ctx, `SELECT * FROM posts WHERE id=?`, id).Scan(&p.ID, &p.AccountID, &p.MediaType, &p.URL, &p.Caption, &p.CreatedAt)
 	return p, mapped(err)
+}
+func (s *Store) PostCount(ctx context.Context, account string) (int, error) {
+	var n int
+	err := s.db.QueryRowContext(ctx, `SELECT count(*) FROM posts WHERE account_id=?`, account).Scan(&n)
+	return n, err
 }
 func (s *Store) Posts(ctx context.Context, account string, limit, offset int) ([]store.Post, error) {
 	rows, err := s.db.QueryContext(ctx, `SELECT * FROM posts WHERE account_id=? ORDER BY id LIMIT ? OFFSET ?`, account, limit, offset)

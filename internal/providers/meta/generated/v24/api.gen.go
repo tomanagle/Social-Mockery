@@ -6,6 +6,7 @@
 package v24
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -38,6 +39,21 @@ type GraphError struct {
 // IDResponse defines model for IDResponse.
 type IDResponse struct {
 	Id string `json:"id"`
+}
+
+// MeResponse Instagram Login token owner. Documented fields without fixture data are omitted rather than invented.
+type MeResponse struct {
+	// AccountType Get-started names Business or Media_Creator; case-sensitive enum is not enforced across sources.
+	AccountType *string `json:"account_type,omitempty"`
+
+	// Id Instagram-scoped (app-scoped) user ID; the simulator value is a synthetic deterministic derivation.
+	Id         *string `json:"id,omitempty"`
+	MediaCount *int    `json:"media_count,omitempty"`
+
+	// UserId Instagram professional account ID used by Graph paths such as /{ig-user-id}/media.
+	UserId               *string                `json:"user_id,omitempty"`
+	Username             *string                `json:"username,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
 }
 
 // MediaList defines model for MediaList.
@@ -74,6 +90,12 @@ type Paging struct {
 type PublishMediaRequest struct {
 	AccessToken *string `json:"access_token,omitempty"`
 	CreationId  *string `json:"creation_id,omitempty"`
+}
+
+// GetMeParams defines parameters for GetMe.
+type GetMeParams struct {
+	AccessToken *string `form:"access_token,omitempty" json:"access_token,omitempty"`
+	Fields      *string `form:"fields,omitempty" json:"fields,omitempty"`
 }
 
 // GetObjectParams defines parameters for GetObject.
@@ -123,8 +145,139 @@ type PublishMediaFormdataRequestBody = PublishMediaRequest
 // PublishMediaMultipartRequestBody defines body for PublishMedia for multipart/form-data ContentType.
 type PublishMediaMultipartRequestBody = PublishMediaRequest
 
+// Getter for additional properties for MeResponse. Returns the specified
+// element and whether it was found
+func (a MeResponse) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for MeResponse
+func (a *MeResponse) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for MeResponse to handle AdditionalProperties
+func (a *MeResponse) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account_type"]; found {
+		err = json.Unmarshal(raw, &a.AccountType)
+		if err != nil {
+			return fmt.Errorf("error reading 'account_type': %w", err)
+		}
+		delete(object, "account_type")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.Id)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["media_count"]; found {
+		err = json.Unmarshal(raw, &a.MediaCount)
+		if err != nil {
+			return fmt.Errorf("error reading 'media_count': %w", err)
+		}
+		delete(object, "media_count")
+	}
+
+	if raw, found := object["user_id"]; found {
+		err = json.Unmarshal(raw, &a.UserId)
+		if err != nil {
+			return fmt.Errorf("error reading 'user_id': %w", err)
+		}
+		delete(object, "user_id")
+	}
+
+	if raw, found := object["username"]; found {
+		err = json.Unmarshal(raw, &a.Username)
+		if err != nil {
+			return fmt.Errorf("error reading 'username': %w", err)
+		}
+		delete(object, "username")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for MeResponse to handle AdditionalProperties
+func (a MeResponse) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.AccountType != nil {
+		object["account_type"], err = json.Marshal(a.AccountType)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'account_type': %w", err)
+		}
+	}
+
+	if a.Id != nil {
+		object["id"], err = json.Marshal(a.Id)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	if a.MediaCount != nil {
+		object["media_count"], err = json.Marshal(a.MediaCount)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'media_count': %w", err)
+		}
+	}
+
+	if a.UserId != nil {
+		object["user_id"], err = json.Marshal(a.UserId)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'user_id': %w", err)
+		}
+	}
+
+	if a.Username != nil {
+		object["username"], err = json.Marshal(a.Username)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'username': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
+
+	// (GET /v24.0/me)
+	GetMe(w http.ResponseWriter, r *http.Request, params GetMeParams)
 
 	// (GET /v24.0/{objectID})
 	GetObject(w http.ResponseWriter, r *http.Request, objectID string, params GetObjectParams)
@@ -147,6 +300,52 @@ type ServerInterfaceWrapper struct {
 }
 
 type MiddlewareFunc func(http.Handler) http.Handler
+
+// GetMe operation middleware
+func (siw *ServerInterfaceWrapper) GetMe(w http.ResponseWriter, r *http.Request) {
+
+	var err error
+	_ = err
+
+	// Parameter object where we will unmarshal all parameters from the context
+	var params GetMeParams
+
+	// ------------- Optional query parameter "access_token" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "access_token", r.URL.Query(), &params.AccessToken, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "access_token"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "access_token", Err: err})
+		}
+		return
+	}
+
+	// ------------- Optional query parameter "fields" -------------
+
+	err = runtime.BindQueryParameterWithOptions("form", true, false, "fields", r.URL.Query(), &params.Fields, runtime.BindQueryParameterOptions{Type: "string", Format: ""})
+	if err != nil {
+		var requiredError *runtime.RequiredParameterError
+		if errors.As(err, &requiredError) {
+			siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "fields"})
+		} else {
+			siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "fields", Err: err})
+		}
+		return
+	}
+
+	handler := http.Handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		siw.Handler.GetMe(w, r, params)
+	}))
+
+	for _, middleware := range siw.HandlerMiddlewares {
+		handler = middleware(handler)
+	}
+
+	handler.ServeHTTP(w, r)
+}
 
 // GetObject operation middleware
 func (siw *ServerInterfaceWrapper) GetObject(w http.ResponseWriter, r *http.Request) {
@@ -553,6 +752,7 @@ func HandlerWithOptions(si ServerInterface, options StdHTTPServerOptions) http.H
 		ErrorHandlerFunc:   options.ErrorHandlerFunc,
 	}
 
+	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v24.0/me", wrapper.GetMe)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v24.0/{objectID}", wrapper.GetObject)
 	m.HandleFunc(http.MethodGet+" "+options.BaseURL+"/v24.0/{objectID}/media", wrapper.ListMedia)
 	m.HandleFunc(http.MethodPost+" "+options.BaseURL+"/v24.0/{objectID}/media", wrapper.CreateMedia)

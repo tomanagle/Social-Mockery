@@ -9,6 +9,8 @@ type OAuthApp struct {
 	ApprovedScopes []string `json:"approved_scopes" yaml:"approved_scopes"`
 	AccountIDs     []string `json:"account_ids" yaml:"account_ids"`
 	RequirePKCE    bool     `json:"require_pkce" yaml:"require_pkce"`
+	// GraphAPIVersion is the app dashboard version used by unversioned Graph calls.
+	GraphAPIVersion string `json:"graph_api_version,omitempty" yaml:"graph_api_version,omitempty"`
 }
 type OAuthGrant struct {
 	AppID     string   `json:"app_id" yaml:"app_id"`

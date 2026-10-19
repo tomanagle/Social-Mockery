@@ -2,7 +2,7 @@
 
 Reviewed 2026-10-18 against the official [Instagram Platform index](https://developers.facebook.com/documentation/instagram-platform/llms.txt), [Instagram Messaging index](https://developers.facebook.com/documentation/business-messaging/instagram-messaging/llms.txt), endpoint references, and pinned official SDK/collection evidence.
 
-The repository contains five **contract-only** products per version: Facebook Login, Instagram Login, OAuth, native upload, and application webhook callbacks. These are source-backed reference specifications, not a complete running Meta emulator. Their generated packages are isolated under `internal/contracts/instagram/`. The runnable subset remains four operations in each of v24.0 and v25.0; v26.0 has no runtime adapter.
+The repository contains five **contract-only** products per version: Facebook Login, Instagram Login, OAuth, native upload, and application webhook callbacks. These are source-backed reference specifications, not a complete running Meta emulator. Their generated packages are isolated under `internal/contracts/instagram/`. The runnable subset is five operations in each of v24.0 and v25.0 (four publishing operations plus `/me`); v26.0 has no runtime adapter. The OAuth runtime additionally serves Instagram Login long-lived token exchange and refresh through the reference OAuth adapters.
 
 ## Version evidence
 
@@ -62,6 +62,7 @@ Named insights updates include `link_clicks`, `total_likes`, `facebook_views`, `
 ## Known source conflicts and remaining boundaries
 
 - Instagram authorization sources disagree on `www.instagram.com` versus `api.instagram.com`; retain source-specific host evidence.
+- Instagram Login code exchange: the Business Login guide wraps the response in `data`, but Posty's production client parses a flat object, which the repository owner reported working on 2026-10-19. The runtime returns the flat object and accepts Posty's `www.instagram.com/oauth/authorize/` trailing-slash URL; the reference contracts keep the documented shapes. See docs/oauth-consent.md for the exact, limited live-verified claim.
 - Instagram `/me` reference uses a direct user response while a getting-started example wraps `data`; preserve the conflict. Permission deletion reference uses `success` while a guide describes literal `true`.
 - Media insights period tables and response prose differ. Permission tables also differ on conditional Business Manager scopes; avoid combining alternatives into a universal requirement. Publishing references use User tokens and alternative ads scopes while the guide uses Page tokens and lists both ads scopes. The Facebook conversations HTTP guide uses lowercase `platform=instagram`, while the SDK enum is uppercase `INSTAGRAM`; the server parameter remains permissive rather than treating SDK validation as exhaustive.
 - Product-tag reference spells `ad_reads`, disagrees with samples/SDK on `string_sale_price_string` versus `stripped_sale_price_string`, and excludes Reels reads while supporting Reels tagging writes.

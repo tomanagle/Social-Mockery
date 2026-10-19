@@ -22,6 +22,7 @@ apps:
     name: Mock Instagram Login
     secret: mock-instagram-secret
     product: instagram
+    graph_api_version: v25.0
     redirect_uris: ["https://client.example.test/callback"]
     approved_scopes: [instagram_business_basic, instagram_business_content_publish]
     account_ids: ["17841400000000001"]

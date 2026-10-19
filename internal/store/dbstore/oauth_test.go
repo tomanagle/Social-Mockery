@@ -1,6 +1,7 @@
 package dbstore_test
 
 import (
+	"database/sql"
 	"errors"
 	"path/filepath"
 	"sync"
@@ -337,5 +338,92 @@ func TestOAuthRefreshRotationIsAtomicAndScoped(t *testing.T) {
 	}
 	if _, err = repo.OAuthRefreshToken(ctx, "new-refresh"); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("expired refresh: %v", err)
+	}
+}
+
+func TestInstagramLongLivedTokenStorage(t *testing.T) {
+	const now = 1767225600
+	short := store.Token{Value: "short", AppID: "app", Product: "instagram", AccountID: "17841400000000001", GrantAccountID: "17841400000000001", Scopes: []string{"instagram_business_basic"}, ExpiresAt: now + 3600, IssuedAt: now}
+	long := short
+	long.Value, long.Kind, long.ExpiresAt = "long", "long_lived", now+5184000
+	cases := []struct {
+		name string
+		run  func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error
+		want error
+	}{
+		{"exchange stores one long-lived row", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			if err := repo.ExchangeInstagramToken(ctx, "short", long); err != nil {
+				return err
+			}
+			if err := repo.ExchangeInstagramToken(ctx, "short", long); err != nil {
+				return err
+			}
+			var count int
+			if err := conn.QueryRow("SELECT count(*) FROM tokens WHERE kind='long_lived'").Scan(&count); err != nil || count != 1 {
+				t.Fatalf("long-lived rows = %d (%v)", count, err)
+			}
+			got, err := repo.Token(ctx, "long")
+			if err != nil || got.Kind != "long_lived" || got.IssuedAt != now || got.GrantAccountID != short.GrantAccountID {
+				t.Fatalf("stored token %+v (%v)", got, err)
+			}
+			return nil
+		}, nil},
+		{"exchange requires matching short-lived token", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			other := long
+			other.Scopes = []string{"instagram_business_basic", "instagram_business_content_publish"}
+			return repo.ExchangeInstagramToken(ctx, "short", other)
+		}, store.ErrConflict},
+		{"exchange rejects missing short-lived token", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			return repo.ExchangeInstagramToken(ctx, "missing", long)
+		}, store.ErrNotFound},
+		{"exchange respects capacity", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			if _, err := conn.Exec("WITH RECURSIVE n(x) AS (SELECT 1 UNION ALL SELECT x+1 FROM n WHERE x<1999) INSERT INTO tokens(value,account_id,scopes,expires_at,app_id,product) SELECT 'issued'||x,?,'[]',?,'app','instagram' FROM n", short.AccountID, now+10); err != nil {
+				t.Fatal(err)
+			}
+			return repo.ExchangeInstagramToken(ctx, "short", long)
+		}, store.ErrCapacity},
+		{"extend refreshes an unexpired long-lived token", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			if err := repo.ExchangeInstagramToken(ctx, "short", long); err != nil {
+				return err
+			}
+			if err := repo.ExtendInstagramToken(ctx, "long", now+6000000, now+1); err != nil {
+				return err
+			}
+			got, err := repo.Token(ctx, "long")
+			if err != nil || got.ExpiresAt != now+6000000 || got.IssuedAt != now+1 {
+				t.Fatalf("extended token %+v (%v)", got, err)
+			}
+			return nil
+		}, nil},
+		{"extend rejects short-lived token", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			return repo.ExtendInstagramToken(ctx, "short", now+6000000, now)
+		}, store.ErrConflict},
+		{"extend rejects expired token", func(t *testing.T, repo *dbstore.Store, conn *sql.DB) error {
+			if err := repo.ExchangeInstagramToken(ctx, "short", long); err != nil {
+				return err
+			}
+			if _, err := repo.Advance(ctx, 5184000); err != nil {
+				t.Fatal(err)
+			}
+			return repo.ExtendInstagramToken(ctx, "long", now+2*5184000, now+5184000)
+		}, store.ErrConflict},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			conn, err := db.Open(":memory:")
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer conn.Close()
+			repo := dbstore.New(conn)
+			s := oauthSeed()
+			s.Tokens = append(s.Tokens, short)
+			if err = repo.Reset(ctx, s, now); err != nil {
+				t.Fatal(err)
+			}
+			if err = tc.run(t, repo, conn); !errors.Is(err, tc.want) {
+				t.Fatalf("err = %v, want %v", err, tc.want)
+			}
+		})
 	}
 }
