@@ -93,7 +93,7 @@ docker volume create social-mockery-data
 docker run --rm --name social-mockery \
   -p 127.0.0.1:3000:3000 \
   -v social-mockery-data:/data social-mockery \
-  start --addr :3000 --db /data/social-mockery.db
+  --addr :3000 --db /data/social-mockery.db
 ```
 
 A new named volume inherits `/data` ownership from the image. Existing volumes or host bind mounts must be writable by UID 10001. For admin protection, add `--admin-token local-secret` to the command above, or pass `-e SOCIAL_MOCKERY_ADMIN_TOKEN=local-secret` before the image name. Do not add `--seed` on subsequent starts unless you intend to replace the saved state.

@@ -4,7 +4,7 @@ Use this document as the working prompt for continuing Social Mockery. It record
 
 Status baseline: inspected `main` at `59b29a1e70e1fc674a90f0079fbeaa10c529d1e5` on 2026-10-19. This is a snapshot, not a promise that later code matches it. Update the status and acceptance evidence as work lands.
 
-Status updates: 2026-10-19, Instagram Login long-lived token exchange/refresh, `/me`, and unversioned Graph calls through the app's `graph_api_version` (section 4).
+Status updates: 2026-10-19, Instagram Login long-lived token exchange/refresh, `/me`, and unversioned Graph calls through the app's `graph_api_version` (section 4). 2026-10-28, Docker documentation mismatches reconciled (section 6B).
 
 ## 1. What we are building
 
@@ -127,7 +127,7 @@ Acceptance: an automated local end-to-end test demonstrates connection and image
 
 - [ ] Run real browser QA for all four consent products: initial selection, denial, partial consent, Page eligibility, callback/state, multiple tabs, repeated submission, Back/Forward and expired sessions. Review visual/accessibility behavior and label UI approximations.
 - [ ] Run Docker development and production builds, persistent-volume restart, and optional collector/Jaeger smoke checks in an environment with Docker.
-- [ ] Reconcile known documentation mismatches: the persistent Docker example in `docs/development.md` still includes a `start` argument even though the binary accepts no subcommands; the README describes Docker live reload while development Compose uses `go run` and requires restart (Air is host-side).
+- [x] Reconcile known documentation mismatches: the persistent Docker example in `docs/development.md` no longer passes a `start` argument (the binary accepts no subcommands), and the README no longer claims Docker live reload (development Compose uses `go run` and requires restart; Air is host-side). Fixed 2026-10-28: the corrected persistent `docker run` command was executed locally against the production image and kept the advanced clock across a container restart; `make dev` was not rerun.
 - [ ] Keep short README checkboxes synchronized with actual runtime support; remove obsolete internal-phase wording from user docs when touched.
 
 Acceptance: executable documented commands match the binary; browser/Docker/collector results are recorded separately from Go test results. A blocked visual or container check stays explicitly unverified.

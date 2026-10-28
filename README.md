@@ -24,7 +24,7 @@ make build
 curl -fsS http://127.0.0.1:3000/healthz
 ```
 
-Or use Docker with live reload: `make dev` (stop with `make dev-down`). For persistent state use `--db ./social-mockery.db`; omit `--seed` on later starts to keep existing data.
+Or run it in Docker with `make dev` (stop with `make dev-down`); restart it to pick up source changes. For host-side live reload, use Air as described in [development](docs/development.md). For persistent state use `--db ./social-mockery.db`; omit `--seed` on later starts to keep existing data.
 
 ## Use it
 
